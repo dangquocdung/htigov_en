@@ -1,0 +1,30 @@
+{
+  "name": "botble/backup",
+  "description": "Backup package for Laravel application",
+  "type": "project",
+  "license": "GNU",
+  "authors": [
+    {
+      "name": "Sang Nguyen",
+      "email": "sangnguyenplus@gmail.com"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Botble\\Backup\\": "src",
+      "Botble\\Support\\": "support/src"
+    }
+  },
+  "extra":{
+    "laravel":{
+      "providers":[
+        "Botble\\Backup\\Providers\\BackupServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

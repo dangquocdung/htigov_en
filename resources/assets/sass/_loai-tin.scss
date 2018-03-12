@@ -1,0 +1,67 @@
+.loai-tin{
+
+	padding-left: 10px;
+	padding-right: 10px;
+
+	.mau-tin{
+
+		border-bottom: 1px solid #e1e8ee;
+	    padding: 5px;
+    	text-align: justify;
+    	overflow: hidden;
+    	padding-bottom: 10px;
+    	padding-left: 0px;
+
+    	.avatar{
+	    	
+		    padding-right: 10px;
+		    color: #007cff;
+		    text-align: center;
+		    left: 0px;
+
+		    position: relative !important;
+		    display: inline-block;
+		    max-width: 165px;
+		    max-height: 110px;
+		    float: left;
+		    clear: both;
+
+		    img {
+		    	width: 100%;
+			    height: 107px;
+			    object-fit: cover;
+			    vertical-align: middle;
+			    border: 0;
+			}
+    	}
+
+    	.noi-dung{
+    		border-bottom: none !important;
+    		padding-bottom: 0px !important;
+    		display: block;
+		    overflow: hidden;
+		    line-height: 18px;
+
+		    .ngay-dang{
+
+		    	line-height: 25px;
+		    	font-style: italic;
+		    	font-weight: 550;
+
+		    }
+
+		    .gioi-thieu{
+		    	line-height: 20px;
+		    }
+    	}
+
+
+    	&:not(:first-child) {
+		    padding-top: 15px;
+		}
+
+	}
+
+
+	
+}

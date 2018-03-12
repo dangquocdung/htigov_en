@@ -1,0 +1,95 @@
+nav{
+	overflow: hidden;
+	//border-top: #b2001f;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	//border-bottom: solid 1px #316a98;
+	//border-top: solid 1px #316a98;
+	//-moz-box-shadow: inset 0 0 0 1px rgba(34,179,247,0.9);
+	//-webkit-box-shadow: inset 0 0 0 1px rgba(34,179,247,0.9);
+	//box-shadow: inset 0 0 0 1px rgba(34,179,247,0.9);
+	background: #0093ef;
+	background: -moz-linear-gradient(top,#0093ef 0,#0089e0 50%,#007ac7 51%,#0471b5 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#0093ef),color-stop(50%,#0089e0),color-stop(51%,#007ac7),color-stop(100%,#0471b5));
+	background: -webkit-linear-gradient(top,#0093ef 0,#0089e0 50%,#007ac7 51%,#0471b5 100%);
+	background: -o-linear-gradient(top,#0093ef 0,#0089e0 50%,#007ac7 51%,#0471b5 100%);
+	background: -ms-linear-gradient(top,#0093ef 0,#0089e0 50%,#007ac7 51%,#0471b5 100%);
+
+	background: linear-gradient(to bottom,#0470b4 0,#095b8c 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0093ef',endColorstr='#0471b5',GradientType=0);
+}
+
+
+.navbar-default, .navbar-collapse {
+
+	//border-color: #0093ef !important;
+	border: none;
+
+}
+
+.navbar-header{
+
+	//background: url(../../images/banner_header.png) left top no-repeat cover;
+
+
+}
+
+
+
+
+.nav li {
+	//border-right: 1px solid #fff;
+	//float: left;
+	//width: 195px;
+}
+
+
+
+.navbar-nav{
+
+	li{
+		a{
+			text-transform: uppercase;
+			font-weight: 600;
+			color: white !important;
+		}
+	}
+
+}
+
+.nav li.current, .nav li a:hover {
+	background: #0593d9;
+	background: -moz-linear-gradient(top,#0593d9 1%,#0c78b2 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(1%,#0593d9),color-stop(100%,#0c78b2));
+	background: -webkit-linear-gradient(top,#0593d9 1%,#0c78b2 100%);
+	background: -o-linear-gradient(top,#0593d9 1%,#0c78b2 100%);
+	background: -ms-linear-gradient(top,#0593d9 1%,#0c78b2 100%);
+	background: linear-gradient(to bottom,#0593d9 1%,#0c78b2 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0593d9',endColorstr='#0c78b2',GradientType=0);
+}
+
+
+
+
+.navbar-right{
+	margin-right: 0 !important;
+}
+
+
+.navbar-collapse {
+
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+
+.site-top {
+	padding: 7px;
+	color: #fff;
+
+	a {
+		color: #fff;
+	}
+}
+
