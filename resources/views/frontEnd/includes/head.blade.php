@@ -19,6 +19,8 @@
 
 <link href="{{ URL::asset('frontEnd/css/adminlte.min.css') }}" rel="stylesheet"/>
 
+{{--  <link href="{{ URL::asset('frontEnd/css/style.css') }}" rel="stylesheet"/>  --}}
+
 <link href="{{ URL::asset('frontEnd/css/app.css') }}" rel="stylesheet"/>
 
 {{--@if( trans('backLang.direction')=="rtl")--}}

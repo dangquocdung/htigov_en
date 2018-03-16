@@ -12,4 +12,10 @@ class Banner extends Model
 
         return $this->belongsTo('App\WebmasterBanner', 'section_id');
     }
+
+    public function typeBanner()
+    {
+
+        return $this->belongsTo('App\TypeBanner', 'type_id');
+    }
 }

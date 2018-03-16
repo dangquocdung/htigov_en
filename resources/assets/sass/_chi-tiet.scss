@@ -26,7 +26,6 @@
     letter-spacing: 1.5px;
   }
 
-
   article{
     text-align: justify;
     padding: 5px;
@@ -50,12 +49,9 @@
   position: absolute !important;
 }
 
-
 .tieu-de-tin{
 
   padding: 10px;
-
-  
 
   .main-title {
     font-size: 20px !important;
@@ -96,7 +92,6 @@
     display: block;
   }
 
-
 }
 
 .box-tm {
@@ -121,12 +116,10 @@
   position: relative;
 }
 
-
 #tag{
 
   margin-top: 15px;
   margin-bottom: 0 !important;
-
 
   ul {
 
@@ -134,8 +127,6 @@
     list-style: none;
 
     display: block;
-
-
 
     li {
       display: inline-block;
@@ -195,121 +186,11 @@
               color: #ce663f;
             }
 
-
           }
         }
       }
 
   }
-
-.block4{
-
-  border: 1px solid #bebebe;
-  border-radius: 2px;
-  margin-bottom: 5px;
-  margin-top: 2px;
-  overflow: hidden;
-  background: #ffffff !important;
-
-
-  .block-header {
-
-    float: left;
-    width: 100%;
-    padding: 6px 0px;
-    //background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-    //background: #0093ef;
-    //background: -moz-linear-gradient(top,#0093ef 0,#0089e0 50%,#007ac7 51%,#0471b5 100%);
-    //background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#0093ef),color-stop(50%,#0089e0),color-stop(51%,#007ac7),color-stop(100%,#0471b5));
-    //background: -webkit-linear-gradient(top,#0093ef 0,#0089e0 50%,#007ac7 51%,#0471b5 100%);
-    //background: -o-linear-gradient(top,#0093ef 0,#0089e0 50%,#007ac7 51%,#0471b5 100%);
-    //background: -ms-linear-gradient(top,#0093ef 0,#0089e0 50%,#007ac7 51%,#0471b5 100%);
-    //background: linear-gradient(to bottom, #15c714 0, #2c8023 100%);
-
-    background: linear-gradient(to bottom, #0494da 0,#095b8c 100%);
-    //
-    //background-image: url('/images/background/lotus.ico'), url('/images/background/trong-dong.png');
-    //background-size: 26px 26px, auto;
-    //background-position: 2px 2px,right top;
-    //background-repeat: no-repeat;
-    margin-bottom: 10px;
-
-    h4 {
-
-      color: #ffffff !important;
-      font-family: arial;
-      line-height: 24px;
-      margin: 0;
-      padding-left: 5px;
-      text-align: left;
-      vertical-align: middle;
-      font-weight: bold;
-      font-size: 14px;
-      position: relative;
-
-
-    }
-
-
-  }
-
-
-  .box-banner{
-    a{
-      img{
-        margin-top: 1px;
-      }
-    }
-  }
-
-  .news-rightbox{
-
-    padding-left: 10px;
-    padding-right: 10px;
-
-      ul{
-          list-style-type: none;
-          padding-left: 0px;
-
-          li {
-
-            a{
-              text-decoration: none;
-            }
-
-            .news-block{
-              margin-bottom: 5px;
-
-              font-size: 0.95em;
-
-
-            }
-
-             &:not(:last-child){
-
-                border-bottom: 1px solid #e1e8ee;
-
-              }
-
-            &:not(:first-child){
-              margin-top: 3px;
-            }
-
-
-            &:hover{
-
-              font-weight: bold;
-              color: #CE663F;
-
-
-            }
-
-          }
-      }
-  }
-
-}
-
 
 .lienquan-header {
   background: rgba(0, 0, 0, 0) url(/images/titlebg-red.png) no-repeat scroll right center;
@@ -338,7 +219,6 @@
   cursor: pointer;
   width: 100%;
 
-
   &:before {
     position:absolute;
     top: 50%;
@@ -364,7 +244,6 @@
   }
   padding: 0 10px 10px 10px;
 }
-
 
 .list-image-view{
 
@@ -412,5 +291,3 @@
     }
   }
 }
-
-

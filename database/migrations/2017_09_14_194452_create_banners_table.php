@@ -21,7 +21,7 @@ class CreateBannersTable extends Migration
             $table->text('details_vi')->nullable();
             $table->text('details_en')->nullable();
             $table->text('code')->nullable();
-            $table->string('file_ar')->nullable();
+            $table->string('file_vi')->nullable();
             $table->string('file_en')->nullable();
             $table->tinyInteger('video_type')->nullable();
             $table->string('youtube_link')->nullable();

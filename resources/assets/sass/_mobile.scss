@@ -1,5 +1,16 @@
 @media screen and(max-width: 767px) {
 
+  .ddsmoothmenu ul li {
+    position: relative;
+    display: inline;
+    float: left;
+    font-size: 100%;
+    padding: 0;
+    width: 19%;
+    text-align: center;
+    background: url(/images/menu/border.png) no-repeat right;
+  }
+  
   /*
  * Off Canvas
  * --------------------------------------------------
@@ -63,8 +74,8 @@
 
   .block2{
     margin-top: 2px;
-    margin-left: -15px;
-    margin-right: -15px;
+    // margin-left: -15px;
+    // margin-right: -15px;
   }
 
   .block3{
@@ -79,7 +90,6 @@
     margin-right: -15px;
 
   }
-
 
   #tinNoiBatChinh{
     margin-top: 25px;
@@ -99,14 +109,12 @@
     border-left: none !important;
   }
 
-
   .btn-breadcrumb{
 
     margin-left: -15px;
     margin-right: -15px;
 
   }
-
 
   #tag{
     margin-left: -15px;
@@ -118,7 +126,6 @@
 
     margin-left: -15px;
     margin-right: -15px;
-
 
   }
 

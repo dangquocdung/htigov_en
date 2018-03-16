@@ -70,9 +70,9 @@ class SettingsController extends Controller
 
             $Setting->site_title_vi = $request->site_title_vi;
             $Setting->site_title_en = $request->site_title_en;
-            $Setting->site_desc_vi = $request->site_desc_ar;
+            $Setting->site_desc_vi = $request->site_desc_vi;
             $Setting->site_desc_en = $request->site_desc_en;
-            $Setting->site_keywords_vi = $request->site_keywords_ar;
+            $Setting->site_keywords_vi = $request->site_keywords_vi;
             $Setting->site_keywords_en = $request->site_keywords_en;
             $Setting->site_webmails = $request->site_webmails;
             $Setting->notify_messages_status = $request->notify_messages_status;
@@ -117,7 +117,7 @@ class SettingsController extends Controller
 
             $this->validate($request, [
                 'style_logo_en' => 'mimes:png,jpeg,jpg,gif|max:3000',
-                'style_logo_ar' => 'mimes:png,jpeg,jpg,gif|max:3000',
+                'style_logo_vi' => 'mimes:png,jpeg,jpg,gif|max:3000',
                 'style_fav' => 'mimes:png,jpeg,jpg,gif|max:3000',
                 'style_apple' => 'mimes:png,jpeg,jpg,gif|max:3000',
                 'style_bg_image' => 'mimes:png,jpeg,jpg,gif|max:5000',
@@ -137,12 +137,12 @@ class SettingsController extends Controller
                 $path = $this->getUploadPath();
                 $request->file($formFileName)->move($path, $fileFinalName);
             }
-            $formFileNameAr = "style_logo_ar";
+            $formFileNameAr = "style_logo_vi";
             $fileFinalNameAr = "";
             if ($request->$formFileNameAr != "") {
                 // Delete a style_logo_vi photo
                 if ($Setting->style_logo_vi != "") {
-                    File::delete($this->getUploadPath() . $Setting->style_logo_ar);
+                    File::delete($this->getUploadPath() . $Setting->style_logo_vi);
                 }
 
                 $fileFinalNameAr = time() . rand(1111,
@@ -312,13 +312,13 @@ class SettingsController extends Controller
         $Setting = Setting::find($id);
         if (count($Setting) > 0) {
 
-            $Setting->contact_t1_vi = $request->contact_t1_ar;
+            $Setting->contact_t1_vi = $request->contact_t1_vi;
             $Setting->contact_t1_en = $request->contact_t1_en;
             $Setting->contact_t3 = $request->contact_t3;
             $Setting->contact_t4 = $request->contact_t4;
             $Setting->contact_t5 = $request->contact_t5;
             $Setting->contact_t6 = $request->contact_t6;
-            $Setting->contact_t7_vi = $request->contact_t7_ar;
+            $Setting->contact_t7_vi = $request->contact_t7_vi;
             $Setting->contact_t7_en = $request->contact_t7_en;
             $Setting->updated_by = Auth::user()->id;
             $Setting->save();

@@ -227,7 +227,7 @@
                                                 @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status"))
                                                     <small>{!!  trans('backLang.arabicBox') !!}</small> @endif
 
-                                                {!! Form::text('seo_url_slug_ar',$Sections->seo_url_slug_ar, array('class' => 'form-control','id'=>'seo_url_slug_ar', 'dir'=>trans('backLang.rtl'))) !!}
+                                                {!! Form::text('seo_url_slug_vi',$Sections->seo_url_slug_vi, array('class' => 'form-control','id'=>'seo_url_slug_vi', 'dir'=>trans('backLang.rtl'))) !!}
                                             </div>
                                         </div>
                                     @endif
@@ -239,7 +239,7 @@
                                                 @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status"))
                                                     <small>{!!  trans('backLang.arabicBox') !!}</small> @endif
 
-                                                {!! Form::textarea('seo_description_ar',$Sections->seo_description_ar, array('class' => 'form-control','id'=>'seo_description_ar','maxlength'=>'165', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
+                                                {!! Form::textarea('seo_description_vi',$Sections->seo_description_ar, array('class' => 'form-control','id'=>'seo_description_vi','maxlength'=>'165', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
                                             </div>
                                         </div>
                                     @endif
@@ -251,7 +251,7 @@
                                                 @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status"))
                                                     <small>{!!  trans('backLang.arabicBox') !!}</small>@endif
 
-                                                {!! Form::textarea('seo_keywords_ar',$Sections->seo_keywords_ar, array('class' => 'form-control','id'=>'seo_keywords_ar', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
+                                                {!! Form::textarea('seo_keywords_vi',$Sections->seo_keywords_ar, array('class' => 'form-control','id'=>'seo_keywords_vi', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
                                             </div>
                                         </div>
                                         <br>
@@ -263,15 +263,15 @@
                                     @if(Helper::GeneralWebmasterSettings("vi_box_status"))
                                         <?php
                                         $seo_example_title = $Sections->title_vi;
-                                        $seo_example_desc = Helper::GeneralSiteSettings("site_desc_ar");
+                                        $seo_example_desc = Helper::GeneralSiteSettings("site_desc_vi");
                                         if ($Sections->seo_title_vi != "") {
                                             $seo_example_title = $Sections->seo_title_vi;
                                         }
                                         if ($Sections->seo_description_vi != "") {
-                                            $seo_example_desc = $Sections->seo_description_ar;
+                                            $seo_example_desc = $Sections->seo_description_vi;
                                         }
                                         if ($Sections->seo_url_slug_vi != "" && Helper::GeneralWebmasterSettings("links_status")) {
-                                            $seo_example_url = url($Sections->seo_url_slug_ar);
+                                            $seo_example_url = url($Sections->seo_url_slug_vi);
                                         } else {
                                             $seo_example_url = route('FrontendTopicsByCat', ["section" => $Sections->webmasterSection->name, "cat" => $Sections->id]);
                                         }
@@ -282,10 +282,10 @@
                                                     <small>{!!  trans('backLang.arabicBox') !!}</small> @endif
                                                 &nbsp;
                                                 <div class="search-example" dir="rtl">
-                                                    <a id="title_in_engines_ar" href="{{ $seo_example_url }}"
+                                                    <a id="title_in_engines_vi" href="{{ $seo_example_url }}"
                                                        target="_blank">{{ $seo_example_title }}</a>
-                                                    <span id="url_in_engines_ar">{{ $seo_example_url }}</span>
-                                                    <div id="desc_in_engines_ar">{{ $seo_example_desc }} ...</div>
+                                                    <span id="url_in_engines_vi">{{ $seo_example_url }}</span>
+                                                    <div id="desc_in_engines_vi">{{ $seo_example_desc }} ...</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -442,23 +442,23 @@
         @if(Helper::GeneralWebmasterSettings("vi_box_status"))
         $("#seo_title_vi").on('keyup change', function () {
             if ($(this).val() != "") {
-                $("#title_in_engines_ar").text($(this).val());
+                $("#title_in_engines_vi").text($(this).val());
             } else {
-                $("#title_in_engines_ar").text("<?php echo $Sections->title_vi; ?>");
+                $("#title_in_engines_vi").text("<?php echo $Sections->title_vi; ?>");
             }
         });
-        $("#seo_description_ar").on('keyup change', function () {
+        $("#seo_description_vi").on('keyup change', function () {
             if ($(this).val() != "") {
-                $("#desc_in_engines_ar").text($(this).val());
+                $("#desc_in_engines_vi").text($(this).val());
             } else {
-                $("#desc_in_engines_ar").text("<?php echo Helper::GeneralSiteSettings("site_desc_ar"); ?>");
+                $("#desc_in_engines_vi").text("<?php echo Helper::GeneralSiteSettings("site_desc_vi"); ?>");
             }
         });
-        $("#seo_url_slug_ar").on('keyup change', function () {
+        $("#seo_url_slug_vi").on('keyup change', function () {
             if ($(this).val() != "") {
-                $("#url_in_engines_ar").text("<?php echo url(''); ?>/" + slugify($(this).val()));
+                $("#url_in_engines_vi").text("<?php echo url(''); ?>/" + slugify($(this).val()));
             } else {
-                $("#url_in_engines_ar").text("<?php echo route('FrontendTopicsByCat', ["section" => $Sections->webmasterSection->name, "cat" => $Sections->id]); ?>");
+                $("#url_in_engines_vi").text("<?php echo route('FrontendTopicsByCat', ["section" => $Sections->webmasterSection->name, "cat" => $Sections->id]); ?>");
             }
         });
         @endif

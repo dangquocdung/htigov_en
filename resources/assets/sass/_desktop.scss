@@ -39,6 +39,28 @@ a{
   color: #000000;
 }
 
+.breadcrumb{
+  background: none !important;
+  margin-bottom: 0;
+  padding: 4px 0 2px 15px !important;
+  font-weight: bold;
+
+  a{
+    i{
+
+      color: #095d90 !important;
+
+    }
+
+  }
+
+  .active{
+    color: #095d90 !important;
+
+  }
+
+}
+
 //.nav-tabs {
 //  border-bottom: none;
 //}
@@ -95,16 +117,12 @@ marquee{
   z-index: 1;
 }
 
-
-
-
 .breadcrumb{
   //background-color: #F5EACC !important;
   background: linear-gradient(to bottom, rgba(4, 143, 224, 0.73) 0, rgba(4, 113, 180, 0.83) 100%);
   a{
     color: #ffffff !important;
   }
-
 
 }
 
@@ -116,8 +134,6 @@ marquee{
   overflow: hidden;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-
 
 .block3 {
   border: 1px solid #bebebe;
@@ -172,8 +188,6 @@ marquee{
       }
     }
 
-
-
   }
 
   .w3-animate-left {
@@ -205,7 +219,6 @@ marquee{
       opacity: 1
     }
   }
-
 
   #tinNoiBatChinh{
     .hot-news{
@@ -242,7 +255,6 @@ marquee{
 
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-
         }
       }
 
@@ -250,8 +262,6 @@ marquee{
   }
 
   #tin-noi-bat, #tin-moi-nhat{
-
-
 
     ul{
       list-style-type: none;
@@ -306,7 +316,6 @@ marquee{
 
     margin-bottom: 10px;
     
-
     img{
       float:left;
       margin: 0 10px 5px 0;
@@ -334,7 +343,6 @@ marquee{
     border-left: 1px solid #eaeaea;
   }
 
-
   .news-vanban{
 
     padding: 0 15px 0 15px;
@@ -357,12 +365,10 @@ marquee{
           margin-top: 10px;
         }
 
-
       &:not(:last-child){
 
         padding-bottom: 3px;
         
-
         border-bottom: 1px solid #e1e8ee;
 
       }
@@ -408,8 +414,6 @@ marquee{
     }
   }
   
-
-
 }
 
 .to-chuc{
@@ -443,7 +447,6 @@ marquee{
   }
 }
 
-
 #back-top {
   display: inline-block;
 
@@ -460,7 +463,6 @@ marquee{
 td{
   overflow: hidden;
 }
-
 
 .box-body {
   border-top-left-radius: 0;
@@ -560,60 +562,6 @@ td{
   }
 }
 
-
-
-.right_1{
-
-  .right-item{
-
-    clear: both;
-
-    //padding: 10px;
-    //background: #f2faff;
-    a.icon {
-      //background: #006eaf;
-      display: block;
-      padding: 10px;
-      //font-weight: bold;
-      font-size: 1em;
-      text-transform: capitalize;
-      border-bottom: 2px solid #ffffff;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: #ffffff;
-      //text-align: justify;
-
-      background: linear-gradient(to bottom, #04aaf2 0, #097dba 100%);
-
-      //text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-
-
-
-      i{
-        margin-right: 10px;
-        color: #ffffff;
-        //text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-
-      }
-
-      .nav-text{
-        vertical-align: middle;
-
-      }
-
-
-
-      &:hover{
-
-        background: darken(#f2faff,15%);
-
-      }
-    }
-  }
-}
-
-
 .box_item1 {
 
   a{
@@ -664,7 +612,6 @@ td{
 .box_img a:hover:before{opacity:1;transform:translate(-80px, -125px) rotate(45deg)}
 .box_img a:hover span{color:#FFFFFF;text-shadow:2px 2px rgba(255, 255, 255, 0.77);text-shadow:2px 2px #A95707}
 
-
 .lich-cong-tac, .chidao-dieuhanh{
 
   ul{
@@ -685,7 +632,6 @@ td{
     }
   }
 }
-
 
 .rotated {
   -webkit-transform: rotate(180deg);
@@ -816,7 +762,6 @@ td{
       padding-left: 0;
       margin-left: 0;
 
-
       &:not(:last-child){
         border-bottom: 1px solid #eaeaea;
       }
@@ -839,7 +784,6 @@ td{
       padding-left: 0;
       margin-left: 0;
 
-
       &:not(:last-child){
         border-bottom: 1px solid #eaeaea;
       }
@@ -859,7 +803,6 @@ td{
       padding-bottom: 10px;
       padding-left: 0;
       margin-left: 0;
-
 
       &:not(:last-child){
         border-bottom: 1px solid #eaeaea;
@@ -930,27 +873,7 @@ td{
     li{
       padding: 0;
       margin: 0;
-
-      @media screen and (min-width: 768px) {
-
-        &:first-child{
-          padding-right: 6px;
-        }
-
-        &:last-child{
-          padding-left: 6px;
-        }
-
-        &:not(:first-child, :last-child){
-          padding: 0 3px;
-        }
-      }
-
-      @media screen and (max-width: 767px) {
-
-        padding: 0 15px;
-      }
-
+      
       .block2{
         overflow: hidden;
 
@@ -972,7 +895,6 @@ td{
     }
   }
 }
-
 
 .bs-glyphicons {
   padding-left: 0;
@@ -1012,10 +934,3 @@ object{
     margin: 10px 0 !important;
   }
 }
-
-
-
-
-
-
-

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" dir="ltr">
+<html lang="{{ trans('backLang.code') }}" dir="ltr">
 <head>
     @include('frontEnd.includes.head')
     @include('frontEnd.includes.colors')
@@ -44,7 +44,7 @@ if (Helper::GeneralSiteSettings("style_type")) {
             </div>
 
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 sidebar-offcanvas" id="sidebar" style="padding-left: 5px">
-                @include('frontEnd.includes.menu-side')
+                    @yield('side-menu')
             </div>
 
         </div>
@@ -57,6 +57,7 @@ if (Helper::GeneralSiteSettings("style_type")) {
             <!-- end footer -->
 </div>
 @include('frontEnd.includes.foot')
+
 @yield('footerInclude')
 
 @if(Helper::GeneralSiteSettings("style_preload"))

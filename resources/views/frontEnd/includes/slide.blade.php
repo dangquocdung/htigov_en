@@ -31,27 +31,30 @@
                             @endif
                         @endif
                         <?php
-                        $ccount = $category_and_topics_count[$Category->id];
-                        if ($Category->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
-                            if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                $Category_link_url = url(trans('backLang.code') . "/" . $Category->$slug_var);
+                            $ccount = $category_and_topics_count[$Category->id];
+                            if ($Category->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                    $Category_link_url = url(trans('backLang.code') . "/" . $Category->$slug_var);
+                                } else {
+                                    $Category_link_url = url($Category->$slug_var);
+                                }
                             } else {
-                                $Category_link_url = url($Category->$slug_var);
+                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                    $Category_link_url = route('FrontendTopicsByCatWithLang', ["lang" => trans('backLang.code'), "section" => $Category->webmasterSection->name, "cat" => $Category->id]);
+                                } else {
+                                    $Category_link_url = route('FrontendTopicsByCat', ["section" => $Category->webmasterSection->name, "cat" => $Category->id]);
+                                }
                             }
-                        } else {
-                            if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                $Category_link_url = route('FrontendTopicsByCatWithLang', ["lang" => trans('backLang.code'), "section" => $Category->webmasterSection->name, "cat" => $Category->id]);
-                            } else {
-                                $Category_link_url = route('FrontendTopicsByCat', ["section" => $Category->webmasterSection->name, "cat" => $Category->id]);
-                            }
-                        }
                         ?>
                         <li>
                             @if($Category->icon !=="")
                                 <i class="fa {{$Category->icon}}"></i> &nbsp;
                             @endif
-                            <a {{ $active_cat }} href="{{ $Category_link_url }}">{{$Category->$category_title_var}}</a><span
-                                    class="pull-right">({{ $ccount }})</span></li>
+                            
+                            <a {{ $active_cat }} href="{{ $Category_link_url }}">{{$Category->$category_title_var}}</a>
+                            <span class="pull-right">({{ $ccount }})</span>
+                        
+                        </li>
                         @foreach($Category->fatherSections as $MnuCategory)
                             <?php $active_cat = ""; ?>
                             @if($CurrentCategory!="none")
@@ -81,8 +84,11 @@
                                 @if($MnuCategory->icon !=="")
                                     <i class="fa {{$MnuCategory->icon}}"></i> &nbsp;
                                 @endif
-                                <a {{ $active_cat }}  href="{{ $SubCategory_link_url }}">{{$MnuCategory->$category_title_var}}</a><span
-                                        class="pull-right">({{ $ccount }})</span></li>
+                                
+                                <a {{ $active_cat }}  href="{{ $SubCategory_link_url }}">{{$MnuCategory->$category_title_var}}</a>
+                                <span class="pull-right">({{ $ccount }})</span>
+                            
+                            </li>
                         @endforeach
 
                     @endforeach

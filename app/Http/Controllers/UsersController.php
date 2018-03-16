@@ -93,7 +93,7 @@ class UsersController extends Controller
             $fileFinalName_vi = time() . rand(1111,
                     9999) . '.' . $request->file($formFileName)->getClientOriginalExtension();
             $path = base_path() . "/public/" . $this->getUploadPath();
-            $request->file($formFileName)->move($path, $fileFinalName_ar);
+            $request->file($formFileName)->move($path, $fileFinalName_vi);
         }
         // End of Upload Files
 
@@ -102,7 +102,7 @@ class UsersController extends Controller
         $User->email = $request->email;
         $User->password = bcrypt($request->password);
         $User->permissions_id = $request->permissions_id;
-        $User->photo = $fileFinalName_ar;
+        $User->photo = $fileFinalName_vi;
         $User->connect_email = $request->connect_email;
         $User->connect_password = $request->connect_password;
         $User->status = 1;
@@ -180,7 +180,7 @@ class UsersController extends Controller
                 $fileFinalName_vi = time() . rand(1111,
                         9999) . '.' . $request->file($formFileName)->getClientOriginalExtension();
                 $path = base_path() . "/public/" . $this->getUploadPath();
-                $request->file($formFileName)->move($path, $fileFinalName_ar);
+                $request->file($formFileName)->move($path, $fileFinalName_vi);
             }
             // End of Upload Files
 
@@ -206,7 +206,7 @@ class UsersController extends Controller
                     File::delete($this->getUploadPath() . $User->photo);
                 }
 
-                $User->photo = $fileFinalName_ar;
+                $User->photo = $fileFinalName_vi;
             }
 
             $User->connect_email = $request->connect_email;

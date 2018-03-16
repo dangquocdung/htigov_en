@@ -255,7 +255,7 @@ class ContactsController extends Controller
             $fileFinalName_vi = time() . rand(1111,
                     9999) . '.' . $request->file($formFileName)->getClientOriginalExtension();
             $path = $this->getUploadPath();
-            $request->file($formFileName)->move($path, $fileFinalName_ar);
+            $request->file($formFileName)->move($path, $fileFinalName_vi);
         }
         // End of Upload Files
 
@@ -271,7 +271,7 @@ class ContactsController extends Controller
         $Contact->city = $request->city;
         $Contact->address = $request->address;
         $Contact->address = $request->address;
-        $Contact->photo = $fileFinalName_ar;
+        $Contact->photo = $fileFinalName_vi;
         $Contact->notes = $request->notes;
         $Contact->status = 1;
         $Contact->created_by = Auth::user()->id;
@@ -372,7 +372,7 @@ class ContactsController extends Controller
                 $fileFinalName_vi = time() . rand(1111,
                         9999) . '.' . $request->file($formFileName)->getClientOriginalExtension();
                 $path = $this->getUploadPath();
-                $request->file($formFileName)->move($path, $fileFinalName_ar);
+                $request->file($formFileName)->move($path, $fileFinalName_vi);
             }
             // End of Upload Files
 
@@ -395,7 +395,7 @@ class ContactsController extends Controller
                     File::delete($this->getUploadPath() . $Contact->photo);
                 }
 
-                $Contact->photo = $fileFinalName_ar;
+                $Contact->photo = $fileFinalName_vi;
             }
 
             $Contact->status = $request->status;

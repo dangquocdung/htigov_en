@@ -97,7 +97,7 @@ class WebmasterSectionsController extends Controller
 
         //URL Slugs
         $slugs = Helper::URLSlug($request->name, $request->name, "section", 0);
-        $WebmasterSection->seo_url_slug_vi = $slugs['slug_ar'];
+        $WebmasterSection->seo_url_slug_vi = $slugs['slug_vi'];
         $WebmasterSection->seo_url_slug_en = $slugs['slug_en'];
 
 
@@ -192,15 +192,15 @@ class WebmasterSectionsController extends Controller
 
             $WebmasterSection->seo_title_vi = $request->seo_title_vi;
             $WebmasterSection->seo_title_en = $request->seo_title_en;
-            $WebmasterSection->seo_description_vi = $request->seo_description_ar;
+            $WebmasterSection->seo_description_vi = $request->seo_description_vi;
             $WebmasterSection->seo_description_en = $request->seo_description_en;
-            $WebmasterSection->seo_keywords_vi = $request->seo_keywords_ar;
+            $WebmasterSection->seo_keywords_vi = $request->seo_keywords_vi;
             $WebmasterSection->seo_keywords_en = $request->seo_keywords_en;
             $WebmasterSection->updated_by = Auth::user()->id;
 
             //URL Slugs
-            $slugs = Helper::URLSlug($request->seo_url_slug_ar, $request->seo_url_slug_en, "section", $id);
-            $WebmasterSection->seo_url_slug_vi = $slugs['slug_ar'];
+            $slugs = Helper::URLSlug($request->seo_url_slug_vi, $request->seo_url_slug_en, "section", $id);
+            $WebmasterSection->seo_url_slug_vi = $slugs['slug_vi'];
             $WebmasterSection->seo_url_slug_en = $slugs['slug_en'];
 
             $WebmasterSection->save();

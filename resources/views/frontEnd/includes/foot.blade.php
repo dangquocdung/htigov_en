@@ -12,10 +12,46 @@
 <script src="{{ URL::asset('frontEnd/js/animate.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/custom.js') }}"></script>
 
+<script type="text/javascript">
+    $(document).ready(function ($) {
+
+        //
+        $('[data-toggle="offcanvas-mb"]').click(function () {
+            $('.row-offcanvas').toggleClass('active')
+          });
+
+          
+        //To chuc
+        $(".btn-pref-tochuc .btn").click(function () {
+
+            $(".btn-pref-tochuc .btn").removeClass("btn-primary").addClass("btn-default");
+
+            $(this).removeClass("btn-default").addClass("btn-primary");
+
+        });
+
+        //Tin noi bat
+        $(".btn-pref-tnb .btn").click(function () {
+
+            $(".btn-pref-tnb .btn").removeClass("btn-primary").addClass("btn-default");
+            
+            $(this).removeClass("btn-default").addClass("btn-primary");
+
+        });
+
+        //Ban do
+
+        $('#block-header-bd').click(function () {
+            $("#menu-bd").toggleClass('rotated')
+        })
+
+    });
+</script>
+
 {{--ajax subscribe to news letter--}}
 @if(Helper::GeneralSiteSettings("style_subscribe"))
 <script type="text/javascript">
-    jQuery(document).ready(function ($) {
+    $(document).ready(function ($) {
         "use strict";
 
         //Subscribe
@@ -99,6 +135,7 @@
             });
             return false;
         });
+        
 
     });
 </script>

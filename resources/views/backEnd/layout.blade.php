@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="vi" dir="ltr">
+<html  lang="{{ trans('backLang.code') }}" dir="ltr">
 <head>
     @include('backEnd.includes.head')
     @yield('headerInclude')

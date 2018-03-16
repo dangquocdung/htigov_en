@@ -34,11 +34,11 @@ class CreateTopicsTable extends Migration
             $table->integer('row_no');
             $table->string('seo_title_vi')->nullable();
             $table->string('seo_title_en')->nullable();
-            $table->string('seo_description_ar')->nullable();
+            $table->string('seo_description_vi')->nullable();
             $table->string('seo_description_en')->nullable();
-            $table->string('seo_keywords_ar')->nullable();
+            $table->string('seo_keywords_vi')->nullable();
             $table->string('seo_keywords_en')->nullable();
-            $table->string('seo_url_slug_ar')->nullable();
+            $table->string('seo_url_slug_vi')->nullable();
             $table->string('seo_url_slug_en')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();

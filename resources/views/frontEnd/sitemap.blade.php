@@ -14,27 +14,18 @@ $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
 
             
 
-<section id="inner-headline">
-       
-        
-    <ul class="breadcrumb">
-        <li>
-            <a href="{{ route("Home") }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
-        </li>
-
-        <li class="active">{!! trans('backLang.siteMap') !!}</li>
-    </ul>
-               
-   
-</section>
 
 <section id="content">
 
         <div class="block3">
                 <div class="portlet-header">
-                    <a href="/">
-                        <h4 class="portlet-header-title no-pd-top"><img src="/images/background/hierarchy.png" alt="" width="20px"> Sơ đồ cổng thông tin</h4>
-                    </a>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="{{ route("Home") }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
+                        </li>
+                
+                        <li class="active">{!! trans('backLang.siteMap') !!}</li>
+                    </ul>
                 </div>
                 <div class="clearfix"></div>
                 <div class="so-do">
@@ -88,6 +79,12 @@ $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
         </div>
 </section>
 @endsection
+
+@section('side-menu')
+
+    @include('frontEnd.home.menu-side') 
+
+@stop
 
 @section('footerInclude')
     <style>

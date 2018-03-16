@@ -134,7 +134,7 @@ class SectionsController extends Controller
 
         //URL Slugs
         $slugs = Helper::URLSlug($request->title_vi, $request->title_en, "category", 0);
-        $Section->seo_url_slug_vi = $slugs['slug_ar'];
+        $Section->seo_url_slug_vi = $slugs['slug_vi'];
         $Section->seo_url_slug_en = $slugs['slug_en'];
 
 
@@ -257,15 +257,15 @@ class SectionsController extends Controller
 
             $Section->seo_title_vi = $request->seo_title_vi;
             $Section->seo_title_en = $request->seo_title_en;
-            $Section->seo_description_vi = $request->seo_description_ar;
+            $Section->seo_description_vi = $request->seo_description_vi;
             $Section->seo_description_en = $request->seo_description_en;
-            $Section->seo_keywords_vi = $request->seo_keywords_ar;
+            $Section->seo_keywords_vi = $request->seo_keywords_vi;
             $Section->seo_keywords_en = $request->seo_keywords_en;
             $Section->updated_by = Auth::user()->id;
 
             //URL Slugs
-            $slugs = Helper::URLSlug($request->seo_url_slug_ar, $request->seo_url_slug_en, "category", $id);
-            $Section->seo_url_slug_vi = $slugs['slug_ar'];
+            $slugs = Helper::URLSlug($request->seo_url_slug_vi, $request->seo_url_slug_en, "category", $id);
+            $Section->seo_url_slug_vi = $slugs['slug_vi'];
             $Section->seo_url_slug_en = $slugs['slug_en'];
 
             $Section->save();

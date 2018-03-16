@@ -34,8 +34,8 @@ class FrontendHomeController extends Controller
             // close the website
             if ($lang == "vi") {
                 $site_title = $WebsiteSettings->site_title_vi;
-                $site_desc = $WebsiteSettings->site_desc_ar;
-                $site_keywords = $WebsiteSettings->site_keywords_ar;
+                $site_desc = $WebsiteSettings->site_desc_vi;
+                $site_keywords = $WebsiteSettings->site_keywords_vi;
             } else {
                 $site_title = $WebsiteSettings->site_title_en;
                 $site_desc = $WebsiteSettings->site_desc_en;
@@ -111,7 +111,7 @@ class FrontendHomeController extends Controller
         $WebmasterSettings = WebmasterSetting::find(1);
         $URL_Title = "seo_url_slug_" . trans('backLang.boxCode');
 
-        $WebmasterSection1 = WebmasterSection::where("seo_url_slug_ar", $seo_url_slug)->orwhere("seo_url_slug_en", $seo_url_slug)->first();
+        $WebmasterSection1 = WebmasterSection::where("seo_url_slug_vi", $seo_url_slug)->orwhere("seo_url_slug_en", $seo_url_slug)->first();
         if (count($WebmasterSection1) > 0) {
             // MAIN SITE SECTION
             $section = $WebmasterSection1->id;
@@ -123,14 +123,14 @@ class FrontendHomeController extends Controller
                 $section = $WebmasterSection2->id;
                 return $this->topics($section, 0);
             } else {
-                $Section = Section::where('status', 1)->where("seo_url_slug_ar", $seo_url_slug)->orwhere("seo_url_slug_en", $seo_url_slug)->first();
+                $Section = Section::where('status', 1)->where("seo_url_slug_vi", $seo_url_slug)->orwhere("seo_url_slug_en", $seo_url_slug)->first();
                 if (count($Section) > 0) {
                     // SITE Category
                     $section = $Section->webmaster_id;
                     $cat = $Section->id;
                     return $this->topics($section, $cat);
                 } else {
-                    $Topic = Topic::where('status', 1)->where("seo_url_slug_ar", $seo_url_slug)->orwhere("seo_url_slug_en", $seo_url_slug)->first();
+                    $Topic = Topic::where('status', 1)->where("seo_url_slug_vi", $seo_url_slug)->orwhere("seo_url_slug_en", $seo_url_slug)->first();
                     if (count($Topic) > 0) {
                         // SITE Topic
                         $section_id = $Topic->webmaster_id;
@@ -223,7 +223,7 @@ class FrontendHomeController extends Controller
                 "FooterMenuLinks",
                 "SliderBanners",
                 "TextBanners",
-                "FooterMenuLinks_name_ar",
+                "FooterMenuLinks_name_vi",
                 "FooterMenuLinks_name_en",
                 "PageTitle",
                 "PageDescription",
@@ -392,7 +392,7 @@ class FrontendHomeController extends Controller
                     "WebmasterSettings",
                     "HeaderMenuLinks",
                     "FooterMenuLinks",
-                    "FooterMenuLinks_name_ar",
+                    "FooterMenuLinks_name_vi",
                     "FooterMenuLinks_name_en",
                     "LatestNews",
                     "SideBanners",
@@ -544,7 +544,7 @@ class FrontendHomeController extends Controller
                         "WebmasterSettings",
                         "HeaderMenuLinks",
                         "FooterMenuLinks",
-                        "FooterMenuLinks_name_ar",
+                        "FooterMenuLinks_name_vi",
                         "FooterMenuLinks_name_en",
                         "LatestNews",
                         "Topic",
@@ -685,7 +685,7 @@ class FrontendHomeController extends Controller
                     "WebmasterSettings",
                     "HeaderMenuLinks",
                     "FooterMenuLinks",
-                    "FooterMenuLinks_name_ar",
+                    "FooterMenuLinks_name_vi",
                     "FooterMenuLinks_name_en",
                     "LatestNews",
                     "User",
@@ -796,7 +796,7 @@ class FrontendHomeController extends Controller
                     "WebmasterSettings",
                     "HeaderMenuLinks",
                     "FooterMenuLinks",
-                    "FooterMenuLinks_name_ar",
+                    "FooterMenuLinks_name_vi",
                     "FooterMenuLinks_name_en",
                     "LatestNews",
                     "search_word",
@@ -917,7 +917,7 @@ class FrontendHomeController extends Controller
                         "WebmasterSettings",
                         "HeaderMenuLinks",
                         "FooterMenuLinks",
-                        "FooterMenuLinks_name_ar",
+                        "FooterMenuLinks_name_vi",
                         "FooterMenuLinks_name_en",
                         "LatestNews",
                         "Topic",

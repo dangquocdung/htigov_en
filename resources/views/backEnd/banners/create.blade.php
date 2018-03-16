@@ -1,3 +1,8 @@
+<?php
+    $title_var = "title_" . trans('backLang.boxCode');
+    $details_var = "details_" . trans('backLang.boxCode');
+?>
+
 @extends('backEnd.layout')
 
 @section('headerInclude')
@@ -28,6 +33,28 @@
             <div class="box-body">
                 {{Form::open(['route'=>['BannersStore'],'method'=>'POST', 'files' => true ])}}
                 {!! Form::hidden('section_id',$WebmasterBanner->id) !!}
+
+                
+                @if($WebmasterBanner->id==3)
+                    <div class="form-group row">
+                        <label for="section_id"
+                               class="col-sm-2 form-control-label">{!!  trans('backLang.typeBanner') !!} </label>
+                        <div class="col-sm-10">
+                            <select name="type_id" id="type_id" class="form-control select2-multiple"
+                                    ui-jp="select2"
+                                    ui-options="{theme: 'bootstrap'}" required>
+
+                                    @foreach ($TypeBanners as $TypeBanner)
+                                        <option value="{{ $TypeBanner->id }}">{{ $TypeBanner->$title_var }}</option>
+                                    @endforeach
+                                    
+                            </select>
+                        </div>
+                    </div>
+                @else
+                    {!! Form::hidden('type_id','0') !!}
+                @endif
+                
 
                 @if(Helper::GeneralWebmasterSettings("vi_box_status"))
                     <div class="form-group row">
@@ -101,14 +128,14 @@
                     @if($WebmasterBanner->type==1)
                         <?php
                         $ttile = "bannerPhoto";
-                        $file1 = "file_ar";
+                        $file1 = "file_vi";
                         $file2 = "file_en";
                         $file_allow = "image/*";
                         ?>
                     @else
                         <?php
                         $ttile = "topicVideo";
-                        $file1 = "file2_ar";
+                        $file1 = "file2_vi";
                         $file2 = "file2_en";
                         $file_allow = "*'";
                         ?>
@@ -117,12 +144,12 @@
                     <div id="files_div">
                         @if(Helper::GeneralWebmasterSettings("vi_box_status"))
                             <div class="form-group row">
-                                <label for="file_ar"
+                                <label for="file_vi"
                                        class="col-sm-2 form-control-label">{!!  trans('backLang.'.$ttile) !!}
                                     @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.arabicBox') !!}@endif
                                 </label>
                                 <div class="col-sm-10">
-                                    {!! Form::file($file1, array('class' => 'form-control','id'=>'file_ar','accept'=>$file_allow)) !!}
+                                    {!! Form::file($file1, array('class' => 'form-control','id'=>'file_vi','accept'=>$file_allow)) !!}
                                 </div>
                             </div>
                         @endif
@@ -209,6 +236,8 @@
                         </div>
                     </div>
                 @endif
+                
+    
 
                 <div class="form-group row m-t-md">
                     <div class="col-sm-offset-2 col-sm-10">

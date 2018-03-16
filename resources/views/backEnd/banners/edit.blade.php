@@ -1,3 +1,8 @@
+<?php
+    $title_var = "title_" . trans('backLang.boxCode');
+    $details_var = "details_" . trans('backLang.boxCode');
+?>
+
 @extends('backEnd.layout')
 @section('headerInclude')
     <link href="{{ URL::to("backEnd/libs/js/iconpicker/fontawesome-iconpicker.min.css") }}" rel="stylesheet">
@@ -28,6 +33,34 @@
                 {{Form::open(['route'=>['BannersUpdate',$Banners->id],'method'=>'POST', 'files' => true])}}
 
                 {!! Form::hidden('section_id',$Banners->section_id) !!}
+
+                @if($WebmasterBanner->id==3)
+                    <div class="form-group row">
+                        <label for="section_id"
+                               class="col-sm-2 form-control-label">{!!  trans('backLang.typeBanner') !!} </label>
+                        <div class="col-sm-10">
+                            <select name="type_id" id="type_id" class="form-control"
+                                    ui-jp="select2"
+                                    ui-options="{theme: 'bootstrap'}" required>
+                                    
+                                    @php
+                                        $types = array();
+                                        foreach ($TypeBanners as $TypeBanner) {
+                                            $types[] = $TypeBanner->id;
+                                        }
+                                    @endphp
+
+                                    @foreach ($TypeBanners as $TypeBanner)
+                                        <option value="{{ $TypeBanner->id }}" {{ ($TypeBanner->id == $Banners->type_id) ? "selected='selected'":"" }}>
+                                            {{ $TypeBanner->$title_var }}
+                                        </option>
+                                    @endforeach
+                            </select>
+                        </div>
+                    </div>
+                @else
+                    {!! Form::hidden('type','0') !!}
+                @endif
 
                 @if(Helper::GeneralWebmasterSettings("vi_box_status"))
                     <div class="form-group row">
@@ -104,14 +137,14 @@
                     @if($WebmasterBanner->type==1)
                         <?php
                         $ttile = "bannerPhoto";
-                        $file1 = "file_ar";
+                        $file1 = "file_vi";
                         $file2 = "file_en";
                         $file_allow = "image/*";
                         ?>
                     @else
                         <?php
                         $ttile = "topicVideo";
-                        $file1 = "file2_ar";
+                        $file1 = "file2_vi";
                         $file2 = "file2_en";
                         $file_allow = "*'";
                         ?>
@@ -119,19 +152,19 @@
                     <div id="files_div" style="display: {{ ($Banners->video_type == 0) ? "block" : "none" }}">
                         @if(Helper::GeneralWebmasterSettings("vi_box_status"))
                             <div class="form-group row">
-                                <label for="file_ar"
+                                <label for="file_vi"
                                        class="col-sm-2 form-control-label">{!!  trans('backLang.'.$ttile) !!}
                                     @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.arabicBox') !!}@endif
                                 </label>
                                 <div class="col-sm-10">
-                                    @if($Banners->file_ar!="")
+                                    @if($Banners->file_vi!="")
                                         @if($WebmasterBanner->type==1)
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="col-sm-4 box p-a-xs">
                                                         <a target="_blank"
-                                                           href="{{ URL::to('uploads/banners/'.$Banners->file_ar) }}"><img
-                                                                    src="{{ URL::to('uploads/banners/'.$Banners->file_ar) }}"
+                                                           href="{{ URL::to('uploads/banners/'.$Banners->file_vi) }}"><img
+                                                                    src="{{ URL::to('uploads/banners/'.$Banners->file_vi) }}"
                                                                     class="img-responsive">
                                                             {{ $Banners->file_vi }}
                                                         </a>
@@ -140,10 +173,10 @@
                                             </div>
                                         @else
                                             <a target="_blank"
-                                               href="{{ URL::to('uploads/banners/'.$Banners->file_ar) }}">{!!  $Banners->file_vi !!}</a>
+                                               href="{{ URL::to('uploads/banners/'.$Banners->file_vi) }}">{!!  $Banners->file_vi !!}</a>
                                         @endif
                                     @endif
-                                    {!! Form::file($file1, array('class' => 'form-control','id'=>'file_ar','accept'=>$file_allow)) !!}
+                                    {!! Form::file($file1, array('class' => 'form-control','id'=>'file_vi','accept'=>$file_allow)) !!}
                                 </div>
                             </div>
                         @endif
@@ -252,6 +285,7 @@
                     </div>
                 @endif
 
+                
                 <div class="form-group row">
                     <label for="link_status"
                            class="col-sm-2 form-control-label">{!!  trans('backLang.status') !!}</label>
@@ -271,6 +305,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group row m-t-md">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary m-t"><i class="material-icons">

@@ -29,7 +29,6 @@
 
         </div>
 
-
         <?php
         $tab_1 = "active";
         $tab_2 = "";
@@ -118,7 +117,6 @@
                     </li>
                 @endif
 
-
                 @if($WebmasterSection->extra_attach_file_status)
                     <li class="nav-item inline">
                         <a class="nav-link  {{ $tab_6 }}" href data-toggle="tab" data-target="#tab_files">
@@ -144,7 +142,6 @@
                         </a>
                     </li>
                 @endif
-
 
                 @if($WebmasterSection->maps_status)
                     <li class="nav-item inline">
@@ -222,7 +219,6 @@
                             {!! Form::hidden('date',$Topics->date, array('placeholder' => '','class' => 'form-control','id'=>'date')) !!}
                         @endif
 
-
                         @if($WebmasterSection->expire_date_status)
                             <div class="form-group row">
                                 <label for="date"
@@ -285,6 +281,7 @@
                                                 $ftitle = $fatherSection->$title_var2;
                                             }
                                             ?>
+                                            
                                             <option value="{{ $fatherSection->id  }}" {{ (in_array($fatherSection->id,$categories)) ? "selected='selected'":""  }}>{{ $ftitle }}</option>
                                             @foreach ($fatherSection->fatherSections as $subFatherSection)
                                                 <?php
@@ -326,37 +323,7 @@
                                 </div>
                             </div>
                         @endif
-
-
-                        {{--Start--}}
-
-                        @if(Helper::GeneralWebmasterSettings("vi_box_status"))
-                            <div class="form-group row">
-                                <label for="intro_vi"
-                                       class="col-sm-2 form-control-label">{!!  trans('backLang.topicIntro') !!}
-                                    @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.arabicBox') !!}@endif
-                                </label>
-                                <div class="col-sm-10">
-                                    {!! Form::textarea('intro_vi',$Topics->intro_vi, array('placeholder' => '','class' => 'form-control','id'=>'intro_vi', 'dir'=>trans('backLang.rtl'))) !!}
-                                </div>
-                            </div>
-                        @endif
-                        @if(Helper::GeneralWebmasterSettings("en_box_status"))
-                            <div class="form-group row">
-                                <label for="intro_en"
-                                       class="col-sm-2 form-control-label">{!!  trans('backLang.topicIntro') !!}
-                                    @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.englishBox') !!}@endif
-                                </label>
-                                <div class="col-sm-10">
-                                    {!! Form::textarea('intro_en',$Topics->intro_en, array('placeholder' => '','class' => 'form-control','id'=>'intro_en', 'dir'=>trans('backLang.ltr'))) !!}
-                                </div>
-                            </div>
-                        @endif
-
-                        {{--End--}}
-
-
-
+                        
                         @if($WebmasterSection->longtext_status)
 
                             @if($WebmasterSection->editor_status)
@@ -411,7 +378,6 @@
                                 @endif
                             @endif
                         @endif
-
 
                         @if($WebmasterSection->type==2)
                             <div class="form-group row">
@@ -536,7 +502,6 @@
                             </div>
                         @endif
 
-
                         <div class="form-group row">
                             <label for="photo_file"
                                    class="col-sm-2 form-control-label">{!!  trans('backLang.topicPhoto') !!}</label>
@@ -626,7 +591,6 @@
                             </div>
                         @endif
 
-
                         {{--Additional Feilds--}}
                         @if(count($WebmasterSection->customFields) >0)
                             <?php
@@ -683,7 +647,6 @@
                                         }
                                     }
                                 }
-
 
                                 ?>
 
@@ -1004,6 +967,51 @@
                         @endif
                         {{--End of -- Additional Feilds--}}
 
+                        {{--  Nổi bật  --}}
+
+                        <div class="form-group row">
+                            <label for="link_status"
+                                    class="col-sm-2 form-control-label">{!!  trans('backLang.hotTopic') !!}</label>
+                            <div class="col-sm-10">
+                                <div class="radio">
+                                    <label class="ui-check ui-check-md">
+                                        {!! Form::radio('hot','1',($Topics->hot==1) ? true : false, array('id' => 'status1','class'=>'has-value')) !!}
+                                        <i class="dark-white"></i>
+                                        {{ trans('backLang.yes') }}
+                                    </label>
+                                    &nbsp; &nbsp;
+                                    <label class="ui-check ui-check-md">
+                                        {!! Form::radio('hot','0',($Topics->hot==0) ? true : false, array('id' => 'status2','class'=>'has-value')) !!}
+                                        <i class="dark-white"></i>
+                                        {{ trans('backLang.no') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{--  Thông báo  --}}
+
+                        <div class="form-group row">
+                            <label for="link_status"
+                                    class="col-sm-2 form-control-label">{!!  trans('backLang.marqueeTopic') !!}</label>
+                            <div class="col-sm-10">
+                                <div class="radio">
+                                    <label class="ui-check ui-check-md">
+                                        {!! Form::radio('marquee','1',($Topics->marquee==1) ? true : false, array('id' => 'status1','class'=>'has-value')) !!}
+                                        <i class="dark-white"></i>
+                                        {{ trans('backLang.yes') }}
+                                    </label>
+                                    &nbsp; &nbsp;
+                                    <label class="ui-check ui-check-md">
+                                        {!! Form::radio('marquee','0', ($Topics->marquee==0) ? true : false, array('id' => 'status2','class'=>'has-value')) !!}
+                                        <i class="dark-white"></i>
+                                        {{ trans('backLang.no') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{--  End  --}}
                         <div class="form-group row">
                             <label for="link_status"
                                    class="col-sm-2 form-control-label">{!!  trans('backLang.status') !!}</label>
@@ -1036,7 +1044,6 @@
                         {{Form::close()}}
                     </div>
                 </div>
-
 
                 @if($WebmasterSection->multi_images_status)
                     <div class="tab-pane  {{ $tab_3 }}" id="tab_photos">
@@ -1186,7 +1193,6 @@
                                     <div>
                                         {{Form::open(['route'=>['topicsCommentsStore',$WebmasterSection->id,$Topics->id],'method'=>'POST', 'files' => true ])}}
 
-
                                         <div class="form-group row">
                                             <label for="name"
                                                    class="col-sm-2 form-control-label">{!!  trans('backLang.topicCommentName') !!}
@@ -1212,7 +1218,6 @@
                                             </div>
                                         </div>
 
-
                                         <div class="form-group row m-t-md">
                                             <div class="col-sm-offset-2 col-sm-10">
                                                 <button type="submit" class="btn btn-primary m-t"><i
@@ -1232,7 +1237,6 @@
                                 @if (Session::get('commentST') == "edit")
                                     <div>
                                         {{Form::open(['route'=>['topicsCommentsUpdate',$WebmasterSection->id,$Topics->id,Session::get('Comment')->id],'method'=>'POST', 'files' => true ])}}
-
 
                                         <div class="form-group row">
                                             <label for="name"
@@ -1471,7 +1475,6 @@
                     </div>
                 @endif
 
-
                 {{-- Additional Files--}}
 
                 @if($WebmasterSection->extra_attach_file_status)
@@ -1523,7 +1526,6 @@
                                             </div>
                                         </div>
 
-
                                         <div class="form-group row m-t-md">
                                             <div class="col-sm-offset-2 col-sm-10">
                                                 <button type="submit" class="btn btn-primary m-t"><i
@@ -1543,7 +1545,6 @@
                                 @if (Session::get('fileST') == "edit")
                                     <div>
                                         {{Form::open(['route'=>['topicsFilesUpdate',$WebmasterSection->id,$Topics->id,Session::get('AttachFile')->id],'method'=>'POST', 'files' => true ])}}
-
 
                                         @if(Helper::GeneralWebmasterSettings("vi_box_status"))
                                             <div class="form-group row">
@@ -1780,7 +1781,6 @@
                 @endif
                 {{-- End of Additional Files--}}
 
-
                 {{-- Related Topics --}}
 
                 @if($WebmasterSection->related_status)
@@ -1822,7 +1822,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         <div class="form-group row m-t-md">
                                             <div class="col-sm-offset-2 col-sm-10">
@@ -1893,7 +1892,6 @@
                                             ?>
                                             @foreach($Topics->relatedTopics as $relatedTopic)
                                                 <?php
-
 
                                                 if ($relatedTopic->topic->$title_var != "") {
                                                 $relatedTopic_title = $relatedTopic->topic->$title_var;
@@ -2023,7 +2021,6 @@
                                             <br>
                                             {{Form::open(['route'=>['topicsMapsUpdate',$WebmasterSection->id,$Topics->id,Session::get('Map')->id],'method'=>'POST', 'files' => true ])}}
 
-
                                             <div class="form-group row">
                                                 <label for="longitude"
                                                        class="col-sm-3 form-control-label">{!!  trans('backLang.topicMapLocation') !!}
@@ -2035,7 +2032,6 @@
                                                     {!! Form::text('latitude',Session::get('Map')->latitude, array('placeholder' => '','class' => 'form-control','id'=>'latitude','required'=>'')) !!}
                                                 </div>
                                             </div>
-
 
                                             @if(Helper::GeneralWebmasterSettings("vi_box_status"))
                                                 <div class="form-group row">
@@ -2194,7 +2190,6 @@
                                                                 </div>
                                                             </div>
 
-
                                                             @if(Helper::GeneralWebmasterSettings("vi_box_status"))
                                                                 <div class="form-group row">
                                                                     <label for="title_vi"
@@ -2240,7 +2235,6 @@
                                                                     </div>
                                                                 </div>
                                                             @endif
-
 
                                                             <div class="form-group row">
                                                                 <label for="link_status"
@@ -2557,7 +2551,7 @@
                                                 @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status"))
                                                     <small>{!!  trans('backLang.arabicBox') !!}</small> @endif
 
-                                                {!! Form::text('seo_url_slug_ar',$Topics->seo_url_slug_ar, array('class' => 'form-control','id'=>'seo_url_slug_ar', 'dir'=>trans('backLang.rtl'))) !!}
+                                                {!! Form::text('seo_url_slug_vi',$Topics->seo_url_slug_vi, array('class' => 'form-control','id'=>'seo_url_slug_vi', 'dir'=>trans('backLang.rtl'))) !!}
                                             </div>
                                         </div>
                                     @endif
@@ -2569,7 +2563,7 @@
                                                 @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status"))
                                                     <small>{!!  trans('backLang.arabicBox') !!}</small> @endif
 
-                                                {!! Form::textarea('seo_description_ar',$Topics->seo_description_ar, array('class' => 'form-control','id'=>'seo_description_ar','maxlength'=>'165', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
+                                                {!! Form::textarea('seo_description_vi',$Topics->seo_description_ar, array('class' => 'form-control','id'=>'seo_description_vi','maxlength'=>'165', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
                                             </div>
                                         </div>
                                     @endif
@@ -2581,7 +2575,7 @@
                                                 @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status"))
                                                     <small>{!!  trans('backLang.arabicBox') !!}</small>@endif
 
-                                                {!! Form::textarea('seo_keywords_ar',$Topics->seo_keywords_ar, array('class' => 'form-control','id'=>'seo_keywords_ar', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
+                                                {!! Form::textarea('seo_keywords_vi',$Topics->seo_keywords_ar, array('class' => 'form-control','id'=>'seo_keywords_vi', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
                                             </div>
                                         </div>
                                         <br>
@@ -2593,15 +2587,15 @@
                                     @if(Helper::GeneralWebmasterSettings("vi_box_status"))
                                         <?php
                                         $seo_example_title = $Topics->title_vi;
-                                        $seo_example_desc = Helper::GeneralSiteSettings("site_desc_ar");
+                                        $seo_example_desc = Helper::GeneralSiteSettings("site_desc_vi");
                                         if ($Topics->seo_title_vi != "") {
                                         $seo_example_title = $Topics->seo_title_vi;
                                         }
                                         if ($Topics->seo_description_vi != "") {
-                                        $seo_example_desc = $Topics->seo_description_ar;
+                                        $seo_example_desc = $Topics->seo_description_vi;
                                         }
                                         if ($Topics->seo_url_slug_vi != "" && Helper::GeneralWebmasterSettings("links_status")) {
-                                        $seo_example_url = url($Topics->seo_url_slug_ar);
+                                        $seo_example_url = url($Topics->seo_url_slug_vi);
                                         } else {
                                         $seo_example_url = route('FrontendTopic', ["section" => $Topics->webmasterSection->name, "id" => $Topics->id]);
                                         }
@@ -2612,10 +2606,10 @@
                                                     <small>{!!  trans('backLang.arabicBox') !!}</small> @endif
                                                 &nbsp;
                                                 <div class="search-example" dir="rtl">
-                                                    <a id="title_in_engines_ar" href="{{ $seo_example_url }}"
+                                                    <a id="title_in_engines_vi" href="{{ $seo_example_url }}"
                                                        target="_blank">{{ $seo_example_title }}</a>
-                                                    <span id="url_in_engines_ar">{{ $seo_example_url }}</span>
-                                                    <div id="desc_in_engines_ar">{{ $seo_example_desc }} ...</div>
+                                                    <span id="url_in_engines_vi">{{ $seo_example_url }}</span>
+                                                    <div id="desc_in_engines_vi">{{ $seo_example_desc }} ...</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -2679,7 +2673,6 @@
                                         </div>
                                     @endif
 
-
                                     <div class="form-group">
                                         <div>
                                             <button type="submit" class="btn btn-primary m-t"><i class="material-icons">
@@ -2735,7 +2728,6 @@
                                     @endif
                                 </div>
                             </div>
-
 
                             {{Form::close()}}
                         </div>
@@ -2892,7 +2884,6 @@
                     $("#mapNew").click()
                 });
 
-
                 $("#mapTabLink").click(function () {
                     setTimeout(function () {
                         google.maps.event.trigger(map, 'resize');
@@ -2901,7 +2892,6 @@
                 $("#mapDivNew").click(function () {
                     google.maps.event.trigger(map, 'resize');
                 });
-
 
             });
         </script>
@@ -2928,23 +2918,23 @@
         @if(Helper::GeneralWebmasterSettings("vi_box_status"))
         $("#seo_title_vi").on('keyup change', function () {
             if ($(this).val() != "") {
-                $("#title_in_engines_ar").text($(this).val());
+                $("#title_in_engines_vi").text($(this).val());
             } else {
-                $("#title_in_engines_ar").text("<?php echo $Topics->title_vi; ?>");
+                $("#title_in_engines_vi").text("<?php echo $Topics->title_vi; ?>");
             }
         });
-        $("#seo_description_ar").on('keyup change', function () {
+        $("#seo_description_vi").on('keyup change', function () {
             if ($(this).val() != "") {
-                $("#desc_in_engines_ar").text($(this).val());
+                $("#desc_in_engines_vi").text($(this).val());
             } else {
-                $("#desc_in_engines_ar").text("<?php echo Helper::GeneralSiteSettings("site_desc_ar"); ?>");
+                $("#desc_in_engines_vi").text("<?php echo Helper::GeneralSiteSettings("site_desc_vi"); ?>");
             }
         });
-        $("#seo_url_slug_ar").on('keyup change', function () {
+        $("#seo_url_slug_vi").on('keyup change', function () {
             if ($(this).val() != "") {
-                $("#url_in_engines_ar").text("<?php echo url(''); ?>/" + slugify($(this).val()));
+                $("#url_in_engines_vi").text("<?php echo url(''); ?>/" + slugify($(this).val()));
             } else {
-                $("#url_in_engines_ar").text("<?php echo route('FrontendTopic', ["section" => $Topics->webmasterSection->name, "id" => $Topics->id]); ?>");
+                $("#url_in_engines_vi").text("<?php echo route('FrontendTopic', ["section" => $Topics->webmasterSection->name, "id" => $Topics->id]); ?>");
             }
         });
         @endif

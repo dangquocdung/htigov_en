@@ -89,6 +89,14 @@
                                     {!! $title   !!}</td>
                                 <td>
                                     {!! trans('backLang.'.$Banner->webmasterBanner->name)   !!}
+
+                                    @if ($Banner->type_id != 0 ) 
+
+                                        / {{ $Banner->typeBanner->$title_var }}
+
+                                    @endif
+
+
                                 </td>
                                 <td class="text-center">
                                     <i class="fa {{ ($Banner->status==1) ? "fa-check text-success":"fa-times text-danger" }} inline"></i>

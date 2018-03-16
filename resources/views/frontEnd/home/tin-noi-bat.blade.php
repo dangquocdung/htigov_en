@@ -10,18 +10,22 @@
 
     <div id="tinNoiBatChinh" class="col-md-7 col-xs-12">
 
+        @php
+            $HotNews = $HotTopics->first();
+            
+            @endphp
+
         <div class="hot-news" style="margin-bottom: 0px;">
 
-            <a href="http://demo.hatinh.gov.vn/vi/tin-tuc-su-kien/tin-trong-tinh/tin-tuc/1021-tap-trung-tai-co-cau-san-xuat-kinh-doanh-gan-voi-bao-ve-moi-truong.hti" class="hot-news-thumb-nail">
-                <img src="http://baohatinh.vn/media/175/news/1804/77d1123526t3049l3.jpg" alt="Tập trung tái cơ cấu, sản xuất kinh doanh gắn với bảo vệ môi trường" class="w3-animate-left" width="100%">
+            <a href="" class="hot-news-thumb-nail">
+                <img src="/uploads/topics/{{ $HotNews->photo_file }}" alt="{{ $HotNews->$link_title_var }}" class="w3-animate-left" width="100%">
             </a>
 
             <div class="hot-news-title" style="display: block; text-align: center">
                 <h3>
-                    <a href="http://demo.hatinh.gov.vn/vi/tin-tuc-su-kien/tin-trong-tinh/tin-tuc/1021-tap-trung-tai-co-cau-san-xuat-kinh-doanh-gan-voi-bao-ve-moi-truong.hti">Tập trung tái cơ cấu, sản xuất kinh doanh gắn với bảo vệ môi trường</a>
+                    <a href="">{{ $HotNews->$link_title_var }}</a>
                 </h3>
             </div>
-            <div class="hot-news-desc" style="text-align: justify; line-height: 20px; padding-bottom: 15px; display:none">(Baohatinh.vn) - Đó là một trong những yêu cầu của Phó Chủ tịch HĐND tỉnh Nguyễn Thị Nữ Y tại hội nghị triển khai nhiệm vụ năm 2018 của Đảng ủy khối Doanh nghiệp Hà Tĩnh được tổ chức vào sáng nay (22/1).</div>
         </div>
     </div>
 
@@ -45,14 +49,51 @@
                     <div id="tin-noi-bat">
                         <ul>
 
-                            @foreach($HomeTopics as $key=>$HomeTopic)
+                            @foreach($HotTopics as $key=>$Topic)
+
+                                <?php
+                                    if ($Topic->$title_var != "") {
+                                        $title = $Topic->$title_var;
+                                    } else {
+                                        $title = $Topic->$title_var2;
+                                    }
+                                    if ($Topic->$details_var != "") {
+                                        $details = $details_var;
+                                    } else {
+                                        $details = $details_var2;
+                                    }
+                                    $section = "";
+                                    try {
+                                        if ($Topic->section->$title_var != "") {
+                                            $section = $Topic->section->$title_var;
+                                        } else {
+                                            $section = $Topic->section->$title_var2;
+                                        }
+                                    } catch (Exception $e) {
+                                        $section = "";
+                                    }
+
+                                    if ($Topic->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                            $topic_link_url = url(trans('backLang.code') . "/" . $Topic->$slug_var);
+                                        } else {
+                                            $topic_link_url = url($Topic->$slug_var);
+                                        }
+                                    } else {
+                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                            $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                        } else {
+                                            $topic_link_url = route('FrontendTopic', ["section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                        }
+                                    }
+                                ?>
 
                                 <li class="">
                                     <div class="hot-news-block">
 
-                                        <a href="" class="news-title">
+                                        <a href="{{ $topic_link_url }}" class="news-title">
                                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                            {{ $HomeTopic->$link_title_var}}
+                                            {{ $Topic->$link_title_var}}
                                         </a>
 
                                         <img src="http://i.baohatinh.vn/news/1804/77d1141441t2084l2.jpg" alt="Dựa vào dân, vận động quần chúng nhân dân bảo vệ an ninh Tổ quốc" title="Dựa vào dân, vận động quần chúng nhân dân bảo vệ an ninh Tổ quốc" style="display: none;">
@@ -64,6 +105,7 @@
                             @endforeach
                             
                         </ul>
+
                         <div class="xem-tiep" style="float:right; padding-bottom: 8px;">
                             <a href="/vi/tin-noi-bat" style="text-decoration: none;"><em>Xem tiếp... <i class="fa fa-angle-double-right" aria-hidden="true"></i></em></a>
                         </div>
@@ -74,14 +116,51 @@
                         <div id="tin-noi-bat">
                             <ul>
     
-                                @foreach($LatestNews as $key=>$HomeTopic)
-    
+                                @foreach($TopicsMostViewed as $key=>$Topic)
+
+                                    <?php
+                                        if ($Topic->$title_var != "") {
+                                            $title = $Topic->$title_var;
+                                        } else {
+                                            $title = $Topic->$title_var2;
+                                        }
+                                        if ($Topic->$details_var != "") {
+                                            $details = $details_var;
+                                        } else {
+                                            $details = $details_var2;
+                                        }
+                                        $section = "";
+                                        try {
+                                            if ($Topic->section->$title_var != "") {
+                                                $section = $Topic->section->$title_var;
+                                            } else {
+                                                $section = $Topic->section->$title_var2;
+                                            }
+                                        } catch (Exception $e) {
+                                            $section = "";
+                                        }
+
+                                        if ($Topic->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                            if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                $topic_link_url = url(trans('backLang.code') . "/" . $Topic->$slug_var);
+                                            } else {
+                                                $topic_link_url = url($Topic->$slug_var);
+                                            }
+                                        } else {
+                                            if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                            } else {
+                                                $topic_link_url = route('FrontendTopic', ["section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                            }
+                                        }
+                                    ?>
+        
                                     <li class="">
                                         <div class="hot-news-block">
     
-                                            <a href="" class="news-title">
+                                            <a href="{{ $topic_link_url }}" class="news-title">
                                                 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                                {{ $HomeTopic->$link_title_var}}
+                                                {{ $Topic->$link_title_var}}
                                             </a>
     
                                             <img src="http://i.baohatinh.vn/news/1804/77d1141441t2084l2.jpg" alt="Dựa vào dân, vận động quần chúng nhân dân bảo vệ an ninh Tổ quốc" title="Dựa vào dân, vận động quần chúng nhân dân bảo vệ an ninh Tổ quốc" style="display: none;">
@@ -93,6 +172,7 @@
                                 @endforeach
                                 
                             </ul>
+
                             <div class="xem-tiep" style="float:right; padding-bottom: 8px;">
                                 <a href="/vi/tin-noi-bat" style="text-decoration: none;"><em>Xem tiếp... <i class="fa fa-angle-double-right" aria-hidden="true"></i></em></a>
                             </div>
@@ -101,19 +181,7 @@
                 
             </div>
         </div>
-
-        <script>
-            $(document).ready(function() {
-                $(".btn-pref-tnb .btn").click(function () {
-
-                    $(".btn-pref-tnb .btn").removeClass("btn-primary").addClass("btn-default");
-
-                    // $(".tab").addClass("active"); // instead of this do the below
-
-                    $(this).removeClass("btn-default").addClass("btn-primary");
-
-                });
-            });
-        </script>        </div>
+               
+    </div>
 
 </div>

@@ -386,21 +386,21 @@ class Helper
 
         if ($type == "section" && $id > 0) {
             // .. ..  Webmaster Sections
-            $check_WebmasterSection = WebmasterSection::where([['seo_url_slug_ar', $seo_url_slug_ar], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_ar], ['id', '!=', $id]])->get();
+            $check_WebmasterSection = WebmasterSection::where([['seo_url_slug_vi', $seo_url_slug_vi], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_vi], ['id', '!=', $id]])->get();
             if (count($check_WebmasterSection) > 0) {
                 $Check_SEO_st_vi = false;
             }
-            $check_WebmasterSection = WebmasterSection::where([['seo_url_slug_ar', $seo_url_slug_en], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_en], ['id', '!=', $id]])->get();
+            $check_WebmasterSection = WebmasterSection::where([['seo_url_slug_vi', $seo_url_slug_en], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_en], ['id', '!=', $id]])->get();
             if (count($check_WebmasterSection) > 0) {
                 $Check_SEO_st_en = false;
             }
         } else {
             // .. ..  Webmaster Sections
-            $check_WebmasterSection = WebmasterSection::where('seo_url_slug_ar', $seo_url_slug_ar)->orWhere('seo_url_slug_en', $seo_url_slug_ar)->get();
+            $check_WebmasterSection = WebmasterSection::where('seo_url_slug_vi', $seo_url_slug_vi)->orWhere('seo_url_slug_en', $seo_url_slug_vi)->get();
             if (count($check_WebmasterSection) > 0) {
                 $Check_SEO_st_vi = false;
             }
-            $check_WebmasterSection = WebmasterSection::where('seo_url_slug_ar', $seo_url_slug_en)->orWhere('seo_url_slug_en', $seo_url_slug_en)->get();
+            $check_WebmasterSection = WebmasterSection::where('seo_url_slug_vi', $seo_url_slug_en)->orWhere('seo_url_slug_en', $seo_url_slug_en)->get();
             if (count($check_WebmasterSection) > 0) {
                 $Check_SEO_st_en = false;
             }
@@ -408,21 +408,21 @@ class Helper
 
         if ($type == "category" && $id > 0) {
             // .. ..  Sections
-            $check_Section = Section::where([['seo_url_slug_ar', $seo_url_slug_ar], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_ar], ['id', '!=', $id]])->get();
+            $check_Section = Section::where([['seo_url_slug_vi', $seo_url_slug_vi], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_vi], ['id', '!=', $id]])->get();
             if (count($check_Section) > 0) {
                 $Check_SEO_st_vi = false;
             }
-            $check_Section = Section::where([['seo_url_slug_ar', $seo_url_slug_en], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_en], ['id', '!=', $id]])->get();
+            $check_Section = Section::where([['seo_url_slug_vi', $seo_url_slug_en], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_en], ['id', '!=', $id]])->get();
             if (count($check_Section) > 0) {
                 $Check_SEO_st_en = false;
             }
         } else {
             // .. ..  Sections
-            $check_Section = Section::where('seo_url_slug_ar', $seo_url_slug_ar)->orWhere('seo_url_slug_en', $seo_url_slug_ar)->get();
+            $check_Section = Section::where('seo_url_slug_vi', $seo_url_slug_vi)->orWhere('seo_url_slug_en', $seo_url_slug_vi)->get();
             if (count($check_Section) > 0) {
                 $Check_SEO_st_vi = false;
             }
-            $check_Section = Section::where('seo_url_slug_ar', $seo_url_slug_en)->orWhere('seo_url_slug_en', $seo_url_slug_en)->get();
+            $check_Section = Section::where('seo_url_slug_vi', $seo_url_slug_en)->orWhere('seo_url_slug_en', $seo_url_slug_en)->get();
             if (count($check_Section) > 0) {
                 $Check_SEO_st_en = false;
             }
@@ -430,27 +430,27 @@ class Helper
 
         if ($type == "topic" && $id > 0) {
             // .. ..  Topics
-            $check_Topic = Topic::where([['seo_url_slug_ar', $seo_url_slug_ar], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_ar], ['id', '!=', $id]])->get();
+            $check_Topic = Topic::where([['seo_url_slug_vi', $seo_url_slug_vi], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_vi], ['id', '!=', $id]])->get();
             if (count($check_Topic) > 0) {
                 $Check_SEO_st_vi = false;
             }
-            $check_Topic = Topic::where([['seo_url_slug_ar', $seo_url_slug_en], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_en], ['id', '!=', $id]])->get();
+            $check_Topic = Topic::where([['seo_url_slug_vi', $seo_url_slug_en], ['id', '!=', $id]])->orWhere([['seo_url_slug_en', $seo_url_slug_en], ['id', '!=', $id]])->get();
             if (count($check_Topic) > 0) {
                 $Check_SEO_st_en = false;
             }
         } else {
             // .. ..  Topics
-            $check_Topic = Topic::where('seo_url_slug_ar', $seo_url_slug_ar)->orWhere('seo_url_slug_en', $seo_url_slug_ar)->get();
+            $check_Topic = Topic::where('seo_url_slug_vi', $seo_url_slug_vi)->orWhere('seo_url_slug_en', $seo_url_slug_vi)->get();
             if (count($check_Topic) > 0) {
                 $Check_SEO_st_vi = false;
             }
-            $check_Topic = Topic::where('seo_url_slug_ar', $seo_url_slug_en)->orWhere('seo_url_slug_en', $seo_url_slug_en)->get();
+            $check_Topic = Topic::where('seo_url_slug_vi', $seo_url_slug_en)->orWhere('seo_url_slug_en', $seo_url_slug_en)->get();
             if (count($check_Topic) > 0) {
                 $Check_SEO_st_en = false;
             }
         }
 
-        if (in_array($seo_url_slug_ar, $ReservedURLs)) {
+        if (in_array($seo_url_slug_vi, $ReservedURLs)) {
             $Check_SEO_st_vi = false;
         }
         if (in_array($seo_url_slug_en, $ReservedURLs)) {
@@ -464,14 +464,14 @@ class Helper
         }
 
         $vislug = "";
-        if ($Check_SEO_st_ar) {
-            $vislug = $seo_url_slug_ar;
+        if ($Check_SEO_st_vi) {
+            $vislug = $seo_url_slug_vi;
         }
         $en_slug = "";
         if ($Check_SEO_st_en) {
             $en_slug = $seo_url_slug_en;
         }
-        return array("slug_ar" => $vislug, "slug_en" => $en_slug);
+        return array("slug_vi" => $vislug, "slug_en" => $en_slug);
     }
 
 }

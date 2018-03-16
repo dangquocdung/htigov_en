@@ -2,11 +2,11 @@
 
 return [
 
-    'dashboard' => 'Bảng điều khiển',
-    'toTop' => 'to Top',
+    'dashboard' => 'Quản trị',
+    'toTop' => 'Lên đầu trang',
     'AllRightsReserved' => 'Tất cả các Quyền',
     'moreDetails' => 'Chi tiết khác',
-    'viewMore' => 'View More',
+    'viewMore' => 'Xem nhiều hơn',
     'readMore' => 'Đọc thêm',
     'downloadAttach' => 'Tải xuống tệp đính kèm',
     'contactDetails' => 'Thông tin liên lạc',

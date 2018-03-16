@@ -162,33 +162,6 @@
                     </div>
                 @endif
 
-                {{--Start--}}
-
-                @if(Helper::GeneralWebmasterSettings("vi_box_status"))
-                    <div class="form-group row">
-                        <label for="intro_vi"
-                               class="col-sm-2 form-control-label">{!!  trans('backLang.topicIntro') !!}
-                            @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.arabicBox') !!}@endif
-                        </label>
-                        <div class="col-sm-10">
-                            {!! Form::textarea('intro_vi','', array('placeholder' => '','class' => 'form-control','id'=>'intro_vi', 'dir'=>trans('backLang.rtl'))) !!}
-                        </div>
-                    </div>
-                @endif
-                @if(Helper::GeneralWebmasterSettings("en_box_status"))
-                    <div class="form-group row">
-                        <label for="intro_en"
-                               class="col-sm-2 form-control-label">{!!  trans('backLang.topicIntro') !!}
-                            @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.englishBox') !!}@endif
-                        </label>
-                        <div class="col-sm-10">
-                            {!! Form::textarea('intro_en','', array('placeholder' => '','class' => 'form-control','id'=>'intro_en', 'dir'=>trans('backLang.ltr'))) !!}
-                        </div>
-                    </div>
-                @endif
-
-                {{--End--}}
-
                 @if($WebmasterSection->longtext_status)
 
                     @if($WebmasterSection->editor_status)
@@ -660,6 +633,53 @@
                     @endforeach
                 @endif
                 {{--End of -- Additional Feilds--}}
+
+                {{--  Nổi bật  --}}
+
+                <div class="form-group row">
+                    <label for="link_status"
+                            class="col-sm-2 form-control-label">{!!  trans('backLang.hotTopic') !!}</label>
+                    <div class="col-sm-10">
+                        <div class="radio">
+                            <label class="ui-check ui-check-md">
+                                {!! Form::radio('hot','1',false, array('id' => 'status1','class'=>'has-value')) !!}
+                                <i class="dark-white"></i>
+                                {{ trans('backLang.yes') }}
+                            </label>
+                            &nbsp; &nbsp;
+                            <label class="ui-check ui-check-md">
+                                {!! Form::radio('hot','0',true, array('id' => 'status2','class'=>'has-value')) !!}
+                                <i class="dark-white"></i>
+                                {{ trans('backLang.no') }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                {{--  Thông báo  --}}
+
+                <div class="form-group row">
+                    <label for="link_status"
+                            class="col-sm-2 form-control-label">{!!  trans('backLang.marqueeTopic') !!}</label>
+                    <div class="col-sm-10">
+                        <div class="radio">
+                            <label class="ui-check ui-check-md">
+                                {!! Form::radio('marquee','1',false, array('id' => 'status1','class'=>'has-value')) !!}
+                                <i class="dark-white"></i>
+                                {{ trans('backLang.yes') }}
+                            </label>
+                            &nbsp; &nbsp;
+                            <label class="ui-check ui-check-md">
+                                {!! Form::radio('marquee','0', true, array('id' => 'status2','class'=>'has-value')) !!}
+                                <i class="dark-white"></i>
+                                {{ trans('backLang.no') }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                {{--  End  --}}
+                
 
                 <div class="form-group row m-t-md">
                     <div class="col-sm-offset-2 col-sm-10">

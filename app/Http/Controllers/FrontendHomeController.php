@@ -19,7 +19,6 @@ use App\WebmasterSetting;
 use Illuminate\Http\Request;
 use Mail;
 
-
 class FrontendHomeController extends Controller
 {
     public function __construct()
@@ -41,39 +40,64 @@ class FrontendHomeController extends Controller
                 $site_desc = $WebsiteSettings->site_desc_en;
                 $site_keywords = $WebsiteSettings->site_keywords_en;
             }
-            echo "<!DOCTYPE html>
-<html lang=\"en\">
-<head>
-<meta charset=\"utf-8\">
-<title>$site_title</title>
-<meta name=\"description\" content=\"$site_desc\"/>
-<meta name=\"keywords\" content=\"$site_keywords\"/>
-<body>
-<br>
-<div style='text-align: center;'>
-<p>$site_msg</p>
-</div>
-</body>
-</html>
-        ";
+            echo    "<!DOCTYPE html>
+                    <html lang=\"vi\">
+                    <head>
+                    <meta charset=\"utf-8\">
+                    <title>$site_title</title>
+                    <meta name=\"description\" content=\"$site_desc\"/>
+                    <meta name=\"keywords\" content=\"$site_keywords\"/>
+                    <body>
+                    <br>
+                    <div style='text-align: center;'>
+                    <p>$site_msg</p>
+                    </div>
+                    </body>
+                    </html>
+                    ";
             exit();
         }
 
          // General Webmaster Settings
         $WebmasterSettings = WebmasterSetting::find(1);
 
+        $HeaderMenuLinks = Menu::where('father_id', $WebmasterSettings->header_menu_id)->where('status',1)->orderby('row_no','asc')->get();
+        $FooterMenuLinks = Menu::where('father_id', $WebmasterSettings->footer_menu_id)->where('status',1)->orderby('row_no','asc')->get();
+
          //Right menu dungdang
-         $RightMenuLinks = Menu::where('father_id', $WebmasterSettings->right_menu_id)->where('status',
-         1)->orderby('row_no',
-         'asc')->get();
-        $MainMenuLinks = Menu::where('father_id', $WebmasterSettings->main_menu_id)->where('status',
-         1)->orderby('row_no',
-         'asc')->get();
+         $RightMenuLinks = Menu::where('father_id', $WebmasterSettings->right_menu_id)->where('status',1)->orderby('row_no','asc')->get();
+         
+         //Marquee topics
+         $MarqueeTopics = Topic::where([
+            ['status', 1], 
+            ['marquee', 1],
+            ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+            ['expire_date', '>=', date("Y-m-d")], 
+            ['expire_date', '<>', null]
+            ])
+            ->orwhere([
+                ['status', 1], 
+                ['marquee', 1],
+                ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+                ['expire_date', null]
+                ])
+                ->orderby('row_no', 'asc')
+                ->limit(5)
+                ->get();
 
+        
+                //Side Banner
+        $SideBanners = Banner::where('section_id', $WebmasterSettings->side_banners_section_id)->where('status',1)->orderby('row_no', 'asc')->get();
+        
+                
+         
+
+        view()->share('HeaderMenuLinks',$HeaderMenuLinks);
+        view()->share('FooterMenuLinks',$FooterMenuLinks);
         view()->share('RightMenuLinks',$RightMenuLinks);
-        view()->share('MainMenuLinks',$MainMenuLinks);
+        view()->share('MarqueeTopics',$MarqueeTopics);
+        view()->share('SideBanners',$SideBanners);
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -100,6 +124,8 @@ class FrontendHomeController extends Controller
             \Session::put('locale', $lang);
         }
         $seo_url_slug = str_slug($seo_url_slug, '-');
+
+        //Trường hợp 1 topic
 
         switch ($seo_url_slug) {
             case "home" :
@@ -130,6 +156,9 @@ class FrontendHomeController extends Controller
             // MAIN SITE SECTION
             $section = $WebmasterSection1->id;
             return $this->topics($section, 0);
+
+            // return response()->json($section);
+
         } else {
             $WebmasterSection2 = WebmasterSection::where('name', $seo_url_slug)->first();
             if (count($WebmasterSection2) > 0) {
@@ -190,12 +219,11 @@ class FrontendHomeController extends Controller
 
         // General for all pages
         $WebsiteSettings = Setting::find(1);
-        $HeaderMenuLinks = Menu::where('father_id', $WebmasterSettings->header_menu_id)->where('status',
-            1)->orderby('row_no',
-            'asc')->get();
-        $FooterMenuLinks = Menu::where('father_id', $WebmasterSettings->footer_menu_id)->where('status',
-            1)->orderby('row_no',
-            'asc')->get();
+
+        $MainMenuLinks = Menu::where('father_id', $WebmasterSettings->main_menu_id)->where('status',1)->orderby('row_no','asc')->get();
+        
+        $OrganMenuLinks = Menu::where('father_id', $WebmasterSettings->organ_menu_id)->where('status',1)->orderby('row_no','asc')->get();
+        
         $FooterMenuLinks_father = Menu::find($WebmasterSettings->footer_menu_id);
         $FooterMenuLinks_name_vi = "";
         $FooterMenuLinks_name_en = "";
@@ -220,6 +248,43 @@ class FrontendHomeController extends Controller
                 ->orderby('row_no', 'asc')
                 ->limit(3)
                 ->get();
+
+        //Hot topics
+        $HotTopics = Topic::where([
+            ['status', 1], 
+            ['hot', 1],
+            ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+            ['expire_date', '>=', date("Y-m-d")], 
+            ['expire_date', '<>', null]
+            ])
+            ->orwhere([
+                ['status', 1], 
+                ['hot', 1],
+                ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+                ['expire_date', null]
+                ])
+                ->orderby('row_no', 'asc')
+                ->limit(5)
+                ->get();
+
+         
+        //Topic most viewed
+        $TopicsMostViewed = Topic::where([
+            ['status', 1], 
+            ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+            ['expire_date', '>=', date("Y-m-d")], 
+            ['expire_date', '<>', null]
+            ])
+            ->orwhere([
+                ['status', 1], 
+                ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+                ['expire_date', null]
+                ])
+                ->orderby('visits', 'desc')
+                ->limit(5)
+                ->get();      
+        
+            
         // Home photos
         $HomePhotos = Topic::where([['status', 1], ['webmaster_id', $WebmasterSettings->home_content2_section_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orwhere([['status', 1], ['webmaster_id', $WebmasterSettings->home_content2_section_id], ['expire_date', null]])->orderby('row_no', 'asc')->limit(6)->get();
         // Home Partners
@@ -247,6 +312,11 @@ class FrontendHomeController extends Controller
         $TextBanners = Banner::where('section_id', $WebmasterSettings->home_text_banners_section_id)->where('status',
             1)->orderby('row_no', 'asc')->get();
 
+        
+            //BLock Banner
+        $BlockBanners = Banner::where('section_id', 4)->where('status',
+        1)->orderby('row_no', 'asc')->get();
+
         $site_desc_var = "site_desc_" . trans('backLang.boxCode');
         $site_keywords_var = "site_keywords_" . trans('backLang.boxCode');
 
@@ -254,17 +324,15 @@ class FrontendHomeController extends Controller
         $PageDescription = $WebsiteSettings->$site_desc_var;
         $PageKeywords = $WebsiteSettings->$site_keywords_var;
 
-
-       
-
         return view("frontEnd.home",
             compact("WebsiteSettings",
                 "WebmasterSettings",
-                "HeaderMenuLinks",
-                "FooterMenuLinks",
+                "MainMenuLinks",
+                "OrganMenuLinks",
                 "SliderBanners",
                 "TextBanners",
-                "FooterMenuLinks_name_ar",
+                "BlockBanners",
+                "FooterMenuLinks_name_vi",
                 "FooterMenuLinks_name_en",
                 "PageTitle",
                 "PageDescription",
@@ -275,27 +343,38 @@ class FrontendHomeController extends Controller
                 "HomeTopics",
                 "HomePhotos",
                 "HomePartners",
-                "LatestNews"));
-
+                "LatestNews",
+                "TopicsMostViewed",
+                "HotTopics"));
     }
-
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int $section
-     * @param  int $id
+     * @param  int $cat
      * @return \Illuminate\Http\Response
      */
-    public function topic($section = 0, $id = 0)
+    public function topics($section = 0, $cat = 0)
     {
+
+        // echo $section;  =>vi
+        // echo App::langPath(); =>project/resources/lang
+        
         $lang_dirs = array_filter(glob(App::langPath() . '/*'), 'is_dir');
-        // check if this like "/ar/blog"
+
+        // echo $lang_dirs;
+
+        // check if this like "/vi/blog" kiểm tra xem /vi có trong đường dân hay ko?
+
         if (in_array(App::langPath() . "/$section", $lang_dirs)) {
-            return $this->topicsByLang($section, $id, 0);
+            //Có /vi
+            return $this->topicsByLang($section, $cat, 0);
         } else {
-            return $this->topicByLang("", $section, $id);
+            //Không có /vi
+            return $this->topicsByLang("", $section, $cat);
         }
+
     }
 
     /**
@@ -316,14 +395,14 @@ class FrontendHomeController extends Controller
 
         // General Webmaster Settings
         $WebmasterSettings = WebmasterSetting::find(1);
-
-
+        
         // get Webmaster section settings by name
         $WebmasterSection = WebmasterSection::where('name', $section)->first();
         if (count($WebmasterSection) == 0) {
             // get Webmaster section settings by ID
             $WebmasterSection = WebmasterSection::find($section);
         }
+
         if (count($WebmasterSection) > 0) {
 
             // count topics by Category
@@ -344,6 +423,7 @@ class FrontendHomeController extends Controller
 
             // Get current Category Section details
             $CurrentCategory = Section::find($cat);
+
             // Get a list of all Category ( for side bar )
             $Categories = Section::where('webmaster_id', '=', $WebmasterSection->id)->where('father_id', '=',
                 '0')->where('status', 1)->orderby('row_no', 'asc')->get();
@@ -369,7 +449,7 @@ class FrontendHomeController extends Controller
                 $TopicsMostViewed = Topic::where([['webmaster_id', '=', $WebmasterSection->id], ['status',
                     1], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orWhere([['webmaster_id', '=', $WebmasterSection->id], ['status', 1], ['expire_date', null]])->orderby('visits', 'desc')->limit(3)->get();
             }
-
+            
             // General for all pages
 
             $WebsiteSettings = Setting::find(1);
@@ -386,9 +466,10 @@ class FrontendHomeController extends Controller
                 $FooterMenuLinks_name_vi = $FooterMenuLinks_father->title_vi;
                 $FooterMenuLinks_name_en = $FooterMenuLinks_father->title_en;
             }
+
+            // Side Banners
             $SideBanners = Banner::where('section_id', $WebmasterSettings->side_banners_section_id)->where('status',
                 1)->orderby('row_no', 'asc')->get();
-
 
             // Get Latest News
             $LatestNews = Topic::where([['status', 1], ['webmaster_id', $WebmasterSettings->latest_news_section_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orwhere([['status', 1], ['webmaster_id', $WebmasterSettings->latest_news_section_id], ['expire_date', null]])->orderby('row_no', 'asc')->limit(3)->get();
@@ -427,13 +508,14 @@ class FrontendHomeController extends Controller
             }
             // .. end of .. Page Title, Description, Keywords
 
-            // Send all to the view
+            // return response()->json([$Categories]);
+
             return view("frontEnd.topics",
                 compact("WebsiteSettings",
                     "WebmasterSettings",
                     "HeaderMenuLinks",
                     "FooterMenuLinks",
-                    "FooterMenuLinks_name_ar",
+                    "FooterMenuLinks_name_vi",
                     "FooterMenuLinks_name_en",
                     "LatestNews",
                     "SideBanners",
@@ -447,11 +529,11 @@ class FrontendHomeController extends Controller
                     "TopicsMostViewed",
                     "category_and_topics_count"));
 
-        } else {
+        }else {
 
             return $this->SEOByLang($lang, $section);
         }
-
+        
     }
 
     /**
@@ -461,6 +543,54 @@ class FrontendHomeController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+    public function topic($section = 0, $id = 0)
+    {
+        $lang_dirs = array_filter(glob(App::langPath() . '/*'), 'is_dir');
+        // check if this like "/ar/blog"
+        if (in_array(App::langPath() . "/$section", $lang_dirs)) {
+            return $this->topicsByLang($section, $id, 0);
+        } else {
+            return $this->topicByLang("", $section, $id);
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $section
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function topicByLang2($lang = "", $section = 0, $id = 0)
+    {
+        if ($lang != "") {
+            // Set Language
+            App::setLocale($lang);
+            \Session::put('locale', $lang);
+        }
+
+        // General Webmaster Settings
+        $WebmasterSettings = WebmasterSetting::find(1);
+
+        // check for pages called by name not id
+        switch ($section) {
+            case "about" :
+                $id = 1;
+                $section = 1;
+                break;
+            case "privacy" :
+                $id = 3;
+                $section = 1;
+                break;
+            case "terms" :
+                $id = 4;
+                $section = 1;
+                break;
+        }
+
+        return response()->json([$section, $id]);
+    }
+
     public function topicByLang($lang = "", $section = 0, $id = 0)
     {
 
@@ -489,7 +619,6 @@ class FrontendHomeController extends Controller
                 break;
         }
 
-
         // get Webmaster section settings by name
         $WebmasterSection = WebmasterSection::where('name', $section)->first();
         if (count($WebmasterSection) == 0) {
@@ -515,7 +644,6 @@ class FrontendHomeController extends Controller
             }
 
             $Topic = Topic::where('status', 1)->find($id);
-
 
             if (count($Topic) > 0 && ($Topic->expire_date == '' || ($Topic->expire_date != '' && $Topic->expire_date >= date("Y-m-d")))) {
                 // update visits
@@ -579,13 +707,12 @@ class FrontendHomeController extends Controller
                 }
                 // .. end of .. Page Title, Description, Keywords
 
-
                 return view("frontEnd.topic",
                     compact("WebsiteSettings",
                         "WebmasterSettings",
                         "HeaderMenuLinks",
                         "FooterMenuLinks",
-                        "FooterMenuLinks_name_ar",
+                        "FooterMenuLinks_name_vi",
                         "FooterMenuLinks_name_en",
                         "LatestNews",
                         "Topic",
@@ -604,24 +731,6 @@ class FrontendHomeController extends Controller
             }
         } else {
             return redirect()->action('FrontendHomeController@HomePage');
-        }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $section
-     * @param  int $cat
-     * @return \Illuminate\Http\Response
-     */
-    public function topics($section = 0, $cat = 0)
-    {
-        $lang_dirs = array_filter(glob(App::langPath() . '/*'), 'is_dir');
-        // check if this like "/ar/blog"
-        if (in_array(App::langPath() . "/$section", $lang_dirs)) {
-            return $this->topicsByLang($section, $cat, 0);
-        } else {
-            return $this->topicsByLang("", $section, $cat);
         }
     }
 
@@ -657,7 +766,6 @@ class FrontendHomeController extends Controller
         // get User Details
         $User = User::find($id);
         if (count($User) > 0) {
-
 
             // count topics by Category
             $category_and_topics_count = array();
@@ -706,7 +814,6 @@ class FrontendHomeController extends Controller
             $SideBanners = Banner::where('section_id', $WebmasterSettings->side_banners_section_id)->where('status',
                 1)->orderby('row_no', 'asc')->get();
 
-
             // Get Latest News
             $LatestNews = Topic::where([['status', 1], ['webmaster_id', $WebmasterSettings->latest_news_section_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orwhere([['status', 1], ['webmaster_id', $WebmasterSettings->latest_news_section_id], ['expire_date', null]])->orderby('row_no', 'asc')->limit(3)->get();
 
@@ -726,7 +833,7 @@ class FrontendHomeController extends Controller
                     "WebmasterSettings",
                     "HeaderMenuLinks",
                     "FooterMenuLinks",
-                    "FooterMenuLinks_name_ar",
+                    "FooterMenuLinks_name_vi",
                     "FooterMenuLinks_name_en",
                     "LatestNews",
                     "User",
@@ -817,7 +924,6 @@ class FrontendHomeController extends Controller
             $SideBanners = Banner::where('section_id', $WebmasterSettings->side_banners_section_id)->where('status',
                 1)->orderby('row_no', 'asc')->get();
 
-
             // Get Latest News
             $LatestNews = Topic::where([['status', 1], ['webmaster_id', $WebmasterSettings->latest_news_section_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orwhere([['status', 1], ['webmaster_id', $WebmasterSettings->latest_news_section_id], ['expire_date', null]])->orderby('row_no', 'asc')->limit(3)->get();
 
@@ -837,7 +943,7 @@ class FrontendHomeController extends Controller
                     "WebmasterSettings",
                     "HeaderMenuLinks",
                     "FooterMenuLinks",
-                    "FooterMenuLinks_name_ar",
+                    "FooterMenuLinks_name_vi",
                     "FooterMenuLinks_name_en",
                     "LatestNews",
                     "search_word",
@@ -887,7 +993,6 @@ class FrontendHomeController extends Controller
 
         $id = $WebmasterSettings->contact_page_id;
         $Topic = Topic::where('status', 1)->find($id);
-
 
         if (count($Topic) > 0 && ($Topic->expire_date == '' || ($Topic->expire_date != '' && $Topic->expire_date >= date("Y-m-d")))) {
 
@@ -958,7 +1063,7 @@ class FrontendHomeController extends Controller
                         "WebmasterSettings",
                         "HeaderMenuLinks",
                         "FooterMenuLinks",
-                        "FooterMenuLinks_name_ar",
+                        "FooterMenuLinks_name_vi",
                         "FooterMenuLinks_name_en",
                         "LatestNews",
                         "Topic",
@@ -1052,7 +1157,6 @@ class FrontendHomeController extends Controller
      */
     public function subscribeSubmit(Request $request)
     {
-
 
         $this->validate($request, [
             'subscribe_name' => 'required',
@@ -1157,7 +1261,6 @@ class FrontendHomeController extends Controller
         return "OK";
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -1174,7 +1277,6 @@ class FrontendHomeController extends Controller
             'topic_id' => 'required',
             'order_email' => 'required|email'
         ]);
-
 
         $WebsiteSettings = Setting::find(1);
         $site_title_var = "site_title_" . trans('backLang.boxCode');
@@ -1204,7 +1306,6 @@ class FrontendHomeController extends Controller
             $Webmail->flag = 0;
             $Webmail->save();
 
-
             // SEND Notification Email
             $msg_details = "$tpc_title <br> Qty = " . $request->order_qty . "<hr>" . $request->order_message;
             if ($WebsiteSettings->notify_orders_status) {
@@ -1227,7 +1328,6 @@ class FrontendHomeController extends Controller
 
         return "OK";
     }
-
 
     public function SiteMap()
     {
@@ -1270,7 +1370,6 @@ class FrontendHomeController extends Controller
             1)->orderby('row_no',
             'asc')->get();
         
-        
         return view("frontEnd.sitemap", 
                 compact("WebmasterSections",
                 "PageTitle",
@@ -1282,11 +1381,4 @@ class FrontendHomeController extends Controller
             ));
     }
         
-
-
-        
-        
-
-
-
 }

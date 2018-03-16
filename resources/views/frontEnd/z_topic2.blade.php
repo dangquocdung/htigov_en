@@ -32,7 +32,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="breadcrumb">
-                        <li><a href="{{ route("Home") }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
+                        <li>
+                            <a href="{{ route("Home") }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
                         </li>
                         @if($WebmasterSection->id != 1)
                             <li class="active">{!! trans('backLang.'.$WebmasterSection->name) !!}</li>
@@ -715,7 +716,6 @@
             </div>
         </div>
     </section>
-
 @endsection
 @section('footerInclude')
     @if(count($Topic->maps) >0)

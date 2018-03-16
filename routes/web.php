@@ -33,7 +33,7 @@ Route::get('/admin', function () {
     return redirect()->route('adminHome');
 });
 
-Route::Group(['prefix' => 'quan-tri'], function () {
+Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
 
     // No Permission
     Route::get('/403', function () {
@@ -325,6 +325,7 @@ Route::get('/{lang}/sitemap', 'FrontendHomeController@siteMap')->name('siteMapBy
 Route::get('/', 'FrontendHomeController@HomePage')->name('Home');
 // ../home url
 Route::get('/home', 'FrontendHomeController@HomePage')->name('HomePage');
+
 Route::get('/{lang?}/home', 'FrontendHomeController@HomePageByLang')->name('HomePageByLang');
 // ../subscribe to newsletter submit  (ajax url)
 Route::post('/subscribe', 'FrontendHomeController@subscribeSubmit')->name('subscribeSubmit');
@@ -363,8 +364,6 @@ Route::get('/{lang?}/{seo_url_slug}', 'FrontendHomeController@SEOByLang')->name(
 
 // ..if page by name and language( ex: www.site.com/ar/about )
 Route::get('/{lang?}/topic/{id}', 'FrontendHomeController@topicByLang')->name('FrontendPageByLang');
-
-
 
 // .. End of Frontend Route
 /*

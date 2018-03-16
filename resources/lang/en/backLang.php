@@ -15,8 +15,18 @@ return array (
   'translations' => 'Translations',
   'calendarLanguage' => 'en',
 
-    'topicIntro' => 'Introduce',
-    'siteMap' =>'Site Map',
+  'topicIntro' => 'Introduce',
+  'topicOperations'=> 'Operations',
+  'siteMap' =>'Site Map',
+  'typeBanner' => 'Type Banner',
+
+  'hotTopic' => 'Hot news',
+  'marqueeTopic' => 'Marquee news',
+  'topicTCBC' => 'Press Release',
+  'topicEnvironmental' => 'Environmental Information',
+  'topicConversation' => 'Online Conversation',
+  'topicGYVB' => 'Written comments',
+
 
 
   'home' => 'Home',
@@ -112,6 +122,7 @@ return array (
   'homeSlideBanners' => 'Home Page Slide Show Banners',
   'homeTextBanners' => 'Home Page Text Banners',
   'sideBanners' => 'Side Banners',
+  'blockBanners' => 'Block Banners',
   'none' => 'None',
   'newsletterGroup' => 'Newsletter Emails Group (within contacts)',
   'homeRow1' => 'Home Page Contents ROW 1',

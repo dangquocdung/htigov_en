@@ -17,9 +17,9 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->string('site_title_vi');
             $table->string('site_title_en');
-            $table->string('site_desc_ar');
+            $table->string('site_desc_vi');
             $table->string('site_desc_en');
-            $table->text('site_keywords_ar');
+            $table->text('site_keywords_vi');
             $table->text('site_keywords_en');
             $table->string('site_webmails');
             $table->tinyInteger('notify_messages_status')->nullable();
@@ -38,16 +38,16 @@ class CreateSettingsTable extends Migration
             $table->string('social_link8');
             $table->string('social_link9');
             $table->string('social_link10');
-            $table->string('contact_t1_ar');
+            $table->string('contact_t1_vi');
             $table->string('contact_t1_en');
             $table->string('contact_t3');
             $table->string('contact_t4');
             $table->string('contact_t5');
             $table->string('contact_t6');
-            $table->string('contact_t7_ar');
+            $table->string('contact_t7_vi');
             $table->string('contact_t7_en');
 
-            $table->string('style_logo_ar')->nullable();
+            $table->string('style_logo_vi')->nullable();
             $table->string('style_logo_en')->nullable();
             $table->string('style_fav')->nullable();;
             $table->string('style_apple')->nullable();

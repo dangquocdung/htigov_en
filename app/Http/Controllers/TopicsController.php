@@ -179,9 +179,6 @@ class TopicsController extends Controller
             $Topic->title_vi = $request->title_vi;
             $Topic->title_en = $request->title_en;
 
-            $Topic->intro_vi = $request->intro_vi;
-            $Topic->intro_en = $request->intro_en;
-
             $Topic->details_vi = $request->details_vi;
             $Topic->details_en = $request->details_en;
             $Topic->date = $request->date;
@@ -213,12 +210,16 @@ class TopicsController extends Controller
 
             // URL Slugs
             $slugs = Helper::URLSlug($request->title_vi, $request->title_en, "topic", 0);
-            $Topic->seo_url_slug_vi = $slugs['slug_ar'];
+            $Topic->seo_url_slug_vi = $slugs['slug_vi'];
             $Topic->seo_url_slug_en = $slugs['slug_en'];
 
             // Meta Description
             $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($request->details_vi)), 0, 165, 'UTF-8');
             $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($request->details_en)), 0, 165, 'UTF-8');
+
+            //Hot & Marquee
+            $Topic->hot = $request->hot;
+            $Topic->marquee = $request->marquee;
 
 
             $Topic->save();
@@ -418,8 +419,6 @@ class TopicsController extends Controller
 
                 $Topic->title_vi = $request->title_vi;
                 $Topic->title_en = $request->title_en;
-                $Topic->intro_vi = $request->intro_vi;
-                $Topic->intro_en = $request->intro_en;
                 $Topic->details_vi = $request->details_vi;
                 $Topic->details_en = $request->details_en;
                 $Topic->date = $request->date;
@@ -461,6 +460,8 @@ class TopicsController extends Controller
 
                 $Topic->icon = $request->icon;
                 $Topic->video_type = $request->video_type;
+                $Topic->hot = $request->hot;
+                $Topic->marquee = $request->marquee;
                 $Topic->status = $request->status;
                 $Topic->updated_by = Auth::user()->id;
                 $Topic->save();
@@ -737,15 +738,15 @@ class TopicsController extends Controller
 
                 $Topic->seo_title_vi = $request->seo_title_vi;
                 $Topic->seo_title_en = $request->seo_title_en;
-                $Topic->seo_description_vi = $request->seo_description_ar;
+                $Topic->seo_description_vi = $request->seo_description_vi;
                 $Topic->seo_description_en = $request->seo_description_en;
-                $Topic->seo_keywords_vi = $request->seo_keywords_ar;
+                $Topic->seo_keywords_vi = $request->seo_keywords_vi;
                 $Topic->seo_keywords_en = $request->seo_keywords_en;
                 $Topic->updated_by = Auth::user()->id;
 
                 //URL Slugs
-                $slugs = Helper::URLSlug($request->seo_url_slug_ar, $request->seo_url_slug_en, "topic", $id);
-                $Topic->seo_url_slug_vi = $slugs['slug_ar'];
+                $slugs = Helper::URLSlug($request->seo_url_slug_vi, $request->seo_url_slug_en, "topic", $id);
+                $Topic->seo_url_slug_vi = $slugs['slug_vi'];
                 $Topic->seo_url_slug_en = $slugs['slug_en'];
 
                 $Topic->save();
