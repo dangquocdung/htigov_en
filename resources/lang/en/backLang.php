@@ -1,34 +1,30 @@
 <?php
 
 return array (
+  'APIKeyGenerate' => 'Generate a new API key',
   'direction' => 'ltr',
   'code' => 'en',
   'lang' => 'EN',
   'left' => 'left',
   'right' => 'right',
-    'arabicBox' => '<small>[ Tiếng Việt ]</small>',
-    'englishBox' => '<small>[ English ]</small>',
+  'arabicBox' => '<small>[ Tiếng Việt ]</small>',
+  'englishBox' => '<small>[ English ]</small>',
   'rtl' => 'ltr',
   'ltr' => 'ltr',
   'boxCode' => 'en',
   'boxCodeOther' => 'vi',
   'translations' => 'Translations',
   'calendarLanguage' => 'en',
-
   'topicIntro' => 'Introduce',
-  'topicOperations'=> 'Operations',
-  'siteMap' =>'Site Map',
+  'topicOperations' => 'Operations',
+  'siteMap' => 'Site Map',
   'typeBanner' => 'Type Banner',
-
   'hotTopic' => 'Hot news',
   'marqueeTopic' => 'Marquee news',
   'topicTCBC' => 'Press Release',
   'topicEnvironmental' => 'Environmental Information',
   'topicConversation' => 'Online Conversation',
   'topicGYVB' => 'Written comments',
-
-
-
   'home' => 'Home',
   'main' => 'Main',
   'siteData' => 'Site Data',
@@ -485,8 +481,12 @@ return array (
   'createNewAccount' => 'Create a new account',
   'APIStatus' => 'RESTful API status',
   'APIKey' => 'API key',
-  'APIKeyGenerate' => 'Generate a new API key',
   'APIKeyConfirm' => 'Are you sure you want to generate a new API key?',
   'homeRow_3' => 'Home Page Contents ROW 3',
   'partners' => 'Partners',
+  'draftDoc' => 'Draft Document',
+  'dataManager1' => 'His Own Data Only (for Personal Accounts)',
+  'dataManager2' => 'All Users Data (for General Administration Accounts)',
+  'dataManager' => 'Data Managements',
+  'activityHistory' => 'Activities History',
 );

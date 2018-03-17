@@ -32,7 +32,7 @@
 
         <div class="right-item">
     
-            <a href="{{ $mmnnuu_link }}" class="icon" title="">
+            <a href="{{ (trim($RightMenuLink->link) !="") ? $RightMenuLink->link:$mmnnuu_link }}" class="icon" title="">
     
                 <i class="fa fa-folder-open-o fa-2x" aria-hidden="true"></i>
     

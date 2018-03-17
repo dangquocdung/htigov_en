@@ -67,6 +67,7 @@ return [
 
     'đối tác' => 'Đối tác của chúng tôi',
     'partnersMsg' => 'Hợp tác lâu dài với các công ty hàng đầu trong nước và quốc tế',
+    'hotline' => 'Đường dây nóng',
 ];
 
 ?>

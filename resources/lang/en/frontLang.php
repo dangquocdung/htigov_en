@@ -67,6 +67,7 @@ return [
 
     'partners' => 'Our Partners',
     'partnersMsg' => 'Long term partnerships with leading local and international companies',
+    'hotline' => 'Hot lines',
 ];
 
 ?>

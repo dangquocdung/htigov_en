@@ -26,7 +26,6 @@ if (Helper::GeneralSiteSettings("style_type")) {
 }
 ?>
 
-
 <body class="js {!!  $bdy_class !!}" style=" {!!  $bdy_bg_color !!} {!! $bdy_bg_image !!}">
 <div id="wrapper">
     <!-- start header -->
@@ -34,9 +33,18 @@ if (Helper::GeneralSiteSettings("style_type")) {
             <!-- end header -->
 
     <!-- Content Section -->
-
+    
     <div class="container nen-trang">
 
+        @if (!empty($Topic))
+        
+            @if ($Topic->webmasterSection->type==2)
+
+                @include('frontEnd.includes.doi-thoai')
+        
+            @endif
+        @endif
+    
         <div class="row row-offcanvas row-offcanvas-right">
 
             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-page" style="min-height: 1890px;">
@@ -59,6 +67,7 @@ if (Helper::GeneralSiteSettings("style_type")) {
 @include('frontEnd.includes.foot')
 
 @yield('footerInclude')
+@yield('js')
 
 @if(Helper::GeneralSiteSettings("style_preload"))
     <div id="preloader"></div>

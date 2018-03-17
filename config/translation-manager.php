@@ -11,7 +11,7 @@ return array(
     |
     */
     'route' => [
-        'prefix' => '/quan-tri/webmaster/translations',
+        'prefix' => 'admin/webmaster/translations',
         'middleware' => 'auth',
     ],
 

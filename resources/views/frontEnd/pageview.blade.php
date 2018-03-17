@@ -1,33 +1,6 @@
 @extends('frontEnd.layout')
 
 @section('content')
-
-    <?php
-        $title_var = "title_" . trans('backLang.boxCode');
-        $title_var2 = "title_" . trans('backLang.boxCodeOther');
-        $details_var = "details_" . trans('backLang.boxCode');
-        $details_var2 = "details_" . trans('backLang.boxCodeOther');
-        if ($Topic->$title_var != "") {
-            $title = $Topic->$title_var;
-        } else {
-            $title = $Topic->$title_var2;
-        }
-        if ($Topic->$details_var != "") {
-            $details = $details_var;
-        } else {
-            $details = $details_var2;
-        }
-        $section = "";
-        try {
-            if ($Topic->section->$title_var != "") {
-                $section = $Topic->section->$title_var;
-            } else {
-                $section = $Topic->section->$title_var2;
-            }
-        } catch (Exception $e) {
-            $section = "";
-        }
-    ?>
     
     
     <section id="content">
@@ -38,7 +11,7 @@
                     <ul class="breadcrumb">
                         <li><a href="{{ route('Home') }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
                         </li>
-                        <li class="active">{{ $title }}</li>
+                        <li class="active">{{ $PageTitle }}</li>
                     </ul>
 
             </div>
@@ -47,44 +20,122 @@
             
             <div class="col-md-12">
                 
-                    <h4 id="contact_div"><i class="fa fa-envelope"></i> {{ trans('frontLang.getInTouch') }}</h4>
+                <div class="dv" style="margin:10px 0; padding: 5px">
+                    <div class="dv-body">
+                        <table id="example1" class="dv-table">
 
-                    <div id="sendmessage"><i class="fa fa-check-circle"></i>
-                        &nbsp;{{ trans('frontLang.youMessageSent') }}</div>
-                    <div id="errormessage">{{ trans('frontLang.youMessageNotSent') }}</div>
+                            @if ($PageName == 'Organ')
+
+                                   
+                                <thead>
+                                <tr>
+                                    <th>TT</th>
+                                    <th>Cơ quan</th>
+                                    <th>Website</th>
+                                    <th>Điện thoại</th>
+                                </tr>
+                                </thead>
                 
-                    {{Form::open(['route'=>['contactPage'],'method'=>'POST','class'=>'contactForm'])}}
-                    <div class="form-group">
-                        {!! Form::text('contact_name',"", array('placeholder' => trans('frontLang.yourName'),'class' => 'form-control','id'=>'name', 'data-msg'=> trans('frontLang.enterYourName'),'data-rule'=>'minlen:4')) !!}
-                        <div class="alert alert-warning validation"></div>
+                                <tbody>
+                                
+                                    @foreach($Models->where('nhomcq_id','1') as $cq)
+                                    <tr>
+                                        <td>{{ $cq->id }}</td>
+                                        <td>{{ $cq->name }}</td>
+                                        <td><a href="{{ $cq->lienket }}" target="_blank">{{ $cq->lienket }}</a></td>
+                                        <td>{{ $cq->sodt }}</td>
+                                    </tr>
+                                    @endforeach
+                                
+                                </tbody>
+
+                            @elseif ($PageName == 'SpokesMan')
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <span>TT</span>
+                                        </th>
+                                        <th>
+                                            <span>Cơ quan</span>
+                                        </th>
+                    
+                                        <th>
+                                            <span>Họ và Tên</span>
+                                        </th>
+                    
+                                        <th>
+                                            <span>Chức danh</span>
+                                        </th>
+                                        <th>
+                                            <span>ĐT cố định</span>
+                                        </th>
+                                        <th>
+                                            <span>ĐT di động</span>
+                                        </th>
+                                        <th>
+                                            <span>Địa chỉ e-mail</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                    
+                                    <tbody>
+                                        @foreach($Models as $npn)
+                                        <tr>
+                                            <td>{{ $npn->id }}</td>
+                                            <td>{{ $npn->coquan->name }}</td>
+                                            <td>{{ $npn->name }}</td>
+                                            <td>{{ $npn->chucdanh }}</td>
+                                            <td>{{ $npn->codinh }}</td>
+                                            <td>{{ $npn->didong }}</td>
+                                            <td>{{ $npn->email }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+
+                            @elseif ($PageName == 'Reporter')
+
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <span>TT</span>
+                                        </th>
+                                        <th>
+                                            <span>Đơn vị</span>
+                                        </th>
+                    
+                                        <th>
+                                            <span>Họ và Tên</span>
+                                        </th>
+                    
+                                        <th>
+                                            <span>Số TNB</span>
+                                        </th>
+                                        <th>
+                                            <span>Điện thoại</span>
+                                        </th>
+                                        <th>
+                                            <span>Email</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                    
+                                    <tbody>
+                                    @foreach($Models as $pvtt)
+                                        <tr>
+                                            <td>{{ $pvtt->id }}</td>
+                                            <td>{{ $pvtt->cqbc }}</td>
+                                            <td>{{ $pvtt->pvtt }}</td>
+                                            <td>{{ $pvtt->sothe }}</td>
+                                            <td>{{ $pvtt->dienthoai }}</td>
+                                            <td>{{ $pvtt->email }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+
+                            @endif
+                        </table>
                     </div>
-                    <div class="form-group">
-                        {!! Form::email('contact_email',"", array('placeholder' => trans('frontLang.yourEmail'),'class' => 'form-control','id'=>'email', 'data-msg'=> trans('frontLang.enterYourEmail'),'data-rule'=>'email')) !!}
-                        <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                        {!! Form::text('contact_phone',"", array('placeholder' => trans('frontLang.phone'),'class' => 'form-control','id'=>'phone', 'data-msg'=> trans('frontLang.enterYourPhone'),'data-rule'=>'minlen:4')) !!}
-                        <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                        {!! Form::text('contact_subject',"", array('placeholder' => trans('frontLang.subject'),'class' => 'form-control','id'=>'subject', 'data-msg'=> trans('frontLang.enterYourSubject'),'data-rule'=>'minlen:4')) !!}
-                        <div class="validation"></div>
-                    </div>
-                    <div class="form-group">
-                        {!! Form::textarea('contact_message','', array('placeholder' => trans('frontLang.message'),'class' => 'form-control','id'=>'message','rows'=>'8', 'data-msg'=> trans('frontLang.enterYourMessage'),'data-rule'=>'required')) !!}
-                        <div class="validation"></div>
-                    </div>
-                
-                    @if(env('NOCAPTCHA_STATUS', false))
-                        <div class="form-group">
-                            {!! app('captcha')->display($attributes = [], $lang = trans('backLang.code')) !!}
-                        </div>
-                    @endif
-                    <div>
-                        <button type="submit" class="btn btn-theme">{{ trans('frontLang.sendMessage') }}</button>
-                    </div>
-                    <br>
-                    {{Form::close()}}
+                </div>
 
             </div>
 
@@ -102,6 +153,7 @@
 @stop
 
 @section('footerInclude')
+
     @if (!empty($Topic))
         @if(count($Topic->maps) >0)
             @foreach($Topic->maps->slice(0,1) as $map)
@@ -288,6 +340,35 @@
                 });
 
             });
+        </script>
+
+    @else
+
+        <!-- DataTables -->
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+        <script>
+            $(function () {
+                $('#example1').DataTable({
+
+                    "iDisplayLength": 25,
+
+                    "language": {
+                        "sProcessing": "Đang xử lý...",
+                        "sLengthMenu": "Hiển thị _MENU_ mục",
+                        "sInfo": "Đang hiển thị từ mục _START_ đến mục _END_ trong tổng _TOTAL_ mục",
+                        "sInfoPostFix": "",
+                        "sSearch": "Tìm kiếm:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "oPaginate": {
+                            "sFirst": "Đầu tiên",
+                            "sLast": "Cuối cùng",
+                            "sNext": "Sau",
+                            "sPrevious": "Trước"
+                        }
+                    }
+                })
+            })
         </script>
     @endif
 

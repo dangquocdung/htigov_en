@@ -6,6 +6,10 @@ use App;
 use App\Banner;
 use App\Comment;
 use App\Contact;
+use App\Organ;
+use App\SpokesMan;
+use App\Reporter;
+use App\Page;
 use App\Http\Requests;
 use App\Menu;
 use App\Section;
@@ -92,6 +96,7 @@ class FrontendHomeController extends Controller
                 
          
 
+        view()->share('WebmasterSettings',$WebmasterSettings);
         view()->share('HeaderMenuLinks',$HeaderMenuLinks);
         view()->share('FooterMenuLinks',$FooterMenuLinks);
         view()->share('RightMenuLinks',$RightMenuLinks);
@@ -1379,6 +1384,70 @@ class FrontendHomeController extends Controller
                 "HeaderMenuLinks",
                 "FooterMenuLinks"
             ));
+    }
+
+
+    
+
+    public function PageView($id=0)
+    {
+        return $this->PageViewByLang("",$id);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function PageViewByLang($lang = "", $id = 0)
+    {
+
+        if ($lang != "") {
+            // Set Language
+            App::setLocale($lang);
+            \Session::put('locale', $lang);
+        }
+
+        $Model = Page::find($id);
+        
+        
+
+        if (!empty($Model)) {
+
+           
+            //Hotline
+            $PageName = $Model->title;
+            
+            switch($PageName){
+
+                case('Organ'):
+                    $Models = Organ::all();
+                    break;
+                case('SpokesMan'):
+                    $Models = SpokesMan::all();
+                    break;
+                case('Reporter'):
+                    $Models = Reporter::all();
+                    break;
+
+            }
+                
+            
+            $PageTitle = $Model->page_title;
+            $PageDescription = $Model->page_description;
+            $PageKeywords = $Model->page_keyword;
+
+            return view("frontEnd.pageview",
+                compact("PageName",
+                        "PageTitle",
+                        "PageDescription",
+                        "PageKeywords",
+                        "Models"));
+
+        } else {
+            return redirect()->action('FrontendHomeController@HomePage');
+        }
+
     }
         
 }

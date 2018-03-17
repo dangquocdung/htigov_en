@@ -314,7 +314,7 @@ Route::Group(['prefix' => '/api/v1'], function () {
 
 // Frontend Routes
 // ../site map
-// Route::get('/sitemap.xml', 'SiteMapController@siteMap')->name('siteMap');
+Route::get('/sitemap.xml', 'SiteMapController@siteMap')->name('siteMap');
 // Route::get('/{lang}/sitemap', 'SiteMapController@siteMap')->name('siteMapByLang');
 
 // ../site map
@@ -336,6 +336,21 @@ Route::post('/order', 'FrontendHomeController@orderSubmit')->name('orderSubmit')
 // ..Custom URL for contact us page ( www.site.com/contact )
 Route::get('/contact', 'FrontendHomeController@ContactPage')->name('contactPage');
 Route::get('/{lang?}/contact', 'FrontendHomeController@ContactPageByLang')->name('contactPageByLang');
+
+// ..Custom URL for contact us page ( www.site.com/contact )
+Route::get('/page/{id}', 'FrontendHomeController@PageView');
+Route::get('/{lang?}/page/{id}', 'FrontendHomeController@PageViewByLang');
+
+// ..Custom URL for contact us page ( www.site.com/contact )
+// Route::get('/nguoi-phat-ngon', 'FrontendHomeController@SpokesManPage')->name('spokesManPage');
+// Route::get('/{lang?}/nguoi-phat-ngon', 'FrontendHomeController@SpokesManPageByLang')->name('spokesManPageByLang');
+
+// ..Custom URL for contact us page ( www.site.com/contact )
+// Route::get('/phong-vien-thuong-tru', 'FrontendHomeController@ReporterPage')->name('reporterPage');
+// Route::get('/{lang?}/phong-vien-thuong-tru', 'FrontendHomeController@ReporterPageByLang')->name('reporterPageByLang');
+
+
+
 // ../contact message submit  (ajax url)
 Route::post('/contact/submit', 'FrontendHomeController@ContactPageSubmit')->name('contactPageSubmit');
 // ..if page by name ( ex: www.site.com/about )
