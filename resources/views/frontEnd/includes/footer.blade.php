@@ -12,7 +12,7 @@
             <div class="main-footer-footer-bg">
                 <div class="container">
                     <div class="main-footer-logo hidden-xs">
-                        <img src="/uploads/settings/{{ $WebmasterSettings->style_footer_bg }}">
+                        <img src="/uploads/settings/{{ $WebsiteSettings->style_footer_bg }}">
                     </div>
                     <div class="main-footer-footer-content">
                         <p class="license">
