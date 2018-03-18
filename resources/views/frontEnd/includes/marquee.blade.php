@@ -8,6 +8,8 @@
     
 ?>
 
+@if (!empty($MarqueeTopics))
+
 <div class="container nen-trang chao-mung">
     <marquee class="hot-tip" behavior="scroll" direction="left" scrollamount="3">
         
@@ -53,5 +55,6 @@
             <a href="{{ $topic_link_url }}" target="_blank" style="text-decoration: none">{{ $Topic->$title_var }}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 
             @endforeach
-        </marquee>
+    </marquee>
 </div>
+@endif
