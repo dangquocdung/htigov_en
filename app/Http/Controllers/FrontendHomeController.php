@@ -204,6 +204,8 @@ class FrontendHomeController extends Controller
     public function HomePage()
     {
         return $this->HomePageByLang("");
+
+        // return response()->json(public_path());
     }
 
     /**

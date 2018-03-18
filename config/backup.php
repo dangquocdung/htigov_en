@@ -10,7 +10,9 @@ return [
     ],
 
     'backup_database' => true,
-    'folder_to_backup' => storage_path('app/public'),
+    // 'folder_to_backup' => storage_path('app/public'),
+    'folder_to_backup' => public_path().'/uploads',
+    
 
     'route' => [
         'prefix' => env('RV_BACKUP_ROUTE_PREFIX', 'backups'),
