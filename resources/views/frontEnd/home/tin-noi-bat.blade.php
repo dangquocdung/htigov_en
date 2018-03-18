@@ -3,7 +3,7 @@
     <div class="portlet-header">
         <img src="/images/background/lotus.ico">
         <a href="javascript:void (0);">
-            <h4 class="portlet-header-title no-pd-top">Tin Nổi bật: </h4>
+            <h4 class="portlet-header-title no-pd-top">{!! trans('frontLang.hotNews') !!} </h4>
 
         </a>
     </div>
@@ -33,12 +33,12 @@
         <div class="btn-pref-tnb btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab">
-                    <i class="fa fa-bars"></i>  <span class="hidden-xs">Nổi bật </span>
+                    <i class="fa fa-bars"></i>  <span class="hidden-xs">{!! trans('frontLang.hotNews') !!} </span>
                 </button>
             </div>
             <div class="btn-group" role="group">
                 <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab">
-                    <i class="fa fa-users"></i>&nbsp; <span class="hidden-xs">Đọc nhiều </span>
+                    <i class="fa fa-users"></i>&nbsp; <span class="hidden-xs">{!! trans('frontLang.mostViewed') !!} </span>
                 </button>
             </div>
         </div>

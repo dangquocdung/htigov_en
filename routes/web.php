@@ -46,10 +46,9 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
     })->name('NotFound');
 
     //Backup
-
-    Route::get('sao-luu', function (){
+    Route::get('/backup', function (){
         return view('backEnd.backups');
-    })->name('sao-luu');
+    })->name('backup');
 
     // Admin Home
     Route::get('/', 'HomeController@index')->name('adminHome');
@@ -95,6 +94,12 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
     Route::post('/webmaster/{webmasterId}/fields/{field_id}/update', 'WebmasterSectionsController@fieldsUpdate')->name('webmasterFieldsUpdate');
     Route::get('/webmaster/{webmasterId}/fields/destroy/{field_id}', 'WebmasterSectionsController@fieldsDestroy')->name('webmasterFieldsDestroy');
     Route::post('/webmaster/{webmasterId}/fields/updateAll', 'WebmasterSectionsController@fieldsUpdateAll')->name('webmasterFieldsUpdateAll');
+
+
+    //Backup
+    Route::get('/webmaster/backup', function (){
+        return view('backEnd.backups');
+    })->name('backups');
 
     // Settings
     Route::get('/settings', 'SettingsController@edit')->name('settings');

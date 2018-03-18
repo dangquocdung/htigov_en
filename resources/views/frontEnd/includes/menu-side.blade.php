@@ -49,7 +49,7 @@
 <div class="block4">
 
     <div class="block-header" style="margin-bottom: 0">
-        <h4><img src="/images/background/lotus.ico" alt="" width="26px"> Liên kết</h4>
+        <h4><img src="/images/background/lotus.ico" alt="" width="26px"> {!! trans('frontLang.partners') !!}</h4>
     </div>
 
     @foreach ($SideBanners->where('status',1)->where('type_id',3) as $SideBanner)
@@ -66,7 +66,7 @@
 
     <div class="block-header" style="margin-bottom: 0">
 
-        <h4><img src="/images/background/lotus.ico" alt="" width="26px"> Sự kiện</h4>
+        <h4><img src="/images/background/lotus.ico" alt="" width="26px"> {!! trans('frontLang.events') !!}</h4>
 
     </div>
 
@@ -84,7 +84,7 @@
 
     <div class="block-header" style="margin-bottom: 0">
 
-        <h4><img src="/images/background/lotus.ico" alt="" width="26px"> Doanh nghiệp</h4>
+        <h4><img src="/images/background/lotus.ico" alt="" width="26px"> {!! trans('frontLang.sponsers') !!}</h4>
 
     </div>
 

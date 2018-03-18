@@ -14,7 +14,7 @@
         <div id="block-header-bd" class="block-header" style="margin-bottom: 0" data-toggle="collapse" href="#ban-do-dia-gioi">
 
             <h4>
-                <img src="/images/background/lotus.ico" alt="" width="26px"> Bản đồ địa giới
+                <img src="/images/background/lotus.ico" alt="" width="26px"> {!! trans('frontLang.map') !!}
 
                 <i id="menu-bd" class="fa fa-chevron-down" style="position: absolute; top: 5px; right:12px;left: auto"></i>
             </h4>
