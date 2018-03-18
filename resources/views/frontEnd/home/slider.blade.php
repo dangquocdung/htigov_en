@@ -1,4 +1,4 @@
-@if(count($SliderBanners)>0)
+@if(!empty($SliderBanners))
     <section id="featured">
         <!-- start slider -->
         <!-- Slider -->
