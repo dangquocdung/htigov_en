@@ -1,4 +1,4 @@
-@if(count($BlockBanners)>0)
+@if(!empty($BlockBanners))
     @foreach($BlockBanners->slice(0,1) as $BlockBanner)
         <?php
         try {
