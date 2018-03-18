@@ -493,4 +493,5 @@ return array (
   'dataManagements1' => 'Chỉ riêng dữ liệu riêng của mình (đối với tài khoản cá nhân)',
   'dataManagements2' => 'Tất cả người dùng dữ liệu (đối với Tài khoản Quản trị Chung)',
   'activitiesHistory' => 'Lịch sử Hoạt động',
+  'usersBackup' => 'Sao lưu & Khôi phục',
 );

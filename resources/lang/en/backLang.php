@@ -489,4 +489,5 @@ return array (
   'dataManager2' => 'All Users Data (for General Administration Accounts)',
   'dataManager' => 'Data Managements',
   'activityHistory' => 'Activities History',
+  'usersBackup' => 'Backup & Restore',
 );
