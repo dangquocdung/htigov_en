@@ -1,3 +1,4 @@
+@if (!empty($OrganMenuLinks))
 <div class="block3">
     <div class="box box-default">
         <div class="box-header with-border">
@@ -41,3 +42,4 @@
         </div>
     </div>
 </div>
+@endif
