@@ -76,8 +76,14 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
                                         </a>
                                     </li>
                                     <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
-                                            <a href="{{ route('backups') }}">
-                                                <span class="nav-text">{{ trans('backLang.usersBackup') }}</span>
+                                        <a href="{{ route('backups') }}">
+                                            <span class="nav-text">{{ trans('backLang.usersBackup') }}</span>
+                                        </a>
+                                    </li>
+
+                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
+                                            <a href="{{ route('curl-bht') }}">
+                                                <span class="nav-text">{{ trans('backLang.curlBHT') }}</span>
                                             </a>
                                         </li>
                                 </ul>
