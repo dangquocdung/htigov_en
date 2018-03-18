@@ -429,7 +429,7 @@ return array (
   'forgotPassword' => 'Quên mật khẩu?',
   'signIn' => 'Đăng nhập',
   'keepMeSignedIn' => 'Giữ cho tôi đăng nhập',
-  'signedInToControl' => 'Đăng nhập vào CONTROL',
+  'signedInToControl' => 'Đăng nhập vào vùng quản trị',
   'control' => 'Vùng quản trị',
   'resetPassword' => 'Đặt lại mật khẩu',
   'confirmPassword' => 'Xác nhận mật khẩu',

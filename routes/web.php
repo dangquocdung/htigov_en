@@ -101,6 +101,10 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
         return view('backEnd.backups');
     })->name('backups');
 
+    //Curl Data
+    Route::get('/curl-bao-ha-tinh', 'CurlController@getBaoHaTinh')->name('curl-bht');
+
+
     // Settings
     Route::get('/settings', 'SettingsController@edit')->name('settings');
     Route::post('/settings', 'SettingsController@updateSiteInfo')->name('settingsUpdateSiteInfo');
