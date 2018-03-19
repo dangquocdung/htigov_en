@@ -945,8 +945,9 @@ marquee a {
 
 .block3 #tin-noi-bat ul li .hot-news-block,
 .block3 #tin-moi-nhat ul li .hot-news-block {
-  padding: 5px;
+  padding: 10px 5px 5px 5px;
   text-align: justify;
+  line-height: 1.5;
 }
 
 .block3 #tin-noi-bat ul li:hover a,
@@ -2400,6 +2401,7 @@ article {
 article .post-image .post-heading h4 {
   margin-bottom: 20px;
   text-align: center;
+  line-height: 1.4;
 }
 
 article .post-image .post-heading h4 a {
@@ -2413,6 +2415,7 @@ article .post-image .post-heading h4 a_:hover {
 
 article .post-image img {
   width: 100% !important;
+  max-height: 220px;
 }
 
 article p {
