@@ -47,7 +47,11 @@ class CurlController extends Controller
 
         $url = 'http://dhtn.hatinh.gov.vn/dhtn/portal/folder/cong-van/1.html';
 
-        $this->dhtn($url);
+        // $this->dhtn($url);
+
+        $url = 'http://congbao.hatinh.gov.vn/vbpq_hatinh.nsf/VwAllDocNew';
+
+        $this->congbao($url);
 
         return redirect()->route('topics',10);
 
@@ -342,108 +346,99 @@ class CurlController extends Controller
 
     }
 
-    public function dhtn($url)
+    public function dhtn($url="")
     {
+        $client = new Client();
 
-//        VanBan::where('loaitin_id','38')->delete();
+        $crawler = $client->request('GET', $url);
 
-        // for ($i=1;$i<2;$i++) {
+        $crawler->filter('table>tbody>tr')->each(function ($node) {
 
-            // $url = "http://dhtn.hatinh.gov.vn/dhtn/portal/folder/cong-van/1.html";;
+            if ($node->filter('td')->count() > 0) {
 
-            $client = new Client();
+                if (strlen(trim($node->filter('td')->eq(0)->text())) > 0){
 
-            $crawler = $client->request('GET', $url);
+                        $next_nor_no = Topic::where('webmaster_id', '=', 10)->max('row_no');
+                        if ($next_nor_no < 1) {
+                            $next_nor_no = 1;
+                        } else {
+                            $next_nor_no++;
+                        }
 
-            $crawler->filter('table>tbody>tr')->each(function ($node) {
+                        $name = trim($node->filter('td')->eq(0)->text()); // String. You have extracted description part from your feed
 
-                if ($node->filter('td')->count() > 0) {
+                        $slug = str_slug($name);
 
-                    if (strlen(trim($node->filter('td')->eq(0)->text())) > 0){
+                        $url = $node->filter('link')->text(); // String. You have extracted description part from your feed
 
-                            $next_nor_no = Topic::where('webmaster_id', '=', 10)->max('row_no');
-                            if ($next_nor_no < 1) {
-                                $next_nor_no = 1;
-                            } else {
-                                $next_nor_no++;
-                            }
+                        $desc = trim($node->filter('td')->eq(1)->text());
 
-                            $name = trim($node->filter('td')->eq(0)->text()); // String. You have extracted description part from your feed
+                        $attach_file = trim($node->filter('td')->eq(2)->text());
 
-                            $slug = str_slug($name);
+                        // create new topic
+                        $Topic = new Topic;
 
-                            $url = $node->filter('link')->text(); // String. You have extracted description part from your feed
+                        // Save topic details
+                        $Topic->row_no = $next_nor_no;
+                        $Topic->title_vi = $name;
+                        $Topic->title_en = $name;
 
-                            $desc = trim($node->filter('td')->eq(1)->text());
+                        $Topic->details_vi = $desc;
+                        $Topic->details_en = $desc;
 
-                            $attach_file = trim($node->filter('td')->eq(2)->text());
+                        $Topic->date = Carbon::now()->toDateTimeString();
 
-                            // create new topic
-                            $Topic = new Topic;
+                        $start = strpos($desc,'src="') + 5;
+                        $end = strpos($desc,'" />');
+                        
+                        //Storefile
 
-                            // Save topic details
-                            $Topic->row_no = $next_nor_no;
-                            $Topic->title_vi = $name;
-                            $Topic->title_en = $name;
+                        // $contents = file_get_contents($attach_file);
+                        // $filename = substr($url, strrpos($url, '/') + 1);
+                        // Storage::put($filename, $contents);
 
-                            $Topic->details_vi = $desc;
-                            $Topic->details_en = $desc;
+                        // $path = public_path().'/uploads/topics/'.$filename;
 
-                            $Topic->date = Carbon::now()->toDateTimeString();
+                        // file_put_contents($path,$contents);
+                        
+                        // $Topic->attach_file = $filename;
+                        $Topic->attach_file = $attach_file;
+                        
+                        
+                        $Topic->webmaster_id = 10;
+                        
+                        $Topic->created_by = Auth::user()->id;
+                        $Topic->visits = 0;
+                        $Topic->status = 1;
 
-                            $start = strpos($desc,'src="') + 5;
-                            $end = strpos($desc,'" />');
-                            
-                            //Storefile
+                        // Meta title
+                        $Topic->seo_title_vi = $name;
+                        $Topic->seo_title_en = $name;
 
-                            // $contents = file_get_contents($attach_file);
-                            // $filename = substr($url, strrpos($url, '/') + 1);
-                            // Storage::put($filename, $contents);
+                        // URL Slugs
+                        $slugs = Helper::URLSlug($name, $name, "topic", 0);
+                        $Topic->seo_url_slug_vi = $slugs['slug_vi'];
+                        $Topic->seo_url_slug_en = $slugs['slug_en'];
 
-                            // $path = public_path().'/uploads/topics/'.$filename;
+                        // Meta Description
+                        $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                        $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                        
+                        $Topic->save();
 
-                            // file_put_contents($path,$contents);
-                            
-                            // $Topic->attach_file = $filename;
-                            $Topic->attach_file = $attach_file;
-                            
-                            
-                            $Topic->webmaster_id = 10;
-                            
-                            $Topic->created_by = Auth::user()->id;
-                            $Topic->visits = 0;
-                            $Topic->status = 1;
-
-                            // Meta title
-                            $Topic->seo_title_vi = $name;
-                            $Topic->seo_title_en = $name;
-
-                            // URL Slugs
-                            $slugs = Helper::URLSlug($name, $name, "topic", 0);
-                            $Topic->seo_url_slug_vi = $slugs['slug_vi'];
-                            $Topic->seo_url_slug_en = $slugs['slug_en'];
-
-                            // Meta Description
-                            $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
-                            $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
-                            
-                            $Topic->save();
-
-                            $TopicCategory = new TopicCategory;
-                            $TopicCategory->topic_id = $Topic->id;
-                            $TopicCategory->section_id = 24;
-                            $TopicCategory->save();
-                            
-                    }
+                        $TopicCategory = new TopicCategory;
+                        $TopicCategory->topic_id = $Topic->id;
+                        $TopicCategory->section_id = 24;
+                        $TopicCategory->save();
+                }
 
 //                    print $node->filter('a.icon_preview')->attr('href')."<br>";
 
-                }
-            });
-        // }
+            }
+        });
     }
 
-    public function congbao()
+    public function congbao($url="")
     {
 
 //        VanBan::where('loaitin_id','90')->delete();
@@ -484,6 +479,82 @@ class CurlController extends Controller
 
                     $tvbn->save();
                 }
+
+
+                $next_nor_no = Topic::where('webmaster_id', '=', 10)->max('row_no');
+                if ($next_nor_no < 1) {
+                    $next_nor_no = 1;
+                } else {
+                    $next_nor_no++;
+                }
+
+                $name = trim($node->filter('td')->eq(1)->text()); // String. You have extracted description part from your feed
+
+                $slug = str_slug($name);
+
+                $url = $node->filter('link')->text(); // String. You have extracted description part from your feed
+
+                $desc = trim($node->filter('td')->eq(1)->text());
+
+                $attach_file = trim($node->filter('td')->eq(2)->text());
+
+                // create new topic
+                $Topic = new Topic;
+
+                // Save topic details
+                $Topic->row_no = $next_nor_no;
+                $Topic->title_vi = $name;
+                $Topic->title_en = $name;
+
+                $Topic->details_vi = $desc;
+                $Topic->details_en = $desc;
+
+                $Topic->date = Carbon::now()->toDateTimeString();
+
+                $start = strpos($desc,'src="') + 5;
+                $end = strpos($desc,'" />');
+                
+                //Storefile
+
+                // $contents = file_get_contents($attach_file);
+                // $filename = substr($url, strrpos($url, '/') + 1);
+                // Storage::put($filename, $contents);
+
+                // $path = public_path().'/uploads/topics/'.$filename;
+
+                // file_put_contents($path,$contents);
+                
+                // $Topic->attach_file = $filename;
+                $Topic->attach_file = $attach_file;
+                
+                
+                $Topic->webmaster_id = 10;
+                
+                $Topic->created_by = Auth::user()->id;
+                $Topic->visits = 0;
+                $Topic->status = 1;
+
+                // Meta title
+                $Topic->seo_title_vi = $name;
+                $Topic->seo_title_en = $name;
+
+                // URL Slugs
+                $slugs = Helper::URLSlug($name, $name, "topic", 0);
+                $Topic->seo_url_slug_vi = $slugs['slug_vi'];
+                $Topic->seo_url_slug_en = $slugs['slug_en'];
+
+                // Meta Description
+                $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                
+                $Topic->save();
+
+                $TopicCategory = new TopicCategory;
+                $TopicCategory->topic_id = $Topic->id;
+                $TopicCategory->section_id = 25;
+                $TopicCategory->save();
+
+
 
             }
 
