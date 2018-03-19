@@ -140,6 +140,7 @@
                                                                     </a>
                                                                 </td>
                                                                 <td>
+                                                                    {{ \Carbon\Carbon::parse($topicId->topic->date)->format('d-m-Y') }}
                                                                 </td>
                                                                 <td>
                                                                 </td>
