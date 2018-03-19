@@ -58,8 +58,6 @@
                     </div>
             
                     <div class="col-md-12">
-                       
-
                         <article>
                             @if($WebmasterSection->type==2 && $Topic->video_file!="")
                                 {{--video--}}
@@ -178,10 +176,10 @@
                                             {{ $title }}
                                         </h3>
                                     </div>
-                                    @if($Topic->photo_file !="")
+                                    {{--  @if($Topic->photo_file !="")
                                         <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"
                                             alt="{{ $title }}" title="{{ $title }}"/>
-                                    @endif
+                                    @endif  --}}
                                 </div>
                             @endif
 

@@ -124,7 +124,7 @@
                                                                     }
                                                                 } else {
                                                                     if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                                                        $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $topicId->topic->webmasterSection->name, "id" => $Topic->id]);
+                                                                        $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $topicId->topic->webmasterSection->name, "id" => $topicId->id]);
                                                                     } else {
                                                                         $topic_link_url = route('FrontendTopic', ["section" => $topicId->topic->webmasterSection->name, "id" => $topicId->topic->id]);
                                                                     }
@@ -149,7 +149,7 @@
                                                 </table>
                                             @else
                                                 <div class="col-md-12" style="float:left">
-                                                    @foreach($MnuCategory->selectedCategories as $key => $topicId)
+                                                    @foreach($MnuCategory->selectedCategories->sortbyDesc('row_no')->take(5) as $key => $topicId)
                                                         <?php
                                                             if ($topicId->topic->$title_var != "") {
                                                                 $title = $topicId->topic->$title_var;
@@ -180,14 +180,14 @@
                                                                 }
                                                             } else {
                                                                 if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                                                    $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $topicId->topic->webmasterSection->name, "id" => $Topic->id]);
+                                                                    $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $topicId->topic->webmasterSection->name, "id" => $topicId->id]);
                                                                 } else {
                                                                     $topic_link_url = route('FrontendTopic', ["section" => $topicId->topic->webmasterSection->name, "id" => $topicId->topic->id]);
                                                                 }
                                                             }
                                                         ?>
                                                         @if ($key == 0)
-                                                            <div class="col-md-7 col-sm-7 col-xs-12" style="margin-bottom: 15px">
+                                                            <div class="col-md-7 col-sm-7 col-xs-12">
                                                                 <div class="row">
                                                                     <div class="news-main" style="margin-left: -15px">
 

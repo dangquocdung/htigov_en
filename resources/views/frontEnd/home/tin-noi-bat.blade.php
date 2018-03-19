@@ -10,28 +10,45 @@
 
     @if (!empty($HotTopics))
 
-        <div id="tinNoiBatChinh" class="col-md-7 col-xs-12">
+        <div id="tinNoiBatChinh" class="col-md-6 col-xs-12">
 
             @php
-                $HotNews = $HotTopics->first();
+                $HotTopic = $HotTopics->first();
                 
-                @endphp
+            @endphp
+
+            <?php
+                
+                if ($HotTopic->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                    if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                        $topic_link_url = url(trans('backLang.code') . "/" . $HotTopic->$slug_var);
+                    } else {
+                        $topic_link_url = url($Topic->$slug_var);
+                    }
+                } else {
+                    if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                        $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $HotTopic->webmasterSection->name, "id" => $Topic->id]);
+                    } else {
+                        $topic_link_url = route('FrontendTopic', ["section" => $HotTopic->webmasterSection->name, "id" => $HotTopic->id]);
+                    }
+                }
+            ?>
 
             <div class="hot-news" style="margin-bottom: 0px;">
 
-                <a href="" class="hot-news-thumb-nail">
-                    <img src="/uploads/topics/{{ $HotNews->photo_file }}" alt="{{ $HotNews->$link_title_var }}" class="w3-animate-left" width="100%">
+                <a href="{{ $topic_link_url }}" class="hot-news-thumb-nail">
+                    <img src="/uploads/topics/{{ $HotTopic->photo_file }}" alt="{{ $HotTopic->$link_title_var }}" class="w3-animate-left" width="100%">
                 </a>
 
                 <div class="hot-news-title" style="display: block; text-align: center">
                     <h3>
-                        <a href="">{{ $HotNews->$link_title_var }}</a>
+                        <a href="{{ $topic_link_url }}">{{ $HotTopic->$link_title_var }}</a>
                     </h3>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-5 col-xs-12">
+        <div class="col-md-6 col-xs-12">
             <div class="btn-pref-tnb btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
                 <div class="btn-group" role="group">
                     <button type="button" id="stars" class="btn btn-primary" href="#tab1" data-toggle="tab">
@@ -98,9 +115,11 @@
                                                 {{ $Topic->$link_title_var}}
                                             </a>
 
-                                            <img src="http://i.baohatinh.vn/news/1804/77d1141441t2084l2.jpg" alt="Dựa vào dân, vận động quần chúng nhân dân bảo vệ an ninh Tổ quốc" title="Dựa vào dân, vận động quần chúng nhân dân bảo vệ an ninh Tổ quốc" style="display: none;">
-
-                                            <div class="item-desc" style="display: none;">Sáng 22/1, Công an tỉnh Hà Tĩnh tổ chức hội nghị triển khai nhiệm vụ 2018. Bí thư Tỉnh ủy Lê Đình Sơn, Phó Chủ tịch UBND tỉnh Đặng Quốc Vinh, Phó Chủ tịch HĐND tỉnh Võ Hồng Hải cùng tham dự.</div>
+                                            <img src="/uploads/topics/{{ $Topic->photo_file }}" alt="{{ $Topic->$link_title_var}}" title="{{ $Topic->$link_title_var}}" style="display: none;">
+        
+                                            <div class="item-desc" style="display: none;">
+                                                    {{ str_limit(strip_tags($Topic->$details_var), $limit = 350, $end = '...') }}
+                                            </div>
 
                                         </div>
                                     </li>
@@ -165,10 +184,11 @@
                                                     {{ $Topic->$link_title_var}}
                                                 </a>
         
-                                                <img src="http://i.baohatinh.vn/news/1804/77d1141441t2084l2.jpg" alt="Dựa vào dân, vận động quần chúng nhân dân bảo vệ an ninh Tổ quốc" title="Dựa vào dân, vận động quần chúng nhân dân bảo vệ an ninh Tổ quốc" style="display: none;">
+                                                <img src="/uploads/topics/{{ $Topic->photo_file }}" alt="{{ $Topic->$link_title_var}}" title="{{ $Topic->$link_title_var}}" style="display: none;">
         
-                                                <div class="item-desc" style="display: none;">Sáng 22/1, Công an tỉnh Hà Tĩnh tổ chức hội nghị triển khai nhiệm vụ 2018. Bí thư Tỉnh ủy Lê Đình Sơn, Phó Chủ tịch UBND tỉnh Đặng Quốc Vinh, Phó Chủ tịch HĐND tỉnh Võ Hồng Hải cùng tham dự.</div>
-        
+                                                <div class="item-desc" style="display: none;">
+                                                        {{ str_limit(strip_tags($Topic->$details_var), $limit = 350, $end = '...') }}
+                                                </div>
                                             </div>
                                         </li>
                                     @endforeach
@@ -188,3 +208,4 @@
     @endif
 
 </div>
+

@@ -50,7 +50,7 @@
                                         $slug_var = "seo_url_slug_" . trans('backLang.boxCode');
                                         $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
                                     ?>
-                                    @foreach($Topics as $Topic)
+                                    @foreach($Topics as $key=>$Topic)
                                         <?php
                                             if ($Topic->$title_var != "") {
                                                 $title = $Topic->$title_var;
@@ -87,6 +87,10 @@
                                                 }
                                             }
                                         ?>
+
+                                        @if ($key%2==0)
+                                            <div class="clearfix"></div>
+                                        @endif
 
                                         <div class="col-md-6">
                                             <article class="center">
@@ -213,15 +217,17 @@
                                                                 </a>
                                                             </h4>
                                                         </div>
-                                                        @if($Topic->photo_file !="")
+                                                        <a href="{{ $topic_link_url }}">
+                                                            @if($Topic->photo_file !="")
 
-                                                            <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}" alt="{{ $title }}"/>
-                                                            
-                                                            @else
-                                                            
-                                                            <img src="{{ URL::to('uploads/topics/no_image.jpg') }}" alt="{{ $title }}"/>
+                                                                <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}" alt="{{ $title }}"/>
+                                                                
+                                                                @else
+                                                                
+                                                                <img src="{{ URL::to('uploads/topics/no_image.jpg') }}" alt="{{ $title }}"/>
 
-                                                        @endif
+                                                            @endif
+                                                        </a>
                                                     </div>
                                                 @endif
 
@@ -391,7 +397,7 @@
                                                 @endif
                                                 {{--End of -- Additional Feilds--}}
 
-                                                <p>{{ str_limit(strip_tags($Topic->$details), $limit = 350, $end = '...') }}</p>
+                                                <p>{{ str_limit(strip_tags($Topic->$details), $limit = 200, $end = '...') }}</p>
                                                 <div class="bottom-article">
                                                     <ul class="meta-post">
                                                         @if($Topic->webmasterSection->date_status)
@@ -416,6 +422,8 @@
                                                 </div>
                                             </article>
                                         </div>
+
+
 
                                     @endforeach
 
