@@ -93,7 +93,7 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($MnuCategory->selectedCategories as $key => $topicId)
+                                                        @foreach($MnuCategory->selectedCategoriessortbyDesc('row_no')->take(3) as $key => $topicId)
                                                             <?php
                                                                 if ($topicId->topic->$title_var != "") {
                                                                     $title = $topicId->topic->$title_var;

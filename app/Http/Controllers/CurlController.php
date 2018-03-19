@@ -43,9 +43,13 @@ class CurlController extends Controller
 
         $url = 'http://vietnamnet.vn/rss/the-gioi.rss';
 
-        $this->TinQuocTe($url);
+        // $this->TinQuocTe($url);
 
-        return redirect()->route('topics',11);
+        $url = 'http://dhtn.hatinh.gov.vn/dhtn/portal/folder/cong-van/1.html';
+
+        $this->dhtn($url);
+
+        return redirect()->route('topics',10);
 
     }
 
@@ -137,7 +141,8 @@ class CurlController extends Controller
                 $TopicCategory->section_id = 28;
                 $TopicCategory->save();
                             
-            });        }
+            });        
+        }
 
     }
 
@@ -168,7 +173,6 @@ class CurlController extends Controller
 
                 $slug = str_slug($name);
 
-                
                 $desc = $node->filter('description')->text();
 
                 $details = substr($desc,strpos($desc,'<p>') + 3,strpos($desc,'</p>')-3);
@@ -267,7 +271,6 @@ class CurlController extends Controller
 
                 $slug = str_slug($name);
 
-                
                 $desc = $node->filter('description')->text();
 
                 $details = substr($desc,strpos($desc,'<p>') + 3,strpos($desc,'</p>')-3);
@@ -339,16 +342,14 @@ class CurlController extends Controller
 
     }
 
-    
-
-    public function getCDDH()
+    public function dhtn($url)
     {
 
 //        VanBan::where('loaitin_id','38')->delete();
 
-        for ($i=1;$i<10;$i++) {
+        // for ($i=1;$i<2;$i++) {
 
-            $url = "http://dhtn.hatinh.gov.vn/dhtn/portal/folder/cong-van/" . $i . ".html";;
+            // $url = "http://dhtn.hatinh.gov.vn/dhtn/portal/folder/cong-van/1.html";;
 
             $client = new Client();
 
@@ -360,43 +361,89 @@ class CurlController extends Controller
 
                     if (strlen(trim($node->filter('td')->eq(0)->text())) > 0){
 
-                        $exist = VanBan::where('kihieuvb',trim($node->filter('td')->eq(0)->text()))->where('slug',str_slug(trim($node->filter('td')->eq(1)->text())))->first();
+                            $next_nor_no = Topic::where('webmaster_id', '=', 10)->max('row_no');
+                            if ($next_nor_no < 1) {
+                                $next_nor_no = 1;
+                            } else {
+                                $next_nor_no++;
+                            }
 
-                        if (empty($exist)) {
+                            $name = trim($node->filter('td')->eq(0)->text()); // String. You have extracted description part from your feed
 
-                            $vb = new VanBan();
-                            $vb->user_id = Auth::user()->id;
-                            $vb->loaitin_id = '38';
-                            $vb->kihieuvb = trim($node->filter('td')->eq(0)->text());
-                            $vb->ngaybanhanh = Carbon::now();
-                            $vb->trichyeu = trim($node->filter('td')->eq(1)->text());
-                            $vb->slug = str_slug(trim($node->filter('td')->eq(1)->text()));
-                            $vb->daduyet = '1';
-                            $vb->save();
+                            $slug = str_slug($name);
 
-                            $vbid = $vb->id;
+                            $url = $node->filter('link')->text(); // String. You have extracted description part from your feed
 
-                            $tvbn = new TepVanBan;
+                            $desc = trim($node->filter('td')->eq(1)->text());
 
-                            $tvbn->vanban_id = $vbid;
+                            $attach_file = trim($node->filter('td')->eq(2)->text());
 
-                            $tvbn->path = 'http://dhtn.hatinh.gov.vn' . trim($node->filter('a.icon_preview')->attr('href'));
+                            // create new topic
+                            $Topic = new Topic;
 
-                            $tvbn->save();
-                        }
+                            // Save topic details
+                            $Topic->row_no = $next_nor_no;
+                            $Topic->title_vi = $name;
+                            $Topic->title_en = $name;
 
+                            $Topic->details_vi = $desc;
+                            $Topic->details_en = $desc;
+
+                            $Topic->date = Carbon::now()->toDateTimeString();
+
+                            $start = strpos($desc,'src="') + 5;
+                            $end = strpos($desc,'" />');
+                            
+                            //Storefile
+
+                            // $contents = file_get_contents($attach_file);
+                            // $filename = substr($url, strrpos($url, '/') + 1);
+                            // Storage::put($filename, $contents);
+
+                            // $path = public_path().'/uploads/topics/'.$filename;
+
+                            // file_put_contents($path,$contents);
+                            
+                            // $Topic->attach_file = $filename;
+                            $Topic->attach_file = $attach_file;
+                            
+                            
+                            $Topic->webmaster_id = 10;
+                            
+                            $Topic->created_by = Auth::user()->id;
+                            $Topic->visits = 0;
+                            $Topic->status = 1;
+
+                            // Meta title
+                            $Topic->seo_title_vi = $name;
+                            $Topic->seo_title_en = $name;
+
+                            // URL Slugs
+                            $slugs = Helper::URLSlug($name, $name, "topic", 0);
+                            $Topic->seo_url_slug_vi = $slugs['slug_vi'];
+                            $Topic->seo_url_slug_en = $slugs['slug_en'];
+
+                            // Meta Description
+                            $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                            $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                            
+                            $Topic->save();
+
+                            $TopicCategory = new TopicCategory;
+                            $TopicCategory->topic_id = $Topic->id;
+                            $TopicCategory->section_id = 24;
+                            $TopicCategory->save();
+                            
                     }
 
 //                    print $node->filter('a.icon_preview')->attr('href')."<br>";
 
                 }
             });
-        }
-
-        return redirect()->back();
+        // }
     }
 
-    public function getVBM()
+    public function congbao()
     {
 
 //        VanBan::where('loaitin_id','90')->delete();
