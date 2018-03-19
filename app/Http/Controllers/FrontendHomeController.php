@@ -96,6 +96,7 @@ class FrontendHomeController extends Controller
                 
          
 
+        view()->share('WebmasterSettings',$WebmasterSettings);
         view()->share('WebsiteSettings',$WebsiteSettings);
         view()->share('HeaderMenuLinks',$HeaderMenuLinks);
         view()->share('FooterMenuLinks',$FooterMenuLinks);
