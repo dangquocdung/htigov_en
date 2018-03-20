@@ -691,7 +691,7 @@ ul.cat li .active {
 body {
   background: #FFFFFF url(/images/body_bg.gif) repeat left top !important;
   color: #000000;
-  font: 'SF Display',sans-serif;
+  font-family: 'SF Display',sans-serif !important;
 }
 
 body .nen-trang {
