@@ -160,7 +160,7 @@
                                                                         {{ $tin->$details_var }}
                                                                     </a>
                                                                 </td>
-                                                                <td>
+                                                                <td style="text-align: center">
                                                                     {{ \Carbon\Carbon::parse($tin->date)->format('d-m-Y') }}
                                                                 </td>
                                                                 <td>
