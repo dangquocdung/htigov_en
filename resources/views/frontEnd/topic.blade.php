@@ -439,11 +439,27 @@
                                                 alt="{{ $title }}"/>
                                         </div>
                                     @else
-                                        <a href="{{ URL::to('uploads/topics/'.$Topic->attach_file) }}">
-                                            <strong>
-                                                {!! Helper::GetIcon(URL::to('uploads/topics/'),$Topic->attach_file) !!}
-                                                &nbsp;{{ trans('frontLang.downloadAttach') }}</strong>
-                                        </a>
+
+                                        @if (str_contains($Topic->attach_file,'http') )
+                                       
+                                            <a href="{{ URL::to($Topic->attach_file) }}">
+                                                <strong>
+                                                    
+                                                    {!! Helper::GetIcon(URL::to('uploads/topics/'),$Topic->attach_file) !!}
+                                                    &nbsp;{{ trans('frontLang.downloadAttach') }}
+                                                </strong>
+                                            </a>
+
+                                            @else
+
+                                       
+                                            <a href="{{ URL::to('uploads/topics/'.$Topic->attach_file) }}">
+                                                <strong>
+                                                    {!! Helper::GetIcon(URL::to('uploads/topics/'),$Topic->attach_file) !!}
+                                                    &nbsp;{{ trans('frontLang.downloadAttach') }}</strong>
+                                            </a>
+                                            @endif
+                                        
                                     @endif
                                 </div>
                             @endif
@@ -460,11 +476,14 @@
                                         }
                                         ?>
                                         <div style="margin-bottom: 5px;">
+
                                             <a href="{{ URL::to('uploads/topics/'.$attachFile->file) }}" target="_blank">
                                                 <strong>
                                                     {!! Helper::GetIcon(URL::to('uploads/topics/'),$attachFile->file) !!}
                                                     &nbsp;{{ $file_title }}</strong>
                                             </a>
+
+
                                         </div>
                                     @endforeach
                                 </div>

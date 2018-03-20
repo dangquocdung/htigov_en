@@ -87,13 +87,32 @@
                                                     <thead>
                                                     <tr>
                                                         <th>TT</th>
+                                                        @if ($MnuCategory->id <> '23')
+                                                            <th>Kí hiệu </th>
+                                                        @endif
+                                                        
                                                         <th>Nội dung </th>
                                                         <th class="col-md-2" style="text-align: center">Ngày đăng </th>
                                                         <th><i class="fa fa-paperclip" aria-hidden="true"></i></th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($MnuCategory->selectedCategories->sortbyDesc('id')->take(3) as $topicId)
+                                                        @php
+                                                            if ($MnuCategory->id <> '23'){
+
+                                                                $topicIds = $MnuCategory->selectedCategories->sortbyDesc('id')->take(3);
+
+                                                            }else{
+
+                                                                $topicIds = $MnuCategory->selectedCategories->sortby('id')->take(3);
+
+                                                            }
+
+                                                        @endphp
+
+                                                            
+                                                        @foreach($topicIds as $topicId)
+                                                            
                                                             <?php
 
                                                                 $tin = $topicId->topic;
@@ -127,9 +146,18 @@
                                                                 <td>
                                                                     {{ $loop->iteration }}
                                                                 </td>
+                                                                @if ($MnuCategory->id <> '23')
                                                                 <td>
                                                                     <a href="{{ $topic_link_url }}">
                                                                         {{ $tin->$link_title_var }}
+                                                                    </a>
+                                                                </td>
+                                                                @endif
+                                                                <td>
+                                                                    <a href="{{ $topic_link_url }}">
+                                                                        {{--  {{ str_limit(strip_tags($tin->$details_var), $limit = 200, $end = '...') }}  --}}
+
+                                                                        {{ $tin->$details_var }}
                                                                     </a>
                                                                 </td>
                                                                 <td>
