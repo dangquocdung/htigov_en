@@ -126,10 +126,6 @@
                                 @endforeach
                                 
                             </ul>
-
-                            <div class="xem-tiep" style="float:right; padding-bottom: 8px;">
-                                <a href="/vi/tin-noi-bat" style="text-decoration: none;"><em>Xem tiếp... <i class="fa fa-angle-double-right" aria-hidden="true"></i></em></a>
-                            </div>
                         </div>
                     </div>
 
