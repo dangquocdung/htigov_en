@@ -229,7 +229,6 @@ return array (
   'bannerSection' => 'Section',
   'bannerPhoto' => 'Photo',
   'bannerDetails' => 'Details',
-  'bannerLinkUrl' => 'Banner URL',
   'bannerVideoType' => 'Video type',
   'bannerVideoType1' => 'Direct video',
   'bannerVideoType2' => 'Youtube',

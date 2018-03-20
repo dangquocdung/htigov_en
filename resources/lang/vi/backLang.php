@@ -232,7 +232,6 @@ return array (
   'bannerSection' => 'Mục',
   'bannerPhoto' => 'Ảnh',
   'bannerDetails' => 'Chi tiết',
-  'BannerLinkUrl' => 'Banner URL',
   'bannerVideoType' => 'Loại Video',
   'bannerVideoType1' => 'Video trực tiếp',
   'bannerVideoType2' => 'Youtube',
@@ -495,4 +494,5 @@ return array (
   'activitiesHistory' => 'Lịch sử Hoạt động',
   'usersBackup' => 'Sao lưu & Khôi phục',
   'curlBHT' => 'Tải dữ liệu',
+  'bannerLinkUrl' => 'Đường dẫn banner',
 );
