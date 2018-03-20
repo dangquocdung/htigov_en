@@ -28,11 +28,11 @@ class Section extends Model
     }
 
     //Relation to Topics
-    public function topics()
-    {
+    // public function topics()
+    // {
 
-        return $this->hasMany('App\Topic')->orderby('row_no', 'asc');
-    }
+    //     return $this->hasMany('App\Topic')->orderby('row_no', 'asc');
+    // }
 
     //Relation of TopicCategory
     public function selectedCategories()
