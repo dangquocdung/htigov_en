@@ -14,10 +14,10 @@ class Topic extends Model
     }
 
     //Relation to Sections
-    public function section()
-    {
-        return $this->belongsTo('App\Section', 'section_id');
-    }
+    // public function section()
+    // {
+    //     return $this->belongsTo('App\Section', 'section_id');
+    // }
 
     //Relation to TopicCategory
     public function categories()
