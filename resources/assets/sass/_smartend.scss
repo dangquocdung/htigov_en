@@ -168,34 +168,6 @@ article {
     transition: all 1s ease-in-out;
 }
 
-ul.meta-post {
-    float: left;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-ul.meta-post li {
-    float: left;
-    margin: 0 10px 0 0;
-    padding: 0 10px 0;
-    list-style: none;
-    border-right: 1px dotted #d1d1d1;
-}
-
-ul.meta-post li i {
-    float: left;
-    font-size: 12px;
-    margin: 5px 5px 0 0;
-}
-
-ul.meta-post li a {
-    color: #999;
-    float: left;
-    font-size: 12px;
-    font-weight: 600;
-}
-
 /* ===============================
 15. Aside, sidebar
 ================================ */
@@ -358,7 +330,7 @@ ul.meta-post li {
 ul.meta-post li i {
     float: left;
     font-size: 12px;
-    margin: 5px 5px 0 0;
+    margin: 2px 5px 0 0;
 }
 
 ul.meta-post li a {
