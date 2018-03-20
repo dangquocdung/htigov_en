@@ -63,7 +63,10 @@
                                                 @if($MnuCategory->icon !=="")
                                                     <i class="fa {{$MnuCategory->icon}}"></i> &nbsp;
                                                 @endif
-                                                {{$MnuCategory->$category_title_var}}&nbsp;({{$MnuCategory->id}})
+                                                <span class="hidden-xs">
+                                                    {{$MnuCategory->$category_title_var}}&nbsp;({{$MnuCategory->id}})
+                                                </span>
+                                                
                                             </a>
                                         </li>
                                     @endif
