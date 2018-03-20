@@ -55,11 +55,11 @@ class TopicsController extends Controller
 
             if (@Auth::user()->permissionsGroup->view_status) {
                 $Topics = Topic::where('created_by', '=', Auth::user()->id)->where('webmaster_id', '=',
-                    $webmasterId)->orderby('row_no',
-                    'asc')->paginate(env('BACKEND_PAGINATION'));
+                    $webmasterId)->orderby('id',
+                    'desc')->paginate(env('BACKEND_PAGINATION'));
             } else {
-                $Topics = Topic::where('webmaster_id', '=', $webmasterId)->orderby('row_no',
-                    'asc')->paginate(env('BACKEND_PAGINATION'));
+                $Topics = Topic::where('webmaster_id', '=', $webmasterId)->orderby('id',
+                    'desc')->paginate(env('BACKEND_PAGINATION'));
             }
             return view("backEnd.topics", compact("Topics", "GeneralWebmasterSections", "WebmasterSection"));
         } else {

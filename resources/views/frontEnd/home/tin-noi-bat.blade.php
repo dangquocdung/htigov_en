@@ -8,7 +8,7 @@
         </a>
     </div>
 
-    @if (!empty($HotTopics))
+    @if (count($HotTopics) > 0)
 
         <div id="tinNoiBatChinh" class="col-md-6 col-xs-12">
 

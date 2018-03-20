@@ -490,4 +490,8 @@ return array (
   'dataManager' => 'Data Managements',
   'activityHistory' => 'Activities History',
   'usersBackup' => 'Backup & Restore',
+<<<<<<< HEAD
+=======
+  'curlBHT' => 'Curl Data',
+>>>>>>> 130b1f8e97813688614a5120e1046b3f5758606b
 );
