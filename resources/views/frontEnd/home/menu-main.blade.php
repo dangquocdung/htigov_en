@@ -21,7 +21,7 @@
             <div class="box box-default">
                 <div class="box-header with-border">
                     <img src="/images/background/lotus.ico" width="30px" style="padding: 3px">
-                    <h4 class="box-title" title="">{{ $MainMenuLink->$link_title_var }}&nbsp({{ $MainMenuLink->id }})</h4>
+                    <h4 class="box-title" title="">{{ $MainMenuLink->$link_title_var }}</h4>
 
                     <div class="box-tools pull-right">
                         <a class="btn btn-box-tool" href="{{ $mmnnuu_link }}"><i class="fa fa-folder-open"></i></a>
@@ -64,7 +64,7 @@
                                                     <i class="fa {{$MnuCategory->icon}}"></i> &nbsp;
                                                 @endif
                                                 <span class="hidden-xs">
-                                                    {{$MnuCategory->$category_title_var}}&nbsp;({{$MnuCategory->id}})
+                                                    {{$MnuCategory->$category_title_var}}
                                                 </span>
                                                 
                                             </a>
