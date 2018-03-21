@@ -25,7 +25,9 @@
 
 {{--  <link href="{{ URL::asset('frontEnd/css/style.css') }}" rel="stylesheet"/>  --}}
 
-<link href="{{ URL::asset('frontEnd/css/app.css') }}" rel="stylesheet"/>
+{{--  <link href="{{ URL::asset('frontEnd/css/app.css') }}" rel="stylesheet"/>  --}}
+
+<link rel="stylesheet" href="{{ mix('frontEnd/css/app.css') }}">
 
 {{--@if( trans('backLang.direction')=="rtl")--}}
 {{--<link href="{{ URL::asset('frontEnd/css/rtl.css') }}" rel="stylesheet"/>--}}
