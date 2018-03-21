@@ -452,6 +452,126 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
                         @endif
                     @endif
 
+                    @if(Helper::GeneralWebmasterSettings("settings_status"))
+                        @if(@Auth::user()->permissionsGroup->settings_status)
+                            <li class="nav-header hidden-folded">
+                                <small class="text-muted">{{ trans('backLang.settings') }}</small>
+                            </li>
+
+                            <?php
+                            $currentFolder = "settings"; // Put folder name here
+                            $PathCurrentFolder = substr($urlAfterRoot, 0, strlen($currentFolder));
+
+                            $currentFolder2 = "menus"; // Put folder name here
+                            $PathCurrentFolder2 = substr($urlAfterRoot, 0, strlen($currentFolder2));
+
+                            $currentFolder3 = "users"; // Put folder name here
+                            $PathCurrentFolder3 = substr($urlAfterRoot, 0, strlen($currentFolder2));
+                            ?>
+                            <li {{ ($PathCurrentFolder==$currentFolder || $PathCurrentFolder2==$currentFolder2 || $PathCurrentFolder3==$currentFolder3 ) ? 'class=active' : '' }}>
+                                <a>
+                                    <span class="nav-caret">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+                                    <span class="nav-icon">
+                                        <i class="material-icons">&#xe8b8;</i>
+                                    </span>
+                                    <span class="nav-text">{{ trans('backLang.generalSiteSettings') }}</span>
+                                </a>
+                                <ul class="nav-sub">
+                                    <?php
+                                    $currentFolder = "settings"; // Put folder name here
+                                    $PathCurrentFolder = substr($urlAfterRoot, 0, strlen($currentFolder));
+                                    ?>
+                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
+                                        <a href="{{ route('settings') }}"
+                                           onclick="location.href='{{ route('settings') }}'">
+                                            <span class="nav-text">{{ trans('backLang.generalSettings') }}</span>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    $currentFolder = "menus"; // Put folder name here
+                                    $PathCurrentFolder = substr($urlAfterRoot, 0, strlen($currentFolder));
+                                    ?>
+                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
+                                        <a href="{{ route('menus') }}">
+                                            <span class="nav-text">{{ trans('backLang.siteMenus') }}</span>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    $currentFolder = "users"; // Put folder name here
+                                    $PathCurrentFolder = substr($urlAfterRoot, 0, strlen($currentFolder));
+                                    ?>
+                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
+                                        <a href="{{ route('users') }}">
+                                            <span class="nav-text">{{ trans('backLang.usersPermissions') }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                    @endif
+
+                    @if(@Auth::user()->permissionsGroup->webmaster_status)
+                        <?php
+                        $currentFolder = "webmaster"; // Put folder name here
+                        $PathCurrentFolder = substr($urlAfterRoot, 0, strlen($currentFolder));
+                        ?>
+                        <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
+                            <a>
+                                <span class="nav-caret">
+                                    <i class="fa fa-caret-down"></i>
+                                </span>
+                                <span class="nav-icon">
+                                    <i class="material-icons">&#xe8be;</i>
+                                </span>
+                                <span class="nav-text">{{ trans('backLang.webmasterTools') }}</span>
+                            </a>
+                            <ul class="nav-sub">
+                                <?php
+                                $PathCurrentSubFolder = substr($urlAfterRoot, 0, (strlen($currentFolder) + 1));
+                                ?>
+                                <li {{ ($PathCurrentFolder==$PathCurrentSubFolder) ? 'class=active' : '' }}>
+                                    <a href="{{ route('webmasterSettings') }}">
+                                        <span class="nav-text">{{ trans('backLang.generalSettings') }}</span>
+                                    </a>
+                                </li>
+                                <?php
+                                $currentSubFolder = "sections"; // Put folder name here
+                                $PathCurrentSubFolder = substr($urlAfterRoot, (strlen($currentFolder) + 1),
+                                    strlen($currentSubFolder));
+                                ?>
+                                <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
+                                    <a href="{{ route('WebmasterSections') }}">
+                                        <span class="nav-text">{{ trans('backLang.siteSectionsSettings') }}</span>
+                                    </a>
+                                </li>
+                                <?php
+                                $currentSubFolder = "banners"; // Put folder name here
+                                $PathCurrentSubFolder = substr($urlAfterRoot, (strlen($currentFolder) + 1),
+                                    strlen($currentSubFolder));
+                                ?>
+                                <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
+                                    <a href="{{ route('WebmasterBanners') }}">
+                                        <span class="nav-text">{{ trans('backLang.adsBannersSettings') }}</span>
+                                    </a>
+                                </li>
+
+                                <?php
+                                $currentSubFolder = "translations"; // Put folder name here
+                                $PathCurrentSubFolder = substr($urlAfterRoot, (strlen($currentFolder) + 1),
+                                    strlen($currentSubFolder));
+                                ?>
+                                <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
+                                    <a href="{{ url(env('BACKEND_PATH').'/webmaster/translations') }}">
+                                        <span class="nav-text">{{ trans('backLang.translations') }}</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    @endif
                 </ul>
             </nav>
         </div>
@@ -465,8 +585,8 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
                         </li>
                         <li class="no-bg"><a href="{{ url('/logout') }}"
                                              onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            <span class="nav-icon"><i class="material-icons">&#xe8ac;</i></span>
-                            <span class="nav-text">{{ trans('backLang.logout') }}</span></a></li>
+                                <span class="nav-icon"><i class="material-icons">&#xe8ac;</i></span>
+                                <span class="nav-text">{{ trans('backLang.logout') }}</span></a></li>
                     </ul>
                 </nav>
             </div>
