@@ -36,15 +36,12 @@ if (Helper::GeneralSiteSettings("style_type")) {
     
     <div class="container nen-trang">
 
-        {{--  @if (!empty($Topic))
+        @if (!empty($WebmasterSection) && $WebmasterSection->id==20)
         
-            @if ($Topic->webmasterSection->type==2)
-
                 @include('frontEnd.includes.doi-thoai')
         
-            @endif
-        @endif  --}}
-    
+        @endif
+       
         <div class="row row-offcanvas row-offcanvas-right">
 
             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-page" style="min-height: 1550px;">
