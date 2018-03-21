@@ -36,14 +36,14 @@ if (Helper::GeneralSiteSettings("style_type")) {
     
     <div class="container nen-trang">
 
-        @if (!empty($Topic))
+        {{--  @if (!empty($Topic))
         
             @if ($Topic->webmasterSection->type==2)
 
                 @include('frontEnd.includes.doi-thoai')
         
             @endif
-        @endif
+        @endif  --}}
     
         <div class="row row-offcanvas row-offcanvas-right">
 

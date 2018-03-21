@@ -107,7 +107,7 @@
                                                             </a>
                                                         </h4>
                                                     </div>
-                                                    <div class="video-container">
+                                                    <div class="video-container responsive-video">
                                                         @if($Topic->video_type ==1)
                                                             <?php
                                                             $Youtube_id = Helper::Get_youtube_video_id($Topic->video_file);

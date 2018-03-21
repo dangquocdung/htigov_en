@@ -63,14 +63,14 @@
                                 {{--video--}}
                                 <div class="post-video">
                                     <div class="post-heading">
-                                        <h1>
+                                        <h3>
                                             @if($Topic->icon !="")
                                                 <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
                                             @endif
                                             {{ $title }}
-                                        </h1>
+                                        </h3>
                                     </div>
-                                    <div class="video-container center">
+                                    <div class="video-container responsive-video">
                                         @if($Topic->video_type ==1)
                                             <?php
                                             $Youtube_id = Helper::Get_youtube_video_id($Topic->video_file);
@@ -112,12 +112,12 @@
                                 {{--audio--}}
                                 <div class="post-video">
                                     <div class="post-heading">
-                                        <h1>
+                                        <h3>
                                             @if($Topic->icon !="")
                                                 <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
                                             @endif
                                             {{ $title }}
-                                        </h1>
+                                        </h3>
                                     </div>
                                     @if($Topic->photo_file !="")
                                         <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"
@@ -137,12 +137,12 @@
                                 {{--photo slider--}}
                                 <div class="post-slider">
                                     <div class="post-heading">
-                                        <h1>
+                                        <h3>
                                             @if($Topic->icon !="")
                                                 <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
                                             @endif
                                             {{ $title }}
-                                        </h1>
+                                        </h3>
                                     </div>
                                     <!-- start flexslider -->
                                     <div class="p-slider flexslider">
@@ -510,30 +510,23 @@
                                         </li>
                                     @endif
                                 </ul>
+
                                 <div class="pull-right">
-                                    {{ trans('frontLang.share') }} :
+                                    {{--  <span class="hidden-xs">{{ trans('frontLang.share') }} :</span>  --}}
                                     <ul class="social-network share">
                                         <li>
                                             <a href="{{ Helper::SocialShare("facebook", $PageTitle)}}" class="facebook"
                                             data-placement="top"
-                                            title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                        <li>
-                                            <a href="{{ Helper::SocialShare("twitter", $PageTitle)}}" class="twitter"
-                                            data-placement="top" title="Twitter"
-                                            target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                            title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        
                                         <li>
                                             <a href="{{ Helper::SocialShare("google", $PageTitle)}}" class="google"
                                             data-placement="top"
                                             title="Google+"
-                                            target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                        <li>
-                                            <a href="{{ Helper::SocialShare("linkedin", $PageTitle)}}" class="linkedin"
-                                            data-placement="top" title="linkedin"
-                                            target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                                        <li>
-                                            <a href="{{ Helper::SocialShare("tumblr", $PageTitle)}}" class="pintrest"
-                                            data-placement="top" title="Pinterest"
-                                            target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                                            target="_blank"><i class="fa fa-google-plus"></i></a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>

@@ -10,6 +10,7 @@
 <script src="{{ URL::asset('frontEnd/js/portfolio/setting.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/jquery.flexslider.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/animate.js') }}"></script>
+<script src="{{ URL::asset('frontEnd/js/adminlte.min.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/custom.js') }}"></script>
 
 <script type="text/javascript">

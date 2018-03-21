@@ -39,14 +39,8 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
     @include('frontEnd.home.menu-main')
 
     <div class="clearfix"></div>
-
-    @include('frontEnd.home.tin-anh')
-    <div class="clearfix"></div>
-
+    
     @include('frontEnd.home.menu-organ')
-    <div class="clearfix"></div>
-
-    @include('frontEnd.home.tin-video')
     
 @stop
 
