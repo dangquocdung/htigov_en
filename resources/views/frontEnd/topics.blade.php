@@ -31,6 +31,7 @@
                         </ul>
 
                     </div>
+                    <div class="clearfix"></div>
 
                      <div class="loai-tin">
                         
