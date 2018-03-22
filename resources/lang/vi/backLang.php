@@ -28,6 +28,11 @@ return array (
   'topicEnvironmental' => 'Thông Tin Quan Trắc Môi Trường',
   'topicConversation' => 'Đối thoại trực tuyến',
   'topicGYVB' => 'Góp ý văn bản QPPL',
+  'request' => 'Phản ảnh, kiến nghị',
+  'q&a' => 'Trao đổi, Hỏi đáp',
+  'co-op' => 'Công bố thông tin doanh nghiệp',
+
+
   'home' => 'Trang chủ',
   'main' => 'Trang chính',
   'siteData' => 'Dữ liệu',
@@ -89,7 +94,7 @@ return array (
   'blockSelected' => 'Chặn',
   'deleteSelected' => 'Xoá',
   'of' => 'của',
-  'records' => 'hồ sơ',
+  'records' => 'tin, bài',
   'confirmation' => 'Xác nhận',
   'yes' => 'Có',
   'no' => 'Không',
