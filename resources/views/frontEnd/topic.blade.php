@@ -618,7 +618,7 @@
                                                 <div>
                                                     <input type="hidden" name="topic_id" value="{{$Topic->id}}">
                                                     <button type="submit"
-                                                            class="btn btn-theme">{{ trans('frontLang.sendComment') }}</button>
+                                                            class="btn btn-theme" style="color: white">{{ trans('frontLang.sendComment') }}</button>
                                                 </div>
                                                 {{Form::close()}}
                                             </div>
