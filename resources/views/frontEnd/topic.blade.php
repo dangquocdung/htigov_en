@@ -1,3 +1,9 @@
+<?php
+    $category_title_var = "title_" . trans('backLang.boxCode');
+    $slug_var = "seo_url_slug_" . trans('backLang.boxCode');
+    $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
+?>
+
 @extends('frontEnd.layout')
 
 @section('content')
@@ -59,7 +65,6 @@
 
                     <div class="clearfix"></div>
 
-            
                     <div class="col-md-12">
                         <article>
                             @if($WebmasterSection->type==2 && $Topic->video_file!="")
@@ -455,7 +460,6 @@
 
                                             @else
 
-                                       
                                             <a href="{{ URL::to('uploads/topics/'.$Topic->attach_file) }}">
                                                 <strong>
                                                     {!! Helper::GetIcon(URL::to('uploads/topics/'),$Topic->attach_file) !!}
@@ -485,7 +489,6 @@
                                                     {!! Helper::GetIcon(URL::to('uploads/topics/'),$attachFile->file) !!}
                                                     &nbsp;{{ $file_title }}</strong>
                                             </a>
-
 
                                         </div>
                                     @endforeach
@@ -667,7 +670,6 @@
                                                     </div>
                                                 @endif
 
-                                                
                                                 <div>
                                                     <input type="hidden" name="topic_id" value="{{$Topic->id}}">
                                                     <button type="submit"
@@ -732,6 +734,71 @@
                                 @endif
                             @endif
 
+                            <div class="lienquan-header">
+
+                                <a href="">Tin mới đăng</a>
+        
+                            </div>
+        
+                            <div id="tin-noi-bat" style="margin-top: 10px">
+                                <ul>
+    
+                                    @foreach($LatestNews as $Topic)
+
+                                        <?php
+                                            if ($Topic->$title_var != "") {
+                                                $title = $Topic->$title_var;
+                                            } else {
+                                                $title = $Topic->$title_var2;
+                                            }
+                                            if ($Topic->$details_var != "") {
+                                                $details = $details_var;
+                                            } else {
+                                                $details = $details_var2;
+                                            }
+                                            $section = "";
+                                            try {
+                                                if ($Topic->section->$title_var != "") {
+                                                    $section = $Topic->section->$title_var;
+                                                } else {
+                                                    $section = $Topic->section->$title_var2;
+                                                }
+                                            } catch (Exception $e) {
+                                                $section = "";
+                                            }
+
+                                            if ($Topic->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                    $topic_link_url = url(trans('backLang.code') . "/" . $Topic->$slug_var);
+                                                } else {
+                                                    $topic_link_url = url($Topic->$slug_var);
+                                                }
+                                            } else {
+                                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                    $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                                } else {
+                                                    $topic_link_url = route('FrontendTopic', ["section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                                }
+                                            }
+                                        ?>
+    
+                                        <li>
+                                            <div class="hot-news-block">
+                                                <a href="{{ $topic_link_url }}">
+        
+                                                    <div class="news-block" style="line-height: 25px">
+                                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>&nbsp;{{ $Topic->$title_var }} <small><em>({{ \Carbon\Carbon::parse($Topic->date)->format('d-m-Y') }})</em></small>
+                                                    </div>
+        
+                                                </a>
+                                            </div>
+                                        </li>
+    
+                                    @endforeach
+    
+                                </ul>
+                            </div>
+                            
                         </article>
                            
                     </div>
