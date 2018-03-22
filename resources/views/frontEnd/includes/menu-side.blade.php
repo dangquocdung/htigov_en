@@ -9,6 +9,19 @@
 
 @yield('section-menu')
 
+<div class="block4" style="border:none;">
+    {{Form::open(['route'=>['searchTopics'],'method'=>'POST','class'=>'form-search'])}}
+    <div class="input-group input-group-sm">
+        {!! Form::text('search_word',@$search_word, array('placeholder' => trans('frontLang.search'),'class' => 'form-control','id'=>'search_word','required'=>'')) !!}
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-theme"><i class="fa fa-search"></i></button>
+        </span>
+    </div>
+
+    {{Form::close()}}
+</div>
+    
+
 @if (!empty($RightMenuLinks))
 <div class="right_1">
         

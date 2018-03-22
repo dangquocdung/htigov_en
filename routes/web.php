@@ -11,6 +11,8 @@
 |
 */
 
+Route::feeds();
+
 
 // Language Route
 Route::post('/lang', array(

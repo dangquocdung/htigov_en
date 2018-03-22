@@ -1467,5 +1467,7 @@ class FrontendHomeController extends Controller
         }
 
     }
+
+    
         
 }
