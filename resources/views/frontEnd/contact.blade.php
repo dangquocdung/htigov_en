@@ -87,7 +87,7 @@
                     <br>
 
                     <div>
-                        <button type="submit" class="btn btn-theme">{{ trans('frontLang.sendMessage') }}</button>
+                        <button type="submit" class="btn btn-theme pull-right" style="color: white">{{ trans('frontLang.sendMessage') }}</button>
                     </div>
 
                     <br>
