@@ -1,5 +1,3 @@
-<script src="{{ URL::asset('frontEnd/js/jssor.slider-26.7.0.min.js') }}"></script>
-
 <script type="text/javascript">
     jssor_3_slider_init = function() {
 

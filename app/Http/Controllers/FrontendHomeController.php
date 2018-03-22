@@ -89,6 +89,9 @@ class FrontendHomeController extends Controller
                 ->limit(5)
                 ->get();
 
+        // Get Home page slider banners
+        $TopBanners = Banner::where('section_id', 5)->where('status',1)->orderby('row_no', 'asc')->get();
+
         
                 //Side Banner
         $SideBanners = Banner::where('section_id', $WebmasterSettings->side_banners_section_id)->where('status',1)->orderby('row_no', 'asc')->get();
@@ -102,6 +105,7 @@ class FrontendHomeController extends Controller
         view()->share('FooterMenuLinks',$FooterMenuLinks);
         view()->share('RightMenuLinks',$RightMenuLinks);
         view()->share('MarqueeTopics',$MarqueeTopics);
+        view()->share('TopBanners',$TopBanners);
         view()->share('SideBanners',$SideBanners);
     }
 
@@ -311,6 +315,8 @@ class FrontendHomeController extends Controller
                 ->orderby('row_no', 'asc')
                 ->limit(3)
                 ->get();
+
+        
 
         // Get Home page slider banners
         $SliderBanners = Banner::where('section_id', $WebmasterSettings->home_banners_section_id)->where('status',

@@ -84,6 +84,7 @@
                         <button type="submit" class="btn btn-theme">{{ trans('frontLang.sendMessage') }}</button>
                     </div>
                     <br>
+                    <div class="g-recaptcha" data-sitekey="6LdpKE4UAAAAAAIGZ3v28nmqXqcR5Z_XAlUxk-ev"></div>
                     {{Form::close()}}
 
             </div>
