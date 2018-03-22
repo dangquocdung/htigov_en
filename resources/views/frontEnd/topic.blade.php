@@ -659,6 +659,12 @@
                                                         {!! app('captcha')->display($attributes = [], $lang = trans('backLang.code')) !!}
                                                     </div>
                                                 @endif
+
+                                                <br>
+                    
+                                                <div class="g-recaptcha" data-sitekey="6LdpKE4UAAAAAAIGZ3v28nmqXqcR5Z_XAlUxk-ev"></div>
+
+                                                <br>
                                                 <div>
                                                     <input type="hidden" name="topic_id" value="{{$Topic->id}}">
                                                     <button type="submit"
