@@ -667,23 +667,30 @@
                                         </div>
                                         @foreach($Topic->approvedComments as $comment)
                                             <?php
-                                            $dtformated = date('d M Y h:i A', strtotime($comment->date));
+                                                $dtformated = date('d M Y h:i A', strtotime($comment->date));
+
+                                                $dtformated = \Carbon\Carbon::parse($comment->date)->format('d-m-Y h:i:s');
+
                                             ?>
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <img src="{{ URL::to('uploads/contacts/profile.jpg') }}" class="profile"
-                                                        alt="{{$comment->name}}">
+                                                    {{--  <img src="{{ URL::to('uploads/contacts/profile.jpg') }}" class="profile"
+                                                        alt="{{$comment->name}}">  --}}
                                                     <div class="pullquote-left">
-                                                        <strong>{{$comment->name}}</strong>
-                                                        <div>
+                                                            <i class="fa fa-commenting-o"></i>&nbsp;<strong>{{$comment->name}}</strong>
+                                                        <span>
                                                             <small>
-                                                                <small>{{ $dtformated }}</small>
+                                                                <small>({{ $dtformated }})</small>
                                                             </small>
+                                                        </span>
+                                                        <div>
+                                                            <em>{!! nl2br(strip_tags($comment->comment)) !!}</em>
                                                         </div>
-                                                        {!! nl2br(strip_tags($comment->comment)) !!}
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br>
                                         @endforeach
                                     @endif
 
