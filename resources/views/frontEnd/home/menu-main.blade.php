@@ -513,7 +513,14 @@
                                                                                 {{ $tin1->$link_title_var }}
                                                                                 {{--  <small><em style="font-weight: normal">({{ \Carbon\Carbon::parse($tin1->created_at)->format('d-m-Y H:i:s') }})</em></small>  --}}
                                                                             </div>
-                                                                            <img style="display: inline-block; width: 160px; height:auto;" src="/uploads/topics/{{ $tin1->photo_file }}" alt="" title="">
+                                                                            @if (strlen($tin1->photo_file) > 4)
+                                                                                <img style="display: inline-block; width: 160px; height:auto;" src="/uploads/topics/{{ $tin1->photo_file }}" alt="" title="">
+                                                                            @else
+                                                                                <img style="display: inline-block; width: 160px; height:auto;" src="{{ URL::to('uploads/topics/no_image.jpg') }}" alt="" title="">
+                                                                                
+                                                                            @endif
+
+                                                                            
                                                                         </a>
                                                                         <div class="thumb">
         
