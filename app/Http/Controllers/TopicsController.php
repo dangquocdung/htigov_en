@@ -202,7 +202,19 @@ class TopicsController extends Controller
             $Topic->webmaster_id = $webmasterId;
             $Topic->created_by = Auth::user()->id;
             $Topic->visits = 0;
-            $Topic->status = 1;
+
+            if (Auth::user()->permission_id > 2){
+                $Topic->status = 0;
+
+            }
+            else{
+                $Topic->status = 1;
+
+            }
+
+                
+
+
 
             // Meta title
             $Topic->seo_title_vi = $request->title_vi;

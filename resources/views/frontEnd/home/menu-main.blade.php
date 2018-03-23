@@ -215,20 +215,16 @@
                                             <a href="{{ $topic_link_url }}">
                                                 <img data-u="image" src="/uploads/topics/{{ $tin->photo_file }}" title="{{ $tin->$link_title_var }}" />
                                             </a>
-                                            <p style="background: url(./images/transparent.png) repeat-x; position: absolute; bottom: 10px; left:5px; right:5px; font-size: 1.1em; color: #ffffff; text-align: center;">
+                                            <div style="background: url(./images/transparent.png) repeat-x; position: absolute; bottom: 0px; font-size: 0.9em; color: #ffffff; width:100%; text-align: center;" >
+                                                <p style="padding: 5px 0">{{ $tin->$link_title_var }}</p>
+                                                    
+                                            </div>
+                                            {{--  <p style="background: url(./images/transparent.png) repeat-x; position: absolute; bottom: 10px; left:5px; right:5px; font-size: 1.1em; color: #ffffff; text-align: center;">
                                                 {{ $tin->$link_title_var }}
-                                            </p>
+                                            </p>  --}}
                                         </div>
                                     @endforeach
 
-                            </div>
-                            <!-- Bullet Navigator -->
-                            <div data-u="navigator" class="jssorb057" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
-                                <div data-u="prototype" class="i" style="width:16px;height:16px;">
-                                    <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                                        <circle class="b" cx="8000" cy="8000" r="5000"></circle>
-                                    </svg>
-                                </div>
                             </div>
                             <!-- Arrow Navigator -->
                             <div data-u="arrowleft" class="jssora073" style="width:50px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
@@ -353,23 +349,23 @@
                                                                             
                                                                             <div>
                                                                                 <a href="{{ $topic_link_url }}">
-                                                                                    <img data-u="image" src="/uploads/topics/{{ $tin->photo_file }}" title="{{ $tin->$link_title_var }}" />
+                                                                                    @if (strlen($tin->photo_file) > 5 )
+                                                                                        <img data-u="image" src="/uploads/topics/{{ $tin->photo_file }}" title="{{ $tin->$link_title_var }}" />
+                                                                                        @else
+
+                                                                                        
+                                                                                        <img data-u="image" src="{{ URL::to('uploads/topics/no_image.jpg') }}" title="{{ $tin->$link_title_var }}" />
+
+                                                                                        @endif
                                                                                 </a>
-                                                                                <p style="background: url(./images/transparent.png) repeat-x; position: absolute; bottom: 10px; left:5px; right:5px; font-size: 1.1em; color: #ffffff; text-align: center;">
-                                                                                    {{ $tin->$link_title_var }}
-                                                                                </p>
+                                                                                <div style="background: url(./images/transparent.png) repeat-x; position: absolute; bottom: 0px; font-size: 0.9em; color: #ffffff; width:100%; text-align: center;" >
+                                                                                    <p style="padding: 5px 0">{{ $tin->$link_title_var }}</p>
+                                                                                </div>
                                                                             </div>
                                                                         @endforeach
                                     
                                                                 </div>
-                                                                <!-- Bullet Navigator -->
-                                                                <div data-u="navigator" class="jssorb057" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
-                                                                    <div data-u="prototype" class="i" style="width:16px;height:16px;">
-                                                                        <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                                                                            <circle class="b" cx="8000" cy="8000" r="5000"></circle>
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
+                                                                
                                                                 <!-- Arrow Navigator -->
                                                                 <div data-u="arrowleft" class="jssora073" style="width:50px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
                                                                     <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
