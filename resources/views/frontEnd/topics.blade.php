@@ -28,9 +28,13 @@
                                     </li>
                                 @endif
                             @endif
+                            <button class="pull-right btn btn-info btn-sm" id="themCauHoi" style="margin-right: 7px;">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm
+                            </button>
                         </ul>
 
                     </div>
+
                     <div class="clearfix"></div>
 
                      <div class="loai-tin">
@@ -92,7 +96,6 @@
                                         @if ($key%2==0)
                                             <div class="clearfix"></div>
                                         @endif
-
 
                                         <article class="center">
                                             @if($Topic->webmasterSection->type==2 && $Topic->video_file!="")
