@@ -61,7 +61,7 @@ return array (
   'generalSiteSettings' => 'Cài đặt',
   'webmasterTools' => 'Webmaster',
   'generalSettings' => 'Cài đặt chung',
-  'siteSectionsSettings' => 'Site Sections',
+  'siteSectionsSettings' => 'Chuyên mục',
   'adsBannersSettings' => 'Cài đặt Banners',
   'languageSettings' => 'Cài đặt ngôn ngữ',
   'siteMenus' => 'Trang web Menus',
