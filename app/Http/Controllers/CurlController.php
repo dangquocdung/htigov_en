@@ -335,17 +335,15 @@ class CurlController extends Controller
 
                 $folder = 'uploads/topics/';
                 
-                $datefolder = Carbon::now()->year . '/' . Carbon::now()->month . '/';
+                $datefilename = Carbon::now()->year . '_' . Carbon::now()->month;
 
-                $fullPath = $folder.$datefolder.$filename;
+                $filename = $datefilename."_".$filename;
 
-                if (!file_exists(public_path($folder.$datefolder))) {
-                    mkdir(public_path($folder.$datefolder), 0755, true);
-                }
-
-                file_put_contents($fullPath,$file);
                 
-                $Topic->photo_file = $datefolder.$filename;
+
+                file_put_contents($folder.$filename,$file);
+                
+                $Topic->photo_file = $filename;
                 
                 // $section = Section::find($section_id)->first();
                     
