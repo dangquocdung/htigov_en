@@ -37,15 +37,15 @@ class CurlController extends Controller
             
         };
 
-       
+        $url = 'http://dungdang.website/rss-feed';
 
-        $url ='http://baochinhphu.vn/_RSS_/442.rss';
+        // $url ='http://baochinhphu.vn/_RSS_/442.rss';
 
-        $section = 29;
+        // $section = 29;
 
-        $this->TinChinhPhu($url);
+        $this->TinTrangCu($url);
 
-        return redirect()->route('topics',11);
+        return redirect()->route('topics',16);
 
         //
 
@@ -68,6 +68,45 @@ class CurlController extends Controller
         // $url = 'http://baochinhphu.vn/Quoc-te/Nhung-nganh-nghe-nao-se-bi-cong-nghe-the-cho/330946.vgp';
 
         // $this->ViewNews($url);
+
+    }
+
+    public function TinTrangCu($url=""){
+        
+        $rss=simplexml_load_file($url);
+
+        
+
+        foreach ($rss->entry as $item) {
+
+            $image = $item->link['href'];
+            
+            // if (file_exists($image)) {
+
+                $Topic = new Topic;
+
+                $Topic->row_no = 1;
+
+                $Topic->title_vi = $item->title;
+
+                $Topic->title_en = $item->title;
+
+                $Topic->details_vi = $item->summary;
+
+                $Topic->details_en = $item->summary;
+
+                $Topic->date = date("Y-m-d H:i:s");
+                
+                $Topic->webmaster_id = 16;
+                
+                $Topic->created_by = Auth::user()->id;
+                $Topic->visits = 0;
+                $Topic->status = 0;
+                
+                $Topic->save();
+            // }
+
+        }
 
     }
     
@@ -342,8 +381,6 @@ class CurlController extends Controller
                     $datefilename = Carbon::now()->year . '_' . Carbon::now()->month;
 
                     $filename = $datefilename."_".$filename;
-
-                    
 
                     file_put_contents($folder.$filename,$file);
                     

@@ -629,6 +629,11 @@
                                     {{--  <span class="hidden-xs">{{ trans('frontLang.share') }} :</span>  --}}
                                     <ul class="social-network share">
                                         <li>
+                                            <a href="javascript:void(0);" class="facebook"
+                                            data-placement="top"
+                                            title="Đọc văn bản"><i class="fa fa-volume-up"></i></a>
+                                        </li>
+                                        <li>
                                             <a href="{{ Helper::SocialShare("facebook", $PageTitle)}}" class="facebook"
                                             data-placement="top"
                                             title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
