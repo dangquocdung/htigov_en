@@ -28,9 +28,6 @@
                                     </li>
                                 @endif
                             @endif
-                            <button class="pull-right btn btn-info btn-sm" id="themCauHoi" style="margin-right: 7px;">
-                                <i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm
-                            </button>
                         </ul>
 
                     </div>
