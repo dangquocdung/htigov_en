@@ -602,7 +602,9 @@
                                                             
                                                             <th>Nội dung </th>
                                                             <th class="col-md-2" style="text-align: center">Ngày đăng </th>
-                                                            <th><i class="fa fa-paperclip" aria-hidden="true"></i></th>
+                                                            <th style="text-align:center">
+                                                                <i class="fa fa-paperclip" aria-hidden="true"></i>
+                                                            </th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -655,23 +657,28 @@
                                                                         {{ $loop->iteration }}
                                                                     </td>
                                                                     @if ($MnuCategory->id <> '23')
-                                                                    <td>
-                                                                        <a href="{{ $topic_link_url }}">
-                                                                            {{ $tin->$link_title_var }}
-                                                                        </a>
-                                                                    </td>
+                                                                        <td>
+                                                                            <a href="{{ $topic_link_url }}">
+                                                                                {{ $tin->$link_title_var }}
+                                                                            </a>
+                                                                        </td>
                                                                     @endif
                                                                     <td>
                                                                         <a href="{{ $topic_link_url }}">
-                                                                            {{--  {{ str_limit(strip_tags($tin->$details_var), $limit = 200, $end = '...') }}  --}}
+                                                                            {{ str_limit(strip_tags($tin->$details_var), $limit = 200, $end = '...') }}
 
-                                                                            {{ $tin->$details_var }}
+                                                                            {{--  {{ $tin->$details_var }}  --}}
                                                                         </a>
                                                                     </td>
                                                                     <td style="text-align: center">
                                                                         {{ \Carbon\Carbon::parse($tin->date)->format('d-m-Y') }}
                                                                     </td>
-                                                                    <td>
+                                                                    <td style="text-align:center">
+                                                                        @if (file_exists($tin->attach_file))
+                                                                            <a href="{{ $tin->attach_file }}" target="_blank">
+                                                                                <i class="fa fa-paperclip" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        @endif
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
