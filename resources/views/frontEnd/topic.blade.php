@@ -1,3 +1,9 @@
+<?php
+    $category_title_var = "title_" . trans('backLang.boxCode');
+    $slug_var = "seo_url_slug_" . trans('backLang.boxCode');
+    $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
+?>
+
 @extends('frontEnd.layout')
 
 @section('content')
@@ -56,21 +62,23 @@
                         </ul>
 
                     </div>
-            
+
+                    <div class="clearfix"></div>
+
                     <div class="col-md-12">
                         <article>
                             @if($WebmasterSection->type==2 && $Topic->video_file!="")
                                 {{--video--}}
                                 <div class="post-video">
                                     <div class="post-heading">
-                                        <h1>
+                                        <h3>
                                             @if($Topic->icon !="")
                                                 <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
                                             @endif
                                             {{ $title }}
-                                        </h1>
+                                        </h3>
                                     </div>
-                                    <div class="video-container center">
+                                    <div class="video-container responsive-video">
                                         @if($Topic->video_type ==1)
                                             <?php
                                             $Youtube_id = Helper::Get_youtube_video_id($Topic->video_file);
@@ -112,12 +120,12 @@
                                 {{--audio--}}
                                 <div class="post-video">
                                     <div class="post-heading">
-                                        <h1>
+                                        <h3>
                                             @if($Topic->icon !="")
                                                 <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
                                             @endif
                                             {{ $title }}
-                                        </h1>
+                                        </h3>
                                     </div>
                                     @if($Topic->photo_file !="")
                                         <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"
@@ -137,15 +145,15 @@
                                 {{--photo slider--}}
                                 <div class="post-slider">
                                     <div class="post-heading">
-                                        <h1>
+                                        <h3>
                                             @if($Topic->icon !="")
                                                 <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
                                             @endif
                                             {{ $title }}
-                                        </h1>
+                                        </h3>
                                     </div>
                                     <!-- start flexslider -->
-                                    <div class="p-slider flexslider">
+                                    {{--  <div class="p-slider flexslider">
                                         <ul class="slides">
                                             @if($Topic->photo_file !="")
                                                 <li>
@@ -161,8 +169,116 @@
                                             @endforeach
 
                                         </ul>
-                                    </div>
+                                    </div>  --}}
                                     <!-- end flexslider -->
+                                    <script type="text/javascript">
+                                        jssor_2_slider_init = function() {
+                                
+                                            var jssor_2_SlideshowTransitions = [
+                                              {$Duration:800,x:-0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+                                              {$Duration:800,x:0.3,$SlideOut:true,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2}
+                                            ];
+                                
+                                            var jssor_2_options = {
+                                              $AutoPlay: 1,
+                                              $SlideshowOptions: {
+                                                $Class: $JssorSlideshowRunner$,
+                                                $Transitions: jssor_2_SlideshowTransitions,
+                                                $TransitionsOrder: 1
+                                              },
+                                              $ArrowNavigatorOptions: {
+                                                $Class: $JssorArrowNavigator$
+                                              },
+                                              $ThumbnailNavigatorOptions: {
+                                                $Class: $JssorThumbnailNavigator$,
+                                                $Orientation: 2,
+                                                $NoDrag: true
+                                              }
+                                            };
+                                
+                                            var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_2_options);
+                                
+                                            /*#region responsive code begin*/
+                                
+                                            var MAX_WIDTH = 980;
+                                
+                                            function ScaleSlider() {
+                                                var containerElement = jssor_2_slider.$Elmt.parentNode;
+                                                var containerWidth = containerElement.clientWidth;
+                                
+                                                if (containerWidth) {
+                                
+                                                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+                                
+                                                    jssor_2_slider.$ScaleWidth(expectedWidth);
+                                                }
+                                                else {
+                                                    window.setTimeout(ScaleSlider, 30);
+                                                }
+                                            }
+                                
+                                            ScaleSlider();
+                                
+                                            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+                                            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+                                            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+                                            /*#endregion responsive code end*/
+                                        };
+                                    </script>
+                                    <style>
+                                        /*jssor slider loading skin spin css*/
+                                        .jssorl-009-spin img {
+                                            animation-name: jssorl-009-spin;
+                                            animation-duration: 1.6s;
+                                            animation-iteration-count: infinite;
+                                            animation-timing-function: linear;
+                                        }
+                                
+                                        @keyframes jssorl-009-spin {
+                                            from { transform: rotate(0deg); }
+                                            to { transform: rotate(360deg); }
+                                        }
+                                
+                                        .jssora061 {display:block;position:absolute;cursor:pointer;}
+                                        .jssora061 .a {fill:none;stroke:#fff;stroke-width:360;stroke-linecap:round;}
+                                        .jssora061:hover {opacity:.8;}
+                                        .jssora061.jssora061dn {opacity:.5;}
+                                        .jssora061.jssora061ds {opacity:.3;pointer-events:none;}
+                                    </style>
+                                    <div id="jssor_2" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:600px;overflow:hidden;visibility:hidden;">
+                                        <!-- Loading Screen -->
+                                        <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                                            <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="frontEnd/img/spin.svg" />
+                                        </div>
+                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:600px;overflow:hidden;">
+                                            @foreach($Topic->photos as $photo)
+                                                <div data-p="170.00">
+                                                    <img data-u="image" src="{{ URL::to('uploads/topics/'.$photo->file) }}" /alt="{{ $photo->title  }}">
+                                                    <div u="thumb">{{ $photo->description  }}</div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <!-- Thumbnail Navigator -->
+                                        <div u="thumbnavigator" style="position:absolute;bottom:0px;left:0px;width:980px;height:50px;color:#FFF;overflow:hidden;cursor:default;background-color:rgba(0,0,0,.5);">
+                                            <div u="slides">
+                                                <div u="prototype" style="position:absolute;top:0;left:0;width:980px;height:50px;">
+                                                    <div u="thumbnailtemplate" style="position:absolute;top:0;left:0;width:100%;height:100%;font-family:arial,helvetica,verdana;font-weight:normal;line-height:50px;font-size:16px;padding-left:10px;box-sizing:border-box;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Arrow Navigator -->
+                                        <div data-u="arrowleft" class="jssora061" style="width:55px;height:55px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+                                            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                                <path class="a" d="M11949,1919L5964.9,7771.7c-127.9,125.5-127.9,329.1,0,454.9L11949,14079"></path>
+                                            </svg>
+                                        </div>
+                                        <div data-u="arrowright" class="jssora061" style="width:55px;height:55px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+                                            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                                                <path class="a" d="M5869,1919l5984.1,5852.7c127.9,125.5,127.9,329.1,0,454.9L5869,14079"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript">jssor_2_slider_init();</script>
                                 </div>
 
                             @else
@@ -452,7 +568,6 @@
 
                                             @else
 
-                                       
                                             <a href="{{ URL::to('uploads/topics/'.$Topic->attach_file) }}">
                                                 <strong>
                                                     {!! Helper::GetIcon(URL::to('uploads/topics/'),$Topic->attach_file) !!}
@@ -483,7 +598,6 @@
                                                     &nbsp;{{ $file_title }}</strong>
                                             </a>
 
-
                                         </div>
                                     @endforeach
                                 </div>
@@ -510,30 +624,23 @@
                                         </li>
                                     @endif
                                 </ul>
+
                                 <div class="pull-right">
-                                    {{ trans('frontLang.share') }} :
+                                    {{--  <span class="hidden-xs">{{ trans('frontLang.share') }} :</span>  --}}
                                     <ul class="social-network share">
                                         <li>
                                             <a href="{{ Helper::SocialShare("facebook", $PageTitle)}}" class="facebook"
                                             data-placement="top"
-                                            title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                        <li>
-                                            <a href="{{ Helper::SocialShare("twitter", $PageTitle)}}" class="twitter"
-                                            data-placement="top" title="Twitter"
-                                            target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                            title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        
                                         <li>
                                             <a href="{{ Helper::SocialShare("google", $PageTitle)}}" class="google"
                                             data-placement="top"
                                             title="Google+"
-                                            target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                        <li>
-                                            <a href="{{ Helper::SocialShare("linkedin", $PageTitle)}}" class="linkedin"
-                                            data-placement="top" title="linkedin"
-                                            target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                                        <li>
-                                            <a href="{{ Helper::SocialShare("tumblr", $PageTitle)}}" class="pintrest"
-                                            data-placement="top" title="Pinterest"
-                                            target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                                            target="_blank"><i class="fa fa-google-plus"></i></a>
+                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -560,23 +667,30 @@
                                         </div>
                                         @foreach($Topic->approvedComments as $comment)
                                             <?php
-                                            $dtformated = date('d M Y h:i A', strtotime($comment->date));
+                                                $dtformated = date('d M Y h:i A', strtotime($comment->date));
+
+                                                $dtformated = \Carbon\Carbon::parse($comment->date)->format('d-m-Y h:i:s');
+
                                             ?>
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <img src="{{ URL::to('uploads/contacts/profile.jpg') }}" class="profile"
-                                                        alt="{{$comment->name}}">
+                                                    {{--  <img src="{{ URL::to('uploads/contacts/profile.jpg') }}" class="profile"
+                                                        alt="{{$comment->name}}">  --}}
                                                     <div class="pullquote-left">
-                                                        <strong>{{$comment->name}}</strong>
-                                                        <div>
+                                                            <i class="fa fa-commenting-o"></i>&nbsp;<strong>{{$comment->name}}</strong>
+                                                        <span>
                                                             <small>
-                                                                <small>{{ $dtformated }}</small>
+                                                                <small>({{ $dtformated }})</small>
                                                             </small>
+                                                        </span>
+                                                        <div>
+                                                            <em>{!! nl2br(strip_tags($comment->comment)) !!}</em>
                                                         </div>
-                                                        {!! nl2br(strip_tags($comment->comment)) !!}
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
+                                            <br>
                                         @endforeach
                                     @endif
 
@@ -612,10 +726,17 @@
                                                         {!! app('captcha')->display($attributes = [], $lang = trans('backLang.code')) !!}
                                                     </div>
                                                 @endif
+
+                                                <br>
+                    
+                                                <div class="g-recaptcha" data-sitekey="6LdpKE4UAAAAAAIGZ3v28nmqXqcR5Z_XAlUxk-ev"></div>
+
+                                                <br>
+                                                
                                                 <div>
                                                     <input type="hidden" name="topic_id" value="{{$Topic->id}}">
                                                     <button type="submit"
-                                                            class="btn btn-theme">{{ trans('frontLang.sendComment') }}</button>
+                                                            class="btn btn-theme" style="color: white">{{ trans('frontLang.sendComment') }}</button>
                                                 </div>
                                                 {{Form::close()}}
                                             </div>
@@ -663,6 +784,7 @@
                                                         {!! app('captcha')->display($attributes = [], $lang = trans('backLang.code')) !!}
                                                     </div>
                                                 @endif
+
                                                 <div>
                                                     <input type="hidden" name="topic_id" value="{{$Topic->id}}">
                                                     <button type="submit"
@@ -727,6 +849,71 @@
                                 @endif
                             @endif
 
+                            <div class="lienquan-header">
+
+                                <a href="">Tin mới đăng</a>
+        
+                            </div>
+        
+                            <div id="tin-noi-bat" style="margin-top: 10px">
+                                <ul>
+    
+                                    @foreach($LatestNews as $Topic)
+
+                                        <?php
+                                            if ($Topic->$title_var != "") {
+                                                $title = $Topic->$title_var;
+                                            } else {
+                                                $title = $Topic->$title_var2;
+                                            }
+                                            if ($Topic->$details_var != "") {
+                                                $details = $details_var;
+                                            } else {
+                                                $details = $details_var2;
+                                            }
+                                            $section = "";
+                                            try {
+                                                if ($Topic->section->$title_var != "") {
+                                                    $section = $Topic->section->$title_var;
+                                                } else {
+                                                    $section = $Topic->section->$title_var2;
+                                                }
+                                            } catch (Exception $e) {
+                                                $section = "";
+                                            }
+
+                                            if ($Topic->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                    $topic_link_url = url(trans('backLang.code') . "/" . $Topic->$slug_var);
+                                                } else {
+                                                    $topic_link_url = url($Topic->$slug_var);
+                                                }
+                                            } else {
+                                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                    $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                                } else {
+                                                    $topic_link_url = route('FrontendTopic', ["section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                                }
+                                            }
+                                        ?>
+    
+                                        <li>
+                                            <div class="hot-news-block">
+                                                <a href="{{ $topic_link_url }}">
+        
+                                                    <div class="news-block" style="line-height: 25px">
+                                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>&nbsp;{{ $Topic->$title_var }} <small><em>({{ \Carbon\Carbon::parse($Topic->date)->format('d-m-Y') }})</em></small>
+                                                    </div>
+        
+                                                </a>
+                                            </div>
+                                        </li>
+    
+                                    @endforeach
+    
+                                </ul>
+                            </div>
+                            
                         </article>
                            
                     </div>

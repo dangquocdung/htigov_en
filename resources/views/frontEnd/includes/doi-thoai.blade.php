@@ -39,7 +39,7 @@
 
     <div class="doithoai">
         <div class="col-sm-5" style="padding-left: 0;">
-            <img src="{{ Setting::get('doi-thoai') }}" width="100%" style="margin: 10px; border: 1px #CCCCCC solid">
+            <img src="frontEnd/img/doi-thoai.jpg" width="100%" style="margin: 10px; border: 1px #CCCCCC solid">
         </div>
         <div class="col-sm-7">
 

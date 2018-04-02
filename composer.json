@@ -15,6 +15,7 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.6",
+        "spatie/laravel-feed": "^2.0",
         "weidner/goutte": "^1.0"
     },
     "require-dev": {

@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-class Topic extends Model
+class Topic extends Model implements Feedable
 {
     //Relation to webmasterSections
     public function webmasterSection()
@@ -83,6 +85,22 @@ class Topic extends Model
     {
 
         return $this->hasMany('App\TopicField', 'topic_id')->orderby('id', 'asc');
+    }
+
+    public function toFeedItem()
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title_vi)
+            ->summary($this->title_vi)
+            ->updated($this->updated_at)
+            ->link($this->seo_url_slug_vi)
+            ->author($this->user->name);
+    }
+
+    public static function getFeedItems()
+    {
+        return Topic::where('status','1')->orderby('id','desc')->take(20)->get();
     }
 
 }

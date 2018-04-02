@@ -89,6 +89,9 @@ class FrontendHomeController extends Controller
                 ->limit(5)
                 ->get();
 
+        // Get Home page slider banners
+        $TopBanners = Banner::where('section_id', 5)->where('status',1)->orderby('row_no', 'asc')->get();
+
         
                 //Side Banner
         $SideBanners = Banner::where('section_id', $WebmasterSettings->side_banners_section_id)->where('status',1)->orderby('row_no', 'asc')->get();
@@ -102,6 +105,7 @@ class FrontendHomeController extends Controller
         view()->share('FooterMenuLinks',$FooterMenuLinks);
         view()->share('RightMenuLinks',$RightMenuLinks);
         view()->share('MarqueeTopics',$MarqueeTopics);
+        view()->share('TopBanners',$TopBanners);
         view()->share('SideBanners',$SideBanners);
     }
 
@@ -311,6 +315,8 @@ class FrontendHomeController extends Controller
                 ->orderby('row_no', 'asc')
                 ->limit(3)
                 ->get();
+
+        
 
         // Get Home page slider banners
         $SliderBanners = Banner::where('section_id', $WebmasterSettings->home_banners_section_id)->where('status',
@@ -653,6 +659,11 @@ class FrontendHomeController extends Controller
 
             $Topic = Topic::where('status', 1)->find($id);
 
+            //Lasted news
+            // Get Latest News
+            
+
+
             if (count($Topic) > 0 && ($Topic->expire_date == '' || ($Topic->expire_date != '' && $Topic->expire_date >= date("Y-m-d")))) {
                 // update visits
                 $Topic->visits = $Topic->visits + 1;
@@ -689,7 +700,11 @@ class FrontendHomeController extends Controller
                     1)->orderby('row_no', 'asc')->get();
 
                 // Get Latest News
-                $LatestNews = Topic::where([['status', 1], ['webmaster_id', $WebmasterSettings->latest_news_section_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orwhere([['status', 1], ['webmaster_id', $WebmasterSettings->latest_news_section_id], ['expire_date', null]])->orderby('row_no', 'asc')->limit(3)->get();
+                $LatestNews = Topic::where([['status', 1], ['webmaster_id', $Topic->webmaster_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])
+                                ->orwhere([['status', 1], ['webmaster_id', $Topic->webmaster_id], ['expire_date', null]])
+                                ->orderby('row_no', 'asc')
+                                ->limit(10)
+                                ->get();
 
                 // Page Title, Description, Keywords
                 $seo_title_var = "seo_title_" . trans('backLang.boxCode');
@@ -722,8 +737,8 @@ class FrontendHomeController extends Controller
                         "FooterMenuLinks",
                         "FooterMenuLinks_name_vi",
                         "FooterMenuLinks_name_en",
-                        "LatestNews",
                         "Topic",
+                        "LatestNews",
                         "SideBanners",
                         "WebmasterSection",
                         "Categories",
@@ -1452,5 +1467,7 @@ class FrontendHomeController extends Controller
         }
 
     }
+
+    
         
 }

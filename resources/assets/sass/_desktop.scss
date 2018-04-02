@@ -13,7 +13,7 @@ body {
   color: #000000;
 
   font-family: 'SF Display',sans-serif !important;
-  //letter-spacing: -0.01em;
+  letter-spacing: -0.01em;
 
   // line-height: 1.1em;
   // font-size: 1.1em;
@@ -940,4 +940,30 @@ object{
   p{
     margin: 10px 0 !important;
   }
+}
+
+.responsive-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 60px; overflow: hidden;
+}
+  
+.responsive-video iframe,
+.responsive-video object,
+.responsive-video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.float-title{
+  top: 0px;
+  left: 0px;
+  width: 980px;
+  height: 50px;
+  position: absolute;
+  display: none;
+  z-index: 1000;
 }

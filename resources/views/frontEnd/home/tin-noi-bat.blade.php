@@ -27,7 +27,7 @@
                     }
                 } else {
                     if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                        $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $HotTopic->webmasterSection->name, "id" => $Topic->id]);
+                        $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $HotTopic->webmasterSection->name, "id" => $HotTopic->id]);
                     } else {
                         $topic_link_url = route('FrontendTopic', ["section" => $HotTopic->webmasterSection->name, "id" => $HotTopic->id]);
                     }
