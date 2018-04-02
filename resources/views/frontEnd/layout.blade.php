@@ -30,6 +30,7 @@ if (Helper::GeneralSiteSettings("style_type")) {
 <div id="wrapper">
     <!-- start header -->
     @include('frontEnd.includes.header')
+    @include('frontEnd.includes.toolbox')
             <!-- end header -->
 
     <!-- Content Section -->

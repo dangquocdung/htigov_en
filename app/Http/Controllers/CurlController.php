@@ -41,6 +41,8 @@ class CurlController extends Controller
 
         $url ='http://baochinhphu.vn/_RSS_/442.rss';
 
+        $section = 29;
+
         $this->TinChinhPhu($url);
 
         return redirect()->route('topics',11);
@@ -313,65 +315,68 @@ class CurlController extends Controller
 
                 $image = $item->enclosure['url'];
 
-                $Topic = new Topic;
+                if (file_exists($image)) {
 
-                $Topic->row_no = $next_nor_no;
+                    $Topic = new Topic;
 
-                $Topic->title_vi = $name;
+                    $Topic->row_no = $next_nor_no;
 
-                $Topic->title_en = $name;
+                    $Topic->title_vi = $name;
 
-                $Topic->details_vi = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
+                    $Topic->title_en = $name;
 
-                $Topic->details_en = $details;
+                    $Topic->details_vi = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
 
-                $Topic->date = date("Y-m-d H:i:s");
-                
-                $file = file_get_contents($image);
+                    $Topic->details_en = $details;
 
-                $filename = substr($image, strrpos($image, '/') + 1);
-
-                // $path = public_path().'/uploads/topics/'.$filename;
-
-                $folder = 'uploads/topics/';
-                
-                $datefilename = Carbon::now()->year . '_' . Carbon::now()->month;
-
-                $filename = $datefilename."_".$filename;
-
-                
-
-                file_put_contents($folder.$filename,$file);
-                
-                $Topic->photo_file = $filename;
-                
-                // $section = Section::find($section_id)->first();
+                    $Topic->date = date("Y-m-d H:i:s");
                     
-                $Topic->webmaster_id = 11;
-                
-                $Topic->created_by = Auth::user()->id;
-                $Topic->visits = 0;
-                $Topic->status = 0;
+                    $file = file_get_contents($image);
 
-                // Meta title
-                $Topic->seo_title_vi = str_slug($name);
-                $Topic->seo_title_en = str_slug($name);
+                    $filename = substr($image, strrpos($image, '/') + 1);
 
-                // URL Slugs
-                $slugs = Helper::URLSlug($name, $name, "topic", 0);
-                $Topic->seo_url_slug_vi = $slugs['slug_vi'];
-                $Topic->seo_url_slug_en = $slugs['slug_en'];
+                    // $path = public_path().'/uploads/topics/'.$filename;
 
-                // Meta Description
-                $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($details)), 0, 165, 'UTF-8');
-                $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($details)), 0, 165, 'UTF-8');
-                
-                $Topic->save();
+                    $folder = 'uploads/topics/';
+                    
+                    $datefilename = Carbon::now()->year . '_' . Carbon::now()->month;
 
-                $TopicCategory = new TopicCategory;
-                $TopicCategory->topic_id = $Topic->id;
-                $TopicCategory->section_id = 29;
-                $TopicCategory->save();
+                    $filename = $datefilename."_".$filename;
+
+                    
+
+                    file_put_contents($folder.$filename,$file);
+                    
+                    $Topic->photo_file = $filename;
+                    
+                    // $section = Section::find($section_id)->first();
+                        
+                    $Topic->webmaster_id = 11;
+                    
+                    $Topic->created_by = Auth::user()->id;
+                    $Topic->visits = 0;
+                    $Topic->status = 0;
+
+                    // Meta title
+                    $Topic->seo_title_vi = str_slug($name);
+                    $Topic->seo_title_en = str_slug($name);
+
+                    // URL Slugs
+                    $slugs = Helper::URLSlug($name, $name, "topic", 0);
+                    $Topic->seo_url_slug_vi = $slugs['slug_vi'];
+                    $Topic->seo_url_slug_en = $slugs['slug_en'];
+
+                    // Meta Description
+                    $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($details)), 0, 165, 'UTF-8');
+                    $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($details)), 0, 165, 'UTF-8');
+                    
+                    $Topic->save();
+
+                    $TopicCategory = new TopicCategory;
+                    $TopicCategory->topic_id = $Topic->id;
+                    $TopicCategory->section_id = 29;
+                    $TopicCategory->save();
+                }
 
             }
 

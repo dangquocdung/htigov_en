@@ -112,7 +112,7 @@
                                     @if($Topic->photo_file !="")
                                         <div class="pull-right">
                                             <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"
-                                                 style="height: 40px" alt="{{ $title }}">
+                                                 style="height: 40px" alt="">
                                         </div>
                                     @endif
                                     {!! Form::text('row_no_'.$Topic->id,$Topic->row_no, array('class' => 'pull-left form-control row_no','id'=>'row_no')) !!}

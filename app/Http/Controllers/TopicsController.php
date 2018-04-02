@@ -115,7 +115,6 @@ class TopicsController extends Controller
                 'video_file' => 'mimes:mp4,ogv,webm'
             ]);
 
-
             $next_nor_no = Topic::where('webmaster_id', '=', $webmasterId)->max('row_no');
             if ($next_nor_no < 1) {
                 $next_nor_no = 1;
@@ -170,7 +169,6 @@ class TopicsController extends Controller
             }
             // End of Upload Files
 
-
             // create new topic
             $Topic = new Topic;
 
@@ -212,10 +210,6 @@ class TopicsController extends Controller
 
             }
 
-                
-
-
-
             // Meta title
             $Topic->seo_title_vi = $request->title_vi;
             $Topic->seo_title_en = $request->title_en;
@@ -232,7 +226,6 @@ class TopicsController extends Controller
             //Hot & Marquee
             $Topic->hot = $request->hot;
             $Topic->marquee = $request->marquee;
-
 
             $Topic->save();
 
@@ -278,7 +271,6 @@ class TopicsController extends Controller
 
                 }
             }
-
 
             return redirect()->action('TopicsController@edit', [$webmasterId, $Topic->id])->with('doneMessage',
                 trans('backLang.addDone'));
@@ -355,13 +347,11 @@ class TopicsController extends Controller
             $Topic = Topic::find($id);
             if (count($Topic) > 0) {
 
-
                 $this->validate($request, [
                     'photo_file' => 'mimes:png,jpeg,jpg,gif|max:3000',
                     'audio_file' => 'mimes:mpga,wav', // mpga = mp3
                     'video_file' => 'mimes:mp4,ogv,webm'
                 ]);
-
 
                 // Start of Upload Files
                 $formFileName = "photo_file";
@@ -377,7 +367,6 @@ class TopicsController extends Controller
                     $path = $this->getUploadPath();
                     $request->file($formFileName)->move($path, $fileFinalName);
                 }
-
 
                 $formFileName = "audio_file";
                 $audioFileFinalName = "";
@@ -547,7 +536,6 @@ class TopicsController extends Controller
         }
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -625,7 +613,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Update all selected resources in storage.
@@ -729,7 +716,6 @@ class TopicsController extends Controller
         }
     }
 
-
     /**
      * Update SEO tab
      *
@@ -829,7 +815,6 @@ class TopicsController extends Controller
         }
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -855,7 +840,6 @@ class TopicsController extends Controller
                     File::delete($this->getUploadPath() . $Photo->photo_file);
                 }
 
-
                 $Photo->delete();
                 return redirect()->action('TopicsController@edit', [$webmasterId, $id])->with('doneMessage',
                     trans('backLang.deleteDone'))->with('activeTab', 'photos');
@@ -866,7 +850,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Update all selected resources in storage.
@@ -915,7 +898,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
 // Comments Functions
 
@@ -979,7 +961,6 @@ class TopicsController extends Controller
                 'comment' => 'required'
             ]);
 
-
             $next_nor_no = Comment::where('topic_id', '=', $id)->max('row_no');
             if ($next_nor_no < 1) {
                 $next_nor_no = 1;
@@ -1004,7 +985,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -1054,7 +1034,6 @@ class TopicsController extends Controller
             $Comment = Comment::find($comment_id);
             if (count($Comment) > 0) {
 
-
                 $this->validate($request, [
                     'name' => 'required',
                     'email' => 'required',
@@ -1075,7 +1054,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -1107,7 +1085,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Update all selected resources in storage.
@@ -1156,7 +1133,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
 // Maps Functions
 
@@ -1219,7 +1195,6 @@ class TopicsController extends Controller
                 'longitude' => 'required'
             ]);
 
-
             $next_nor_no = Map::where('topic_id', '=', $id)->max('row_no');
             if ($next_nor_no < 1) {
                 $next_nor_no = 1;
@@ -1247,7 +1222,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -1297,7 +1271,6 @@ class TopicsController extends Controller
             $Map = Map::find($map_id);
             if (count($Map) > 0) {
 
-
                 $this->validate($request, [
                     'longitude' => 'required',
                     'longitude' => 'required'
@@ -1321,7 +1294,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -1353,7 +1325,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Update all selected resources in storage.
@@ -1403,7 +1374,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
 // Files Functions
 
@@ -1502,7 +1472,6 @@ class TopicsController extends Controller
         }
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -1586,7 +1555,6 @@ class TopicsController extends Controller
         }
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -1622,7 +1590,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Update all selected resources in storage.
@@ -1671,7 +1638,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
 // Related Topics Functions
 
@@ -1780,7 +1746,6 @@ class TopicsController extends Controller
         }
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -1811,7 +1776,6 @@ class TopicsController extends Controller
             return redirect()->route('NotFound');
         }
     }
-
 
     /**
      * Update all selected resources in storage.
@@ -1854,4 +1818,3 @@ class TopicsController extends Controller
     }
 
 }
-
