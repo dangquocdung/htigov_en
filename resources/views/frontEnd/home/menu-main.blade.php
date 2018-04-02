@@ -596,7 +596,7 @@
                                                         <thead>
                                                         <tr>
                                                             <th>TT</th>
-                                                            @if ($MnuCategory->id <> '23')
+                                                            @if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26')
                                                                 <th>Kí hiệu </th>
                                                             @endif
                                                             
@@ -609,7 +609,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @php
-                                                                if ($MnuCategory->id <> '23'){
+                                                                if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26'){
 
                                                                     $topicIds = $MnuCategory->selectedCategories->sortbyDesc('id')->take(3);
 
@@ -656,7 +656,7 @@
                                                                     <td>
                                                                         {{ $loop->iteration }}
                                                                     </td>
-                                                                    @if ($MnuCategory->id <> '23')
+                                                                    @if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26')
                                                                         <td>
                                                                             <a href="{{ $topic_link_url }}">
                                                                                 {{ $tin->$link_title_var }}
@@ -665,7 +665,7 @@
                                                                     @endif
                                                                     <td>
                                                                         <a href="{{ $topic_link_url }}">
-                                                                            {{ str_limit(strip_tags($tin->$details_var), $limit = 200, $end = '...') }}
+                                                                            {{ str_limit(strip_tags($tin->$details_var), $limit = 80, $end = '...') }}
 
                                                                             {{--  {{ $tin->$details_var }}  --}}
                                                                         </a>
