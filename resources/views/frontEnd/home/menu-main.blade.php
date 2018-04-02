@@ -665,9 +665,11 @@
                                                                     @endif
                                                                     <td>
                                                                         <a href="{{ $topic_link_url }}">
-                                                                            {{ str_limit(strip_tags($tin->$details_var), $limit = 80, $end = '...') }}
-
-                                                                            {{--  {{ $tin->$details_var }}  --}}
+                                                                            @if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26')
+                                                                                {{ str_limit(strip_tags($tin->$details_var), $limit = 80, $end = '...') }}
+                                                                            @else
+                                                                                {{ $tin->$link_title_var }}
+                                                                            @endif
                                                                         </a>
                                                                     </td>
                                                                     <td style="text-align: center">
