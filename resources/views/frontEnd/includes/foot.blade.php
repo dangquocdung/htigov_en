@@ -16,7 +16,7 @@
 <script>
     $(function() {
 
-        $('#navigation a').stop().animate({'marginLeft':'-55px'},500);
+        $('#navigation a').stop().animate({'marginLeft':'-55px'},300);
 
         $('#navigation > li').hover(
             function () {
