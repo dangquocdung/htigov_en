@@ -28,11 +28,6 @@ return array (
   'topicEnvironmental' => 'Thông Tin Quan Trắc Môi Trường',
   'topicConversation' => 'Đối thoại trực tuyến',
   'topicGYVB' => 'Góp ý văn bản QPPL',
-  'request' => 'Phản ảnh, kiến nghị',
-  'q&a' => 'Trao đổi, Hỏi đáp',
-  'co-op' => 'Công bố thông tin doanh nghiệp',
-
-
   'home' => 'Trang chủ',
   'main' => 'Trang chính',
   'siteData' => 'Dữ liệu',
@@ -61,7 +56,7 @@ return array (
   'generalSiteSettings' => 'Cài đặt',
   'webmasterTools' => 'Webmaster',
   'generalSettings' => 'Cài đặt chung',
-  'siteSectionsSettings' => 'Chuyên mục',
+  'siteSectionsSettings' => 'Site Sections',
   'adsBannersSettings' => 'Cài đặt Banners',
   'languageSettings' => 'Cài đặt ngôn ngữ',
   'siteMenus' => 'Trang web Menus',
@@ -94,7 +89,7 @@ return array (
   'blockSelected' => 'Chặn',
   'deleteSelected' => 'Xoá',
   'of' => 'của',
-  'records' => 'tin, bài',
+  'records' => 'hồ sơ',
   'confirmation' => 'Xác nhận',
   'yes' => 'Có',
   'no' => 'Không',
@@ -500,4 +495,5 @@ return array (
   'usersBackup' => 'Sao lưu & Khôi phục',
   'curlBHT' => 'Tải dữ liệu',
   'bannerLinkUrl' => 'Đường dẫn banner',
+  'de-tai-khoa-hoc' => 'Đề tài khoa học',
 );
