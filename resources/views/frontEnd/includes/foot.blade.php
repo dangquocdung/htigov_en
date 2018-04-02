@@ -14,19 +14,7 @@
 <script src="{{ URL::asset('frontEnd/js/custom.js') }}"></script>
 
 <script>
-    $(function() {
-
-        $('#navigation a').stop().animate({'marginLeft':'-55px'},300);
-
-        $('#navigation > li').hover(
-            function () {
-                $('a',$(this)).stop().animate({'marginLeft':'-40px'},200);
-            },
-            function () {
-                $('a',$(this)).stop().animate({'marginLeft':'-55px'},200);
-            }
-        );
-    });
+    
 
     function resizeText(multiplier) {
         if (document.body.style.fontSize == "") {
@@ -34,17 +22,6 @@
         }
         document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.15) + "em";
     }
-    
-    $(function() {
-        $('nav, .nav-controller').on('click', function(event) {
-            $('nav').toggleClass('focus');
-        });
-        $('nav, .nav-controller').on('mouseover', function(event) {
-            $('nav').addClass('focus');
-        }).on('mouseout', function(event) {
-            $('nav').removeClass('focus');
-        })
-    })
 
 </script>
 
