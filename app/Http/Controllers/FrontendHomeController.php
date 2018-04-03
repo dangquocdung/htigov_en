@@ -1468,6 +1468,51 @@ class FrontendHomeController extends Controller
 
     }
 
+    public function SectionView($id=0)
+    {
+        return $this->SectionViewByLang("",$id);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SectionViewByLang($lang = "", $id = 0)
+    {
+
+        if ($lang != "") {
+            // Set Language
+            App::setLocale($lang);
+            \Session::put('locale', $lang);
+        }
+
+        $CurrentCategory = WebmasterSection::find($id);
+
+        $Menu = Menu::where('father_id',19)->where('cat_id',$id)->first();
+        
+        
+
+        if (!empty($CurrentCategory) && !empty($Menu)) {
+
+            $PageTitle = $Menu->title_vi;
+            $PageDescription = $Menu->title_vi;
+            $PageKeywords = $Menu->title_vi;
+
+            return view("frontEnd.sectionview",
+                compact("PageName",
+                        "PageTitle",
+                        "PageDescription",
+                        "PageKeywords",
+                        "CurrentCategory",
+                        "Menu"));
+
+        } else {
+            return redirect()->action('FrontendHomeController@HomePage');
+        }
+
+    }
+
     
         
 }

@@ -352,6 +352,9 @@ Route::get('/{lang?}/contact', 'FrontendHomeController@ContactPageByLang')->name
 Route::get('/page/{id}', 'FrontendHomeController@PageView');
 Route::get('/{lang?}/page/{id}', 'FrontendHomeController@PageViewByLang');
 
+Route::get('/section/{id}', 'FrontendHomeController@SectionView');
+Route::get('/{lang?}/section/{id}', 'FrontendHomeController@SectionViewByLang');
+
 // ..Custom URL for contact us page ( www.site.com/contact )
 // Route::get('/nguoi-phat-ngon', 'FrontendHomeController@SpokesManPage')->name('spokesManPage');
 // Route::get('/{lang?}/nguoi-phat-ngon', 'FrontendHomeController@SpokesManPageByLang')->name('spokesManPageByLang');
