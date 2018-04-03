@@ -1015,27 +1015,29 @@
 
                             {{--  End  --}}
 
-                        @endif
-
-                        <div class="form-group row">
-                            <label for="link_status"
-                                   class="col-sm-2 form-control-label">{!!  trans('backLang.status') !!}</label>
-                            <div class="col-sm-10">
-                                <div class="radio">
-                                    <label class="ui-check ui-check-md">
-                                        {!! Form::radio('status','1',($Topics->status==1) ? true : false, array('id' => 'status1','class'=>'has-value')) !!}
-                                        <i class="dark-white"></i>
-                                        {{ trans('backLang.active') }}
-                                    </label>
-                                    &nbsp; &nbsp;
-                                    <label class="ui-check ui-check-md">
-                                        {!! Form::radio('status','0',($Topics->status==0) ? true : false, array('id' => 'status2','class'=>'has-value')) !!}
-                                        <i class="dark-white"></i>
-                                        {{ trans('backLang.notActive') }}
-                                    </label>
+                            <div class="form-group row">
+                                <label for="link_status"
+                                       class="col-sm-2 form-control-label">{!!  trans('backLang.status') !!}</label>
+                                <div class="col-sm-10">
+                                    <div class="radio">
+                                        <label class="ui-check ui-check-md">
+                                            {!! Form::radio('status','1',($Topics->status==1) ? true : false, array('id' => 'status1','class'=>'has-value')) !!}
+                                            <i class="dark-white"></i>
+                                            {{ trans('backLang.active') }}
+                                        </label>
+                                        &nbsp; &nbsp;
+                                        <label class="ui-check ui-check-md">
+                                            {!! Form::radio('status','0',($Topics->status==0) ? true : false, array('id' => 'status2','class'=>'has-value')) !!}
+                                            <i class="dark-white"></i>
+                                            {{ trans('backLang.notActive') }}
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                        @endif
+
+                        
                         <div class="form-group row m-t-md">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-primary m-t"><i class="material-icons">
