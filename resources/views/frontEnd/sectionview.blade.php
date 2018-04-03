@@ -68,7 +68,9 @@
                     
                         {{--  {{Form::open(['route'=>['contactPage'],'method'=>'POST','class'=>'contactForm'])}}  --}}
 
-                        {{Form::open(['route'=>['Home'],'method'=>'POST'])}}
+                        {{Form::open(['route'=>['StoreComment'],'method'=>'POST'])}}
+
+                        <input type="hidden" name="webmasterId" value="{{ $CurrentCategory }}">
                         
                         <div class="form-group">
                             {!! Form::text('name',"", array('placeholder' => trans('frontLang.yourName'),'class' => 'form-control','id'=>'name', 'data-msg'=> trans('frontLang.enterYourName'),'data-rule'=>'minlen:4')) !!}
@@ -76,9 +78,9 @@
                         </div>
 
                         <div class="form-group">
-                                {!! Form::text('address',"", array('placeholder' => trans('frontLang.address'),'class' => 'form-control','id'=>'address', 'data-msg'=> trans('frontLang.enterYourAddress'),'data-rule'=>'minlen:4')) !!}
-                                <div class="validation"></div>
-                            </div>
+                            {!! Form::text('address',"", array('placeholder' => trans('frontLang.address'),'class' => 'form-control','id'=>'address', 'data-msg'=> trans('frontLang.enterYourAddress'),'data-rule'=>'minlen:4')) !!}
+                            <div class="validation"></div>
+                        </div>
 
                         <div class="form-group">
                             {!! Form::text('phone',"", array('placeholder' => trans('frontLang.phone'),'class' => 'form-control','id'=>'phone', 'data-msg'=> trans('frontLang.enterYourPhone'),'data-rule'=>'minlen:4')) !!}
@@ -106,7 +108,6 @@
                         
                         <strong>* Điều khoản sử dụng:</strong><br>
                         <em>
-                            - Cá nhân hoặc tổ chức phải tuân thủ theo các nội dung tại "Quy chế sử dụng".<br>
                             - Không sử dụng các từ ngữ, câu hỏi có nội dung làm ảnh hưởng đến uy tín, danh dự của cá nhân, tổ chức khác hoặc chứa đựng các từ ngữ thông tục, ảnh hưởng tới văn hóa và thuần phong mỹ tục.<br>
                             - Cá nhân, tổ chức sẽ tự chịu trác nhiệm với nội dung câu hỏi của mình tùy theo mức độ ảnh hưởng của nội dung câu hỏi đó.<br>
                             - Các nội dung thông tin từ chuyên mục Hỏi - Đáp không thể được sử dụng hay trích dẫn làm căn cứ pháp lý cho bất kỳ trường hợp nào.<br>

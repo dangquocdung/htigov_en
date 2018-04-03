@@ -77,29 +77,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <div class="col-sm-12">
-                        <strong>{{ trans('backLang.connectEmailToConnect') }}</strong>
-                        <hr>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="connect_email"
-                           class="col-sm-2 form-control-label">{!!  trans('backLang.connectEmail') !!}
-                    </label>
-                    <div class="col-sm-10">
-                        {!! Form::email('connect_email','', array('placeholder' => '','class' => 'form-control','id'=>'connect_email')) !!}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="connect_password"
-                           class="col-sm-2 form-control-label">{!!  trans('backLang.connectPassword') !!}
-                    </label>
-                    <div class="col-sm-10">
-                        {!! Form::text('connect_password','', array('placeholder' => '','class' => 'form-control','id'=>'connect_password')) !!}
-                    </div>
-                </div>
+                
 
                 <div class="form-group row m-t-md">
                     <div class="col-sm-offset-2 col-sm-10">

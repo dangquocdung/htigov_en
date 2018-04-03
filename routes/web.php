@@ -357,7 +357,7 @@ Route::get('/{lang?}/section/{id}', 'FrontendHomeController@SectionViewByLang');
 
 //Nhap cau hoi
 
-Route::post('/section/{webmasterId}', 'FrontendHomeController@StoreComments')->name('StoreComment');
+Route::post('/section', 'FrontendHomeController@StoreComment')->name('StoreComment');
 
 // Route::post('/{lang?}/section/{id}', 'FrontendHomeController@StoreCommentsByLang')->name('StoreCommentsByLang');
 
