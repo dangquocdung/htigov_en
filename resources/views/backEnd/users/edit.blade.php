@@ -41,6 +41,37 @@
                     </div>
                 </div>
 
+                {{--  Bắt đầu Thêm  --}}
+
+                <div class="form-group row">
+                    <label for="phone"
+                           class="col-sm-2 form-control-label">{!!  trans('backLang.phone') !!}
+                    </label>
+                    <div class="col-sm-10">
+                        {!! Form::text('phone',$Users->phone, array('placeholder' => '','class' => 'form-control','id'=>'phone','required'=>'')) !!}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="address"
+                           class="col-sm-2 form-control-label">{!!  trans('backLang.address') !!}
+                    </label>
+                    <div class="col-sm-10">
+                        {!! Form::text('address',$Users->address, array('placeholder' => '','class' => 'form-control','id'=>'address','required'=>'')) !!}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="passport"
+                           class="col-sm-2 form-control-label">{!!  trans('backLang.passport') !!}
+                    </label>
+                    <div class="col-sm-10">
+                        {!! Form::text('passport',$Users->passport, array('placeholder' => '','class' => 'form-control','id'=>'passport','required'=>'')) !!}
+                    </div>
+                </div>
+
+                {{--  Kết thúc  --}}
+
                 <div class="form-group row">
                     <label for="password"
                            class="col-sm-2 form-control-label">{!!  trans('backLang.loginPassword') !!}
