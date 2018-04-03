@@ -606,7 +606,7 @@
                             <div class="bottom-article">
                                 <ul class="meta-post">
                                     @if($WebmasterSection->date_status)
-                                        <li><i class="fa fa-calendar"></i> <a>{!! $Topic->date  !!}</a></li>
+                                        <li><i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->date)->format('d-m-Y')   }}</a></li>
                                     @endif
                                     <li>
                                         <i class="fa fa-user"></i> 
