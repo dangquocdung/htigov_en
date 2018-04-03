@@ -967,51 +967,56 @@
                         @endif
                         {{--End of -- Additional Feilds--}}
 
-                        {{--  Nổi bật  --}}
+                        @if (Auth::user()->permissions_id < 3)
 
-                        <div class="form-group row">
-                            <label for="link_status"
-                                    class="col-sm-2 form-control-label">{!!  trans('backLang.hotTopic') !!}</label>
-                            <div class="col-sm-10">
-                                <div class="radio">
-                                    <label class="ui-check ui-check-md">
-                                        {!! Form::radio('hot','1',($Topics->hot==1) ? true : false, array('id' => 'status1','class'=>'has-value')) !!}
-                                        <i class="dark-white"></i>
-                                        {{ trans('backLang.yes') }}
-                                    </label>
-                                    &nbsp; &nbsp;
-                                    <label class="ui-check ui-check-md">
-                                        {!! Form::radio('hot','0',($Topics->hot==0) ? true : false, array('id' => 'status2','class'=>'has-value')) !!}
-                                        <i class="dark-white"></i>
-                                        {{ trans('backLang.no') }}
-                                    </label>
+                            {{--  Nổi bật  --}}
+
+                            <div class="form-group row">
+                                <label for="link_status"
+                                        class="col-sm-2 form-control-label">{!!  trans('backLang.hotTopic') !!}</label>
+                                <div class="col-sm-10">
+                                    <div class="radio">
+                                        <label class="ui-check ui-check-md">
+                                            {!! Form::radio('hot','1',($Topics->hot==1) ? true : false, array('id' => 'status1','class'=>'has-value')) !!}
+                                            <i class="dark-white"></i>
+                                            {{ trans('backLang.yes') }}
+                                        </label>
+                                        &nbsp; &nbsp;
+                                        <label class="ui-check ui-check-md">
+                                            {!! Form::radio('hot','0',($Topics->hot==0) ? true : false, array('id' => 'status2','class'=>'has-value')) !!}
+                                            <i class="dark-white"></i>
+                                            {{ trans('backLang.no') }}
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {{--  Thông báo  --}}
+                            {{--  Thông báo  --}}
 
-                        <div class="form-group row">
-                            <label for="link_status"
-                                    class="col-sm-2 form-control-label">{!!  trans('backLang.marqueeTopic') !!}</label>
-                            <div class="col-sm-10">
-                                <div class="radio">
-                                    <label class="ui-check ui-check-md">
-                                        {!! Form::radio('marquee','1',($Topics->marquee==1) ? true : false, array('id' => 'status1','class'=>'has-value')) !!}
-                                        <i class="dark-white"></i>
-                                        {{ trans('backLang.yes') }}
-                                    </label>
-                                    &nbsp; &nbsp;
-                                    <label class="ui-check ui-check-md">
-                                        {!! Form::radio('marquee','0', ($Topics->marquee==0) ? true : false, array('id' => 'status2','class'=>'has-value')) !!}
-                                        <i class="dark-white"></i>
-                                        {{ trans('backLang.no') }}
-                                    </label>
+                            <div class="form-group row">
+                                <label for="link_status"
+                                        class="col-sm-2 form-control-label">{!!  trans('backLang.marqueeTopic') !!}</label>
+                                <div class="col-sm-10">
+                                    <div class="radio">
+                                        <label class="ui-check ui-check-md">
+                                            {!! Form::radio('marquee','1',($Topics->marquee==1) ? true : false, array('id' => 'status1','class'=>'has-value')) !!}
+                                            <i class="dark-white"></i>
+                                            {{ trans('backLang.yes') }}
+                                        </label>
+                                        &nbsp; &nbsp;
+                                        <label class="ui-check ui-check-md">
+                                            {!! Form::radio('marquee','0', ($Topics->marquee==0) ? true : false, array('id' => 'status2','class'=>'has-value')) !!}
+                                            <i class="dark-white"></i>
+                                            {{ trans('backLang.no') }}
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {{--  End  --}}
+                            {{--  End  --}}
+
+                        @endif
+
                         <div class="form-group row">
                             <label for="link_status"
                                    class="col-sm-2 form-control-label">{!!  trans('backLang.status') !!}</label>

@@ -1515,7 +1515,7 @@ class FrontendHomeController extends Controller
 
     //Store comments
 
-    public function StoreComment(Request $request, $webmasterId)
+    public function StoreComment(Request $request)
     {
 
         $this->validate($request, [
@@ -1532,7 +1532,7 @@ class FrontendHomeController extends Controller
             ]);
         }
 
-        $next_nor_no = Topic::where('webmaster_id', '=', $webmasterId)->max('row_no');
+        $next_nor_no = Topic::where('webmaster_id', '=', $request->webmasterId)->max('row_no');
         
         if ($next_nor_no < 1) {
             $next_nor_no = 1;
@@ -1549,10 +1549,10 @@ class FrontendHomeController extends Controller
         $Topic->phone = $request->phone;
         $Topic->email = $request->email;
         $Topic->address = $request->address;
-        $Topic->date = Carbon\Carbon::now()->toDateString();
+        $Topic->date = date("Y-m-d H:i:s");
         $Topic->title_vi = $request->title_vi;
         $Topic->details_vi = $request->details_vi;
-        $Topic->webmaster_id = $webmasterId;
+        $Topic->webmaster_id = $request->webmasterId;
         $Topic->visits = 0;
         $Topic->status = 0;
         
