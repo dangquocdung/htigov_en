@@ -355,6 +355,13 @@ Route::get('/{lang?}/page/{id}', 'FrontendHomeController@PageViewByLang');
 Route::get('/section/{id}', 'FrontendHomeController@SectionView');
 Route::get('/{lang?}/section/{id}', 'FrontendHomeController@SectionViewByLang');
 
+//Nhap cau hoi
+
+Route::post('/section/{webmasterId}', 'FrontendHomeController@StoreComments')->name('StoreComment');
+
+// Route::post('/{lang?}/section/{id}', 'FrontendHomeController@StoreCommentsByLang')->name('StoreCommentsByLang');
+
+
 // ..Custom URL for contact us page ( www.site.com/contact )
 // Route::get('/nguoi-phat-ngon', 'FrontendHomeController@SpokesManPage')->name('spokesManPage');
 // Route::get('/{lang?}/nguoi-phat-ngon', 'FrontendHomeController@SpokesManPageByLang')->name('spokesManPageByLang');
