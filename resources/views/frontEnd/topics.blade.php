@@ -331,11 +331,11 @@
                                                     @if($Topic->webmasterSection->date_status)
                                                         @if ($WebmasterSection->id == 22)
                                                             <li>
-                                                                <i class="fa fa-calendar"></i> <a>{!! $Topic->expire_date  !!}</a>
+                                                                <i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->expire_date)->format('d-m-Y')   }}</a>
                                                             </li>
                                                         @else
                                                             <li>
-                                                                <i class="fa fa-calendar"></i> <a>{!! $Topic->date  !!}</a>
+                                                                <i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->date)->format('d-m-Y')   }}</a>
                                                             </li>
                                                         @endif
                                                     @endif
