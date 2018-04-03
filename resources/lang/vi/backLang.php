@@ -495,5 +495,9 @@ return array (
   'usersBackup' => 'Sao lưu & Khôi phục',
   'curlBHT' => 'Tải dữ liệu',
   'bannerLinkUrl' => 'Đường dẫn banner',
+  'request' => 'Phản ảnh, kiến nghị',
+  'q&a' => 'Trao đổi, Hỏi đáp',
+  'co-op' => 'Công bố thông tin doanh nghiệp',
   'de-tai-khoa-hoc' => 'Đề tài khoa học',
+  'tuyen-truyen' => 'Tuyên truyền',
 );
