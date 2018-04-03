@@ -329,8 +329,15 @@
                                             <div class="bottom-article" style="margin-top: 0">
                                                 <ul class="meta-post">
                                                     @if($Topic->webmasterSection->date_status)
-                                                        <li><i class="fa fa-calendar"></i> <a>{!! $Topic->date  !!}</a>
-                                                        </li>
+                                                        @if ($WebmasterSection->id == 22)
+                                                            <li>
+                                                                <i class="fa fa-calendar"></i> <a>{!! $Topic->expire_date  !!}</a>
+                                                            </li>
+                                                        @else
+                                                            <li>
+                                                                <i class="fa fa-calendar"></i> <a>{!! $Topic->date  !!}</a>
+                                                            </li>
+                                                        @endif
                                                     @endif
                                                     {{--  <li><i class="fa fa-user"></i> <a
                                                                 href="{{route('FrontendUserTopics',$Topic->created_by)}}">{{$Topic->user->name}}</a>
