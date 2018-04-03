@@ -2,144 +2,131 @@
 
 @section('content')
     
-    
     <section id="content">
         <div class="block3">
 
             <div class="portlet-header">
                 
                     <ul class="breadcrumb">
-                        <li><a href="{{ route('Home') }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
+                        <li><a href="{{ route("Home") }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
                         </li>
-                        <li class="active">{{ $PageTitle }}</li>
+
+                        @if($CurrentCategory!="none")
+                            @if(count($CurrentCategory) >0)
+                                <?php
+                                $category_title_var = "title_" . trans('backLang.boxCode');
+                                ?>
+                                <li class="active"><i
+                                            class="icon-angle-right"></i>{{ $Menu->$category_title_var }}
+                                </li>
+                            @endif
+                        @endif
+
+                        <button class="pull-right btn btn-info btn-sm" id="themCauHoi" style="margin-right: 7px;">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i> Đặt câu hỏi
+                        </button>
+                        
                     </ul>
 
+                    <script>
+                        $("#themCauHoi").click(function () {
+        
+                            if ( $(".input-box").css("display") == "block" ){
+        
+                                $(".input-box").css("display","none");
+        
+                            }else{
+                                $(".input-box").css("display","block");
+                            }
+                        })
+                    </script>
+
             </div>
 
-            
-            
+            @if(session('flash_notification.message'))
+
+                <section class="notification">
+
+                    <div class="alert alert-{{ session('flash_notification.level') }} alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {!! session('flash_notification.message') !!}
+                    </div>
+
+                </section>
+
+            @endif
+
+            <div class="input-box" style="padding: 5px; display: none">
+
+                <div class="col-md-12">
+                    
+                        <h4 id="contact_div"><i class="fa fa-envelope"></i> {{ trans('frontLang.getInTouch') }}</h4>
+
+                        <div id="sendmessage"><i class="fa fa-check-circle"></i>
+                            &nbsp;{{ trans('frontLang.youMessageSent') }}</div>
+                        <div id="errormessage">{{ trans('frontLang.youMessageNotSent') }}</div>
+                    
+                        {{--  {{Form::open(['route'=>['contactPage'],'method'=>'POST','class'=>'contactForm'])}}  --}}
+
+                        {{Form::open(['route'=>['Home'],'method'=>'POST'])}}
+                        
+                        <div class="form-group">
+                            {!! Form::text('name',"", array('placeholder' => trans('frontLang.yourName'),'class' => 'form-control','id'=>'name', 'data-msg'=> trans('frontLang.enterYourName'),'data-rule'=>'minlen:4')) !!}
+                            <div class="alert alert-warning validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                                {!! Form::text('address',"", array('placeholder' => trans('frontLang.address'),'class' => 'form-control','id'=>'address', 'data-msg'=> trans('frontLang.enterYourAddress'),'data-rule'=>'minlen:4')) !!}
+                                <div class="validation"></div>
+                            </div>
+
+                        <div class="form-group">
+                            {!! Form::text('phone',"", array('placeholder' => trans('frontLang.phone'),'class' => 'form-control','id'=>'phone', 'data-msg'=> trans('frontLang.enterYourPhone'),'data-rule'=>'minlen:4')) !!}
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::email('email',"", array('placeholder' => trans('frontLang.yourEmail'),'class' => 'form-control','id'=>'email', 'data-msg'=> trans('frontLang.enterYourEmail'),'data-rule'=>'email')) !!}
+                            <div class="validation"></div>
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::text('title_vi',"", array('placeholder' => trans('frontLang.subject'),'class' => 'form-control','id'=>'subject', 'data-msg'=> trans('frontLang.enterYourSubject'),'data-rule'=>'minlen:4')) !!}
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group">
+                            {!! Form::textarea('details_vi','', array('placeholder' => trans('frontLang.message'),'class' => 'form-control textarea','id'=>'message','rows'=>'8', 'data-msg'=> trans('frontLang.enterYourMessage'),'data-rule'=>'required')) !!}
+                            <div class="validation"></div>
+                        </div>
+                    
+                        @if(env('NOCAPTCHA_STATUS', false))
+                            <div class="form-group">
+                                {!! app('captcha')->display($attributes = [], $lang = trans('backLang.code')) !!}
+                            </div>
+                        @endif
+                        
+                        <strong>* Điều khoản sử dụng:</strong><br>
+                        <em>
+                            - Cá nhân hoặc tổ chức phải tuân thủ theo các nội dung tại "Quy chế sử dụng".<br>
+                            - Không sử dụng các từ ngữ, câu hỏi có nội dung làm ảnh hưởng đến uy tín, danh dự của cá nhân, tổ chức khác hoặc chứa đựng các từ ngữ thông tục, ảnh hưởng tới văn hóa và thuần phong mỹ tục.<br>
+                            - Cá nhân, tổ chức sẽ tự chịu trác nhiệm với nội dung câu hỏi của mình tùy theo mức độ ảnh hưởng của nội dung câu hỏi đó.<br>
+                            - Các nội dung thông tin từ chuyên mục Hỏi - Đáp không thể được sử dụng hay trích dẫn làm căn cứ pháp lý cho bất kỳ trường hợp nào.<br>
+                            - Câu hỏi trái với các nội dung nêu trên sẽ bị xóa mà không cần thông báo trước.<br>
+                        </em>
+                        <br>
+                        <div>
+                            <button type="submit" class="btn btn-theme" style="color: white">{{ trans('frontLang.sendMessage') }}</button>
+                        </div>
+                        <br>
+
+                        {{Form::close()}}
+
+                </div>
+            </div>
+
             <div class="col-md-12">
                 
-                <div class="dv" style="margin:10px 0; padding: 5px">
-                    <div class="dv-body">
-                        <table id="example1" class="dv-table">
-                            @if ($PageName == 'Organ')
-
-                                   
-                                <thead>
-                                <tr>
-                                    <th>TT</th>
-                                    <th>Cơ quan</th>
-                                    <th>Website</th>
-                                    <th>Điện thoại</th>
-                                </tr>
-                                </thead>
-                
-                                <tbody>
-                                
-                                    @foreach($Models->where('nhomcq_id','1') as $cq)
-                                    <tr>
-                                        <td>{{ $cq->id }}</td>
-                                        <td>{{ $cq->name }}</td>
-                                        <td><a href="{{ $cq->lienket }}" target="_blank">{{ $cq->lienket }}</a></td>
-                                        <td>{{ $cq->sodt }}</td>
-                                    </tr>
-                                    @endforeach
-                                
-                                </tbody>
-
-                            @elseif ($PageName == 'SpokesMan')
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <span>TT</span>
-                                        </th>
-                                        <th>
-                                            <span>Cơ quan</span>
-                                        </th>
-                    
-                                        <th>
-                                            <span>Họ và Tên</span>
-                                        </th>
-                    
-                                        <th>
-                                            <span>Chức danh</span>
-                                        </th>
-                                        <th>
-                                            <span>ĐT cố định</span>
-                                        </th>
-                                        <th>
-                                            <span>ĐT di động</span>
-                                        </th>
-                                        <th>
-                                            <span>Địa chỉ e-mail</span>
-                                        </th>
-                                    </tr>
-                                    </thead>
-                    
-                                    <tbody>
-                                        @foreach($Models as $npn)
-                                        <tr>
-                                            <td>{{ $npn->id }}</td>
-                                            <td>{{ $npn->coquan->name }}</td>
-                                            <td>{{ $npn->name }}</td>
-                                            <td>{{ $npn->chucdanh }}</td>
-                                            <td>{{ $npn->codinh }}</td>
-                                            <td>{{ $npn->didong }}</td>
-                                            <td>{{ $npn->email }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-
-                            @elseif ($PageName == 'Reporter')
-
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            <span>TT</span>
-                                        </th>
-                                        <th>
-                                            <span>Đơn vị</span>
-                                        </th>
-                    
-                                        <th>
-                                            <span>Họ và Tên</span>
-                                        </th>
-                    
-                                        <th>
-                                            <span>Số TNB</span>
-                                        </th>
-                                        <th>
-                                            <span>Điện thoại</span>
-                                        </th>
-                                        <th>
-                                            <span>Email</span>
-                                        </th>
-                                    </tr>
-                                    </thead>
-                    
-                                    <tbody>
-                                    @foreach($Models as $pvtt)
-                                        <tr>
-                                            <td>{{ $pvtt->id }}</td>
-                                            <td>{{ $pvtt->cqbc }}</td>
-                                            <td>{{ $pvtt->pvtt }}</td>
-                                            <td>{{ $pvtt->sothe }}</td>
-                                            <td>{{ $pvtt->dienthoai }}</td>
-                                            <td>{{ $pvtt->email }}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-
-                            @endif
-                        </table>
-                    </div>
-                </div>
-
             </div>
 
-            
-            
         </div>
     </section>
 

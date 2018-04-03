@@ -4,6 +4,8 @@
     $file_var = "file_" . trans('backLang.boxCode');
 ?>
 
+
+
 <script src="{{ URL::asset('frontEnd/js/jssor.slider-26.7.0.min.js') }}"></script>
 <script type="text/javascript">
     jssor_1_slider_init = function() {
