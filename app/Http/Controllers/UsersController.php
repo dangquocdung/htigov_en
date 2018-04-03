@@ -80,6 +80,9 @@ class UsersController extends Controller
         $this->validate($request, [
             'photo' => 'mimes:png,jpeg,jpg,gif|max:3000',
             'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'passport' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required',
             'permissions_id' => 'required'
@@ -100,6 +103,9 @@ class UsersController extends Controller
         $User = new User;
         $User->name = $request->name;
         $User->email = $request->email;
+        $User->phone = $request->phone;
+        $User->address = $request->address;
+        $User->passport = $request->passport;
         $User->password = bcrypt($request->password);
         $User->permissions_id = $request->permissions_id;
         $User->photo = $fileFinalName_vi;
@@ -165,6 +171,9 @@ class UsersController extends Controller
             $this->validate($request, [
                 'photo' => 'mimes:png,jpeg,jpg,gif|max:3000',
                 'name' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'passport' => 'required',
                 'permissions_id' => 'required'
             ]);
 
@@ -187,6 +196,9 @@ class UsersController extends Controller
             //if ($id != 1) {
             $User->name = $request->name;
             $User->email = $request->email;
+            $User->phone = $request->phone;
+            $User->address = $request->address;
+            $User->passport = $request->passport;
             if ($request->password != "") {
                 $User->password = bcrypt($request->password);
             }

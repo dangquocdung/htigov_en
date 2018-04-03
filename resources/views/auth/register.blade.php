@@ -34,6 +34,21 @@
                         {{ $errors->first('email') }}
                     </div>
                 @endif
+                @if ($errors->has('phone'))
+                    <div class="alert alert-warning">
+                        {{ $errors->first('phone') }}
+                    </div>
+                @endif
+                @if ($errors->has('address'))
+                    <div class="alert alert-warning">
+                        {{ $errors->first('address') }}
+                    </div>
+                @endif
+                @if ($errors->has('passport'))
+                    <div class="alert alert-warning">
+                        {{ $errors->first('passport') }}
+                    </div>
+                @endif
                 @if ($errors->has('password'))
                     <div class="alert alert-warning">
                         {{ $errors->first('password') }}
@@ -49,6 +64,24 @@
 
                     <label>{{ trans('backLang.connectEmail') }}</label>
                 </div>
+
+                <div class="md-form-group">
+                    <input id="phone" type="text" class="md-input" name="phone" value="{{ old('phone') }}" required
+                           autofocus>
+                    <label>{{ trans('backLang.phone') }}</label>
+                </div>
+                <div class="md-form-group">
+                    <input id="address" type="text" class="md-input" name="address" value="{{ old('address') }}" required
+                           autofocus>
+                    <label>{{ trans('backLang.address') }}</label>
+                </div>
+                <div class="md-form-group">
+                    <input id="passport" type="text" class="md-input" name="passport" value="{{ old('passport') }}" required
+                           autofocus>
+                    <label>{{ trans('backLang.passport') }}</label>
+                </div>
+
+
                 <div class="md-form-group">
                     <input id="password" type="password" class="md-input" name="password" required>
                     <label>{{ trans('backLang.connectPassword') }}</label>
