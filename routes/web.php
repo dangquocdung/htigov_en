@@ -352,13 +352,6 @@ Route::get('/{lang?}/contact', 'FrontendHomeController@ContactPageByLang')->name
 Route::get('/page/{id}', 'FrontendHomeController@PageView');
 Route::get('/{lang?}/page/{id}', 'FrontendHomeController@PageViewByLang');
 
-Route::get('/section/{id}', 'FrontendHomeController@SectionView');
-Route::get('/{lang?}/section/{id}', 'FrontendHomeController@SectionViewByLang');
-
-//Nhap cau hoi
-
-Route::post('/section', 'FrontendHomeController@StoreComment')->name('StoreComment');
-
 // Route::post('/{lang?}/section/{id}', 'FrontendHomeController@StoreCommentsByLang')->name('StoreCommentsByLang');
 
 
