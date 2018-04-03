@@ -1513,6 +1513,54 @@ class FrontendHomeController extends Controller
 
     }
 
+    //Store comments
+
+    public function StoreComment(Request $request, $webmasterId)
+    {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'phone' =>  'required',
+            'email' => 'required|email',
+            'title_vi' => 'required',
+            'details_vi' => 'required'
+        ]);
+
+        if (env('NOCAPTCHA_STATUS', false)) {
+            $this->validate($request, [
+                'g-recaptcha-response' => 'required|captcha'
+            ]);
+        }
+
+        $next_nor_no = Topic::where('webmaster_id', '=', $webmasterId)->max('row_no');
+        
+        if ($next_nor_no < 1) {
+            $next_nor_no = 1;
+        } else {
+            $next_nor_no++;
+        }
+
+        // create new topic
+        $Topic = new Topic;
+
+        // Save topic details
+        $Topic->row_no = $next_nor_no;
+        $Topic->name = $request->name;
+        $Topic->phone = $request->phone;
+        $Topic->email = $request->email;
+        $Topic->address = $request->address;
+        $Topic->date = Carbon\Carbon::now()->toDateString();
+        $Topic->title_vi = $request->title_vi;
+        $Topic->details_vi = $request->details_vi;
+        $Topic->webmaster_id = $webmasterId;
+        $Topic->visits = 0;
+        $Topic->status = 0;
+        
+        $Topic->save();
+        
+        return redirect()->route('Home');
+    }
+
     
         
 }

@@ -11,7 +11,7 @@
                         <ul class="breadcrumb">
                             <li><a href="{{ route("Home") }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
                             </li>
-                            @if(@$WebmasterSection!="none")
+                            @if($WebmasterSection!="none")
                                 <li class="active">{!! trans('backLang.'.$WebmasterSection->name) !!}</li>
                             @elseif(@$search_word!="")
                                 <li class="active">{{ @$search_word }}</li>
@@ -96,84 +96,7 @@
                                         @endif
 
                                         <article class="center">
-                                            @if($Topic->webmasterSection->type==2 && $Topic->video_file!="")
-                                                {{--video--}}
-                                                <div class="post-video">
-                                                    <div class="post-heading">
-                                                        <h4>
-                                                            <a href="{{ $topic_link_url }}">
-                                                                @if($Topic->icon !="")
-                                                                    <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
-                                                                @endif
-                                                                {{ $title }}
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div class="video-container responsive-video">
-                                                        @if($Topic->video_type ==1)
-                                                            <?php
-                                                            $Youtube_id = Helper::Get_youtube_video_id($Topic->video_file);
-                                                            ?>
-                                                            @if($Youtube_id !="")
-                                                                {{-- Youtube Video --}}
-                                                                <iframe allowfullscreen 
-                                                                        src="https://www.youtube.com/embed/{{ $Youtube_id }}">
-                                                                </iframe>
-                                                            @endif
-                                                        @elseif($Topic->video_type ==2)
-                                                            <?php
-                                                            $Vimeo_id = Helper::Get_vimeo_video_id($Topic->video_file);
-                                                            ?>
-                                                            @if($Vimeo_id !="")
-                                                                {{-- Vimeo Video --}}
-                                                                <iframe allowfullscreen
-                                                                        src="http://player.vimeo.com/video/{{ $Vimeo_id }}?title=0&amp;byline=0">
-                                                                </iframe>
-                                                            @endif
-
-                                                        @elseif($Topic->video_type ==3)
-                                                            @if($Topic->video_file !="")
-                                                                {{-- Embed Video --}}
-                                                                {!! $Topic->video_file !!}
-                                                            @endif
-
-                                                        @else
-                                                            <video width="100%" height="300" controls>
-                                                                <source src="{{ URL::to('uploads/topics/'.$Topic->video_file) }}"
-                                                                        type="video/mp4">
-                                                                Your browser does not support the video tag.
-                                                            </video>
-                                                        @endif
-
-                                                    </div>
-                                                </div>
-                                            @elseif($Topic->webmasterSection->type==3 && $Topic->audio_file!="")
-                                                {{--audio--}}
-                                                <div class="post-video">
-                                                    <div class="post-heading">
-                                                        <h3>
-                                                            <a href="{{ $topic_link_url }}">
-                                                                @if($Topic->icon !="")
-                                                                    <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
-                                                                @endif
-                                                                {{ $title }}
-                                                            </a></h3>
-                                                    </div>
-                                                    @if($Topic->photo_file !="")
-                                                        <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"
-                                                                alt="{{ $title }}"/>
-                                                    @endif
-                                                    <div>
-                                                        <audio controls>
-                                                            <source src="{{ URL::to('uploads/topics/'.$Topic->audio_file) }}"
-                                                                    type="audio/mpeg">
-                                                            Your browser does not support the audio element.
-                                                        </audio>
-
-                                                    </div>
-                                                </div>
-
-                                            @elseif(count($Topic->photos)>0)
+                                            @if(count($Topic->photos)>0)
                                                 {{--photo slider--}}
                                                 <div class="post-slider">
                                                     <div class="post-heading">
@@ -205,7 +128,6 @@
                                                     </div>
                                                     <!-- end flexslider -->
                                                 </div>
-
                                             @else
                                                 {{--one photo--}}
                                                 <div class="news-main" style="padding: 0; margin-bottom: 0">
@@ -446,6 +368,44 @@
                        
                      </div>
             </div>
+
+
+            <br>
+
+            @if ($WebmasterSection->id == 22)
+
+            <div class="block3">
+
+                <div class="portlet-header">
+                    
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="{{ route("Home") }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
+                        </li>
+                        <li class="active">Văn bản hết hạn góp ý</li>
+                        
+                    </ul>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+                 <div class="loai-tin">
+                    
+                        @if($Topics->total() == 0)
+                            <div class="col-md-12">
+                                <div class="alert alert-warning">
+                                    <i class="fa fa-info"></i> &nbsp; {{ trans('frontLang.noData') }}
+                                </div>
+                            </div>
+                        
+                            
+                        @endif
+                   
+                 </div>
+            </div>
+            @endif
+
     </section>
 @stop
 
