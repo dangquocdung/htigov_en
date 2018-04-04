@@ -95,8 +95,6 @@ class CurlController extends Controller
 
     }
 
-    
-    
     public function TinTrongTinh($url=""){
 
         $client = new Client();
@@ -167,7 +165,7 @@ class CurlController extends Controller
                     
                     $Topic->created_by = Auth::user()->id;
                     $Topic->visits = 0;
-                    $Topic->status = 1;
+                    $Topic->status = 0;
 
                     // Meta title
                     $Topic->seo_title_vi = $name;
@@ -196,63 +194,35 @@ class CurlController extends Controller
 
     }
 
-    
     public function TinChinhPhu($url=""){
         
         $rss=simplexml_load_file($url);
 
         foreach ($rss->channel->item as $item) {
 
+            $next_nor_no = TopicCategory::where('section_id', '=', 29)->count();
+
+            if ($next_nor_no < 1) {
+                $next_nor_no = 1;
+            } else {
+                $next_nor_no++;
+            }
+
             $name = $item->title; // String. You have extracted description part from your feed
             
-            $count = Topic::where('title_vi',$name)->get();
+            $details = $item->description;
+            
+            $image = $item->enclosure['url'];
 
-            if (!empty($count)) {
+            $url = $item->link;
 
-                //thu tu
-                $next_nor_no = TopicCategory::where('section_id', '=', 29)->count();
+            $count = Topic::where('title_vi',$name)->first();
 
-                if ($next_nor_no < 1) {
-                    $next_nor_no = 1;
-                } else {
-                    $next_nor_no++;
-                }
+                if (empty($count)){
 
-                $slug = str_slug($name);
-
-                $desc = $item->description;
-
-                $details = $desc;
-                
-                $url = $item->link; 
-
-                $pubDate = $item->pubDate;
-
-                $pubDate = Carbon::parse($pubDate)->toDateTimeString();
-
-                $image = $item->enclosure['url'];
-
-                if (file_exists($image)) {
-
-                    $Topic = new Topic;
-
-                    $Topic->row_no = $next_nor_no;
-
-                    $Topic->title_vi = $name;
-
-                    $Topic->title_en = $name;
-
-                    $Topic->details_vi = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
-
-                    $Topic->details_en = $details;
-
-                    $Topic->date = date("Y-m-d H:i:s");
-                    
                     $file = file_get_contents($image);
 
                     $filename = substr($image, strrpos($image, '/') + 1);
-
-                    // $path = public_path().'/uploads/topics/'.$filename;
 
                     $folder = 'uploads/topics/';
                     
@@ -261,35 +231,31 @@ class CurlController extends Controller
                     $filename = $datefilename."_".$filename;
 
                     file_put_contents($folder.$filename,$file);
+
+                    $Topic = new Topic;
+
+                    $Topic->row_no = $next_nor_no;
+
+                    $Topic->title_vi = $name;
+
+                    $Topic->details_vi = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
+
+                    $Topic->date = date("Y-m-d H:i:s");
                     
                     $Topic->photo_file = $filename;
-                    
-                    // $section = Section::find($section_id)->first();
                         
                     $Topic->webmaster_id = 11;
                     
                     $Topic->created_by = Auth::user()->id;
+
                     $Topic->visits = 0;
+
                     $Topic->status = 0;
 
-                    // Meta title
-                    $Topic->seo_title_vi = str_slug($name);
-                    $Topic->seo_title_en = str_slug($name);
-
-                    // URL Slugs
-                    $slugs = Helper::URLSlug($name, $name, "topic", 0);
-                    $Topic->seo_url_slug_vi = $slugs['slug_vi'];
-                    $Topic->seo_url_slug_en = $slugs['slug_en'];
-
-                    // Meta Description
-                    $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($details)), 0, 165, 'UTF-8');
-                    $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($details)), 0, 165, 'UTF-8');
-                    
                     $Topic->save();
+                
                 }
-
-            }
-
+           
         }
 
     }
@@ -763,8 +729,6 @@ class CurlController extends Controller
     public function TinTrangCu($url=""){
         
         $rss=simplexml_load_file($url);
-
-        
 
         foreach ($rss->entry as $item) {
 

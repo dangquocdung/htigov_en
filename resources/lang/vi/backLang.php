@@ -501,5 +501,5 @@ return array (
   'de-tai-khoa-hoc' => 'Đề tài khoa học',
   'tuyen-truyen' => 'Tuyên truyền',
   'Header-Banner' => 'Banner Chính',
-  'curlBCP' => 'Báo chính phủ',
+  'curlBCP' => 'Báo Chính phủ',
 );
