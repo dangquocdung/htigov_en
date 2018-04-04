@@ -610,19 +610,17 @@
                                     @if($WebmasterSection->date_status)
                                         <li><i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->date)->format('d-m-Y')   }}</a></li>
                                     @endif
-                                    <li>
+                                    {{--  <li>
                                         <i class="fa fa-user"></i> 
                                         <a href="{{route('FrontendUserTopics',$Topic->created_by)}}">{{$Topic->user->name}}</a>
-                                    </li>
+                                    </li>  --}}
                                     <li>
-                                        <i class="fa fa-eye"></i> <a>{{ trans('frontLang.visits') }}
-                                            : {!! $Topic->visits !!}</a>
+                                        <i class="fa fa-eye"></i> <a>: {!! $Topic->visits !!}</a>
                                         </li>
                                     @if($WebmasterSection->comments_status)
                                         <li>
                                             <i class="fa fa-comments"></i><a
-                                                    href="#comments">{{ trans('frontLang.comments') }}
-                                                : {{count($Topic->approvedComments)}} </a>
+                                                    href="#comments">: {{count($Topic->approvedComments)}} </a>
                                         </li>
                                     @endif
                                 </ul>
