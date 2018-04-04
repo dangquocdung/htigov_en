@@ -69,7 +69,7 @@ class CurlController extends Controller
 
         $this->TinChinhPhu($url);
 
-        return redirect()->route('topics',16);
+        return redirect()->route('topics',11);
 
         //
 
