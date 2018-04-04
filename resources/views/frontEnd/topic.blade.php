@@ -628,8 +628,15 @@
                                 <div class="pull-right">
                                     {{--  <span class="hidden-xs">{{ trans('frontLang.share') }} :</span>  --}}
                                     <ul class="social-network share">
+                                        @if(@Auth::user()->permissionsGroup->edit_status)
+                                            <li>
+                                                <a href="{{ route("topicsEdit",["webmasterId"=>$WebmasterSection->id,"id"=>$Topic->id]) }}" class="google"
+                                                data-placement="top"
+                                                title="Đọc văn bản"><i class="fa fa-edit"></i></a>
+                                            </li>
+                                        @endif
                                         <li>
-                                            <a href="javascript:void(0);" class="facebook"
+                                            <a href="javascript:void(0);" class="twitter"
                                             data-placement="top"
                                             title="Đọc văn bản"><i class="fa fa-volume-up"></i></a>
                                         </li>
