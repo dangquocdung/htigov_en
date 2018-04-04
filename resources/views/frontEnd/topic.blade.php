@@ -603,6 +603,8 @@
                                 </div>
                             @endif
 
+                            <div class="clearfix"></div>
+
                             <div class="bottom-article">
                                 <ul class="meta-post">
                                     @if($WebmasterSection->date_status)
@@ -632,7 +634,7 @@
                                             <li>
                                                 <a href="{{ route("topicsEdit",["webmasterId"=>$WebmasterSection->id,"id"=>$Topic->id]) }}" class="google"
                                                 data-placement="top"
-                                                title="Đọc văn bản"><i class="fa fa-edit"></i></a>
+                                                title="Chỉnh sửa văn bản" target="_blank"><i class="fa fa-edit"></i></a>
                                             </li>
                                         @endif
                                         <li>
