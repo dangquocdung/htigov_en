@@ -33,13 +33,13 @@ class CurlController extends Controller
 
         foreach ($urlArray as $url) {
 
-            // $this->TinTrongTinh($url);
+            $this->TinTrongTinh($url);
             
         };
 
-        $url = 'http://dungdang.website/rss-feed';
+        // $url = 'http://dungdang.website/rss-feed';
 
-        // $url ='http://baochinhphu.vn/_RSS_/442.rss';
+        $url ='http://baochinhphu.vn/_RSS_/442.rss';
 
         // $section = 29;
 
@@ -408,11 +408,6 @@ class CurlController extends Controller
                     $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($details)), 0, 165, 'UTF-8');
                     
                     $Topic->save();
-
-                    $TopicCategory = new TopicCategory;
-                    $TopicCategory->topic_id = $Topic->id;
-                    $TopicCategory->section_id = 29;
-                    $TopicCategory->save();
                 }
 
             }
