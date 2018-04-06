@@ -193,20 +193,20 @@
                                 <div class="col-sm-10">
                                     <div class="form-group">
                                         <div class='input-group date' ui-jp="datetimepicker" ui-options="{
-                format: 'YYYY-MM-DD',
-                icons: {
-                  time: 'fa fa-clock-o',
-                  date: 'fa fa-calendar',
-                  up: 'fa fa-chevron-up',
-                  down: 'fa fa-chevron-down',
-                  previous: 'fa fa-chevron-left',
-                  next: 'fa fa-chevron-right',
-                  today: 'fa fa-screenshot',
-                  clear: 'fa fa-trash',
-                  close: 'fa fa-remove'
-                }
-              }">
-                                            {!! Form::text('date',$Topics->date, array('placeholder' => '','class' => 'form-control','id'=>'date','required'=>'')) !!}
+                                                format: 'DD-MM-YYYY',
+                                                icons: {
+                                                time: 'fa fa-clock-o',
+                                                date: 'fa fa-calendar',
+                                                up: 'fa fa-chevron-up',
+                                                down: 'fa fa-chevron-down',
+                                                previous: 'fa fa-chevron-left',
+                                                next: 'fa fa-chevron-right',
+                                                today: 'fa fa-screenshot',
+                                                clear: 'fa fa-trash',
+                                                close: 'fa fa-remove'
+                                                }
+                                            }">
+                                            {!! Form::text('date',Carbon\Carbon::parse($Topics->date)->format('d-m-Y'), array('placeholder' => '','class' => 'form-control','id'=>'date','required'=>'')) !!}
                                             <span class="input-group-addon">
                   <span class="fa fa-calendar"></span>
               </span>
@@ -227,20 +227,20 @@
                                 <div class="col-sm-10">
                                     <div class="form-group">
                                         <div class='input-group date' ui-jp="datetimepicker" ui-options="{
-                format: 'YYYY-MM-DD',
-                icons: {
-                  time: 'fa fa-clock-o',
-                  date: 'fa fa-calendar',
-                  up: 'fa fa-chevron-up',
-                  down: 'fa fa-chevron-down',
-                  previous: 'fa fa-chevron-left',
-                  next: 'fa fa-chevron-right',
-                  today: 'fa fa-screenshot',
-                  clear: 'fa fa-trash',
-                  close: 'fa fa-remove'
-                }
-              }">
-                                            {!! Form::text('expire_date',$Topics->expire_date, array('placeholder' => '','class' => 'form-control','id'=>'expire_date')) !!}
+                                                format: 'DD-MM-YYYY',
+                                                icons: {
+                                                time: 'fa fa-clock-o',
+                                                date: 'fa fa-calendar',
+                                                up: 'fa fa-chevron-up',
+                                                down: 'fa fa-chevron-down',
+                                                previous: 'fa fa-chevron-left',
+                                                next: 'fa fa-chevron-right',
+                                                today: 'fa fa-screenshot',
+                                                clear: 'fa fa-trash',
+                                                close: 'fa fa-remove'
+                                                }
+                                            }">
+                                            {!! Form::text('expire_date',Carbon\Carbon::parse($Topics->expire_date)->format('d-m-Y'), array('placeholder' => '','class' => 'form-control','id'=>'expire_date')) !!}
                                             <span class="input-group-addon">
                   <span class="fa fa-calendar"></span>
               </span>
@@ -862,19 +862,19 @@
                                             <div class="col-sm-10">
                                                 <div>
                                                     <div class='input-group date' ui-jp="datetimepicker" ui-options="{
-                format: 'YYYY-MM-DD hh:mm A',
-                icons: {
-                  time: 'fa fa-clock-o',
-                  date: 'fa fa-calendar',
-                  up: 'fa fa-chevron-up',
-                  down: 'fa fa-chevron-down',
-                  previous: 'fa fa-chevron-left',
-                  next: 'fa fa-chevron-right',
-                  today: 'fa fa-screenshot',
-                  clear: 'fa fa-trash',
-                  close: 'fa fa-remove'
-                }
-              }">
+                                                            format: 'YYYY-MM-DD hh:mm A',
+                                                            icons: {
+                                                            time: 'fa fa-clock-o',
+                                                            date: 'fa fa-calendar',
+                                                            up: 'fa fa-chevron-up',
+                                                            down: 'fa fa-chevron-down',
+                                                            previous: 'fa fa-chevron-left',
+                                                            next: 'fa fa-chevron-right',
+                                                            today: 'fa fa-screenshot',
+                                                            clear: 'fa fa-trash',
+                                                            close: 'fa fa-remove'
+                                                            }
+                                                        }">
                                                         {!! Form::text('customField_'.$customField->id,$cf_saved_val, array('placeholder' => '','class' => 'form-control','id'=>'customField_'.$customField->id,$cf_required=>'', 'dir'=>$cf_land_dir)) !!}
                                                         <span class="input-group-addon">
                   <span class="fa fa-calendar"></span>
@@ -893,19 +893,19 @@
                                             <div class="col-sm-10">
                                                 <div class="form-group">
                                                     <div class='input-group date' ui-jp="datetimepicker" ui-options="{
-                format: 'YYYY-MM-DD',
-                icons: {
-                  time: 'fa fa-clock-o',
-                  date: 'fa fa-calendar',
-                  up: 'fa fa-chevron-up',
-                  down: 'fa fa-chevron-down',
-                  previous: 'fa fa-chevron-left',
-                  next: 'fa fa-chevron-right',
-                  today: 'fa fa-screenshot',
-                  clear: 'fa fa-trash',
-                  close: 'fa fa-remove'
-                }
-              }">
+                                                            format: 'YYYY-MM-DD',
+                                                            icons: {
+                                                            time: 'fa fa-clock-o',
+                                                            date: 'fa fa-calendar',
+                                                            up: 'fa fa-chevron-up',
+                                                            down: 'fa fa-chevron-down',
+                                                            previous: 'fa fa-chevron-left',
+                                                            next: 'fa fa-chevron-right',
+                                                            today: 'fa fa-screenshot',
+                                                            clear: 'fa fa-trash',
+                                                            close: 'fa fa-remove'
+                                                            }
+                                                        }">
                                                         {!! Form::text('customField_'.$customField->id,$cf_saved_val, array('placeholder' => '','class' => 'form-control','id'=>'customField_'.$customField->id,$cf_required=>'', 'dir'=>$cf_land_dir)) !!}
                                                         <span class="input-group-addon">
                   <span class="fa fa-calendar"></span>
@@ -2970,27 +2970,27 @@
         @endif
     </script>
     <?php
-    if (Session::has('relatedST')){
-    if (Session::get('relatedST') == "create"){
+        if (Session::has('relatedST')){
+        if (Session::get('relatedST') == "create"){
     ?>
-    <script type="text/javascript">
-        $('#related_section_id').change(function () {
+        <script type="text/javascript">
+            $('#related_section_id').change(function () {
 
-            var fid = $(this).val();
-            $(document).ready(function () {
-                $.ajax({
-                    url: '<?php echo url(env('BACKEND_PATH', 'admin')."/relatedLoad"); ?>/' + fid,
-                    data: {},
-                    success: function (data) {
-                        $('#r_topics').html(data)
-                    }
-                }); //End of Ajax
+                var fid = $(this).val();
+                $(document).ready(function () {
+                    $.ajax({
+                        url: '<?php echo url(env('BACKEND_PATH', 'admin')."/relatedLoad"); ?>/' + fid,
+                        data: {},
+                        success: function (data) {
+                            $('#r_topics').html(data)
+                        }
+                    }); //End of Ajax
+                });
+
             });
-
-        });
-    </script>
+        </script>
     <?php
-    }
-    }
+        }
+        }
     ?>
 @endsection

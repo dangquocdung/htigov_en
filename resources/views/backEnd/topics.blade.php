@@ -65,8 +65,11 @@
                         </thead>
                         <tbody>
                         <?php
-                        $title_var = "title_" . trans('backLang.boxCode');
-                        $title_var2 = "title_" . trans('backLang.boxCodeOther');
+                            $title_var = "title_" . trans('backLang.boxCode');
+                            $title_var2 = "title_" . trans('backLang.boxCodeOther');
+
+                            $details_var = "details_" . trans('backLang.boxCode');
+                            $details_var2 = "details_" . trans('backLang.boxCodeOther');
                         ?>
                         @foreach($Topics as $Topic)
                             <?php
@@ -74,6 +77,12 @@
                                 $title = $Topic->$title_var;
                             } else {
                                 $title = $Topic->$title_var2;
+                            }
+
+                            if ($Topic->$details_var != "") {
+                                $details = $Topic->$details_var;
+                            } else {
+                                $details = $Topic->$details_var2;
                             }
                             // Get Categories list
                             $section = "";
@@ -102,7 +111,8 @@
 
                             ?>
                             <tr>
-                                <td><label class="ui-check m-a-0">
+                                <td>
+                                    <label class="ui-check m-a-0">
                                         <input type="checkbox" name="ids[]" value="{{ $Topic->id }}"><i
                                                 class="dark-white"></i>
                                         {!! Form::hidden('row_ids[]',$Topic->id, array('class' => 'form-control row_no')) !!}
@@ -120,7 +130,13 @@
                                     @if($Topic->icon !="")
                                         <i class="fa {!! $Topic->icon !!} "></i>
                                     @endif
-                                    {{ $title }}
+
+                                    @if (strlen($title) < 20)
+                                        {{ $title.' '.$details }}
+                                    @else
+                                        {{ $title }}
+                                    @endif
+
                                     <div>
                                         <small>
                                             {{ $section }} {!! $sectionSt !!}
@@ -129,7 +145,7 @@
                                 </td>
                                 @if($WebmasterSection->date_status)
                                     <td class="text-center">
-                                        <small>{!! $Topic->date  !!}</small>
+                                        <small>{!! Carbon\Carbon::parse($Topic->date)->format('d-m-Y')  !!}</small>
                                     </td>
                                 @endif
                                 @if($WebmasterSection->expire_date_status)

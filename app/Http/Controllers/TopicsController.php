@@ -18,6 +18,7 @@ use File;
 use Helper;
 use Illuminate\Http\Request;
 use Redirect;
+use Carbon\Carbon;
 
 class TopicsController extends Controller
 {
@@ -179,7 +180,7 @@ class TopicsController extends Controller
 
             $Topic->details_vi = $request->details_vi;
             $Topic->details_en = $request->details_en;
-            $Topic->date = $request->date;
+            $Topic->date = Carbon::parse($request->date)->format('Y-m-d');
             if (@$request->expire_date != "") {
                 $Topic->expire_date = $request->expire_date;
             }
@@ -422,7 +423,7 @@ class TopicsController extends Controller
                 $Topic->title_en = $request->title_en;
                 $Topic->details_vi = $request->details_vi;
                 $Topic->details_en = $request->details_en;
-                $Topic->date = $request->date;
+                $Topic->date = Carbon::parse($request->date)->format('Y-m-d');
                 if (@$request->expire_date != "" || $Topic->date != "") {
                     $Topic->expire_date = @$request->expire_date;
                 }

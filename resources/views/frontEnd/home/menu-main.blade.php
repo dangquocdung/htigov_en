@@ -596,7 +596,7 @@
                                                         <thead>
                                                         <tr>
                                                             <th>TT</th>
-                                                            @if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26')
+                                                            @if (in_array($MnuCategory->id,['24','25']))
                                                                 <th>Kí hiệu </th>
                                                             @endif
                                                             
@@ -656,7 +656,7 @@
                                                                     <td>
                                                                         {{ $loop->iteration }}
                                                                     </td>
-                                                                    @if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26')
+                                                                    @if (in_array($MnuCategory->id,['24','25']))
                                                                         <td>
                                                                             <a href="{{ $topic_link_url }}">
                                                                                 {{ $tin->$link_title_var }}
@@ -665,7 +665,7 @@
                                                                     @endif
                                                                     <td>
                                                                         <a href="{{ $topic_link_url }}">
-                                                                            @if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26')
+                                                                            @if (in_array($MnuCategory->id,['24','25']))
                                                                                 {{ str_limit(strip_tags($tin->$details_var), $limit = 80, $end = '...') }}
                                                                             @else
                                                                                 {{ $tin->$link_title_var }}
@@ -676,11 +676,11 @@
                                                                         {{ \Carbon\Carbon::parse($tin->date)->format('d-m-Y') }}
                                                                     </td>
                                                                     <td style="text-align:center">
-                                                                        @if (file_exists($tin->attach_file))
+                                                                        {{--  @if (file_exists($tin->attach_file))  --}}
                                                                             <a href="{{ $tin->attach_file }}" target="_blank">
                                                                                 <i class="fa fa-paperclip" aria-hidden="true"></i>
                                                                             </a>
-                                                                        @endif
+                                                                        {{--  @endif  --}}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -688,6 +688,28 @@
                                                     </table>
 
                                                 @endif
+
+                                                <?php
+                                                    if ($MnuCategory->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                            $SubCategory_link_url = url(trans('backLang.code') . "/" . $MnuCategory->$slug_var);
+                                                        } else {
+                                                            $SubCategory_link_url = url($MnuCategory->$slug_var);
+                                                        }
+                                                    } else {
+                                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                            $SubCategory_link_url = route('FrontendTopicsByCatWithLang', ["lang" => trans('backLang.code'), "section" => $MnuCategory->webmasterSection->name, "cat" => $MnuCategory->id]);
+                                                        } else {
+                                                            $SubCategory_link_url = route('FrontendTopicsByCat', ["section" => $MnuCategory->webmasterSection->name, "cat" => $MnuCategory->id]);
+                                                        }
+                                                    }
+                                                ?>
+
+                                                <div class="pull-right" style="padding: 0 5px 5px 0;">
+
+                                                    <a href="{{ $SubCategory_link_url }}" style="text-decoration: none"><em>Xem tiếp...</em></a>
+        
+                                                </div>
 
                                             </div>
                                         @endif

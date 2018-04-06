@@ -89,7 +89,7 @@ return array (
   'blockSelected' => 'Chặn',
   'deleteSelected' => 'Xoá',
   'of' => 'của',
-  'records' => 'hồ sơ',
+  'records' => 'tin, bài',
   'confirmation' => 'Xác nhận',
   'yes' => 'Có',
   'no' => 'Không',
@@ -100,7 +100,7 @@ return array (
   'imagesTypes' => 'Phần mở rộng: .png, .jpg, .jpeg, .gif',
   'audioTypes' => 'Phần mở rộng: .mp3, .wav',
   'attachTypes' => 'Tiện ích mở rộng: (* ALL)',
-  'addDone' => 'Hồ sơ mới đã được thêm thành công',
+  'addDone' => 'Tin, bài mới đã được thêm thành công',
   'saveDone' => 'Sửa đổi bạn đã lưu thành công',
   'deleteDone' => 'Dữ liệu đã bị xóa thành công',
   'erorr' => 'Có lỗi, hãy thử lại',
@@ -502,4 +502,5 @@ return array (
   'tuyen-truyen' => 'Tuyên truyền',
   'Header-Banner' => 'Banner Chính',
   'curlBCP' => 'Báo Chính phủ',
+  'quy-hoach' => 'Quy hoạch',
 );
