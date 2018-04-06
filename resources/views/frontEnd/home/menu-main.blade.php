@@ -615,100 +615,133 @@
 
                                                 @else
 
-                                                    <table class="table table-striped table-bordered table-responsive table-sm" style="margin-bottom: 5px">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>TT</th>
-                                                            @if (in_array($MnuCategory->id,['24','25']))
-                                                                <th>Kí hiệu </th>
-                                                            @endif
-                                                            
-                                                            <th>Nội dung </th>
-                                                            <th class="col-md-2" style="text-align: center">Ngày đăng </th>
-                                                            <th style="text-align:center">
-                                                                <i class="fa fa-paperclip" aria-hidden="true"></i>
-                                                            </th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @php
-                                                                if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26'){
+                                                    @php
 
-                                                                    $topicIds = $MnuCategory->selectedCategories->sortbyDesc('id')->take(3);
+                                                        if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26'){
 
-                                                                }else{
+                                                            $topic_section_ids = $MnuCategory->selectedCategories->sortbyDesc('id')->all();
 
-                                                                    $topicIds = $MnuCategory->selectedCategories->sortby('id')->take(3);
+                                                        }else{
 
-                                                                }
+                                                            $topic_section_ids = $MnuCategory->selectedCategories->sortby('id')->all();
 
-                                                            @endphp
+                                                        }
+                                                       
 
-                                                            @foreach($topicIds as $topicId)
+                                                        $topicIds = array();
+
+                                                        foreach($topic_section_ids as $topic_section_id){
+
+                                                            $topic = $MainMenuLink->webmasterSection->topics->where('id',$topic_section_id->topic_id)->where('status','1')->first();
+
+                                                            if (!empty($topic)){
+                                                                array_push($topicIds,$topic);
+                                                            }
+                                                        }
+                                                        
+                                                    @endphp
+
+                                                    @if(!empty($topicIds))
+
+                                                        <table class="table table-striped table-bordered table-responsive table-sm" style="margin-bottom: 5px">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>TT</th>
+                                                                @if (in_array($MnuCategory->id,['24','25']))
+                                                                    <th>Kí hiệu </th>
+                                                                @endif
                                                                 
-                                                                <?php
+                                                                <th>Nội dung </th>
+                                                                <th class="col-md-2" style="text-align: center">Ngày đăng </th>
+                                                                <th style="text-align:center">
+                                                                    <i class="fa fa-paperclip" aria-hidden="true"></i>
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @php
+                                                                    if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26'){
 
-                                                                    $tin = $topicId->topic;
+                                                                        $topicIds = $MnuCategory->selectedCategories->sortbyDesc('id')->take(3);
 
-                                                                    $section = "";
-                                                                    try {
-                                                                        if ($tin->section->$title_var != "") {
-                                                                            $section = $tin->section->$title_var;
-                                                                        } else {
-                                                                            $section = $tin->section->$title_var2;
-                                                                        }
-                                                                    } catch (Exception $e) {
-                                                                        $section = "";
+                                                                    }else{
+
+                                                                        $topicIds = $MnuCategory->selectedCategories->sortby('id')->take(3);
+
                                                                     }
+
+                                                                @endphp
+
+                                                                @foreach($topicIds as $key=>$topicId)
+
+                                                                    @if ($key < 3)
+
                                                                     
-                                                                    if ($tin->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
-                                                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                                                            $topic_link_url = url(trans('backLang.code') . "/" . $tin->$slug_var);
-                                                                        } else {
-                                                                            $topic_link_url = url($tin->$slug_var);
-                                                                        }
-                                                                    } else {
-                                                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                                                            $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $tin->webmasterSection->name, "id" => $tin->id]);
-                                                                        } else {
-                                                                            $topic_link_url = route('FrontendTopic', ["section" => $tin->webmasterSection->name, "id" => $tin->id]);
-                                                                        }
-                                                                    }
-                                                                ?>
-                                                                <tr>
-                                                                    <td>
-                                                                        {{ $loop->iteration }}
-                                                                    </td>
-                                                                    @if (in_array($MnuCategory->id,['24','25']))
-                                                                        <td>
-                                                                            <a href="{{ $topic_link_url }}">
-                                                                                {{ $tin->$link_title_var }}
-                                                                            </a>
-                                                                        </td>
-                                                                    @endif
-                                                                    <td>
-                                                                        <a href="{{ $topic_link_url }}">
+                                                                        <?php
+
+                                                                            $tin = $topicId->topic;
+
+                                                                            $section = "";
+                                                                            try {
+                                                                                if ($tin->section->$title_var != "") {
+                                                                                    $section = $tin->section->$title_var;
+                                                                                } else {
+                                                                                    $section = $tin->section->$title_var2;
+                                                                                }
+                                                                            } catch (Exception $e) {
+                                                                                $section = "";
+                                                                            }
+                                                                            
+                                                                            if ($tin->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                                                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                                                    $topic_link_url = url(trans('backLang.code') . "/" . $tin->$slug_var);
+                                                                                } else {
+                                                                                    $topic_link_url = url($tin->$slug_var);
+                                                                                }
+                                                                            } else {
+                                                                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                                                    $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $tin->webmasterSection->name, "id" => $tin->id]);
+                                                                                } else {
+                                                                                    $topic_link_url = route('FrontendTopic', ["section" => $tin->webmasterSection->name, "id" => $tin->id]);
+                                                                                }
+                                                                            }
+                                                                        ?>
+                                                                        <tr>
+                                                                            <td>
+                                                                                {{ $loop->iteration }}
+                                                                            </td>
                                                                             @if (in_array($MnuCategory->id,['24','25']))
-                                                                                {{ str_limit(strip_tags($tin->$details_var), $limit = 80, $end = '...') }}
-                                                                            @else
-                                                                                {{ $tin->$link_title_var }}
+                                                                                <td>
+                                                                                    <a href="{{ $topic_link_url }}">
+                                                                                        {{ $tin->$link_title_var }}
+                                                                                    </a>
+                                                                                </td>
                                                                             @endif
-                                                                        </a>
-                                                                    </td>
-                                                                    <td style="text-align: center">
-                                                                        {{ \Carbon\Carbon::parse($tin->date)->format('d-m-Y') }}
-                                                                    </td>
-                                                                    <td style="text-align:center">
-                                                                        {{--  @if (file_exists($tin->attach_file))  --}}
-                                                                            <a href="{{ $tin->attach_file }}" target="_blank">
-                                                                                <i class="fa fa-paperclip" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        {{--  @endif  --}}
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
+                                                                            <td>
+                                                                                <a href="{{ $topic_link_url }}">
+                                                                                    @if (in_array($MnuCategory->id,['24','25']))
+                                                                                        {{ str_limit(strip_tags($tin->$details_var), $limit = 80, $end = '...') }}
+                                                                                    @else
+                                                                                        {{ $tin->$link_title_var }}
+                                                                                    @endif
+                                                                                </a>
+                                                                            </td>
+                                                                            <td style="text-align: center">
+                                                                                {{ \Carbon\Carbon::parse($tin->date)->format('d-m-Y') }}
+                                                                            </td>
+                                                                            <td style="text-align:center">
+                                                                                {{--  @if (file_exists($tin->attach_file))  --}}
+                                                                                    <a href="{{ $tin->attach_file }}" target="_blank">
+                                                                                        <i class="fa fa-paperclip" aria-hidden="true"></i>
+                                                                                    </a>
+                                                                                {{--  @endif  --}}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endif
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    @endif
 
                                                 @endif
 
