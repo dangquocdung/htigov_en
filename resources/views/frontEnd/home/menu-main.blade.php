@@ -298,7 +298,7 @@
                                                 
                                             </a>
                                             <div style="background: url(./images/transparent.png) repeat-x; position: absolute; bottom: 0px; font-size: 0.9em; color: #ffffff; width:100%; text-align: center;" >
-                                                <p style="padding: 5px 0">{{ $tin->$link_title_var }}</p>
+                                                <p style="padding: 5px">{{ $tin->$link_title_var }}</p>
                                                     
                                             </div>
                                             {{--  <p style="background: url(./images/transparent.png) repeat-x; position: absolute; bottom: 10px; left:5px; right:5px; font-size: 1.1em; color: #ffffff; text-align: center;">
