@@ -24,78 +24,20 @@ class CurlController extends Controller
         $urlArray = [
             'http://baohatinh.vn/rss/xa-hoi.xml',
             'http://baohatinh.vn/rss/chinh-tri.xml',
-            // 'http://baohatinh.vn/rss/phap-luat.xml',
-            // 'http://baohatinh.vn/rss/kinh-te.xml',
-            // 'http://baohatinh.vn/rss/quoc-phong-an-ninh.xml',
-            // 'http://baohatinh.vn/rss/van-hoa-giai-tri.xml',
-            // 'http://vietnamnet.vn/rss/tin-noi-bat.rss'
-            ];
+        ];
 
         foreach ($urlArray as $url) {
 
-            $this->TinTrongTinh($url);
+            $this->baoHaTinh($url);
             
         };
         
         return redirect()->route('topics',11);
-
-        //
-
-        // $url = 'http://dhtn.hatinh.gov.vn/dhtn/portal/folder/chuong-trinh-cong-tac/1.html';
-
-        // $this->llv($url);
-        
-        // $url = 'http://dhtn.hatinh.gov.vn/dhtn/portal/folder/cong-van/1.html';
-
-        // $this->dhtn($url);
-
-        // $url = 'http://congbao.hatinh.gov.vn/vbpq_hatinh.nsf/VwAllDocNew';
-
-        // $this->congbao($url);
-
-        // $this->VanBanTongHop($url);
-
-        // return redirect()->route('topics',10);
-
-        // $url = 'http://baochinhphu.vn/Quoc-te/Nhung-nganh-nghe-nao-se-bi-cong-nghe-the-cho/330946.vgp';
-
-        // $this->ViewNews($url);
-
+       
     }
-    public function getBaoChinhPhu()
+
+    public function baoHaTinh($url="")
     {
-        
-        $url ='http://baochinhphu.vn/_RSS_/442.rss';
-
-        $this->TinChinhPhu($url);
-
-        return redirect()->route('topics',11);
-
-        //
-
-        // $url = 'http://dhtn.hatinh.gov.vn/dhtn/portal/folder/chuong-trinh-cong-tac/1.html';
-
-        // $this->llv($url);
-        
-        // $url = 'http://dhtn.hatinh.gov.vn/dhtn/portal/folder/cong-van/1.html';
-
-        // $this->dhtn($url);
-
-        // $url = 'http://congbao.hatinh.gov.vn/vbpq_hatinh.nsf/VwAllDocNew';
-
-        // $this->congbao($url);
-
-        // $this->VanBanTongHop($url);
-
-        // return redirect()->route('topics',10);
-
-        // $url = 'http://baochinhphu.vn/Quoc-te/Nhung-nganh-nghe-nao-se-bi-cong-nghe-the-cho/330946.vgp';
-
-        // $this->ViewNews($url);
-
-    }
-
-    public function TinTrongTinh($url=""){
 
         $client = new Client();
 
@@ -146,11 +88,11 @@ class CurlController extends Controller
 
                     $Topic->date = Carbon::parse($node->filter('pubDate')->text());
 
-                    $start = strpos($desc,'src="') + 5;
+                    $start = strpos($desc,'src="') + 15;
                     $end = strpos($desc,'" />');
                     
                     //Storefile
-                    $url = 'http://baohatinh.vn'.substr($desc,$start,$end-$start);
+                    $url = 'http://i.baohatinh.vn'.substr($desc,$start,$end-$start);
                     $contents = file_get_contents($url);
                     $filename = substr($url, strrpos($url, '/') + 1);
                     // Storage::put($filename, $contents);
@@ -194,7 +136,20 @@ class CurlController extends Controller
 
     }
 
-    public function TinChinhPhu($url=""){
+
+    public function getBaoChinhPhu()
+    {
+        
+        $url ='http://baochinhphu.vn/_RSS_/442.rss';
+
+        $this->baoChinhPhu($url);
+
+        return redirect()->route('topics',11);
+
+    }
+
+    public function baoChinhPhu($url="")
+    {
         
         $rss=simplexml_load_file($url);
 
@@ -264,191 +219,18 @@ class CurlController extends Controller
 
     }
 
-    public function llv($url="")
+    public function getCongBao()
     {
-        $client = new Client();
+        
+        $url = 'http://congbao.hatinh.gov.vn/vbpq_hatinh.nsf/VwAllDocNew';
 
-        $crawler = $client->request('GET', $url);
+        $this->congBao($url);
 
-        $crawler->filter('table>tbody>tr')->each(function ($node) {
+        return redirect()->route('topics',10);
 
-            if ($node->filter('td')->count() > 0) {
-
-                if (strlen(trim($node->filter('td')->eq(0)->text())) > 0){
-
-                        $next_nor_no = TopicCategory::where('section_id', '=', 23)->count();
-                        if ($next_nor_no < 1) {
-                            $next_nor_no = 1;
-                        } else {
-                            $next_nor_no++;
-                        }
-
-                        $name = trim($node->filter('td')->eq(1)->text()); // String. You have extracted description part from your feed
-
-                        $slug = str_slug($name);
-
-                        $url = $node->filter('link')->text(); // String. You have extracted description part from your feed
-
-                        $desc = trim($node->filter('td')->eq(1)->text());
-
-                        $attach_file = trim($node->filter('td')->eq(2)->text());
-
-                        // create new topic
-                        $Topic = new Topic;
-
-                        // Save topic details
-                        $Topic->row_no = 21 - $next_nor_no;
-                        $Topic->title_vi = $name;
-                        $Topic->title_en = $name;
-
-                        $Topic->details_vi = $desc;
-                        $Topic->details_en = $desc;
-
-                        $Topic->date = Carbon::now()->toDateTimeString();
-
-                        $start = strpos($desc,'src="') + 5;
-                        $end = strpos($desc,'" />');
-                        
-                        //Storefile
-
-                        $url = 'http://dhtn.hatinh.gov.vn'.trim($node->filter('a')->attr('href'));
-
-                        // $contents = file_get_contents($attach_file);
-                        // $filename = substr($url, strrpos($url, '/') + 1);
-                        // Storage::put($filename, $contents);
-
-                        // $path = public_path().'/uploads/topics/'.$filename;
-
-                        // file_put_contents($path,$contents);
-                        
-                        // $Topic->attach_file = $filename;
-                        $Topic->attach_file = $url;
-                        
-                        $Topic->webmaster_id = 10;
-                        
-                        $Topic->created_by = Auth::user()->id;
-                        $Topic->visits = 0;
-                        $Topic->status = 1;
-
-                        // Meta title
-                        $Topic->seo_title_vi = $name;
-                        $Topic->seo_title_en = $name;
-
-                        // URL Slugs
-                        $slugs = Helper::URLSlug($name, $name, "topic", 0);
-                        $Topic->seo_url_slug_vi = $slugs['slug_vi'];
-                        $Topic->seo_url_slug_en = $slugs['slug_en'];
-
-                        // Meta Description
-                        $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
-                        $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
-                        
-                        $Topic->save();
-
-                        $TopicCategory = new TopicCategory;
-                        $TopicCategory->topic_id = $Topic->id;
-                        $TopicCategory->section_id = 23;
-                        $TopicCategory->save();
-
-                }
-
-            }
-        });
     }
 
-    public function dhtn($url="")
-    {
-        $client = new Client();
-
-        $crawler = $client->request('GET', $url);
-
-        $crawler->filter('table>tbody>tr')->each(function ($node) {
-
-            if ($node->filter('td')->count() > 0) {
-
-                if (strlen(trim($node->filter('td')->eq(0)->text())) > 0){
-
-                    $next_nor_no = TopicCategory::where('section_id', '=', 24)->count();
-                        if ($next_nor_no < 1) {
-                            $next_nor_no = 1;
-                        } else {
-                            $next_nor_no++;
-                        }
-
-                        $name = trim($node->filter('td')->eq(0)->text()); // String. You have extracted description part from your feed
-
-                        $slug = str_slug($name);
-
-                        $url = $node->filter('link')->text(); // String. You have extracted description part from your feed
-
-                        $desc = trim($node->filter('td')->eq(1)->text());
-
-                        $attach_file = trim($node->filter('td')->eq(2)->text());
-
-                        // create new topic
-                        $Topic = new Topic;
-
-                        // Save topic details
-                        $Topic->row_no = $next_nor_no;
-                        $Topic->title_vi = $name;
-                        $Topic->title_en = $name;
-
-                        $Topic->details_vi = $desc;
-                        $Topic->details_en = $desc;
-
-                        $Topic->date = Carbon::now()->toDateTimeString();
-
-                        $start = strpos($desc,'src="') + 5;
-                        $end = strpos($desc,'" />');
-                        
-                        //Storefile
-
-                        $url = 'http://dhtn.hatinh.gov.vn'.trim($node->filter('a')->attr('href'));
-
-                        // $contents = file_get_contents($attach_file);
-                        // $filename = substr($url, strrpos($url, '/') + 1);
-                        // Storage::put($filename, $contents);
-
-                        // $path = public_path().'/uploads/topics/'.$filename;
-
-                        // file_put_contents($path,$contents);
-                        
-                        // $Topic->attach_file = $filename;
-                        $Topic->attach_file = $url;
-                        
-                        $Topic->webmaster_id = 10;
-                        
-                        $Topic->created_by = Auth::user()->id;
-                        $Topic->visits = 0;
-                        $Topic->status = 1;
-
-                        // Meta title
-                        $Topic->seo_title_vi = $name;
-                        $Topic->seo_title_en = $name;
-
-                        // URL Slugs
-                        $slugs = Helper::URLSlug($name, $name, "topic", 0);
-                        $Topic->seo_url_slug_vi = $slugs['slug_vi'];
-                        $Topic->seo_url_slug_en = $slugs['slug_en'];
-
-                        // Meta Description
-                        $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
-                        $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
-                        
-                        $Topic->save();
-
-                        $TopicCategory = new TopicCategory;
-                        $TopicCategory->topic_id = $Topic->id;
-                        $TopicCategory->section_id = 24;
-                        $TopicCategory->save();
-
-                }
-
-            }
-        });
-    }
-
-    public function congbao($url="")
+    public function congBao($url="")
     {
 
         $client = new Client();
@@ -460,15 +242,20 @@ class CurlController extends Controller
             if ($node->filter('td')->count() >0){
 
                 $next_nor_no = TopicCategory::where('section_id', '=', 25)->count();
-                    if ($next_nor_no < 1) {
-                        $next_nor_no = 1;
-                    } else {
-                        $next_nor_no++;
-                    }
+                if ($next_nor_no < 1) {
+                    $next_nor_no = 1;
+                } else {
+                    $next_nor_no++;
+                }
 
-                    $name = trim($node->filter('td')->eq(1)->text());
-                    $desc = trim($node->filter('td')->eq(4)->text());
-                    
+                $name = trim($node->filter('td')->eq(1)->text());
+                $desc = trim($node->filter('td')->eq(4)->text());
+
+                $count = Topic::where('title_vi',$name)->first();
+
+                if (empty($count)){
+
+            
                     // create new topic
                     $Topic = new Topic;
 
@@ -524,12 +311,229 @@ class CurlController extends Controller
                     $TopicCategory->section_id = 25;
                     $TopicCategory->save();
                 
+                }
+                
             }
 
         });
 
         return redirect()->back();
     }
+
+    public function getDHTN()
+    {
+        
+        $url = 'http://dhtn.hatinh.gov.vn/dhtn/portal/folder/cong-van/1.html';
+
+        $this->dhtn($url);
+
+        return redirect()->route('topics',10);
+
+    }
+
+    public function dhtn($url="")
+    {
+        $client = new Client();
+
+        $crawler = $client->request('GET', $url);
+
+        $crawler->filter('table>tbody>tr')->each(function ($node) {
+
+            if ($node->filter('td')->count() > 0) {
+
+                if (strlen(trim($node->filter('td')->eq(0)->text())) > 0){
+
+                    $next_nor_no = TopicCategory::where('section_id', '=', 24)->count();
+                        if ($next_nor_no < 1) {
+                            $next_nor_no = 1;
+                        } else {
+                            $next_nor_no++;
+                        }
+
+                        $name = trim($node->filter('td')->eq(0)->text()); // String. You have extracted description part from your feed
+
+                        $slug = str_slug($name);
+
+                        $url = $node->filter('link')->text(); // String. You have extracted description part from your feed
+
+                        $desc = trim($node->filter('td')->eq(1)->text());
+
+                        $attach_file = trim($node->filter('td')->eq(2)->text());
+
+                        $count = Topic::where('title_vi',$name)->first();
+
+                        if (empty($count)){
+
+                            // create new topic
+                            $Topic = new Topic;
+
+                            // Save topic details
+                            $Topic->row_no = $next_nor_no;
+                            $Topic->title_vi = $name;
+                            $Topic->title_en = $name;
+
+                            $Topic->details_vi = $desc;
+                            $Topic->details_en = $desc;
+
+                            $Topic->date = Carbon::now()->toDateTimeString();
+
+                            $start = strpos($desc,'src="') + 5;
+                            $end = strpos($desc,'" />');
+                            
+                            //Storefile
+
+                            $url = 'http://dhtn.hatinh.gov.vn'.trim($node->filter('a')->attr('href'));
+
+                            // $contents = file_get_contents($attach_file);
+                            // $filename = substr($url, strrpos($url, '/') + 1);
+                            // Storage::put($filename, $contents);
+
+                            // $path = public_path().'/uploads/topics/'.$filename;
+
+                            // file_put_contents($path,$contents);
+                            
+                            // $Topic->attach_file = $filename;
+                            $Topic->attach_file = $url;
+                            
+                            $Topic->webmaster_id = 10;
+                            
+                            $Topic->created_by = Auth::user()->id;
+                            $Topic->visits = 0;
+                            $Topic->status = 1;
+
+                            // Meta title
+                            $Topic->seo_title_vi = $name;
+                            $Topic->seo_title_en = $name;
+
+                            // URL Slugs
+                            $slugs = Helper::URLSlug($name, $name, "topic", 0);
+                            $Topic->seo_url_slug_vi = $slugs['slug_vi'];
+                            $Topic->seo_url_slug_en = $slugs['slug_en'];
+
+                            // Meta Description
+                            $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                            $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                            
+                            $Topic->save();
+
+                            $TopicCategory = new TopicCategory;
+                            $TopicCategory->topic_id = $Topic->id;
+                            $TopicCategory->section_id = 24;
+                            $TopicCategory->save();
+                        }
+
+                }
+
+            }
+        });
+    }
+
+    public function getLLV()
+    {
+        
+        $url = 'http://dhtn.hatinh.gov.vn/dhtn/portal/folder/chuong-trinh-cong-tac/1.html';
+
+        $this->llv($url);
+
+        return redirect()->route('topics',10);
+
+    }
+
+    public function llv($url="")
+    {
+        $client = new Client();
+
+        $crawler = $client->request('GET', $url);
+
+        $crawler->filter('table>tbody>tr')->each(function ($node) {
+
+            if ($node->filter('td')->count() > 0) {
+
+                if (strlen(trim($node->filter('td')->eq(0)->text())) > 0){
+
+                    $next_nor_no = TopicCategory::where('section_id', '=', 23)->count();
+                    if ($next_nor_no < 1) {
+                        $next_nor_no = 1;
+                    } else {
+                        $next_nor_no++;
+                    }
+
+                    $name = trim($node->filter('td')->eq(1)->text()); // String. You have extracted description part from your feed
+
+                    $slug = str_slug($name);
+
+                    $url = $node->filter('link')->text(); // String. You have extracted description part from your feed
+
+                    $desc = trim($node->filter('td')->eq(1)->text());
+
+                    $attach_file = trim($node->filter('td')->eq(2)->text());
+
+                    $count = Topic::where('title_vi',$name)->first();
+
+                    if (empty($count)){
+
+                        // create new topic
+                        $Topic = new Topic;
+
+                        // Save topic details
+                        $Topic->row_no = 21 - $next_nor_no;
+                        $Topic->title_vi = $name;
+                        $Topic->title_en = $name;
+
+                        $Topic->details_vi = $desc;
+                        $Topic->details_en = $desc;
+
+                        $Topic->date = Carbon::now()->toDateTimeString();
+
+                        $start = strpos($desc,'src="') + 5;
+                        $end = strpos($desc,'" />');
+                        
+                        //Storefile
+
+                        $url = 'http://dhtn.hatinh.gov.vn'.trim($node->filter('a')->attr('href'));
+
+                        // $contents = file_get_contents($url);
+                        // $filename = substr($url, strrpos($url, '/') + 1);
+                        // $path = public_path().'/uploads/topics/'.$filename;
+                        // file_put_contents($path,$contents);
+                        // $Topic->attach_file = $filename;
+
+                        $Topic->attach_file = $url;
+                        
+                        $Topic->webmaster_id = 10;
+                        
+                        $Topic->created_by = Auth::user()->id;
+                        $Topic->visits = 0;
+                        $Topic->status = 1;
+
+                        // Meta title
+                        $Topic->seo_title_vi = $name;
+                        $Topic->seo_title_en = $name;
+
+                        // URL Slugs
+                        $slugs = Helper::URLSlug($name, $name, "topic", 0);
+                        $Topic->seo_url_slug_vi = $slugs['slug_vi'];
+                        $Topic->seo_url_slug_en = $slugs['slug_en'];
+
+                        // Meta Description
+                        $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                        $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($desc)), 0, 165, 'UTF-8');
+                        
+                        $Topic->save();
+
+                        $TopicCategory = new TopicCategory;
+                        $TopicCategory->topic_id = $Topic->id;
+                        $TopicCategory->section_id = 23;
+                        $TopicCategory->save();
+                    }
+
+                }
+
+            }
+        });
+    }
+
+    
 
     public function TinTongHop($url="")
     {

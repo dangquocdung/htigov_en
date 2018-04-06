@@ -38,20 +38,20 @@
                         <div class="col-sm-10">
                             <div class="form-group">
                                 <div class='input-group date' ui-jp="datetimepicker" ui-options="{
-                format: 'YYYY-MM-DD',
-                icons: {
-                  time: 'fa fa-clock-o',
-                  date: 'fa fa-calendar',
-                  up: 'fa fa-chevron-up',
-                  down: 'fa fa-chevron-down',
-                  previous: 'fa fa-chevron-left',
-                  next: 'fa fa-chevron-right',
-                  today: 'fa fa-screenshot',
-                  clear: 'fa fa-trash',
-                  close: 'fa fa-remove'
-                }
-              }">
-                                    {!! Form::text('date',date("Y-m-d"), array('placeholder' => '','class' => 'form-control','id'=>'date','required'=>'')) !!}
+                                        format: 'DD-MM-YYYY',
+                                        icons: {
+                                        time: 'fa fa-clock-o',
+                                        date: 'fa fa-calendar',
+                                        up: 'fa fa-chevron-up',
+                                        down: 'fa fa-chevron-down',
+                                        previous: 'fa fa-chevron-left',
+                                        next: 'fa fa-chevron-right',
+                                        today: 'fa fa-screenshot',
+                                        clear: 'fa fa-trash',
+                                        close: 'fa fa-remove'
+                                        }
+                                    }">
+                                    {!! Form::text('date',date("d-m-Y"), array('placeholder' => '','class' => 'form-control','id'=>'date','required'=>'')) !!}
                                     <span class="input-group-addon">
                   <span class="fa fa-calendar"></span>
               </span>
@@ -72,19 +72,19 @@
                         <div class="col-sm-10">
                             <div class="form-group">
                                 <div class='input-group date' ui-jp="datetimepicker" ui-options="{
-                format: 'YYYY-MM-DD',
-                icons: {
-                  time: 'fa fa-clock-o',
-                  date: 'fa fa-calendar',
-                  up: 'fa fa-chevron-up',
-                  down: 'fa fa-chevron-down',
-                  previous: 'fa fa-chevron-left',
-                  next: 'fa fa-chevron-right',
-                  today: 'fa fa-screenshot',
-                  clear: 'fa fa-trash',
-                  close: 'fa fa-remove'
-                }
-              }">
+                                        format: 'YYYY-MM-DD',
+                                        icons: {
+                                        time: 'fa fa-clock-o',
+                                        date: 'fa fa-calendar',
+                                        up: 'fa fa-chevron-up',
+                                        down: 'fa fa-chevron-down',
+                                        previous: 'fa fa-chevron-left',
+                                        next: 'fa fa-chevron-right',
+                                        today: 'fa fa-screenshot',
+                                        clear: 'fa fa-trash',
+                                        close: 'fa fa-remove'
+                                        }
+                                    }">
                                     {!! Form::text('expire_date','', array('placeholder' => '','class' => 'form-control','id'=>'expire_date')) !!}
                                     <span class="input-group-addon">
                   <span class="fa fa-calendar"></span>
@@ -529,19 +529,19 @@
                                     <div class="col-sm-10">
                                         <div>
                                             <div class='input-group date' ui-jp="datetimepicker" ui-options="{
-                format: 'YYYY-MM-DD hh:mm A',
-                icons: {
-                  time: 'fa fa-clock-o',
-                  date: 'fa fa-calendar',
-                  up: 'fa fa-chevron-up',
-                  down: 'fa fa-chevron-down',
-                  previous: 'fa fa-chevron-left',
-                  next: 'fa fa-chevron-right',
-                  today: 'fa fa-screenshot',
-                  clear: 'fa fa-trash',
-                  close: 'fa fa-remove'
-                }
-              }">
+                                                    format: 'YYYY-MM-DD hh:mm A',
+                                                    icons: {
+                                                    time: 'fa fa-clock-o',
+                                                    date: 'fa fa-calendar',
+                                                    up: 'fa fa-chevron-up',
+                                                    down: 'fa fa-chevron-down',
+                                                    previous: 'fa fa-chevron-left',
+                                                    next: 'fa fa-chevron-right',
+                                                    today: 'fa fa-screenshot',
+                                                    clear: 'fa fa-trash',
+                                                    close: 'fa fa-remove'
+                                                    }
+                                                }">
                                                 {!! Form::text('customField_'.$customField->id,$customField->default_value, array('placeholder' => '','class' => 'form-control','id'=>'customField_'.$customField->id,$cf_required=>'', 'dir'=>$cf_land_dir)) !!}
                                                 <span class="input-group-addon">
                   <span class="fa fa-calendar"></span>
@@ -560,19 +560,19 @@
                                     <div class="col-sm-10">
                                         <div class="form-group">
                                             <div class='input-group date' ui-jp="datetimepicker" ui-options="{
-                format: 'YYYY-MM-DD',
-                icons: {
-                  time: 'fa fa-clock-o',
-                  date: 'fa fa-calendar',
-                  up: 'fa fa-chevron-up',
-                  down: 'fa fa-chevron-down',
-                  previous: 'fa fa-chevron-left',
-                  next: 'fa fa-chevron-right',
-                  today: 'fa fa-screenshot',
-                  clear: 'fa fa-trash',
-                  close: 'fa fa-remove'
-                }
-              }">
+                                                    format: 'YYYY-MM-DD',
+                                                    icons: {
+                                                    time: 'fa fa-clock-o',
+                                                    date: 'fa fa-calendar',
+                                                    up: 'fa fa-chevron-up',
+                                                    down: 'fa fa-chevron-down',
+                                                    previous: 'fa fa-chevron-left',
+                                                    next: 'fa fa-chevron-right',
+                                                    today: 'fa fa-screenshot',
+                                                    clear: 'fa fa-trash',
+                                                    close: 'fa fa-remove'
+                                                    }
+                                                }">
                                                 {!! Form::text('customField_'.$customField->id,$customField->default_value, array('placeholder' => '','class' => 'form-control','id'=>'customField_'.$customField->id,$cf_required=>'', 'dir'=>$cf_land_dir)) !!}
                                                 <span class="input-group-addon">
                   <span class="fa fa-calendar"></span>

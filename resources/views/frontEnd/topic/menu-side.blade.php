@@ -56,6 +56,7 @@
                         </li>
                         @foreach($Category->fatherSections as $MnuCategory)
                             <?php $active_cat = ""; ?>
+
                             @if($CurrentCategory!="none")
                                 @if(count($CurrentCategory) >0)
                                     @if($MnuCategory->id == $CurrentCategory->id)
@@ -63,22 +64,24 @@
                                     @endif
                                 @endif
                             @endif
+
                             <?php
-                            $ccount = $category_and_topics_count[$MnuCategory->id];
-                            if ($MnuCategory->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
-                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                    $SubCategory_link_url = url(trans('backLang.code') . "/" . $MnuCategory->$slug_var);
+                                $ccount = $category_and_topics_count[$MnuCategory->id];
+                                if ($MnuCategory->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                    if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                        $SubCategory_link_url = url(trans('backLang.code') . "/" . $MnuCategory->$slug_var);
+                                    } else {
+                                        $SubCategory_link_url = url($MnuCategory->$slug_var);
+                                    }
                                 } else {
-                                    $SubCategory_link_url = url($MnuCategory->$slug_var);
+                                    if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                        $SubCategory_link_url = route('FrontendTopicsByCatWithLang', ["lang" => trans('backLang.code'), "section" => $MnuCategory->webmasterSection->name, "cat" => $MnuCategory->id]);
+                                    } else {
+                                        $SubCategory_link_url = route('FrontendTopicsByCat', ["section" => $MnuCategory->webmasterSection->name, "cat" => $MnuCategory->id]);
+                                    }
                                 }
-                            } else {
-                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                    $SubCategory_link_url = route('FrontendTopicsByCatWithLang', ["lang" => trans('backLang.code'), "section" => $MnuCategory->webmasterSection->name, "cat" => $MnuCategory->id]);
-                                } else {
-                                    $SubCategory_link_url = route('FrontendTopicsByCat', ["section" => $MnuCategory->webmasterSection->name, "cat" => $MnuCategory->id]);
-                                }
-                            }
                             ?>
+                            
                             <li> &nbsp; &nbsp; &nbsp;
                                 @if($MnuCategory->icon !=="")
                                     <i class="fa {{$MnuCategory->icon}}"></i> &nbsp;

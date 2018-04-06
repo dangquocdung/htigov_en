@@ -31,5 +31,11 @@ class WebmasterSection extends Model
         return $this->hasMany('App\WebmasterSectionField' , 'webmaster_id')->where('status', '!=', 0)->orderby('row_no', 'asc');
     }
 
+    public function rssfeeds()
+    {
+
+        return $this->hasMany('App\RssFeed' , 'webmaster_id');
+    }
+
 }
 

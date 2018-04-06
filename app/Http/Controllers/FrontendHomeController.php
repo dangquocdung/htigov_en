@@ -75,14 +75,14 @@ class FrontendHomeController extends Controller
          $MarqueeTopics = Topic::where([
             ['status', 1], 
             ['marquee', 1],
-            ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+            // ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
             ['expire_date', '>=', date("Y-m-d")], 
             ['expire_date', '<>', null]
             ])
             ->orwhere([
                 ['status', 1], 
                 ['marquee', 1],
-                ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+                // ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
                 ['expire_date', null]
                 ])
                 ->orderby('row_no', 'asc')
