@@ -455,21 +455,32 @@
                                                     <div class="col-md-12" style="float:left">
 
                                                         @php
-
-                                                            $topicIds =  $MnuCategory->selectedCategories->sortbyDesc('id')->take(5);
-
-                                                            $topicId = $topicIds->shift();
-
-                                                        @endphp
-                                                        
-                                                        <div class="col-md-7 col-sm-7 col-xs-12">
                                                             
-                                                            @foreach ($MnuCategory->selectedCategories->sortbyDesc('id')->take(1) as $topicId)
+                                                            $topic_section_ids =  $MnuCategory->selectedCategories->sortbyDesc('id')->all();
 
+                                                            $topicIds = array();
+
+                                                            foreach($topic_section_ids as $topic_section_id){
+
+                                                                $topic = $MainMenuLink->webmasterSection->topics->where('id',$topic_section_id->topic_id)->where('status','1')->first();
+
+                                                                if (!empty($topic)){
+                                                                    array_push($topicIds,$topic);
+                                                                }
+                                                            }
+                                                            
+                                                        @endphp
+
+                                                        @if(!empty($topicIds))
+
+                                                            
+                                                        
+                                                            <div class="col-md-7 col-sm-7 col-xs-12">
                                                                 <div class="row">
-                                                                    <?php
+                                                                    
+                                                                    @php
 
-                                                                        $tin1 = $topicId->topic;
+                                                                        $tin1 = $topicIds[0];
 
                                                                         if ($tin1->$title_var != "") {
                                                                             $title = $tin1->$title_var;
@@ -505,7 +516,8 @@
                                                                                 $topic_link_url = route('FrontendTopic', ["section" => $tin1->webmasterSection->name, "id" => $tin1->id]);
                                                                             }
                                                                         }
-                                                                    ?>
+                                                                    @endphp
+
                                                                     <div class="news-main" style="margin-left: -15px">
         
                                                                         <a class="tin_title_text" href="{{ $topic_link_url }}">
@@ -520,8 +532,8 @@
                                                                                 
                                                                             @endif
 
-                                                                            
                                                                         </a>
+
                                                                         <div class="thumb">
         
                                                                         </div>
@@ -530,63 +542,74 @@
                                                                             <p>{{ str_limit(strip_tags($tin1->$details_var), $limit = 350, $end = '...') }}</p>
                                                                         </div>
                                                                     </div>
-                                                                </div>
 
-                                                            @endforeach
-                                                            
-                                                        </div>
-
-                                                        <div class="col-md-5 col-sm-5 col-xs-12">
-                                                            <div class="row">
-
-                                                                <div class="news-five">
-                                                                    <ul class="news-block">
-                                                                        @foreach($topicIds as $key=>$topicId)
-                                                                            
-                                                                            <?php
-
-                                                                                $tin = $topicId->topic;
-
-                                                                                $section = "";
-                                                                                try {
-                                                                                    if ($tin->section->$title_var != "") {
-                                                                                        $section = $tin->section->$title_var;
-                                                                                    } else {
-                                                                                        $section = $tin->section->$title_var2;
-                                                                                    }
-                                                                                } catch (Exception $e) {
-                                                                                    $section = "";
-                                                                                }
-                                                                                
-                                                                                if ($tin->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
-                                                                                    if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                                                                        $topic_link_url = url(trans('backLang.code') . "/" . $tin->$slug_var);
-                                                                                    } else {
-                                                                                        $topic_link_url = url($tin->$slug_var);
-                                                                                    }
-                                                                                } else {
-                                                                                    if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                                                                        $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $tin->webmasterSection->name, "id" => $tin->id]);
-                                                                                    } else {
-                                                                                        $topic_link_url = route('FrontendTopic', ["section" => $tin->webmasterSection->name, "id" => $tin->id]);
-                                                                                    }
-                                                                                }
-                                                                            ?>
-                                                                        
-                                                                            <li>
-                                                                                <a href="{{ $topic_link_url }}" class="news-title">
-                                                                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                                                                    {{ $tin->$link_title_var }}
-                                                                                </a>
-
-                                                                            </li>
-
-                                                                        @endforeach
-                                                                    </ul>
                                                                 </div>
                                                             </div>
+
                                                             
-                                                        </div>
+
+                                                        @endif
+
+                                                        @if(!empty($topicIds))
+
+
+                                                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                                                <div class="row">
+
+                                                                    <div class="news-five">
+                                                                        <ul class="news-block">
+                                                                            
+                                                                            @foreach($topicIds as $key=>$topicId)
+
+                                                                                @if ($key > 0 && $key < 5)
+                                                                                
+                                                                                <?php
+
+                                                                                    $tin = $topicId;
+
+                                                                                    $section = "";
+                                                                                    try {
+                                                                                        if ($tin->section->$title_var != "") {
+                                                                                            $section = $tin->section->$title_var;
+                                                                                        } else {
+                                                                                            $section = $tin->section->$title_var2;
+                                                                                        }
+                                                                                    } catch (Exception $e) {
+                                                                                        $section = "";
+                                                                                    }
+                                                                                    
+                                                                                    if ($tin->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                                                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                                                            $topic_link_url = url(trans('backLang.code') . "/" . $tin->$slug_var);
+                                                                                        } else {
+                                                                                            $topic_link_url = url($tin->$slug_var);
+                                                                                        }
+                                                                                    } else {
+                                                                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                                                            $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $tin->webmasterSection->name, "id" => $tin->id]);
+                                                                                        } else {
+                                                                                            $topic_link_url = route('FrontendTopic', ["section" => $tin->webmasterSection->name, "id" => $tin->id]);
+                                                                                        }
+                                                                                    }
+                                                                                ?>
+                                                                            
+                                                                                <li>
+                                                                                    <a href="{{ $topic_link_url }}" class="news-title">
+                                                                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                                                        {{ $tin->$link_title_var }}
+                                                                                    </a>
+
+                                                                                </li>
+                                                                                @endif
+
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+
+                                                        @endif
 
                                                     </div>
 
