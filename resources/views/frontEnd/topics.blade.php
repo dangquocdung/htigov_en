@@ -53,7 +53,7 @@
                                 $slug_var = "seo_url_slug_" . trans('backLang.boxCode');
                                 $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
                             ?>
-                            @foreach($Topics->where('status','1')->sortbydesc('id') as $key=>$Topic)
+                            @foreach($Topics->sortbydesc('id') as $key=>$Topic)
                                 
                                 <?php
                                     if ($Topic->$title_var != "") {
