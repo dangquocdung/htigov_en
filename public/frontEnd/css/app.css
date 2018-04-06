@@ -229,6 +229,10 @@ nav {
   position: relative;
 }
 
+.block4 .box-banner {
+  margin-bottom: 2px;
+}
+
 .block4 .box-banner a img {
   margin-top: 1px;
 }
