@@ -290,7 +290,12 @@
                                         
                                         <div>
                                             <a href="{{ $topic_link_url }}">
-                                                <img data-u="image" src="/uploads/topics/{{ $tin->photo_file }}" title="{{ $tin->$link_title_var }}" />
+                                                @if (strlen($tin->photo_file) > 5 )
+                                                    <img data-u="image" src="/uploads/topics/{{ $tin->photo_file }}" title="{{ $tin->$link_title_var }}" />
+                                                @else
+                                                    <img data-u="image" src="{{ URL::to('uploads/topics/no_image.jpg') }}" title="{{ $tin->$link_title_var }}" />
+                                                @endif
+                                                
                                             </a>
                                             <div style="background: url(./images/transparent.png) repeat-x; position: absolute; bottom: 0px; font-size: 0.9em; color: #ffffff; width:100%; text-align: center;" >
                                                 <p style="padding: 5px 0">{{ $tin->$link_title_var }}</p>
