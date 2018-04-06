@@ -1,7 +1,5 @@
 <a href="#" title="{{ trans('frontLang.toTop') }}" class="scrollup"><i class="fa fa-angle-up active"></i></a>
-
 <script src="{{ URL::asset('frontEnd/js/jquery.easing.1.3.js') }}"></script>
-<script src="{{ URL::asset('frontEnd/js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/jquery.fancybox.pack.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/jquery.fancybox-media.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/google-code-prettify/prettify.js') }}"></script>
