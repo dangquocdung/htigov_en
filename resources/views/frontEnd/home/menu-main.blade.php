@@ -667,7 +667,7 @@
                                                                     
                                                                         <?php
 
-                                                                            $tin = $topicId->topic;
+                                                                            $tin = $topicId;
 
                                                                             $section = "";
                                                                             try {
