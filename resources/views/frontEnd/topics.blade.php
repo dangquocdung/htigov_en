@@ -134,10 +134,9 @@
                                         <div class="news-main" style="padding: 0; margin-bottom: 0">
                                             <div class="row" style="padding: 0 15px 10px 15px;">
                                                     <a class="tin_title_text" href="">
+                                                        
                                                     @if($Topic->photo_file !="")
                                                         <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}" alt="{{ $title }}"/>
-                                                    @else
-                                                        <img src="{{ URL::to('uploads/topics/no_image.jpg') }}" alt="{{ $title }}"/>
                                                     @endif
         
                                                     <div class="tin_title_text">
