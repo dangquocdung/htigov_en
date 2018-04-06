@@ -53,7 +53,7 @@
                                 $slug_var = "seo_url_slug_" . trans('backLang.boxCode');
                                 $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
                             ?>
-                            @foreach($Topics->sortbydesc('id') as $key=>$Topic)
+                            @foreach($Topics->where('status','1')->sortbydesc('id') as $key=>$Topic)
                                 
                                 <?php
                                     if ($Topic->$title_var != "") {
@@ -134,7 +134,7 @@
                                         <div class="news-main" style="padding: 0; margin-bottom: 0">
                                             <div class="row" style="padding: 0 15px 10px 15px;">
                                                     <a class="tin_title_text" href="">
-                                                        
+
                                                     @if($Topic->photo_file !="")
                                                         <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}" alt="{{ $title }}"/>
                                                     @endif
