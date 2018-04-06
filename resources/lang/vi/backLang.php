@@ -500,8 +500,5 @@ return array (
   'co-op' => 'Công bố thông tin doanh nghiệp',
   'de-tai-khoa-hoc' => 'Đề tài khoa học',
   'tuyen-truyen' => 'Tuyên truyền',
-<<<<<<< HEAD
-=======
   'Header-Banner' => 'Banner Chính',
->>>>>>> ec5d45134f09c4ef0f283ca59d78b088a7c692b8
 );
