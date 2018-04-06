@@ -493,7 +493,7 @@ return array (
   'dataManagements2' => 'Tất cả người dùng dữ liệu (đối với Tài khoản Quản trị Chung)',
   'activitiesHistory' => 'Lịch sử Hoạt động',
   'usersBackup' => 'Sao lưu & Khôi phục',
-  'curlBHT' => 'Tải dữ liệu',
+  'curlBHT' => 'Báo Hà Tĩnh',
   'bannerLinkUrl' => 'Đường dẫn banner',
   'request' => 'Phản ảnh, kiến nghị',
   'q&a' => 'Trao đổi, Hỏi đáp',
@@ -501,4 +501,5 @@ return array (
   'de-tai-khoa-hoc' => 'Đề tài khoa học',
   'tuyen-truyen' => 'Tuyên truyền',
   'Header-Banner' => 'Banner Chính',
+  'curlBCP' => 'Báo Chính phủ',
 );

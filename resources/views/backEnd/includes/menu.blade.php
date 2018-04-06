@@ -82,10 +82,16 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
                                     </li>
 
                                     <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
-                                            <a href="{{ route('curl-bht') }}">
-                                                <span class="nav-text">{{ trans('backLang.curlBHT') }}</span>
-                                            </a>
-                                        </li>
+                                        <a href="{{ route('curl-bht') }}">
+                                            <span class="nav-text">{{ trans('backLang.curlBHT') }}</span>
+                                        </a>
+                                    </li>
+
+                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
+                                        <a href="{{ route('curl-bcp') }}">
+                                            <span class="nav-text">{{ trans('backLang.curlBCP') }}</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif
@@ -142,8 +148,10 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
                                     strlen($currentSubFolder));
                                 ?>
                                 <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
-                                    <a href="{{ url('/'.env('BACKEND_PATH', 'admin').'/webmaster/translations') }}">
-                                        <span class="nav-text">{{ trans('backLang.translations') }}</span>
+                                    <a href="{{ url('/'.env('BACKEND_PATH', 'admin').'/webmaster/translations') }}" target="_blank">
+                                        <span class="nav-text">
+                                            {{ trans('backLang.translations') }}
+                                        </span>
                                     </a>
                                 </li>
 

@@ -324,12 +324,16 @@
                                                 </div>
                                             </div>
                                         @endif
+                                        
                                         {{--End of -- Additional Feilds--}}
 
                                         {{--  <p>{{ str_limit(strip_tags($Topic->$details), $limit = 200, $end = '...') }}</p>  --}}
+                                        
                                         <div class="bottom-article" style="margin-top: 0">
                                             <ul class="meta-post">
-                                                @if($Topic->webmasterSection->date_status)
+                                                
+                                                @if ($Topic->webmasterSection->date_status)
+
                                                     @if ($WebmasterSection->id == 22)
                                                         <li>
                                                             <i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->expire_date)->format('d-m-Y')   }}</a>
@@ -339,16 +343,17 @@
                                                             <i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->date)->format('d-m-Y')   }}</a>
                                                         </li>
                                                     @endif
+
                                                 @endif
-                                                {{--  <li><i class="fa fa-user"></i> <a
-                                                            href="{{route('FrontendUserTopics',$Topic->created_by)}}">{{$Topic->user->name}}</a>
-                                                </li>  --}}
-                                                <li><i class="fa fa-eye"></i> <a>{{ trans('frontLang.visits') }}
-                                                        : {!! $Topic->visits !!}</a></li>
-                                                @if($Topic->webmasterSection->comments_status)
-                                                    <li><i class="fa fa-comments"></i><a
-                                                                href="{{route('FrontendTopic',["section"=>$Topic->webmasterSection->name,"id"=>$Topic->id])}}#comments">{{ trans('frontLang.comments') }}
-                                                            : {{count($Topic->approvedComments)}} </a>
+                                                
+                                                <li>
+                                                    <i class="fa fa-eye"></i> <a>: {!! $Topic->visits !!}</a>
+                                                </li>
+
+                                                @if ($Topic->webmasterSection->comments_status)
+                                                    <li>
+                                                        <i class="fa fa-comments"></i>
+                                                        <a href="{{route('FrontendTopic',["section"=>$Topic->webmasterSection->name,"id"=>$Topic->id])}}#comments">: {{count($Topic->approvedComments)}} </a>
                                                     </li>
                                                 @endif
                                             </ul>

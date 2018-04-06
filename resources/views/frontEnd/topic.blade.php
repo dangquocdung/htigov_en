@@ -603,24 +603,24 @@
                                 </div>
                             @endif
 
+                            <div class="clearfix"></div>
+
                             <div class="bottom-article">
                                 <ul class="meta-post">
                                     @if($WebmasterSection->date_status)
                                         <li><i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->date)->format('d-m-Y')   }}</a></li>
                                     @endif
-                                    <li>
+                                    {{--  <li>
                                         <i class="fa fa-user"></i> 
                                         <a href="{{route('FrontendUserTopics',$Topic->created_by)}}">{{$Topic->user->name}}</a>
-                                    </li>
+                                    </li>  --}}
                                     <li>
-                                        <i class="fa fa-eye"></i> <a>{{ trans('frontLang.visits') }}
-                                            : {!! $Topic->visits !!}</a>
+                                        <i class="fa fa-eye"></i> <a>: {!! $Topic->visits !!}</a>
                                         </li>
                                     @if($WebmasterSection->comments_status)
                                         <li>
                                             <i class="fa fa-comments"></i><a
-                                                    href="#comments">{{ trans('frontLang.comments') }}
-                                                : {{count($Topic->approvedComments)}} </a>
+                                                    href="#comments">: {{count($Topic->approvedComments)}} </a>
                                         </li>
                                     @endif
                                 </ul>
@@ -628,8 +628,15 @@
                                 <div class="pull-right">
                                     {{--  <span class="hidden-xs">{{ trans('frontLang.share') }} :</span>  --}}
                                     <ul class="social-network share">
+                                        @if(@Auth::user()->permissionsGroup->edit_status)
+                                            <li>
+                                                <a href="{{ route("topicsEdit",["webmasterId"=>$WebmasterSection->id,"id"=>$Topic->id]) }}" class="google"
+                                                data-placement="top"
+                                                title="Chỉnh sửa văn bản" target="_blank"><i class="fa fa-edit"></i></a>
+                                            </li>
+                                        @endif
                                         <li>
-                                            <a href="javascript:void(0);" class="facebook"
+                                            <a href="javascript:void(0);" class="twitter"
                                             data-placement="top"
                                             title="Đọc văn bản"><i class="fa fa-volume-up"></i></a>
                                         </li>

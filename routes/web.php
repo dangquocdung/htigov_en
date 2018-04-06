@@ -105,6 +105,8 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
 
     //Curl Data
     Route::get('/curl-bao-ha-tinh', 'CurlController@getBaoHaTinh')->name('curl-bht');
+    
+    Route::get('/curl-bao-chinh-phu', 'CurlController@getBaoChinhPhu')->name('curl-bcp');
 
 
     // Settings

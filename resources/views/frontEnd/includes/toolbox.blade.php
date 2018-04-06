@@ -54,12 +54,7 @@
         <li class="search"><a href="javascript:void(0);" title="Phóng to " onclick="resizeText(1)"><span><i class="glyphicon glyphicon-zoom-in"></i></span></a></li>
         <li class="search"><a href="javascript:void(0);" title="Thu nhỏ " onclick="resizeText(-1)"><span><i class="glyphicon glyphicon-zoom-out"></i></span></a></li>
         {{-- <li class="home"><a href="javascript:void(0);" title="Tải lại trang " onclick="location.reload();"><span><i class="glyphicon glyphicon-refresh"></i></span></a></li> --}}
-
-        @if (Auth::user())
-            <li class="contact"><a href="/admin" title="{{ Auth::user()->name }}">
-                <span><i class="fa fa-users" aria-hidden="true"></i></span></a>
-            </li>
-        @endif
+        
 
        
         
