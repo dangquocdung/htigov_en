@@ -659,18 +659,6 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @php
-                                                                    if ($MnuCategory->id <> '23' && $MnuCategory->id <> '26'){
-
-                                                                        $topicIds = $MnuCategory->selectedCategories->sortbyDesc('id')->take(3);
-
-                                                                    }else{
-
-                                                                        $topicIds = $MnuCategory->selectedCategories->sortby('id')->take(3);
-
-                                                                    }
-
-                                                                @endphp
 
                                                                 @foreach($topicIds as $key=>$topicId)
 
