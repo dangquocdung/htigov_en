@@ -9,7 +9,7 @@
 
 @section('section-menu')
     
-    <div class="block4">
+    <div class="block4" style="border-radius: 5px">
 
         <div id="block-header-bd" class="block-header" style="margin-bottom: 0" data-toggle="collapse" href="#ban-do-dia-gioi">
 

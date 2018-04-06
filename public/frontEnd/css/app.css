@@ -200,11 +200,9 @@ nav {
 
 .block4 {
   border: 1px solid #bebebe;
-  border-radius: 5px;
   margin-bottom: 5px;
   margin-top: 2px;
   overflow: hidden;
-  background: #ffffff !important;
 }
 
 .block4 .block-header {
@@ -230,7 +228,7 @@ nav {
 }
 
 .block4 .box-banner {
-  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 .block4 .box-banner a img {
