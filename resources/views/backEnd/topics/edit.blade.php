@@ -266,7 +266,7 @@
 
                                         $t_arrow = "&laquo;";
                                         if (trans('backLang.direction') == "ltr") {
-                                            $t_arrow = "&raquo;";
+                                            $t_arrow = ">>";
                                         }
                                         $categories = array();
                                         foreach ($Topics->categories as $category) {

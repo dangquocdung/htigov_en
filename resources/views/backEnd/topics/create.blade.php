@@ -109,7 +109,7 @@
                                 $title_var2 = "title_" . trans('backLang.boxCodeOther');
                                 $t_arrow = "&laquo;";
                                 if (trans('backLang.direction') == "ltr") {
-                                    $t_arrow = "&raquo;";
+                                    $t_arrow = ">>";
                                 }
                                 ?>
                                 @foreach ($fatherSections as $fatherSection)
