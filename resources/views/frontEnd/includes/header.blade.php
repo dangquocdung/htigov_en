@@ -100,5 +100,5 @@
         </div>
     </div>
 
-    @include('frontEnd.includes.marquee')
+    {{--  @include('frontEnd.includes.marquee')  --}}
 </header>

@@ -55,12 +55,6 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
 <script type="text/javascript">
     $(document).ready(function ($) {
 
-        //
-        $('[data-toggle="offcanvas-mb"]').click(function () {
-            $('.row-offcanvas').toggleClass('active')
-          });
-
-          
         //To chuc
         $(".btn-pref-tochuc .btn").click(function () {
 

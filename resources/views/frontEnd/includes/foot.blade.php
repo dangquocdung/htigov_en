@@ -31,7 +31,7 @@
   
       $('div.alert').delay(3000).slideUp(300);
     });
-  </script>
+</script>
 
     {{--ajax subscribe to news letter--}}
 
