@@ -7,7 +7,7 @@
 
 @endphp
 
-@yield('section-menu')
+
 
 <div class="block4" style="border:none;">
     {{Form::open(['route'=>['searchTopics'],'method'=>'POST','class'=>'form-search'])}}
@@ -20,6 +20,9 @@
 
     {{Form::close()}}
 </div>
+@yield('section-menu')
+
+
     
 
 @if (!empty($RightMenuLinks))
@@ -57,6 +60,19 @@
 
 </div>
 @endif
+
+<a class="dichvucong" href="#">
+    <a href="https://www.accuweather.com/vi/vn/ha-tinh/353418/weather-forecast/353418" class="aw-widget-legal"></a>
+    <div id="awcc1491117457730" class="aw-widget-current"  data-locationkey="353418" data-unit="c" data-language="vi" data-useip="false" data-uid="awcc1491117457730"></div>
+    <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+</a>
+
+
+
+    
+
+
+
 
 
 
