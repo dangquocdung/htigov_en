@@ -519,9 +519,8 @@
                                                                 </thead>
                                                                 <tbody>
 
-                                                                    @foreach($topicIds as $key=>$topicId)
-    
-                                                                        @if ($key < 3)
+                                                                    @foreach($topicIds as $topicId)
+                                                                       
     
                                                                             <?php
     
@@ -552,38 +551,42 @@
                                                                                     }
                                                                                 }
                                                                             ?>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    {{ $loop->iteration }}
-                                                                                </td>
-                                                                                @if (in_array($MnuCategory->id,['24','25']))
+
+                                                                            @if (($tin->status == 1) && ($i < 3))
+                                                                                @php $i++; @endphp
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        {{ $loop->iteration }}
+                                                                                    </td>
+                                                                                    @if (in_array($MnuCategory->id,['24','25']))
+                                                                                        <td>
+                                                                                            <a href="{{ $topic_link_url }}">
+                                                                                                {{ $tin->$link_title_var }}
+                                                                                            </a>
+                                                                                        </td>
+                                                                                    @endif
                                                                                     <td>
                                                                                         <a href="{{ $topic_link_url }}">
-                                                                                            {{ $tin->$link_title_var }}
+                                                                                            @if (in_array($MnuCategory->id,['24','25']))
+                                                                                                {{ str_limit(strip_tags($tin->$details_var), $limit = 80, $end = '...') }}
+                                                                                            @else
+                                                                                                {{ $tin->$link_title_var }}
+                                                                                            @endif
                                                                                         </a>
                                                                                     </td>
-                                                                                @endif
-                                                                                <td>
-                                                                                    <a href="{{ $topic_link_url }}">
-                                                                                        @if (in_array($MnuCategory->id,['24','25']))
-                                                                                            {{ str_limit(strip_tags($tin->$details_var), $limit = 80, $end = '...') }}
-                                                                                        @else
-                                                                                            {{ $tin->$link_title_var }}
-                                                                                        @endif
-                                                                                    </a>
-                                                                                </td>
-                                                                                <td style="text-align: center">
-                                                                                    {{ \Carbon\Carbon::parse($tin->date)->format('d-m-Y') }}
-                                                                                </td>
-                                                                                <td style="text-align:center">
-                                                                                    {{--  @if (file_exists($tin->attach_file))  --}}
-                                                                                        <a href="{{ $tin->attach_file }}" target="_blank">
-                                                                                            <i class="fa fa-paperclip" aria-hidden="true"></i>
-                                                                                        </a>
-                                                                                    {{--  @endif  --}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        @endif
+                                                                                    <td style="text-align: center">
+                                                                                        {{ \Carbon\Carbon::parse($tin->date)->format('d-m-Y') }}
+                                                                                    </td>
+                                                                                    <td style="text-align:center">
+                                                                                        {{--  @if (file_exists($tin->attach_file))  --}}
+                                                                                            <a href="{{ $tin->attach_file }}" target="_blank">
+                                                                                                <i class="fa fa-paperclip" aria-hidden="true"></i>
+                                                                                            </a>
+                                                                                        {{--  @endif  --}}
+                                                                                    </td>
+                                                                                </tr>
+                                                                            @endif
+                                                                        
                                                                     @endforeach
                                                                 </tbody>
                                                             </table>
@@ -593,7 +596,7 @@
 
                                                                 @if(!empty($topicIds))
 
-                                                                    @foreach($topicIds as $key=>$topicId)
+                                                                    @foreach($topicIds as $topicId)
                                                                         
                                                                         <?php
 
@@ -626,6 +629,8 @@
                                                                         ?>
 
                                                                         @if (($tin->status == 1) && ($i == 0))
+                                                                            
+                                                                            @php $i++; @endphp
 
                                                                             <div class="col-md-7 col-sm-7 col-xs-12" style="float: left;">
                                                                                 <div class="row">
