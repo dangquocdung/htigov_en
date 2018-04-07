@@ -53,7 +53,7 @@
                                 $slug_var = "seo_url_slug_" . trans('backLang.boxCode');
                                 $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
                             ?>
-                            @foreach($Topics->sortbydesc('id') as $key=>$Topic)
+                            @foreach($Topics->sortbydesc('date') as $key=>$Topic)
                                 
                                 <?php
                                     if ($Topic->$title_var != "") {
@@ -348,6 +348,7 @@
                                             <li>
                                                 <i class="fa fa-eye"></i> <a>: {!! $Topic->visits !!}</a>
                                             </li>
+                                            
 
                                             @if ($Topic->webmasterSection->comments_status)
                                                 <li>

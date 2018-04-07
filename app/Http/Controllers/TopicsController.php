@@ -236,6 +236,7 @@ class TopicsController extends Controller
                     if ($category > 0) {
                         $TopicCategory = new TopicCategory;
                         $TopicCategory->topic_id = $Topic->id;
+                        $TopicCategory->topic_date = $Topic->date;
                         $TopicCategory->section_id = $category;
                         $TopicCategory->save();
                     }
@@ -476,6 +477,7 @@ class TopicsController extends Controller
                         if ($category > 0) {
                             $TopicCategory = new TopicCategory;
                             $TopicCategory->topic_id = $Topic->id;
+                            $TopicCategory->topic_date = $Topic->date;
                             $TopicCategory->section_id = $category;
                             $TopicCategory->save();
                         }

@@ -386,9 +386,11 @@
 
                                                         @php
                                                             
-                                                            $topicIds = $MnuCategory->selectedCategories->sortbyDesc('id')->take(5);
+                                                            $topicIds = $MnuCategory->selectedCategories->sortbyDesc('topic_date')->take(5);
 
                                                             $i = 0;
+
+                                                            $tins= array();
                                                             
                                                         @endphp
 
@@ -398,7 +400,17 @@
                                                                 
                                                                 <?php
 
-                                                                    $tin = $topicId->topic;
+                                                                    $tins[] = $topicId->topic;
+
+                                                                ?>
+
+                                                            @endforeach
+
+                                                            @foreach($tins as $topicId)
+                                                                
+                                                                <?php
+
+                                                                    $tin = $topicId;
 
                                                                     $section = "";
                                                                     try {
@@ -493,8 +505,9 @@
 
                                                     @php
                                                         
-                                                        $topicIds = $MnuCategory->selectedCategories->sortbyDesc('id')->take(5);
+                                                        $topicIds = $MnuCategory->selectedCategories->sortbyDesc('topic_date')->take(5);
                                                         $i = 0;
+                                                        $tins= array();
 
                                                     @endphp
 
@@ -520,12 +533,21 @@
                                                                 <tbody>
 
                                                                     @foreach($topicIds as $topicId)
+                                                                
+                                                                        <?php
+        
+                                                                            $tins[] = $topicId->topic;
+        
+                                                                        ?>
+        
+                                                                    @endforeach
+                                                                    
+
+                                                                    @foreach($tins as $tin)
                                                                        
     
                                                                             <?php
-    
-                                                                                $tin = $topicId->topic;
-    
+                                                                                
                                                                                 $section = "";
                                                                                 try {
                                                                                     if ($tin->section->$title_var != "") {

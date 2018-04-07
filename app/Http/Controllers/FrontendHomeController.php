@@ -472,7 +472,9 @@ class FrontendHomeController extends Controller
                                             ->paginate(env('FRONTEND_PAGINATION'));
                 // Get Most Viewed Topics fot this Category
                 $TopicsMostViewed = Topic::where([['webmaster_id', '=', $WebmasterSection->id], ['status', 1], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orWhere([['webmaster_id', '=', $WebmasterSection->id], ['status', 1], ['expire_date', null]])->whereIn('id', $category_topics)->orderby('visits', 'desc')->limit(3)->get();
+            
             } else {
+                
                 // Topics if NO Cat_ID
                 $Topics = Topic::where([['webmaster_id', '=', $WebmasterSection->id], ['status',
                     1], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orWhere([['webmaster_id', '=', $WebmasterSection->id], ['status', 1], ['expire_date', null]])->orderby('row_no', 'asc')->paginate(env('FRONTEND_PAGINATION'));
