@@ -246,20 +246,20 @@ class FrontendHomeController extends Controller
         }
 
         // Home topics
-        $HomeTopics = Topic::where([
-            ['status', 1], 
-            ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
-            ['expire_date', '>=', date("Y-m-d")], 
-            ['expire_date', '<>', null]
-            ])
-            ->orwhere([
-                ['status', 1], 
-                ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
-                ['expire_date', null]
-                ])
-                ->orderby('row_no', 'asc')
-                ->limit(3)
-                ->get();
+        // $HomeTopics = Topic::where([
+        //     ['status', 1], 
+        //     ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+        //     ['expire_date', '>=', date("Y-m-d")], 
+        //     ['expire_date', '<>', null]
+        //     ])
+        //     ->orwhere([
+        //         ['status', 1], 
+        //         ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
+        //         ['expire_date', null]
+        //         ])
+        //         ->orderby('row_no', 'asc')
+        //         ->limit(3)
+        //         ->get();
 
         //Hot topics
         $HotTopics = Topic::where([
@@ -293,28 +293,28 @@ class FrontendHomeController extends Controller
                 ['expire_date', null]
                 ])
                 ->orderby('visits', 'desc')
-                ->limit(5)
+                ->limit(7)
                 ->get();      
         
             
         // Home photos
-        $HomePhotos = Topic::where([['status', 1], ['webmaster_id', $WebmasterSettings->home_content2_section_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orwhere([['status', 1], ['webmaster_id', $WebmasterSettings->home_content2_section_id], ['expire_date', null]])->orderby('row_no', 'asc')->limit(6)->get();
+        // $HomePhotos = Topic::where([['status', 1], ['webmaster_id', $WebmasterSettings->home_content2_section_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orwhere([['status', 1], ['webmaster_id', $WebmasterSettings->home_content2_section_id], ['expire_date', null]])->orderby('row_no', 'asc')->limit(6)->get();
         // Home Partners
-        $HomePartners = Topic::where([['status', 1], ['webmaster_id', $WebmasterSettings->home_content3_section_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orwhere([['status', 1], ['webmaster_id', $WebmasterSettings->home_content3_section_id], ['expire_date', null]])->orderby('row_no', 'asc')->get();
+        // $HomePartners = Topic::where([['status', 1], ['webmaster_id', $WebmasterSettings->home_content3_section_id], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orwhere([['status', 1], ['webmaster_id', $WebmasterSettings->home_content3_section_id], ['expire_date', null]])->orderby('row_no', 'asc')->get();
 
         // Get Latest News
-        $LatestNews = Topic::where([
-            ['status', 1], 
-            ['webmaster_id', $WebmasterSettings->latest_news_section_id], 
-            ['expire_date', '>=', date("Y-m-d")], 
-            ['expire_date', '<>', null]])
-            ->orwhere([
-                ['status', 1], 
-                ['webmaster_id', $WebmasterSettings->latest_news_section_id], 
-                ['expire_date', null]])
-                ->orderby('row_no', 'asc')
-                ->limit(3)
-                ->get();
+        // $LatestNews = Topic::where([
+        //     ['status', 1], 
+        //     ['webmaster_id', $WebmasterSettings->latest_news_section_id], 
+        //     ['expire_date', '>=', date("Y-m-d")], 
+        //     ['expire_date', '<>', null]])
+        //     ->orwhere([
+        //         ['status', 1], 
+        //         ['webmaster_id', $WebmasterSettings->latest_news_section_id], 
+        //         ['expire_date', null]])
+        //         ->orderby('row_no', 'asc')
+        //         ->limit(3)
+        //         ->get();
 
         
 
@@ -327,7 +327,7 @@ class FrontendHomeController extends Controller
             1)->orderby('row_no', 'asc')->get();
 
         
-            //BLock Banner
+        //BLock Banner
         $BlockBanners = Banner::where('section_id', 4)->where('status',
         1)->orderby('row_no', 'asc')->get();
 
