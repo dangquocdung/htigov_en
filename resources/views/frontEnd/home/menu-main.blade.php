@@ -684,7 +684,7 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                        @else
+                                                                        @elseif (($tin->status == 1)
 
                                                                             <div class="col-md-5 col-sm-5 col-xs-12" style="float: right;">
                                                                                 <div class="row">
