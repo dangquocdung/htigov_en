@@ -55,6 +55,8 @@
     <link href="{{ URL::asset('uploads/settings/nofav.png') }}" rel="apple-touch-icon" sizes="144x144">
 @endif
 
+
+
 <script src="{{ URL::asset('frontEnd/js/jquery.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/bootstrap.min.js') }}"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>

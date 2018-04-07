@@ -1,5 +1,6 @@
 <a href="#" title="{{ trans('frontLang.toTop') }}" class="scrollup"><i class="fa fa-angle-up active"></i></a>
 
+
 <script src="{{ URL::asset('frontEnd/js/jquery.easing.1.3.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/jquery.fancybox.pack.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/jquery.fancybox-media.js') }}"></script>
@@ -13,7 +14,6 @@
 
 <script>
     
-
     function resizeText(multiplier) {
         if (document.body.style.fontSize == "") {
             document.body.style.fontSize = "1.3em";
@@ -22,6 +22,16 @@
     }
 
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('[data-toggle="offcanvas-mb"]').click(function () {
+        $('.row-offcanvas').toggleClass('active')
+      });
+  
+      $('div.alert').delay(3000).slideUp(300);
+    });
+  </script>
 
     {{--ajax subscribe to news letter--}}
 
