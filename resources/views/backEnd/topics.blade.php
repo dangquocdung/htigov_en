@@ -16,7 +16,7 @@
                         <div class="col-sm-12">
                             <a class="btn btn-fw primary" href="{{route("topicsCreate",$WebmasterSection->id)}}">
                                 <i class="material-icons">&#xe02e;</i>
-                                &nbsp; {{ trans('backLang.topicNew') }}  {!! trans('backLang.'.$WebmasterSection->name) !!}
+                                &nbsp; {!! trans('backLang.'.$WebmasterSection->name) !!}
                             </a>
                         </div>
                     </div>
