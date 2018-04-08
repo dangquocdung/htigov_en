@@ -428,7 +428,7 @@ return array (
   'forgotPassword' => 'Quên mật khẩu?',
   'signIn' => 'Đăng nhập',
   'keepMeSignedIn' => 'Giữ cho tôi đăng nhập',
-  'signedInToControl' => 'Đăng nhập vào CONTROL',
+  'signedInToControl' => 'Đăng nhập vào Quản trị',
   'control' => 'Vùng quản trị',
   'resetPassword' => 'Đặt lại mật khẩu',
   'confirmPassword' => 'Xác nhận mật khẩu',
@@ -503,4 +503,9 @@ return array (
   'Header-Banner' => 'Banner Chính',
   'curlBCP' => 'Báo Chính phủ',
   'quy-hoach' => 'Quy hoạch',
+  'lien-he' => 'Liên hệ',
+  'gop-y' => 'Góp ý',
+  'phone' => 'Điện thoại',
+  'address' => 'Địa chỉ',
+  'passport' => 'Số CMND/Hộ chiếu',
 );
