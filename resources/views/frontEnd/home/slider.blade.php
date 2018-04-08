@@ -25,7 +25,9 @@
                     @foreach($SliderBanners->where('status',1) as $key=>$SliderBanner)
                         <div class="item
                         @if ($key == 0) active @endif">
-                            <img src="/uploads/banners/{{ $SliderBanner->$file_var }}" width="100%">
+                            <a href="{{ $SliderBanner->link_url }}" target="_blank">
+                                <img src="/uploads/banners/{{ $SliderBanner->$file_var }}" width="100%">
+                            </a>
                         </div>
                     @endforeach
                 </div>
