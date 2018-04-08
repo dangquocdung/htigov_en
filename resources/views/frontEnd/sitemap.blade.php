@@ -60,13 +60,16 @@ $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
                                                         $section_link = $mmnnuu_link."/".$Section->id
 
                                                     ?>
-                                                    <li>
-                                                        <a href="{{ url($section_link) }}">
 
-                                                            <i class="fa fa-folder-o" aria-hidden="true"></i>
-                                                            {{ $Section->$link_title_var }}
-                                                        </a>
-                                                    </li>
+                                                    @if ($Section->father_id == 0)
+                                                        <li>
+                                                            <a href="{{ url($section_link) }}">
+
+                                                                <i class="fa fa-folder-o" aria-hidden="true"></i>
+                                                                {{ $Section->$link_title_var }}
+                                                            </a>
+                                                        </li>
+                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </li>
