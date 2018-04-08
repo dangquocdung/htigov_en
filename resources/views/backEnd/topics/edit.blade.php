@@ -1077,15 +1077,26 @@
                                                 <div class="pull-right">
                                                     {!! Form::text('row_no_'.$photo->id,$photo->row_no, array('class' => 'pull-left form-control row_no','id'=>'row_no','style'=>'margin:0;margin-bottom:5px')) !!}
                                                 </div>
+                                                
                                                 <label class="ui-check m-a-0">
                                                     <input type="checkbox" name="ids[]" value="{{ $photo->id }}"><i
                                                             class="dark-white"></i>
                                                     {!! Form::hidden('row_ids[]',$photo->id, array('class' => 'form-control row_no')) !!}
                                                 </label>
+
+                                                <div class="clearfix"></div>
+                                                   
+                                                {!! Form::text('description_'.$photo->id,$photo->description, array('class' => 'pull-left form-control','id'=>'description','style'=>'margin:0; font-size:12px;')) !!}
+                                                
+
                                                 <img src="{{ URL::to('uploads/topics/'.$photo->file) }}"
                                                      alt="{{ $photo->title  }}" title="{{ $photo->title  }}"
                                                      style="height: 150px"
                                                      class="img-responsive">
+
+                                                     
+                                                     
+                                                
                                                 <div class="p-a-sm">
                                                     <div class="text-ellipsis">
                                                         @if(@Auth::user()->permissionsGroup->delete_status)
@@ -1099,13 +1110,23 @@
                                                                 <small><i class="material-icons">&#xe872;</i></small>
                                                             </button>
                                                         @endif
+
                                                         <a style="display: block;overflow: hidden;"
                                                            href="{{ URL::to('uploads/topics/'.$photo->file) }}"
                                                            target="_blank">
                                                             <small>{{ ($photo->title !="") ? $photo->title:$photo->file  }}</small>
                                                         </a>
+
+                                                        
+
+
+                                                       
                                                     </div>
+                                                   
+                                                    
                                                 </div>
+
+                                                
 
                                                 <!-- .modal -->
                                                 <div id="mx-{{ $photo->id }}" class="modal fade" data-backdrop="true">

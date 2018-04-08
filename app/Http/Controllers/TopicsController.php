@@ -873,7 +873,9 @@ class TopicsController extends Controller
                     $Photo = Photo::find($rowId);
                     if (count($Photo) > 0) {
                         $row_no_val = "row_no_" . $rowId;
+                        $description_val = "description_" . $rowId;
                         $Photo->row_no = $request->$row_no_val;
+                        $Photo->description = $request->$description_val;
                         $Photo->save();
                     }
                 }
