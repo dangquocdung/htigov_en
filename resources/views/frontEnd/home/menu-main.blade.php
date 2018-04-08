@@ -170,7 +170,7 @@
                             </div>
                             <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:150px;overflow:hidden;">
 
-                                    @foreach($MainMenuLink->webmasterSection->topics->sortbyDesc('date') as $tin)
+                                    @foreach($MainMenuLink->webmasterSection->topics->where('status',1)->sortbyDesc('date') as $tin)
                                         <?php
 
                                             if ($tin->$title_var != "") {
@@ -249,7 +249,7 @@
                             </div>
                             <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:150px;overflow:hidden;">
 
-                                    @foreach($MainMenuLink->webmasterSection->topics->sortbyDesc('date') as $tin)
+                                    @foreach($MainMenuLink->webmasterSection->topics->where('status',1)->sortbyDesc('date') as $tin)
                                         <?php
 
                                             if ($tin->$title_var != "") {
