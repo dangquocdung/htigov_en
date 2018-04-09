@@ -35,7 +35,7 @@ $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
         ?>
         
             
-        <li>
+        <li style="width:20%;">
             <a href="{{ (trim($FooterMenuLink->link) !="") ? $FooterMenuLink->link:$mmnnuu_link }}">{{ $FooterMenuLink->$link_title_var }}</a>
         </li>
         
