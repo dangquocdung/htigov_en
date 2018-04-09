@@ -149,7 +149,7 @@ class Backup
         $file = 'database-' . Carbon::now()->format('Y-m-d-h-i-s');
         $path = $this->folder . DIRECTORY_SEPARATOR . $file;
 
-        $sql = 'mysqldump --user=' . env('DB_USERNAME') . ' --password=' . env('DB_PASSWORD') . ' --host=' . env('DB_HOST') . ' ' . env('DB_DATABASE') . ' > ' . $path . '.sql';
+        $sql = 'mysqldump --user=' . env('DB_USERNAME','root') . ' --password=' . env('DB_PASSWORD','k9Qx5-LxWs6') . ' --host=' . env('DB_HOST','127.0.0.1') . ' ' . env('DB_DATABASE','htigov_en') . ' > ' . $path . '.sql';
 
         system($sql);
         $this->compressFileToZip($path, $file);
