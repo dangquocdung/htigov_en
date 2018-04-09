@@ -26,7 +26,7 @@
                 }
             ?>
 
-            <li>
+            <li style="padding: 0 5px; font-size:0.7em;">
                 <a href="{{ (trim($HeaderMenuLink->link) !="") ? $HeaderMenuLink->link:$mmnnuu_link }}">{{ $HeaderMenuLink->$link_title_var }}</a>
             </li>
             
