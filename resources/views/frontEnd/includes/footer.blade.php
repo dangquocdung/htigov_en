@@ -3,9 +3,14 @@
 
         <div class="menu-bottom">
 
-            <div id="top_nav" class="ddsmoothmenu">
+            <div id="top_nav hidden-xs" class="ddsmoothmenu">
                 @include('frontEnd.includes.menu-bottom')
             </div>
+            <div id="top_nav visible-xs" class="ddsmoothmenu">
+                @include('frontEnd.includes.menu-bottom-mb')
+            </div>
+
+            
         </div>
 
         <div class="main-footer-footer-wrapper">
