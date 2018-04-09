@@ -524,10 +524,10 @@
                                                                     @endif
                                                                     
                                                                     <th>Nội dung </th>
-                                                                    <th class="col-md-2" style="text-align: center">Ngày đăng </th>
-                                                                    <th style="text-align:center">
+                                                                    <th class="col-md-2" style="text-align: center">Ngày ban hành</th>
+                                                                    {{--  <th style="text-align:center">
                                                                         <i class="fa fa-paperclip" aria-hidden="true"></i>
-                                                                    </th>
+                                                                    </th>  --}}
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -599,13 +599,13 @@
                                                                                     <td style="text-align: center">
                                                                                         {{ \Carbon\Carbon::parse($tin->date)->format('d-m-Y') }}
                                                                                     </td>
-                                                                                    <td style="text-align:center">
-                                                                                        {{--  @if (file_exists($tin->attach_file))  --}}
+                                                                                    {{--  <td style="text-align:center">
+                                                                                        @if (file_exists($tin->attach_file))
                                                                                             <a href="{{ $tin->attach_file }}" target="_blank">
                                                                                                 <i class="fa fa-paperclip" aria-hidden="true"></i>
                                                                                             </a>
-                                                                                        {{--  @endif  --}}
-                                                                                    </td>
+                                                                                        @endif
+                                                                                    </td>  --}}
                                                                                 </tr>
                                                                             @endif
                                                                         
