@@ -1,5 +1,5 @@
 @if (count($backups) > 0)
-    @foreach ($backups->sortByDesc('created_at') as $key => $backup)
+    @foreach ($backups as $key => $backup)
         <tr>
             <td><input name="id[]" type="checkbox" class="input-checkbox-minimal" value="{{ $key }}"></td>
             <td>{{ $backup['name'] }}</td>
