@@ -131,6 +131,8 @@
                                         <i class="fa {!! $Topic->icon !!} "></i>
                                     @endif
 
+
+
                                     @if (strlen($title) < 15)
                                         {{ $title.' '.$details }}
                                     @else
