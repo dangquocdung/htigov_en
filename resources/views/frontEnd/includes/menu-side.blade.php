@@ -114,6 +114,8 @@
 
     </div>
 
+    @if ($SideBanners->where('status',1)->where('type_id',1)->count() > 0)
+
     <div class="block4">
 
         <div class="block-header" style="margin-bottom: 0">
@@ -131,4 +133,6 @@
         @endforeach
 
     </div>
+    @endif
+
 @endif
