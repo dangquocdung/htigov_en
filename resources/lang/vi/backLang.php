@@ -510,4 +510,5 @@ return array (
   'passport' => 'Số CMND/Hộ chiếu',
   'nguoi-phat-ngon' => 'Người phát ngôn',
   'dau-thau-mua-sam-cong' => 'Đấu thầu, mua sắm công',
+  'phong-vien-thuong-tru' => 'Phóng viên thường trú',
 );
