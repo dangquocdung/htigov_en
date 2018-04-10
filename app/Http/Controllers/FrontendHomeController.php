@@ -276,7 +276,7 @@ class FrontendHomeController extends Controller
                 ['expire_date', null]
                 ])
                 ->orderby('id', 'desc')
-                ->limit(7)
+                ->limit(6)
                 ->get();
 
          
@@ -293,7 +293,7 @@ class FrontendHomeController extends Controller
                 ['expire_date', null]
                 ])
                 ->orderby('visits', 'desc')
-                ->limit(7)
+                ->limit(6)
                 ->get();      
         
             
