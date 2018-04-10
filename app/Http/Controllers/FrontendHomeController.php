@@ -460,7 +460,7 @@ class FrontendHomeController extends Controller
                                                     ['status', 1], 
                                                     ['expire_date', null]])
                                                     ->whereIn('id', $category_topics)
-                                                    ->orderby('row_no', 'asc')
+                                                    ->orderby('date', 'desc')
                                                     ->paginate(env('FRONTEND_PAGINATION'));
 
                 $Topics_expire = Topic::where([['webmaster_id', '=', $WebmasterSection->id], 
@@ -468,7 +468,7 @@ class FrontendHomeController extends Controller
                                         ['expire_date', '<', date("Y-m-d")], 
                                         ['expire_date', '<>', null]])
                                             ->whereIn('id', $category_topics)
-                                            ->orderby('row_no', 'asc')
+                                            ->orderby('date', 'desc')
                                             ->paginate(env('FRONTEND_PAGINATION'));
                 // Get Most Viewed Topics fot this Category
                 $TopicsMostViewed = Topic::where([['webmaster_id', '=', $WebmasterSection->id], ['status', 1], ['expire_date', '>=', date("Y-m-d")], ['expire_date', '<>', null]])->orWhere([['webmaster_id', '=', $WebmasterSection->id], ['status', 1], ['expire_date', null]])->whereIn('id', $category_topics)->orderby('visits', 'desc')->limit(3)->get();
@@ -483,7 +483,7 @@ class FrontendHomeController extends Controller
                                                 ['status',1], 
                                                 ['expire_date', '<', date("Y-m-d")], 
                                                 ['expire_date', '<>', null]])
-                                                ->orderby('row_no', 'asc')
+                                                ->orderby('date', 'desc')
                                                 ->paginate(env('FRONTEND_PAGINATION'));
                 
                     // Get Most Viewed
