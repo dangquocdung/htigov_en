@@ -525,6 +525,7 @@ class CurlController extends Controller
 
                         $TopicCategory = new TopicCategory;
                         $TopicCategory->topic_id = $Topic->id;
+                        $TopicCategory->topic_date = Carbon::now()->toDateTimeString();
                         $TopicCategory->section_id = 23;
                         $TopicCategory->save();
                     }
