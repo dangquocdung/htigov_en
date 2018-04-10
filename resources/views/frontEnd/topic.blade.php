@@ -941,6 +941,16 @@
 @stop
 
 @section('footerInclude')
+
+    <script type="text/javascript"> 
+        $(document).ready(function($){
+        
+            $('p img').each(function(){ 
+                $(this).css({"width":"90%","align":"middle"});
+            });
+        
+        });
+    </script>
     @if(count($Topic->maps) >0)
         @foreach($Topic->maps->slice(0,1) as $map)
             <?php
