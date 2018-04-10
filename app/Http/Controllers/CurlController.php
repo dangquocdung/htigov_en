@@ -126,6 +126,7 @@ class CurlController extends Controller
 
                     $TopicCategory = new TopicCategory;
                     $TopicCategory->topic_id = $Topic->id;
+                    $TopicCategory->topic_date = Carbon::parse($node->filter('pubDate')->text());
                     $TopicCategory->section_id = 28;
                     $TopicCategory->save();
 
@@ -418,6 +419,7 @@ class CurlController extends Controller
 
                             $TopicCategory = new TopicCategory;
                             $TopicCategory->topic_id = $Topic->id;
+                            $TopicCategory->topic_date = Carbon::now()->toDateTimeString();
                             $TopicCategory->section_id = 24;
                             $TopicCategory->save();
                         }
