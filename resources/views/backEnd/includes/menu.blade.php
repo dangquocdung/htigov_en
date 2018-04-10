@@ -73,11 +73,6 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
                                             <span class="nav-text">Chỉ đạo, điều hành</span>
                                         </a>
                                     </li>
-                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
-                                        <a href="{{ route('curl-llv') }}">
-                                            <span class="nav-text">Lịch làm việc</span>
-                                        </a>
-                                    </li>
 
                                 </ul>
                             </li>

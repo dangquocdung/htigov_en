@@ -519,7 +519,7 @@
                                                                 <thead>
                                                                 <tr>
                                                                     <th>TT</th>
-                                                                    @if (in_array($MnuCategory->id,['24','25']))
+                                                                    @if (in_array($MnuCategory->id,['25']))
                                                                         <th>Kí hiệu </th>
                                                                     @endif
                                                                     
@@ -580,7 +580,7 @@
                                                                                     <td>
                                                                                         {{ $loop->iteration }}
                                                                                     </td>
-                                                                                    @if (in_array($MnuCategory->id,['24','25']))
+                                                                                    @if (in_array($MnuCategory->id,['25']))
                                                                                         <td>
                                                                                             <a href="{{ $topic_link_url }}">
                                                                                                 {{ $tin->$link_title_var }}

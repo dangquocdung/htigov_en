@@ -108,7 +108,7 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
     Route::get('/curl-bao-chinh-phu', 'CurlController@getBaoChinhPhu')->name('curl-bcp');
     Route::get('/curl-cong-bao', 'CurlController@getCongBao')->name('curl-cb');
     Route::get('/curl-dieu-hanh-tac-nghiep', 'CurlController@getDHTN')->name('curl-dhtn');
-    Route::get('/curl-lich-lam-viec', 'CurlController@getLLV')->name('curl-llv');
+    // Route::get('/curl-lich-lam-viec', 'CurlController@getLLV')->name('curl-llv');
 
 
     // Settings
