@@ -172,7 +172,7 @@ class Backup
             return false;
         }
 
-        $file = $this->folder . DIRECTORY_SEPARATOR . 'public-storage-' . Carbon::now()->format('Y-m-d-h-i-s') . '.zip';
+        $file = $this->folder . DIRECTORY_SEPARATOR . 'public-storage-' . Carbon::now()->format('Y-m-d-H-i-s') . '.zip';
 
         // set script timeout value
         ini_set('max_execution_time', 5000);
