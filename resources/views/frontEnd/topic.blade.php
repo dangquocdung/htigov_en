@@ -610,10 +610,10 @@
                                     @if($WebmasterSection->date_status)
                                         <li><i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->date)->format('d-m-Y')   }}</a></li>
                                     @endif
-                                    {{--  <li>
+                                     <li class="hidden-xs">
                                         <i class="fa fa-user"></i> 
                                         <a href="{{route('FrontendUserTopics',$Topic->created_by)}}">{{$Topic->user->name}}</a>
-                                    </li>  --}}
+                                    </li> 
                                     <li>
                                         <i class="fa fa-eye"></i> <a>: {!! $Topic->visits !!}</a>
                                         </li>
