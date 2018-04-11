@@ -453,9 +453,6 @@
                                                                                     </div>
                                                                                     @if (strlen($tin->photo_file) > 4)
                                                                                         <img style="display: inline-block; width: 160px; height:auto;" src="/uploads/topics/{{ $tin->photo_file }}" alt="" title="">
-                                                                                    @else
-                                                                                        <img style="display: inline-block; width: 160px; height:auto;" src="{{ URL::to('uploads/topics/no_image.jpg') }}" alt="" title="">
-                                                                                        
                                                                                     @endif
         
                                                                                 </a>
@@ -665,9 +662,6 @@
                                                                                             </div>
                                                                                             @if (strlen($tin->photo_file) > 4)
                                                                                                 <img style="display: inline-block; width: 160px; height:auto;" src="/uploads/topics/{{ $tin->photo_file }}" alt="" title="">
-                                                                                            @else
-                                                                                                <img style="display: inline-block; width: 160px; height:auto;" src="{{ URL::to('uploads/topics/no_image.jpg') }}" alt="" title="">
-                                                                                                
                                                                                             @endif
                 
                                                                                         </a>
