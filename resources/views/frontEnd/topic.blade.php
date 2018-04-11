@@ -949,9 +949,8 @@
                 $(this).css({"width":"90%","align":"middle"});
             });
 
-            $('.responsive-video').each(function(){
-                $(this).css("padding-bottom","");
-            });
+            $('.responsive-video').css('padding-bottom','');
+           
         });
     </script>
     @if(count($Topic->maps) >0)
