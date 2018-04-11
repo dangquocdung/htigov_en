@@ -58,8 +58,13 @@
         </div>
 
         <div class="p-v-lg text-center">
-            <div class="m-b"><a href="{{ url('/password/reset') }}"
-                                class="text-primary _600">{{ trans('backLang.forgotPassword') }}</a></div>
+            {{--  <div class="m-b">
+                <a href="{{ url('/password/reset') }}" class="text-primary _600">{{ trans('backLang.forgotPassword') }}</a>
+            </div>  --}}
+            <div class="m-b">
+                <sup>*</sup>
+                *Bạn cần đăng nhập để tương tác với BBT!
+            </div>
         </div>
     </div>
 
