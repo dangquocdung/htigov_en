@@ -948,7 +948,10 @@
             $('p img').each(function(){ 
                 $(this).css({"width":"90%","align":"middle"});
             });
-        
+
+            $('responsive-video').each(function(){
+                $(this).removeProperty("padding-bottom");
+            });
         });
     </script>
     @if(count($Topic->maps) >0)
