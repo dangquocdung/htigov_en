@@ -1664,7 +1664,6 @@ object p {
 
 .responsive-video {
   position: relative;
-  padding-bottom: 56.25%;
   padding-top: 60px;
   overflow: hidden;
 }
