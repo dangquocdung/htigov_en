@@ -950,7 +950,7 @@
             });
 
             $('.responsive-video').each(function(){
-                $(this).removeProperty("padding-bottom");
+                $(this).css("padding-bottom","");
             });
         });
     </script>
