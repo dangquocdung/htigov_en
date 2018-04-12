@@ -356,9 +356,15 @@
                                         @endif
 
                                     @endif
+
+                                    <li class="hidden-xs">
+                                        <i class="fa fa-user"></i> 
+                                        <a href="javascript:void(0);">: {!! $Topic->user->name !!}</a>
+                                    </li> 
                                     
                                     <li>
-                                        <i class="fa fa-eye"></i> <a>: {!! $Topic->visits !!}</a>
+                                        <i class="fa fa-eye"></i> 
+                                        <a href="javascript:void(0);">: {!! $Topic->visits !!}</a>
                                     </li>
                                     
 

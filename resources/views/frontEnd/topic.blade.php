@@ -612,11 +612,12 @@
                                     @endif
                                      <li class="hidden-xs">
                                         <i class="fa fa-user"></i> 
-                                        <a href="{{route('FrontendUserTopics',$Topic->created_by)}}">{{$Topic->user->name}}</a>
+                                        <a href="javascript:void(0);">: {!! $Topic->user->name !!}</a>
                                     </li> 
                                     <li>
-                                        <i class="fa fa-eye"></i> <a>: {!! $Topic->visits !!}</a>
-                                        </li>
+                                        <i class="fa fa-eye"></i>
+                                        <a href="javascript:void(0);">: {!! $Topic->visits !!}</a>
+                                    </li>
                                     @if($WebmasterSection->comments_status)
                                         <li>
                                             <i class="fa fa-comments"></i><a
@@ -796,6 +797,11 @@
                                                         {!! app('captcha')->display($attributes = [], $lang = trans('backLang.code')) !!}
                                                     </div>
                                                 @endif
+                                                <br>
+                                                
+                                                <div class="g-recaptcha" data-sitekey="6Le9blIUAAAAAHEkqcWePizRmL7hdYOlg0vqBByp"></div>
+
+                                                <br>
 
                                                 <div>
                                                     <input type="hidden" name="topic_id" value="{{$Topic->id}}">
