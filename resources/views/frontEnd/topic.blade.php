@@ -629,7 +629,7 @@
                                 <div class="pull-right">
                                     {{--  <span class="hidden-xs">{{ trans('frontLang.share') }} :</span>  --}}
                                     <ul class="social-network share">
-                                        @if(@Auth::user()->permissions_id < 3)
+                                        @if( Auth::user()->permissions_id < 3 )
                                             <li>
                                                 <a href="{{ route("topicsEdit",["webmasterId"=>$WebmasterSection->id,"id"=>$Topic->id]) }}" class="google"
                                                 data-placement="top"
