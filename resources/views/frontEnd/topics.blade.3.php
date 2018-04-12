@@ -31,7 +31,17 @@
 
                         
                         
-                        
+                        @if ( in_array($WebmasterSection->id,[23,24]) )
+
+                            <div class="pull-right" style="font-weight:100; padding-right: 5px;">
+                                <em>
+                                    <sup>*</sup>
+                                    Bạn cần
+                                    <a href="admin" style="color:red !important">đăng nhập</a> 
+                                    để gởi câu hỏi
+                                </em>
+                            </div>
+                        @endif
 
                         
                     </ul>
@@ -341,11 +351,15 @@
                                     
                                     @if ($Topic->webmasterSection->date_status)
 
-                                        
+                                        @if ($WebmasterSection->id == 22)
+                                            <li>
+                                                <i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->expire_date)->format('d-m-Y')   }}</a>
+                                            </li>
+                                        @else
                                             <li>
                                                 <i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->date)->format('d-m-Y')   }}</a>
                                             </li>
-                                       
+                                        @endif
 
                                     @endif
 
@@ -392,7 +406,165 @@
         
         </div>
     </div>
-    
+
+
+            <br>
+
+            @if ($WebmasterSection->id == 22)
+                <div class="block3">
+
+                    <div class="portlet-header">
+                        
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="{{ route("Home") }}"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i>
+                            </li>
+                            <li class="active">Văn bản hết hạn góp ý</li>
+                            
+                        </ul>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="loai-tin">
+                        
+                            @if($Topics->total() == 0)
+                                <div class="col-md-12">
+                                    <div class="alert alert-warning">
+                                        <i class="fa fa-info"></i> &nbsp; {{ trans('frontLang.noData') }}
+                                    </div>
+                                </div>
+                            @else
+                                @if($Topics->total() > 0)
+                                    <?php
+                                        $title_var = "title_" . trans('backLang.boxCode');
+                                        $title_var2 = "title_" . trans('backLang.boxCodeOther');
+                                        $details_var = "details_" . trans('backLang.boxCode');
+                                        $details_var2 = "details_" . trans('backLang.boxCodeOther');
+                                        $slug_var = "seo_url_slug_" . trans('backLang.boxCode');
+                                        $slug_var2 = "seo_url_slug_" . trans('backLang.boxCodeOther');
+                                    ?>
+                                    @foreach($Topics_expire as $key=>$Topic)
+                                        <?php
+                                            if ($Topic->$title_var != "") {
+                                                $title = $Topic->$title_var;
+                                            } else {
+                                                $title = $Topic->$title_var2;
+                                            }
+                                            if ($Topic->$details_var != "") {
+                                                $details = $details_var;
+                                            } else {
+                                                $details = $details_var2;
+                                            }
+                                            $section = "";
+                                            try {
+                                                if ($Topic->section->$title_var != "") {
+                                                    $section = $Topic->section->$title_var;
+                                                } else {
+                                                    $section = $Topic->section->$title_var2;
+                                                }
+                                            } catch (Exception $e) {
+                                                $section = "";
+                                            }
+
+                                            if ($Topic->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                    $topic_link_url = url(trans('backLang.code') . "/" . $Topic->$slug_var);
+                                                } else {
+                                                    $topic_link_url = url($Topic->$slug_var);
+                                                }
+                                            } else {
+                                                if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                    $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                                } else {
+                                                    $topic_link_url = route('FrontendTopic', ["section" => $Topic->webmasterSection->name, "id" => $Topic->id]);
+                                                }
+                                            }
+                                        ?>
+
+                                        @if ($key%2==0)
+                                            <div class="clearfix"></div>
+                                        @endif
+
+                                        <article class="center">
+                                            
+                                            <div class="news-main" style="padding: 0; margin-bottom: 0">
+                                                <div class="row" style="padding: 0 15px 10px 15px;">
+                                                        <a class="tin_title_text" href="">
+                                                        @if($Topic->photo_file !="")
+                                                            <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}" alt="{{ $title }}"/>
+                                                        @endif
+            
+                                                        <div class="tin_title_text">
+
+                                                            <a href="{{ $topic_link_url }}">
+                                                                @if($Topic->icon !="")
+                                                                    <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
+                                                                @endif
+                                                                {{ $title }}
+                                                            </a>
+                                                        </div>
+            
+                                                    </a>
+            
+                                                    <div class="tin_title_abstract" style="display:;">
+                                                        {{ str_limit(strip_tags($Topic->$details), $limit = 350, $end = '...') }}
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="bottom-article" style="margin-top: 0">
+                                                <ul class="meta-post">
+                                                    @if($Topic->webmasterSection->date_status)
+                                                        @if ($WebmasterSection->id == 22)
+                                                            <li>
+                                                                <i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->expire_date)->format('d-m-Y')   }}</a>
+                                                            </li>
+                                                        @else
+                                                            <li>
+                                                                <i class="fa fa-calendar"></i> <a>{{ Carbon\Carbon::parse($Topic->date)->format('d-m-Y')   }}</a>
+                                                            </li>
+                                                        @endif
+                                                    @endif
+                                                    {{--  <li><i class="fa fa-user"></i> <a
+                                                                href="{{route('FrontendUserTopics',$Topic->created_by)}}">{{$Topic->user->name}}</a>
+                                                    </li>  --}}
+                                                    <li><i class="fa fa-eye"></i> <a>{{ trans('frontLang.visits') }}
+                                                            : {!! $Topic->visits !!}</a></li>
+                                                    @if($Topic->webmasterSection->comments_status)
+                                                        <li><i class="fa fa-comments"></i><a
+                                                                    href="{{route('FrontendTopic',["section"=>$Topic->webmasterSection->name,"id"=>$Topic->id])}}#comments">{{ trans('frontLang.comments') }}
+                                                                : {{count($Topic->approvedComments)}} </a>
+                                                        </li>
+                                                    @endif
+                                                </ul>
+                                                <a href="{{ $topic_link_url }}"
+                                                    class="pull-right">{{ trans('frontLang.readMore') }} <i
+                                                            class="fa fa-caret-{{ trans('backLang.right') }}"></i></a>
+                                            </div>
+                                        </article>
+                                        
+                                    @endforeach
+
+                                    <div class="clearfix"></div>
+
+                                        <div class="col-md-8">
+                                            {!! $Topics_expire->links() !!}
+                                        </div>
+                                        <div class="col-md-4 text-right">
+                                            <br>
+                                            <small>{{ $Topics_expire->firstItem() }} - {{ $Topics_expire->lastItem() }} {{ trans('backLang.of') }}
+                                                ( {{ $Topics_expire->total()  }} ) {{ trans('backLang.records') }}</small>
+                                        </div>
+                                    
+                                @endif
+                            @endif
+                    
+                    </div>
+                </div>
+            @endif
 
     </section>
 @stop
