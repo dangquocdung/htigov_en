@@ -629,13 +629,16 @@
                                 <div class="pull-right">
                                     {{--  <span class="hidden-xs">{{ trans('frontLang.share') }} :</span>  --}}
                                     <ul class="social-network share">
-                                        @if( Auth::user()->permissions_id < 3 )
+                                        @if(Helper::GeneralWebmasterSettings("settings_status"))
+                                            @if(@Auth::user()->permissionsGroup->settings_status)
                                             <li>
                                                 <a href="{{ route("topicsEdit",["webmasterId"=>$WebmasterSection->id,"id"=>$Topic->id]) }}" class="google"
                                                 data-placement="top"
                                                 title="Chỉnh sửa văn bản" target="_blank"><i class="fa fa-edit"></i></a>
                                             </li>
+                                            @endif
                                         @endif
+
                                         <li>
                                             <a href="javascript:void(0);" class="twitter"
                                             data-placement="top"

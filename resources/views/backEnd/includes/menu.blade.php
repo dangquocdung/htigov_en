@@ -435,67 +435,69 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
                         @endif
                     @endif
 
-                    @if(@Auth::user()->permissionsGroup->webmaster_status)
-                        <?php
-                        $currentFolder = "webmaster"; // Put folder name here
-                        $PathCurrentFolder = substr($urlAfterRoot, 0, strlen($currentFolder));
-                        ?>
-                        <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
-                            <a>
-                                <span class="nav-caret">
-                                    <i class="fa fa-caret-down"></i>
-                                </span>
-                                <span class="nav-icon">
-                                    <i class="material-icons">&#xe8be;</i>
-                                </span>
-                                <span class="nav-text">{{ trans('backLang.webmasterTools') }}</span>
-                            </a>
-                            <ul class="nav-sub">
-                                <?php
-                                $PathCurrentSubFolder = substr($urlAfterRoot, 0, (strlen($currentFolder) + 1));
-                                ?>
-                                <li {{ ($PathCurrentFolder==$PathCurrentSubFolder) ? 'class=active' : '' }}>
-                                    <a href="{{ route('webmasterSettings') }}">
-                                        <span class="nav-text">{{ trans('backLang.generalSettings') }}</span>
-                                    </a>
-                                </li>
-                                <?php
-                                $currentSubFolder = "sections"; // Put folder name here
-                                $PathCurrentSubFolder = substr($urlAfterRoot, (strlen($currentFolder) + 1),
-                                    strlen($currentSubFolder));
-                                ?>
-                                <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
-                                    <a href="{{ route('WebmasterSections') }}">
-                                        <span class="nav-text">{{ trans('backLang.siteSectionsSettings') }}</span>
-                                    </a>
-                                </li>
-                                <?php
-                                $currentSubFolder = "banners"; // Put folder name here
-                                $PathCurrentSubFolder = substr($urlAfterRoot, (strlen($currentFolder) + 1),
-                                    strlen($currentSubFolder));
-                                ?>
-                                <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
-                                    <a href="{{ route('WebmasterBanners') }}">
-                                        <span class="nav-text">{{ trans('backLang.adsBannersSettings') }}</span>
-                                    </a>
-                                </li>
+                    @if(Helper::GeneralWebmasterSettings("webmaster_status"))
+                        @if(@Auth::user()->permissionsGroup->webmaster_status)
+                            <?php
+                            $currentFolder = "webmaster"; // Put folder name here
+                            $PathCurrentFolder = substr($urlAfterRoot, 0, strlen($currentFolder));
+                            ?>
+                            <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
+                                <a>
+                                    <span class="nav-caret">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+                                    <span class="nav-icon">
+                                        <i class="material-icons">&#xe8be;</i>
+                                    </span>
+                                    <span class="nav-text">{{ trans('backLang.webmasterTools') }}</span>
+                                </a>
+                                <ul class="nav-sub">
+                                    <?php
+                                    $PathCurrentSubFolder = substr($urlAfterRoot, 0, (strlen($currentFolder) + 1));
+                                    ?>
+                                    <li {{ ($PathCurrentFolder==$PathCurrentSubFolder) ? 'class=active' : '' }}>
+                                        <a href="{{ route('webmasterSettings') }}">
+                                            <span class="nav-text">{{ trans('backLang.generalSettings') }}</span>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    $currentSubFolder = "sections"; // Put folder name here
+                                    $PathCurrentSubFolder = substr($urlAfterRoot, (strlen($currentFolder) + 1),
+                                        strlen($currentSubFolder));
+                                    ?>
+                                    <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
+                                        <a href="{{ route('WebmasterSections') }}">
+                                            <span class="nav-text">{{ trans('backLang.siteSectionsSettings') }}</span>
+                                        </a>
+                                    </li>
+                                    <?php
+                                    $currentSubFolder = "banners"; // Put folder name here
+                                    $PathCurrentSubFolder = substr($urlAfterRoot, (strlen($currentFolder) + 1),
+                                        strlen($currentSubFolder));
+                                    ?>
+                                    <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
+                                        <a href="{{ route('WebmasterBanners') }}">
+                                            <span class="nav-text">{{ trans('backLang.adsBannersSettings') }}</span>
+                                        </a>
+                                    </li>
 
-                                <?php
-                                $currentSubFolder = "translations"; // Put folder name here
-                                $PathCurrentSubFolder = substr($urlAfterRoot, (strlen($currentFolder) + 1),
-                                    strlen($currentSubFolder));
-                                ?>
-                                <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
-                                    <a href="{{ url('/'.env('BACKEND_PATH', 'admin').'/webmaster/translations') }}" target="_blank">
-                                        <span class="nav-text">
-                                            {{ trans('backLang.translations') }}
-                                        </span>
-                                    </a>
-                                </li>
+                                    <?php
+                                    $currentSubFolder = "translations"; // Put folder name here
+                                    $PathCurrentSubFolder = substr($urlAfterRoot, (strlen($currentFolder) + 1),
+                                        strlen($currentSubFolder));
+                                    ?>
+                                    <li {{ ($PathCurrentSubFolder==$currentSubFolder) ? 'class=active' : '' }}>
+                                        <a href="{{ url('/'.env('BACKEND_PATH', 'admin').'/webmaster/translations') }}" target="_blank">
+                                            <span class="nav-text">
+                                                {{ trans('backLang.translations') }}
+                                            </span>
+                                        </a>
+                                    </li>
 
-                            </ul>
-                        </li>
+                                </ul>
+                            </li>
 
+                        @endif
                     @endif
 
                 </ul>
