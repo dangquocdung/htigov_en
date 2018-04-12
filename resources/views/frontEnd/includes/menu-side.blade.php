@@ -144,3 +144,34 @@
     @endif
 
 @endif
+
+
+
+<div class="block4">
+
+    <div class="block-header" style="margin-bottom: 0">
+
+        <h4><img src="/images/background/lotus.ico" alt="" width="26px"> Thống kê</h4>
+
+    </div>
+
+    
+    <div class="box-banner" style="text-align:center">
+
+        <div class="col-md-6">
+            <p style="padding-top: 10px">{{ trans('backLang.visitors') }}</p>
+                <h5>{{ $Visitors }}</h5>
+
+        </div>
+        <div class="col-md-6">
+            <p style="padding-top: 10px">{{ trans('backLang.pageViews') }}</p>
+                <h5>{{ $Pages }}</h5>
+
+        </div>
+        
+        
+    </div>
+    
+
+</div>
+

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App;
+use App\AnalyticsPage;
+use App\AnalyticsVisitor;
+
 use App\Banner;
 use App\Comment;
 use App\Contact;
@@ -92,13 +95,12 @@ class FrontendHomeController extends Controller
         // Get Home page slider banners
         $TopBanners = Banner::where('section_id', 5)->where('status',1)->orderby('row_no', 'asc')->get();
 
-        
-                //Side Banner
+        //Side Banner
         $SideBanners = Banner::where('section_id', $WebmasterSettings->side_banners_section_id)->where('status',1)->orderby('row_no', 'asc')->get();
-        
-                
-         
 
+        $Visitors = AnalyticsVisitor::count();
+        $Pages = AnalyticsPage::count();
+        
         view()->share('WebmasterSettings',$WebmasterSettings);
         view()->share('WebsiteSettings',$WebsiteSettings);
         view()->share('HeaderMenuLinks',$HeaderMenuLinks);
@@ -107,6 +109,8 @@ class FrontendHomeController extends Controller
         view()->share('MarqueeTopics',$MarqueeTopics);
         view()->share('TopBanners',$TopBanners);
         view()->share('SideBanners',$SideBanners);
+        view()->share('Visitors',$Visitors);
+        view()->share('Pages',$Pages);
     }
 
     /**
