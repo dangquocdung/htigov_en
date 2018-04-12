@@ -612,11 +612,11 @@
                                     @endif
                                      <li class="hidden-xs">
                                         <i class="fa fa-user"></i> 
-                                        <a href="javascript:void(0);">: {!! $Topic->user->name !!}</a>
+                                        <a href="javascript:void(0);"> {!! $Topic->user->name !!}</a>
                                     </li> 
                                     <li>
                                         <i class="fa fa-eye"></i>
-                                        <a href="javascript:void(0);">: {!! $Topic->visits !!}</a>
+                                        <a href="javascript:void(0);"> {!! $Topic->visits !!}</a>
                                     </li>
                                     @if($WebmasterSection->comments_status)
                                         <li>
