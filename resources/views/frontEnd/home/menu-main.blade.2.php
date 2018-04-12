@@ -380,134 +380,134 @@
                                             @if ($key == 0) active @endif
                                                     " id="{{ $MnuCategory->$slug_var }}">
 
-                                                
-                                                @php
-                                                        
-                                                    $topicIds = $MnuCategory->selectedCategories->sortbyDesc('topic_date')->take(20);
-
-                                                    $i = 0;
-
-                                                    $tins= array();
-
-                                                    if (!empty($topicIds)){
-
-                                                        foreach($topicIds as $topicId){
-                                                            if ($topicId->topic->status == '1'){
-
-                                                                $tins[] = $topicId->topic;
-
-                                                            }
-
-                                                            if (count($tins) > 4){
-                                                                break;
-                                                            }
-                                                        }
-
-                                                    }
-
-                                                @endphp
-
-                                                
-
                                                 @if (in_array($MainMenuLink->webmasterSection->id,[11,12]))
 
                                                     <div class="col-md-12" style="float:left">
-                                                        
-                                                        
 
-                                                        @foreach($tins as $topicId)
+                                                        @php
                                                             
-                                                            <?php
+                                                            $topicIds = $MnuCategory->selectedCategories->groupby('topic_id')->sortbyDesc('topic_id')->take(5);
 
-                                                                $tin = $topicId;
+                                                            $i = 0;
 
-                                                                $section = "";
-                                                                try {
-                                                                    if ($tin->section->$title_var != "") {
-                                                                        $section = $tin->section->$title_var;
-                                                                    } else {
-                                                                        $section = $tin->section->$title_var2;
-                                                                    }
-                                                                } catch (Exception $e) {
+                                                            $tins= array();
+                                                            
+                                                        @endphp
+
+                                                        @if(!empty($topicIds))
+
+                                                            @foreach($topicIds as $topicId)
+                                                                
+                                                                <?php
+
+                                                                    $tins[] = $topicId->topic;
+
+                                                                ?>
+
+                                                            @endforeach
+
+                                                            @foreach($tins as $topicId)
+                                                                
+                                                                <?php
+
+                                                                    $tin = $topicId;
+
                                                                     $section = "";
-                                                                }
-                                                                
-                                                                if ($tin->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
-                                                                    if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                                                        $topic_link_url = url(trans('backLang.code') . "/" . $tin->$slug_var);
-                                                                    } else {
-                                                                        $topic_link_url = url($tin->$slug_var);
+                                                                    try {
+                                                                        if ($tin->section->$title_var != "") {
+                                                                            $section = $tin->section->$title_var;
+                                                                        } else {
+                                                                            $section = $tin->section->$title_var2;
+                                                                        }
+                                                                    } catch (Exception $e) {
+                                                                        $section = "";
                                                                     }
-                                                                } else {
-                                                                    if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
-                                                                        $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $tin->webmasterSection->name, "id" => $tin->id]);
+                                                                    
+                                                                    if ($tin->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
+                                                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                                            $topic_link_url = url(trans('backLang.code') . "/" . $tin->$slug_var);
+                                                                        } else {
+                                                                            $topic_link_url = url($tin->$slug_var);
+                                                                        }
                                                                     } else {
-                                                                        $topic_link_url = route('FrontendTopic', ["section" => $tin->webmasterSection->name, "id" => $tin->id]);
+                                                                        if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
+                                                                            $topic_link_url = route('FrontendTopicByLang', ["lang" => trans('backLang.code'), "section" => $tin->webmasterSection->name, "id" => $tin->id]);
+                                                                        } else {
+                                                                            $topic_link_url = route('FrontendTopic', ["section" => $tin->webmasterSection->name, "id" => $tin->id]);
+                                                                        }
                                                                     }
-                                                                }
-                                                            ?>
+                                                                ?>
 
-                                                            @if (($tin->status == 1) && ($i == 0))
+                                                                @if (($tin->status == 1) && ($i == 0))
 
-                                                                @php $i++; @endphp
+                                                                    @php $i++; @endphp
 
-                                                                <div class="col-md-7 col-sm-7 col-xs-12" style="float: left;">
-                                                                    <div class="row">
-                                                                        <div class="news-main" style="margin-left: -15px">
-            
-                                                                            <a class="tin_title_text" href="{{ $topic_link_url }}">
-                                                                                <div class="tin_title_text">
-                                                                                    {{ $tin->$link_title_var }}
-                                                                                    {{--  <small><em style="font-weight: normal">({{ \Carbon\Carbon::parse($tin->created_at)->format('d-m-Y H:i:s') }})</em></small>  --}}
-                                                                                </div>
-                                                                                @if (strlen($tin->photo_file) > 4)
-                                                                                    <img style="display: inline-block; width: 160px; height:auto;" src="/uploads/topics/{{ $tin->photo_file }}" alt="" title="">
-                                                                                @endif
-    
-                                                                            </a>
-    
-                                                                            <div class="thumb">
-            
-                                                                            </div>
-            
-                                                                            <div class="tin_title_abstract" style="display:;">
-                                                                                <p>{{ str_limit(strip_tags($tin->$details_var), $limit = 350, $end = '...') }}</p>
-                                                                            </div>
-                                                                        </div>
-    
-                                                                    </div>
-                                                                </div>
-                                                                
-
-                                                            @elseif ($tin->status == 1)
-
-                                                                <div class="col-md-5 col-sm-5 col-xs-12" style="float: right;"> 
-                                                                    <div class="row">
-    
-                                                                        <div class="news-five">
-                                                                            <ul class="news-block">
-                                                                                
-                                                                                <li>
-                                                                                    <a href="{{ $topic_link_url }}" class="news-title">
-                                                                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                                    <div class="col-md-7 col-sm-7 col-xs-12" style="float: left;">
+                                                                        <div class="row">
+                                                                            <div class="news-main" style="margin-left: -15px">
+                
+                                                                                <a class="tin_title_text" href="{{ $topic_link_url }}">
+                                                                                    <div class="tin_title_text">
                                                                                         {{ $tin->$link_title_var }}
-                                                                                    </a>
-
-                                                                                </li>
-    
-                                                                            </ul>
+                                                                                        {{--  <small><em style="font-weight: normal">({{ \Carbon\Carbon::parse($tin->created_at)->format('d-m-Y H:i:s') }})</em></small>  --}}
+                                                                                    </div>
+                                                                                    @if (strlen($tin->photo_file) > 4)
+                                                                                        <img style="display: inline-block; width: 160px; height:auto;" src="/uploads/topics/{{ $tin->photo_file }}" alt="" title="">
+                                                                                    @endif
+        
+                                                                                </a>
+        
+                                                                                <div class="thumb">
+                
+                                                                                </div>
+                
+                                                                                <div class="tin_title_abstract" style="display:;">
+                                                                                    <p>{{ str_limit(strip_tags($tin->$details_var), $limit = 350, $end = '...') }}</p>
+                                                                                </div>
+                                                                            </div>
+        
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            @endif
+                                                                    
 
-                                                        @endforeach
+                                                                @elseif ($tin->status == 1)
 
-                                                        
+                                                                    <div class="col-md-5 col-sm-5 col-xs-12" style="float: right;"> 
+                                                                        <div class="row">
+        
+                                                                            <div class="news-five">
+                                                                                <ul class="news-block">
+                                                                                    
+                                                                                    <li>
+                                                                                        <a href="{{ $topic_link_url }}" class="news-title">
+                                                                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                                                            {{ $tin->$link_title_var }}
+                                                                                        </a>
+    
+                                                                                    </li>
+        
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+
+                                                            @endforeach
+
+                                                        @endif
 
                                                     </div>
 
                                                 @else
+
+                                                    @php
+                                                        
+                                                        $topicIds = $MnuCategory->selectedCategories->sortbyDesc('topic_date')->take(5);
+                                                        $i = 0;
+                                                        $tins= array();
+
+                                                    @endphp
+
                                                     @if(!empty($topicIds))
 
                                                         @if ($MnuCategory->id != 43)
@@ -528,6 +528,18 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
+
+                                                                    @foreach($topicIds as $topicId)
+                                                                
+                                                                        <?php
+        
+                                                                            $tins[] = $topicId->topic;
+        
+                                                                        ?>
+        
+                                                                    @endforeach
+                                                                    
+
                                                                     @foreach($tins as $tin)
                                                                        
     
@@ -698,7 +710,6 @@
                                                     @endif
 
                                                 @endif
-                                                
 
                                                 <?php
                                                     if ($MnuCategory->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
