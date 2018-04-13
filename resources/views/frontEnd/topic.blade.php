@@ -796,7 +796,7 @@
                                                     <div class="validation"></div>
                                                 </div>
 
-                                                @if(env('NOCAPTCHA_STATUS', false))
+                                                {{--  @if(env('NOCAPTCHA_STATUS', false))
                                                     <div class="form-group">
                                                         {!! app('captcha')->display($attributes = [], $lang = trans('backLang.code')) !!}
                                                     </div>
@@ -805,7 +805,7 @@
                                                 
                                                 <div class="g-recaptcha" data-sitekey="6Le9blIUAAAAAHEkqcWePizRmL7hdYOlg0vqBByp"></div>
 
-                                                <br>
+                                                <br>  --}}
 
                                                 <div>
                                                     <input type="hidden" name="topic_id" value="{{$Topic->id}}">
