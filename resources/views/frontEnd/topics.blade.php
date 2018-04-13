@@ -18,6 +18,7 @@
                         @else
                             <li class="active">{{ $User->name }}</li>
                         @endif
+
                         @if($CurrentCategory!="none")
                             @if(count($CurrentCategory) >0)
                                 <?php
@@ -29,11 +30,6 @@
                             @endif
                         @endif
 
-                        
-                        
-                        
-
-                        
                     </ul>
 
                 </div>
@@ -42,14 +38,19 @@
 
         <div class="loai-tin">
 
-            @if(in_array($CurrentCategory->id,[28,29]))
-                <div class="col-md-12">
-                    <div class="alert alert-warning">
-                        <i class="fa fa-info"></i> 
-                        &nbsp; Bạn cần <a href="">đăng nhập</a> để gửi câu hỏi!
-                    </div>
-                </div>
-            @endif
+                @if($WebmasterSection!="none")
+
+                    @if(in_array($WebmasterSection->id,[23,24]) && (Auth::guest()))
+                        <div class="col-md-12">
+                            <div class="alert alert-warning">
+                                <i class="fa fa-info"></i> 
+                                &nbsp; Bạn cần <a href="/login" style="text-decoration:none; color:purple ">đăng nhập</a> để gửi câu hỏi!
+                            </div>
+                        </div>
+                    @endif
+                @endif
+
+          
 
         
             @if($Topics->total() == 0)
