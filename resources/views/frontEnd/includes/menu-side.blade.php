@@ -187,3 +187,44 @@
     </div>
 </div>
 
+<div class="card">
+      
+        <ul class="nav nav-tabs" role="tablist" style="border-bottom: none">
+
+            <li class="active">
+                
+                <a href="#ty-gia" data-toggle="tab">
+                    
+                    <span class="hidden-xs">
+                        Tỉ giá
+                    </span>
+                    
+                </a>
+            </li>
+            <li>
+                
+                <a href="#gia-vang" data-toggle="tab">
+                    
+                    <span class="hidden-xs">
+                        Giá vàng
+                    </span>
+                    
+                </a>
+            </li>
+                
+        </ul>
+
+        <div class="tab-content">
+            
+            <div class="to-chuc tab-pane active" id="ty-gia">
+                ty-gia
+            </div>
+
+            <div class="to-chuc tab-pane" id="gia-vang">
+                gia-vang
+            </div>
+
+        </div>
+
+    </div>
+
