@@ -188,7 +188,7 @@
 </div>
 
 
-<div class="card">
+{{--  <div class="card">
       
     <ul class="nav nav-tabs" role="tablist" style="border-bottom: none">
 
@@ -227,7 +227,7 @@
 
     </div>
 
-</div>
+</div>  --}}
 
 
 
