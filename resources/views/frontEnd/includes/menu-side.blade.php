@@ -207,7 +207,7 @@
             <a href="#gia-vang" data-toggle="tab">
                 
                 <span class="hidden-xs">
-                    Giá vàng trong nước
+                    Giá vàng
                 </span>
                 
             </a>
