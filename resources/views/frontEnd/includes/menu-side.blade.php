@@ -160,7 +160,7 @@
 
         <div style="padding: 5px 15px">
 
-            <table style="text-align:left; font-size:0.9em">
+            <table style="text-align:left; font-size:0.9em; margin-bottom: 5px;">
                 <tr>
                     <td>Số lượt truy cập hôm nay: &emsp;</td>
                     <th>{{ number_format($TodayVisitors) }}</th>
