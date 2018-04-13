@@ -167,7 +167,7 @@
                 </tr>
                 <tr>
                     <td>Số lượt xem trang hôm nay: &emsp;</td>
-                    <th>{{ number_format($TodayVisitors) }}</th>
+                    <th>{{ number_format($TodayPages) }}</th>
                 </tr>
             </table>
 
