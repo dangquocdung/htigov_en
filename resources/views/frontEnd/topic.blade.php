@@ -543,6 +543,7 @@
                             {{--End of -- Additional Feilds--}}
 
                             {!! $Topic->$details !!}
+
                             @if($Topic->attach_file !="")
                                 <?php
                                 $file_ext = strrchr($Topic->attach_file, ".");
@@ -959,7 +960,7 @@
             });
 
             $('.responsive-video').css('padding-bottom','');
-           
+        
         });
     </script>
     @if(count($Topic->maps) >0)
