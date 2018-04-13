@@ -187,50 +187,49 @@
     </div>
 </div>
 
-<div class="block4">
 
-        <div class="card" style="padding: 5px;">
+<div class="card">
       
-                <ul class="nav nav-tabs" role="tablist" style="border-bottom: none">
+    <ul class="nav nav-tabs" role="tablist" style="border-bottom: none">
+
+        <li class="active">
             
-                    <li class="active">
-                        
-                        <a href="#ty-gia" data-toggle="tab">
-                            
-                            <span class="hidden-xs">
-                                Tỉ giá
-                            </span>
-                            
-                        </a>
-                    </li>
-                    <li>
-                        
-                        <a href="#gia-vang" data-toggle="tab">
-                            
-                            <span class="hidden-xs">
-                                Giá vàng
-                            </span>
-                            
-                        </a>
-                    </li>
-                        
-                </ul>
+            <a href="#ty-gia" data-toggle="tab">
+                
+                <span class="hidden-xs">
+                    Tỉ giá
+                </span>
+                
+            </a>
+        </li>
+        <li>
             
-                <div class="tab-content">
-                    
-                    <div class="to-chuc tab-pane active" id="ty-gia">
-                        ty-gia
-                    </div>
+            <a href="#gia-vang" data-toggle="tab">
+                
+                <span class="hidden-xs">
+                    Giá vàng
+                </span>
+                
+            </a>
+        </li>
             
-                    <div class="to-chuc tab-pane" id="gia-vang">
-                        gia-vang
-                    </div>
-            
-                </div>
-            
-            </div>
+    </ul>
+
+    <div class="tab-content">
+        
+        <div class="to-chuc tab-pane active" id="ty-gia">
+            ty-gia
+        </div>
+
+        <div class="to-chuc tab-pane" id="gia-vang">
+            gia-vang
+        </div>
+
+    </div>
 
 </div>
+
+
 
 
 
