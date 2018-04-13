@@ -197,7 +197,7 @@
             <a href="#ty-gia" data-toggle="tab">
                 
                 <span class="hidden-xs">
-                    Tỉ giá
+                    Tỉ giá ngoại tệ
                 </span>
                 
             </a>
@@ -207,7 +207,7 @@
             <a href="#gia-vang" data-toggle="tab">
                 
                 <span class="hidden-xs">
-                    Giá vàng
+                    Giá vàng trong nước
                 </span>
                 
             </a>
