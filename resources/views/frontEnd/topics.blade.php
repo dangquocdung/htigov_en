@@ -42,7 +42,7 @@
 
         <div class="loai-tin">
 
-            @if(in_array($CurrentCategory->id,[28,29])
+            @if(in_array($CurrentCategory->id,[28,29]))
                 <div class="col-md-12">
                     <div class="alert alert-warning">
                         <i class="fa fa-info"></i> 
