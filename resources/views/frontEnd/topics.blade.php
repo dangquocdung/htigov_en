@@ -41,6 +41,16 @@
         <div class="clearfix"></div>
 
         <div class="loai-tin">
+
+            @if(in_array($CurrentCategory->id,[28,29])
+                <div class="col-md-12">
+                    <div class="alert alert-warning">
+                        <i class="fa fa-info"></i> 
+                        &nbsp; Bạn cần <a href="">đăng nhập</a> để gửi câu hỏi!
+                    </div>
+                </div>
+            @else
+
         
             @if($Topics->total() == 0)
                 <div class="col-md-12">
