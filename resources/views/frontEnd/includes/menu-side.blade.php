@@ -189,7 +189,7 @@
 
 <div class="block4">
 
-        <div class="card">
+        <div class="card" style="padding: 5px;">
       
                 <ul class="nav nav-tabs" role="tablist" style="border-bottom: none">
             
