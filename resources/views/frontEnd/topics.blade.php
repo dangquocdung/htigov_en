@@ -49,7 +49,7 @@
                         &nbsp; Bạn cần <a href="">đăng nhập</a> để gửi câu hỏi!
                     </div>
                 </div>
-            @else
+            @endif
 
         
             @if($Topics->total() == 0)
