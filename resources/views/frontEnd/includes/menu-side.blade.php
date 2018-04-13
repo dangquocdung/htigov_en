@@ -154,24 +154,36 @@
         <h4><img src="/images/background/lotus.ico" alt="" width="26px"> Thống kê</h4>
 
     </div>
+    <div class="clearfix"></div>
 
-    
     <div class="box-banner" style="text-align:center">
 
-        <div class="col-md-6">
-            <p style="padding-top: 10px">{{ trans('backLang.visitors') }}</p>
-                <h5>{{ $Visitors }}</h5>
+        <div style="padding: 5px 15px">
+
+            <table style="text-align:left; font-size:0.9em">
+                <tr>
+                    <td>Số lượt truy cập hôm nay: &emsp;</td>
+                    <th>{{ number_format($TodayVisitors) }}</th>
+                </tr>
+                <tr>
+                    <td>Số lượt xem trang hôm nay: &emsp;</td>
+                    <th>{{ number_format($TodayVisitors) }}</th>
+                </tr>
+            </table>
+
+            <table style="text-align:left; font-size:0.9em">
+                    
+                    <tr>
+                        <td>Tổng lượt truy cập: &emsp;</td>
+                        <th>{{ number_format($Visitors) }}</th>
+                    </tr>
+                    <tr>
+                        <td>Tổng lượt xem trang: &emsp;</td>
+                        <th>{{ number_format($Pages) }}</th>
+                    </tr>
+                </table>
 
         </div>
-        <div class="col-md-6">
-            <p style="padding-top: 10px">{{ trans('backLang.pageViews') }}</p>
-                <h5>{{ $Pages }}</h5>
-
-        </div>
-        
-        
-        
     </div>
-    
 </div>
 

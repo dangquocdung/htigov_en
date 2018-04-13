@@ -101,6 +101,9 @@ class FrontendHomeController extends Controller
         $Visitors = AnalyticsVisitor::count();
         $Pages = AnalyticsPage::count();
         
+        $TodayVisitors = AnalyticsVisitor::where('date', date('Y-m-d'))->count();
+        $TodayPages = AnalyticsPage::where('date', date('Y-m-d'))->count();
+
         view()->share('WebmasterSettings',$WebmasterSettings);
         view()->share('WebsiteSettings',$WebsiteSettings);
         view()->share('HeaderMenuLinks',$HeaderMenuLinks);
@@ -111,6 +114,8 @@ class FrontendHomeController extends Controller
         view()->share('SideBanners',$SideBanners);
         view()->share('Visitors',$Visitors);
         view()->share('Pages',$Pages);
+        view()->share('TodayVisitors',$TodayVisitors);
+        view()->share('TodayPages',$TodayPages);
     }
 
     /**
