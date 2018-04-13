@@ -795,18 +795,7 @@
                                                     {!! Form::textarea('order_message','', array('placeholder' => trans('frontLang.notes'),'class' => 'form-control','id'=>'order_message','rows'=>'5')) !!}
                                                     <div class="validation"></div>
                                                 </div>
-
-                                                {{--  @if(env('NOCAPTCHA_STATUS', false))
-                                                    <div class="form-group">
-                                                        {!! app('captcha')->display($attributes = [], $lang = trans('backLang.code')) !!}
-                                                    </div>
-                                                @endif
-                                                <br>
-                                                
-                                                <div class="g-recaptcha" data-sitekey="6Le9blIUAAAAAHEkqcWePizRmL7hdYOlg0vqBByp"></div>
-
-                                                <br>  --}}
-
+                                               
                                                 <div>
                                                     <input type="hidden" name="topic_id" value="{{$Topic->id}}">
                                                     <button type="submit"
