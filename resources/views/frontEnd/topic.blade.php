@@ -930,6 +930,9 @@
             </div>
     </section>
 
+    <input type="text" name="text">
+    <a href="#" class="say"> Say it!</a>
+
 @stop
 
 @section('side-menu')
@@ -939,6 +942,20 @@
 @stop
 
 @section('footerInclude')
+
+    <script>
+			$(function() {
+				$('a.say').on('click',function(e){
+					e.preventDefault();
+					var text=$('input[name="text"]').val();
+					//text = encodeURIComponent(text);
+					console.log(text);
+					// var url="https://translate.google.com/translate_tts?ie=UTF-8&tl=zh-CN&client=tw-ob&q=" + text;
+					var url="http://fanyi.baidu.com/gettts?lan=en&&source=web&text=" + text;
+					$('audio').attr('src',url).get(0).play();
+				});
+			});
+		</script>
 
     <script type="text/javascript"> 
         $(document).ready(function($){

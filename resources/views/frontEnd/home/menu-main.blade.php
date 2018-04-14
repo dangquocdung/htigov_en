@@ -383,7 +383,7 @@
                                                 
                                                 @php
                                                         
-                                                    $topicIds = $MnuCategory->selectedCategories->sortbyDesc('topic_date')->take(20);
+                                                    $topicIds = $MnuCategory->selectedCategories->sortbyDesc('topic_date')->take(50);
 
                                                     $i = 0;
 

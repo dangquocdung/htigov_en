@@ -87,8 +87,8 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
     function UnionSwitchMode2() {
     
         var isMobile = $(window).width() < 768;
-        console.log("isMobile");
-        console.log(isMobile);
+        //console.log("isMobile");
+        //console.log(isMobile);
     
         var idUnion_image_thumb = "tin-noi-bat"
     
@@ -145,7 +145,7 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
     
         $("#tin-noi-bat ul")
         .on('mouseenter',function () {
-            console.log('mouse enter');
+            // console.log('mouse enter');
             clearInterval(UnionNewsRefreshInterval2);
         })
         .on('mouseleave', function() {
@@ -157,7 +157,7 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
     
         .on('mouseenter', function() {
     
-            console.log("li mouse enter");
+            //console.log("li mouse enter");
     
             $(this).addClass('hover');
     
@@ -182,7 +182,7 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
         })
         
         .on("mouseleave", function() {
-            console.log('li mouse leave');
+            //console.log('li mouse leave');
             $(this).removeClass('hover');
             $("#tinNoiBatChinh").removeClass('w3-animate-left');
         //                $("#tinNoiBatChinh .hot-news .hot-news-block").stop(true, true);
