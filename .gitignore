@@ -2,6 +2,7 @@
 /resources/lang
 /public/hot
 /public/storage
+/public/uploads
 /storage/*.key
 /vendor
 /.idea
