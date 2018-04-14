@@ -642,7 +642,7 @@
 
                                         <li>
                                             <a href="javascript:void(0);" class="twitter"
-                                            onClick="playTTS({{ $title.'<br>'.$Topic->$details }},'130')"
+                                            onClick="playTTS('{{ $title." ".$Topic->$details }}','130')"
                                             data-placement="top"
                                             title="Đọc văn bản"><i class="fa fa-volume-up"></i></a>
                                         </li>
