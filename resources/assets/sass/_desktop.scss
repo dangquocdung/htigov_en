@@ -244,8 +244,7 @@ marquee{
 
           display: block;
           margin: 0 auto;
-
-          vertical-align: top;
+        
           border: 1px solid #cbccce!important;
           border-radius: 3px;
 
@@ -546,11 +545,7 @@ td{
 
   .panel-body {
     padding:0px;
-
-    a{
-
-    }
-
+  
     .table {
       margin-bottom: 0px;
       tr td {
@@ -744,13 +739,6 @@ td{
     }
   }
 
-  .noi-dung-chi-dao{
-
-    //padding-left: 25px;
-    //@media screen and(max-width: 767px) {
-    //  padding-left: 50px;
-    //}
-  }
 }
 
 .tintuc-sukien{

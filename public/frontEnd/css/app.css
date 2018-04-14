@@ -919,7 +919,6 @@ marquee a {
 .block3 #tinNoiBatChinh .hot-news .hot-news-thumb-nail img {
   display: block;
   margin: 0 auto;
-  vertical-align: top;
   border: 1px solid #cbccce !important;
   border-radius: 3px;
   -o-object-position: top;

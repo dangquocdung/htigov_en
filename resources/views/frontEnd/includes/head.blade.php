@@ -11,17 +11,18 @@
 <link href="{{ URL::asset('frontEnd/css/bootstrap.min.css') }}" rel="stylesheet"/>
 <link href="{{ URL::asset('frontEnd/css/font-awesome.min.css') }}" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-  
 
-
-<link href="{{ URL::asset('frontEnd/css/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('frontEnd/css/jquery.fancybox.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('frontEnd/css/jcarousel.css') }}" rel="stylesheet"/>
 <link href="{{ URL::asset('frontEnd/css/flexslider.css') }}" rel="stylesheet"/>
 
 {{--<link href="{{ URL::asset('frontEnd/css/style.css') }}" rel="stylesheet"/>--}}
 {{--<link href="{{ URL::asset('frontEnd/css/color.css') }}" rel="stylesheet"/>--}}
 
+
+
 <link href="{{ URL::asset('frontEnd/css/adminlte.min.css') }}" rel="stylesheet"/>
+
 
 {{--  <link href="{{ URL::asset('frontEnd/css/style.css') }}" rel="stylesheet"/>  --}}
 

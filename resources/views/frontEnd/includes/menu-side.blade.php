@@ -69,15 +69,43 @@
 </div>
 @endif
 
-<a class="dichvucong" href="#">
+{{--  <a class="dichvucong" href="#">
     <a href="https://www.accuweather.com/vi/vn/ha-tinh/353418/weather-forecast/353418" class="aw-widget-legal"></a>
     <div id="awcc1491117457730" class="aw-widget-current"  data-locationkey="353418" data-unit="c" data-language="vi" data-useip="false" data-uid="awcc1491117457730"></div>
     <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
-</a>
+</a>  --}}
+
+<div class="block4" style="border-radius: 5px">
+
+        <div id="block-header-bd" class="block-header" style="margin-bottom: 0" data-toggle="collapse" href="#ban-do-dia-gioi">
+
+            <h4>
+                <img src="/images/background/lotus.ico" alt="" width="26px"> Thời tiết Hà Tĩnh
+            </h4>
+
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div id="ban-do-dia-gioi" class="panel-collapse collapse in">
+            <a href="http://www.nchmf.gov.vn/web/vi-VN/62/20/28/map/Default.aspx" target="_blank">
+                <div style="padding: 5px 15px">
+
+                    <div id="thoi-tiet" class="thoi-tiet"></div>
+                </div>
+
+                
+            </a>
+        </div>
+
+    </div>
 
 
 
     
+
+    
+
 
 
 
@@ -228,6 +256,21 @@
     </div>
 
 </div>  --}}
+
+
+<script src="{{ URL::asset('frontEnd/js/hypersonic-weather.js') }}"></script>
+
+<script>
+    $('.thoi-tiet').hwPlugin({
+        style: 'style6',
+        country: 'Ha Tinh',
+        temperature_metrics: 'C',
+        
+    });
+</script>
+
+
+
 
 
 
