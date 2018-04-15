@@ -932,9 +932,6 @@
             </div>
     </section>
 
-    <input type="text" name="text">
-    <a href="#" class="say"> Say it!</a>
-
 @stop
 
 @section('side-menu')

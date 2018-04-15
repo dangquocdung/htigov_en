@@ -1,9 +1,9 @@
 function playTTS(read,lang) {
-   var tts="/../../scripts/tts/tts";
-   var sec="/../../scripts/tts/audio/recs/point1sec.mp3";
+   var tts="/tts.class.php"; // path to tts.class.php file
+   var sec="http://portalas.org/scripts/tts/audio/recs/point1sec.mp3";
    var a = new XMLHttpRequest();
    var b = document.getElementById("tts");
-   var url = tts+".class.144.php";
+   var url = tts;
    var read = read.replace(/&/g,"and");
    b.src=sec;
    b.play();
@@ -16,14 +16,14 @@ function playTTS(read,lang) {
           b.playbackRate = 1.0;
 	}
    }
-a.send("k=1251&read="+ read +"&lang="+lang);
+a.send("read="+ read +"&lang="+lang);
 }
 function stopTTS() {
      var a = document.getElementById("tts");
      a.pause();
      a.currentTime = 0;
 }
-document.write('<audio id="tts" autoplay><source src="/../../scripts/tts/audio/recs/point1sec.mp3" type="audio/mp3" /></audio>');
+document.write('<audio id="tts" autoplay><source src="http://portalas.org/scripts/tts/audio/recs/point1sec.mp3" type="audio/mp3" /></audio>');
 
 function pauseTTS() {
      var a = document.getElementById("tts");
