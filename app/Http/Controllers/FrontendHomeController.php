@@ -696,6 +696,8 @@ class FrontendHomeController extends Controller
 
             $Topic = Topic::where('status', 1)->find($id);
 
+            $ReadTopic = $Topic;
+
             //Lasted news
             // Get Latest News
             
@@ -775,6 +777,7 @@ class FrontendHomeController extends Controller
                         "FooterMenuLinks_name_vi",
                         "FooterMenuLinks_name_en",
                         "Topic",
+                        "ReadTopic",
                         "LatestNews",
                         "SideBanners",
                         "WebmasterSection",

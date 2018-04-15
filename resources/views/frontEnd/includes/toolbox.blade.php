@@ -22,7 +22,7 @@
         {{-- <li class="home"><a href="/" title="Trang chủ"><span><i class="glyphicon glyphicon-home"></i></span></a></li> --}}
         <li class="home">
             <a href="{{ URL::to("admin") }}" title="{{trans('frontLang.dashboard')}}">
-                <span><i class="fa fa-cog"></i></span>
+                <span><i class="fa fa-user-circle-o"></i></span>
             </a>
         </li>
 
@@ -48,6 +48,17 @@
 
             
         @endif
+
+        @if (!empty($ReadTopic))
+            <li class="search">
+                <a href="javascript:void(0);" title="Đọc tin " onClick="playTTS('{{ $ReadTopic->$title." ".$ReadTopic->$details }}','130')">
+                    <span>
+                        <i class="fa fa-volume-up"></i></a>
+                    </span>
+                </a>
+            </li>
+        @endif
+
 
         
 
