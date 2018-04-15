@@ -644,7 +644,13 @@
                                             <a href="javascript:void(0);" class="twitter"
                                             onClick="pauseTTS()"
                                             data-placement="top"
-                                            title="Dừng đọc"><i class="fa fa-volume-off"></i></a>
+                                            title="Dừng đọc"><i class="fa fa-pause-circle-o"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" class="twitter"
+                                            onClick="resumeTTS()"
+                                            data-placement="top"
+                                            title="Đọc tiếp"><i class="fa fa-play-circle-o"></i></a>
                                         </li>
 
                                         <li>
