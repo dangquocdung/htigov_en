@@ -51,7 +51,7 @@
 
         @if (!empty($ReadTopic))
             <li class="search">
-                <a href="javascript:void(0);" title="Đọc tin " onClick="playTTS('{{ strip_tags($ReadTopic->title_vi. " ".$ReadTopic->$details) }}','130')">
+                <a href="javascript:void(0);" title="Đọc tin " onClick="playTTS('{{strip_tags($ReadTopic->title_vi. " ".$ReadTopic->$details) }}','130')">
                     <span>
                         <i class="fa fa-volume-up"></i></a>
                     </span>
