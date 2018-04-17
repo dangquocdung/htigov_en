@@ -300,7 +300,7 @@ class CurlController extends Controller
                     
                     $Topic->created_by = Auth::user()->id;
                     $Topic->visits = 0;
-                    $Topic->status = 1;
+                    $Topic->status = 0;
 
                     // Meta title
                     $Topic->seo_title_vi = $name;
@@ -394,7 +394,7 @@ class CurlController extends Controller
                             
                             $Topic->created_by = Auth::user()->id;
                             $Topic->visits = 0;
-                            $Topic->status = 1;
+                            $Topic->status = 0;
 
                             // Meta title
                             $Topic->seo_title_vi = $name;
