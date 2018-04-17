@@ -146,7 +146,9 @@
                                     </div>
 
                                     <div>
-                                        <small>Người tạo: {!! $Topic->user->name !!}</small> 
+                                        @if (!empty($Topic->created_by))
+                                            <small>Người tạo: {!! $Topic->user->name !!}</small> 
+                                        @endif
                                         @if (!empty($Topic->updated_by))
                                             <small>&nbsp;|| Người cập nhật: {!! $Topic->edituser->name !!}</small> 
                                         @endif
