@@ -141,7 +141,7 @@ class CurlController extends Controller
     public function getBaoChinhPhu()
     {
         
-        $url ='http://baochinhphu.vn/_RSS_/442.rss';
+        $url ='http://baochinhphu.vn/Rss/Feed.aspx?EventID=115';
 
         $this->baoChinhPhu($url);
 
