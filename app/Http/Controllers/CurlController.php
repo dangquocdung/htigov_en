@@ -156,14 +156,6 @@ class CurlController extends Controller
 
         foreach ($rss->channel->item as $item) {
 
-            $next_nor_no = TopicCategory::where('section_id', '=', 29)->count();
-
-            if ($next_nor_no < 1) {
-                $next_nor_no = 1;
-            } else {
-                $next_nor_no++;
-            }
-
             $name = $item->title; // String. You have extracted description part from your feed
             
             $details = $item->description;
@@ -172,11 +164,25 @@ class CurlController extends Controller
 
             $url = $item->link;
 
-            $count = Topic::where('title_vi',$name)->first();
+            $file = file_get_contents($image);
+
+            if (!empty($file)){
+
+                $next_nor_no = TopicCategory::where('section_id', '=', 29)->count();
+
+                if ($next_nor_no < 1) {
+                    $next_nor_no = 1;
+                } else {
+                    $next_nor_no++;
+                }
+
+                
+
+                $count = Topic::where('title_vi',$name)->first();
 
                 if (empty($count)){
 
-                    $file = file_get_contents($image);
+                    
 
                     $filename = substr($image, strrpos($image, '/') + 1);
 
@@ -215,6 +221,10 @@ class CurlController extends Controller
                     $Topic->save();
                 
                 }
+
+            }
+
+                
            
         }
 
