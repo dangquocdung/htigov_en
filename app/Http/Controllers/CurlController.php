@@ -130,6 +130,44 @@ class CurlController extends Controller
                     $TopicCategory->section_id = 28;
                     $TopicCategory->save();
 
+                    //Thong tin tuyen truyen
+                    // create new topic
+                    $Topic = new Topic;
+
+                    // Save topic details
+                    $Topic->row_no = $next_nor_no;
+                    $Topic->title_vi = $name;
+                    $Topic->title_en = $name;
+
+                    $Topic->details_vi = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
+
+                    $Topic->details_en = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
+
+                    $Topic->date = Carbon::parse($node->filter('pubDate')->text());
+
+                    $Topic->photo_file = $filename;
+                    
+                    $Topic->webmaster_id = 12;
+                    $Topic->created_by = Auth::user()->id;
+                    $Topic->visits = 0;
+                    $Topic->status = 0;
+
+                    // Meta title
+                    $Topic->seo_title_vi = $name;
+                    $Topic->seo_title_en = $name;
+
+                    // URL Slugs
+                    $slugs = Helper::URLSlug($name, $name, "topic", 0);
+                    $Topic->seo_url_slug_vi = $slugs['slug_vi'];
+                    $Topic->seo_url_slug_en = $slugs['slug_en'];
+
+                    // Meta Description
+                    $Topic->seo_description_vi = mb_substr(strip_tags(stripslashes($details)), 0, 165, 'UTF-8');
+                    $Topic->seo_description_en = mb_substr(strip_tags(stripslashes($details)), 0, 165, 'UTF-8');
+                    
+                    $Topic->save();
+
+
                 }
 
             });        
