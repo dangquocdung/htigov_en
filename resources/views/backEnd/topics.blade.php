@@ -144,6 +144,13 @@
                                             {{ $section }} {!! $sectionSt !!}
                                         </small>
                                     </div>
+
+                                    <div>
+                                        <small>Người tạo: {!! $Topic->user->name !!}</small> 
+                                        @if (!empty($Topic->updated_by))
+                                            <small>&nbsp;|| Người cập nhật: {!! $Topic->edituser->name !!}</small> 
+                                        @endif
+                                    </div>
                                 </td>
                                 @if($WebmasterSection->date_status)
                                     <td class="text-center">

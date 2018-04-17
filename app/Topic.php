@@ -33,6 +33,12 @@ class Topic extends Model implements Feedable
         return $this->belongsTo('App\User', 'created_by');
     }
 
+    //Relation to Users
+    public function edituser()
+    {
+        return $this->belongsTo('App\User', 'updated_by');
+    }
+
     //Relation to Photos
     public function photos()
     {
