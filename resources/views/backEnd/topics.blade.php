@@ -145,7 +145,15 @@
                                         </small>
                                     </div>
 
-                                    
+                                    <div>
+                                        @if (!empty($Topic->created_by))
+                                            <small>Người tạo: {!! $Topic->created_by !!}</small> 
+                                        @endif
+                                        
+                                        @if (!empty($Topic->updated_by))
+                                            <small>&nbsp;|| Người cập nhật: {!! $Topic->updated_by !!}</small> 
+                                        @endif
+                                    </div>
                                 </td>
                                 @if($WebmasterSection->date_status)
                                     <td class="text-center">
