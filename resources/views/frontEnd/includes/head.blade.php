@@ -2,10 +2,10 @@
 <title>{{$PageTitle}} {{($PageTitle !="")? "|":""}} {{ Helper::GeneralSiteSettings("site_title_" . trans('backLang.boxCode')) }}</title>
 <meta name="description" content="{{$PageDescription}}"/>
 <meta name="keywords" content="{{$PageKeywords}}"/>
-<meta name="author" content="{{ URL::to('') }}"/>
+<meta name="author" content="Dang Quoc Dung"/>
+<base href="{{asset('')}}">
 @yield('meta')
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<base href="{{asset('')}}">
 <link href="{{ URL::asset('frontEnd/css/bootstrap.min.css') }}" rel="stylesheet"/>
 <link href="{{ URL::asset('frontEnd/css/font-awesome.min.css') }}" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
