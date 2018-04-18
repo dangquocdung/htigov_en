@@ -6,7 +6,7 @@
 
 @extends('frontEnd.layout')
 
-@section('head')
+@section('meta')
 
 <!-- META FOR FACEBOOK -->
 <meta content="Hà Tĩnh Portal" property="og:site_name"/>
