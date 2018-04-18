@@ -6,6 +6,19 @@
 
 @extends('frontEnd.layout')
 
+@section('head')
+
+<!-- META FOR FACEBOOK -->
+<meta content="Hà Tĩnh Portal" property="og:site_name"/>
+<meta property="og:url" itemprop="url" content=""/>
+<meta property="og:image" itemprop="thumbnailUrl" content="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"/>
+<meta content="{{$Topic->title_vi}}" itemprop="headline" property="og:title"/>
+<meta content="{{ str_limit(strip_tags($Topic->details_vi), $limit = 200, $end = '...') }}" itemprop="description" property="og:description"/>
+<meta content="article" property="og:type"/> 
+<!-- END META FOR FACEBOOK -->
+
+@stop
+
 @section('content')
     <?php
         $title_var = "title_" . trans('backLang.boxCode');

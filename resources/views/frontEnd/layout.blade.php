@@ -2,6 +2,7 @@
 <html lang="{{ trans('backLang.code') }}" dir="ltr">
 <head>
     @include('frontEnd.includes.head')
+    @yield('head');
     @include('frontEnd.includes.colors')
 </head>
 <?php
