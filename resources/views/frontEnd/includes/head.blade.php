@@ -3,17 +3,12 @@
 <meta name="description" content="{{$PageDescription}}"/>
 <meta name="keywords" content="{{$PageKeywords}}"/>
 <meta name="author" content="{{ URL::to('') }}"/>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 @yield('meta');
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <base href="{{asset('')}}">
-
 <link href="{{ URL::asset('frontEnd/css/bootstrap.min.css') }}" rel="stylesheet"/>
 <link href="{{ URL::asset('frontEnd/css/font-awesome.min.css') }}" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-
 <link href="{{ URL::asset('frontEnd/css/jquery.fancybox.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('frontEnd/css/jcarousel.css') }}" rel="stylesheet"/>
 <link href="{{ URL::asset('frontEnd/css/flexslider.css') }}" rel="stylesheet"/>
@@ -21,10 +16,7 @@
 {{--<link href="{{ URL::asset('frontEnd/css/style.css') }}" rel="stylesheet"/>--}}
 {{--<link href="{{ URL::asset('frontEnd/css/color.css') }}" rel="stylesheet"/>--}}
 
-
-
 <link href="{{ URL::asset('frontEnd/css/adminlte.min.css') }}" rel="stylesheet"/>
-
 
 {{--  <link href="{{ URL::asset('frontEnd/css/style.css') }}" rel="stylesheet"/>  --}}
 
@@ -57,8 +49,6 @@
     <link href="{{ URL::asset('uploads/settings/nofav.png') }}" rel="apple-touch-icon" sizes="114x114">
     <link href="{{ URL::asset('uploads/settings/nofav.png') }}" rel="apple-touch-icon" sizes="144x144">
 @endif
-
-
 
 <script src="{{ URL::asset('frontEnd/js/jquery.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/bootstrap.min.js') }}"></script>
