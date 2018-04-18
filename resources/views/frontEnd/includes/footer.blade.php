@@ -22,7 +22,7 @@
                         <p class="main-footer-info-text">
                             Giấy phép số 48/GP-BVHTT cấp ngày 18/02/2003 của Bộ Văn hóa Thông tin
                             <br>
-                            <strong>Trưởng ban Ban biên tập: Phan Tấn Linh, Giám Đốc Sở Thông tin - Truyền Thông</strong>
+                            <strong>Trưởng ban Ban biên tập: Ông Phan Tấn Linh, Giám Đốc Sở Thông tin - Truyền Thông</strong>
                             <br>
                             <em>Địa chỉ: 66 Phan Đình Phùng, TP. Hà Tĩnh. Email: <a style="color:#FFF" href="mailto:portalhatinh@hatinh.gov.vn">portalhatinh@hatinh.gov.vn</a></em>
                             <br>
