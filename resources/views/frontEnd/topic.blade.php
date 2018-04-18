@@ -7,11 +7,20 @@
 @extends('frontEnd.layout')
 
 @section('meta')
-    <meta property="image" content="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}">
-    <meta property="og:title" content="{{$Topic->title_vi}}">
-    <meta property="og:description" content="{{ str_limit(strip_tags($Topic->details_vi), $limit = 200, $end = '...') }}">
-    <meta property="og:image" content="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}">
-    <meta property="og:url" content="{{ Request::url() }}">
+<meta property="og:title" content="{{$Topic->title_vi}}">
+<meta property="og:description" content="{{ str_limit(strip_tags($Topic->details_vi), $limit = 200, $end = '...') }}">
+<meta property="og:image" content="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}">
+<meta property="og:url" content="{{ Request::url() }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" value="summary">
+<meta name="twitter:url" content="{{ Request::url() }}">
+<meta name="twitter:title" content="{{$Topic->title_vi}}">
+<meta name="twitter:description" content="{{ str_limit(strip_tags($Topic->details_vi), $limit = 200, $end = '...') }}">
+<meta name="twitter:image" content="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"/>
+<meta name="twitter:site" content="@HaTinhPortal">
+<meta name="twitter:creator" content="@HaTinhPortal">
+<!-- End Twitter Card -->
 @stop
 
 @section('content')
