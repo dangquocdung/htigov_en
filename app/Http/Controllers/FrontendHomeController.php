@@ -88,7 +88,7 @@ class FrontendHomeController extends Controller
                 // ['webmaster_id', $WebmasterSettings->home_content1_section_id], 
                 ['expire_date', null]
                 ])
-                ->orderby('date', 'asc')
+                ->orderby('date', 'desc')
                 ->limit(5)
                 ->get();
 
