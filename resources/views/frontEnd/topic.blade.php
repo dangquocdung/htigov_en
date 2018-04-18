@@ -10,7 +10,7 @@
 
 <!-- META FOR FACEBOOK -->
 
-<meta property="og:url"                content="{{ app('request')->input('name') }}" />
+<meta property="og:url"                content="{{ Request::url() }}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="{{$Topic->title_vi}}" />
 <meta property="og:description"        content="{{ str_limit(strip_tags($Topic->details_vi), $limit = 200, $end = '...') }}" />
