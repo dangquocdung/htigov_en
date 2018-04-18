@@ -9,12 +9,13 @@
 @section('meta')
 
 <!-- META FOR FACEBOOK -->
-<meta content="Hà Tĩnh Portal" property="og:site_name"/>
-<meta property="og:url" itemprop="url" content=""/>
-<meta property="og:image" itemprop="thumbnailUrl" content="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"/>
-<meta content="{{$Topic->title_vi}}" itemprop="headline" property="og:title"/>
-<meta content="{{ str_limit(strip_tags($Topic->details_vi), $limit = 200, $end = '...') }}" itemprop="description" property="og:description"/>
-<meta content="article" property="og:type"/> 
+
+<meta property="og:url"                content="{{ Request::get('a') }}" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="{{$Topic->title_vi}}" />
+<meta property="og:description"        content="{{ str_limit(strip_tags($Topic->details_vi), $limit = 200, $end = '...') }}" />
+<meta property="og:image"              content="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}" />
+
 <!-- END META FOR FACEBOOK -->
 
 @stop
