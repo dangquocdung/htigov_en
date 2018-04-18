@@ -7,11 +7,13 @@
 @extends('frontEnd.layout')
 
 @section('meta')
+<meta property="fb:app_id" content="1857385837639663" /> 
 <meta property="og:url" content="{{ Request::url() }}" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{$Topic->title_vi}}" />
 <meta property="og:description" content="{{ str_limit(strip_tags($Topic->details_vi), $limit = 100, $end = '...') }}" />
 <meta property="og:image" content="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}" />
+<meta property="og:image:alt" content="{{$Topic->title_vi}}" />
 @stop
 
 @section('content')
