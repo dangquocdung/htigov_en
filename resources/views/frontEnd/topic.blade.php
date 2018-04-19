@@ -650,17 +650,17 @@
                                             @endif
                                         @endif
 
-                                        <li>
+                                        {{--  <li>
                                             <a href="javascript:void(0);" class="twitter"
                                             onClick="pauseTTS()"
                                             data-placement="top"
                                             title="Dừng đọc"><i class="fa fa-pause-circle-o"></i></a>
-                                        </li>
+                                        </li>  --}}
                                         <li>
                                             <a href="javascript:void(0);" class="twitter"
-                                            onClick="resumeTTS()"
+                                            onClick="playTTS('{{strip_tags($Topic->title_vi. " ".$Topic->$details) }}','130')"
                                             data-placement="top"
-                                            title="Đọc tiếp"><i class="fa fa-play-circle-o"></i></a>
+                                            title="Đọc tin"><i class="fa fa-play-circle-o"></i></a>
                                         </li>
 
                                         <li>
