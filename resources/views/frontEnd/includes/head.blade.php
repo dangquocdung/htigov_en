@@ -38,4 +38,3 @@
 <script src="{{ URL::asset('frontEnd/js/jquery.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/tts.js') }}"></script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
