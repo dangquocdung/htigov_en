@@ -20,11 +20,7 @@
         
 
         {{-- <li class="home"><a href="/" title="Trang chủ"><span><i class="glyphicon glyphicon-home"></i></span></a></li> --}}
-        <li class="home">
-            <a href="{{ URL::to("admin") }}" title="{{trans('frontLang.dashboard')}}">
-                <span><i class="fa fa-user-circle-o"></i></span>
-            </a>
-        </li>
+       
 
         @if($WebmasterSettings->languages_count ==2)
             <li>
@@ -63,8 +59,14 @@
         
 
         <li class="search"><a href="javascript:void(0);" title="Phóng to " onclick="resizeText(1)"><span><i class="glyphicon glyphicon-zoom-in"></i></span></a></li>
-        <li class="search"><a href="javascript:void(0);" title="Thu nhỏ " onclick="resizeText(-1)"><span><i class="glyphicon glyphicon-zoom-out"></i></span></a></li>
+        <li class="search"><a href="javascript:void(0);" title="Thu nhỏ " onclick="window.location.reload()"><span><i class="glyphicon glyphicon-refresh"></i></span></a></li>
         {{-- <li class="home"><a href="javascript:void(0);" title="Tải lại trang " onclick="location.reload();"><span><i class="glyphicon glyphicon-refresh"></i></span></a></li> --}}
+
+        <li class="home">
+            <a href="{{ URL::to("admin") }}" title="{{trans('frontLang.dashboard')}}">
+                <span><i class="fa fa-user-circle-o"></i></span>
+            </a>
+        </li>
         
 
        
