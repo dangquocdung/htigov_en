@@ -82,9 +82,9 @@ class CurlController extends Controller
                     $Topic->title_vi = $name;
                     $Topic->title_en = $name;
 
-                    $Topic->details_vi = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
+                    $Topic->details_vi = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Nguồn: baohatinh.vn</a>';
 
-                    $Topic->details_en = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
+                    $Topic->details_en = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Nguồn: baohatinh.vn</a>';
 
                     $Topic->date = Carbon::parse($node->filter('pubDate')->text());
 
@@ -240,9 +240,9 @@ class CurlController extends Controller
 
                     $Topic->title_en = $name;
 
-                    $Topic->details_vi = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
+                    $Topic->details_vi = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Nguồn: baochinhphu.vn</a>';
 
-                    $Topic->details_en = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Chi tiết</a>';
+                    $Topic->details_en = $details.'<br><a href="'.$url.'" class="pull-right" target="_blank">Nguồn: baochinhphu.vn</a>';
 
                     $Topic->date = date("Y-m-d H:i:s");
                     
