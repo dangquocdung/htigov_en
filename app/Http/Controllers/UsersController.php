@@ -111,7 +111,7 @@ class UsersController extends Controller
         $User->photo = $fileFinalName_vi;
         $User->connect_email = $request->connect_email;
         $User->connect_password = $request->connect_password;
-        $User->status = 1;
+        $User->status = 0;
         $User->created_by = Auth::user()->id;
         $User->save();
 
