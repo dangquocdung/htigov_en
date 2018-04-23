@@ -58,155 +58,193 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
     Route::get('/search', 'HomeController@search')->name('adminSearch');
     Route::post('/find', 'HomeController@find')->name('adminFind');
 
-    // Webmaster
-    Route::get('/webmaster', 'WebmasterSettingsController@edit')->name('webmasterSettings');
-    Route::post('/webmaster', 'WebmasterSettingsController@update')->name('webmasterSettingsUpdate');
+    Route::middleware(['checklevel'])->group(function () {
 
-    // Webmaster Banners
-    Route::get('/webmaster/banners', 'WebmasterBannersController@index')->name('WebmasterBanners');
-    Route::get('/webmaster/banners/create', 'WebmasterBannersController@create')->name('WebmasterBannersCreate');
-    Route::post('/webmaster/banners/store', 'WebmasterBannersController@store')->name('WebmasterBannersStore');
-    Route::get('/webmaster/banners/{id}/edit', 'WebmasterBannersController@edit')->name('WebmasterBannersEdit');
-    Route::post('/webmaster/banners/{id}/update', 'WebmasterBannersController@update')->name('WebmasterBannersUpdate');
-    Route::get('/webmaster/banners/destroy/{id}',
-        'WebmasterBannersController@destroy')->name('WebmasterBannersDestroy');
-    Route::post('/webmaster/banners/updateAll',
-        'WebmasterBannersController@updateAll')->name('WebmasterBannersUpdateAll');
+        // Webmaster
+        Route::get('/webmaster', 'WebmasterSettingsController@edit')->name('webmasterSettings');
+        Route::post('/webmaster', 'WebmasterSettingsController@update')->name('webmasterSettingsUpdate');
 
-    // Webmaster Sections
-    Route::get('/webmaster/sections', 'WebmasterSectionsController@index')->name('WebmasterSections');
-    Route::get('/webmaster/sections/create', 'WebmasterSectionsController@create')->name('WebmasterSectionsCreate');
-    Route::post('/webmaster/sections/store', 'WebmasterSectionsController@store')->name('WebmasterSectionsStore');
-    Route::get('/webmaster/sections/{id}/edit', 'WebmasterSectionsController@edit')->name('WebmasterSectionsEdit');
-    Route::post('/webmaster/sections/{id}/update',
-        'WebmasterSectionsController@update')->name('WebmasterSectionsUpdate');
+        // Webmaster Banners
+        Route::get('/webmaster/banners', 'WebmasterBannersController@index')->name('WebmasterBanners');
+        Route::get('/webmaster/banners/create', 'WebmasterBannersController@create')->name('WebmasterBannersCreate');
+        Route::post('/webmaster/banners/store', 'WebmasterBannersController@store')->name('WebmasterBannersStore');
+        Route::get('/webmaster/banners/{id}/edit', 'WebmasterBannersController@edit')->name('WebmasterBannersEdit');
+        Route::post('/webmaster/banners/{id}/update', 'WebmasterBannersController@update')->name('WebmasterBannersUpdate');
+        Route::get('/webmaster/banners/destroy/{id}',
+            'WebmasterBannersController@destroy')->name('WebmasterBannersDestroy');
+        Route::post('/webmaster/banners/updateAll',
+            'WebmasterBannersController@updateAll')->name('WebmasterBannersUpdateAll');
 
-    Route::post('/webmaster/sections/{id}/seo', 'WebmasterSectionsController@seo')->name('WebmasterSectionsSEOUpdate');
+        // Webmaster Sections
+        Route::get('/webmaster/sections', 'WebmasterSectionsController@index')->name('WebmasterSections');
+        Route::get('/webmaster/sections/create', 'WebmasterSectionsController@create')->name('WebmasterSectionsCreate');
+        Route::post('/webmaster/sections/store', 'WebmasterSectionsController@store')->name('WebmasterSectionsStore');
+        Route::get('/webmaster/sections/{id}/edit', 'WebmasterSectionsController@edit')->name('WebmasterSectionsEdit');
+        Route::post('/webmaster/sections/{id}/update',
+            'WebmasterSectionsController@update')->name('WebmasterSectionsUpdate');
 
-    Route::get('/webmaster/sections/destroy/{id}',
-        'WebmasterSectionsController@destroy')->name('WebmasterSectionsDestroy');
-    Route::post('/webmaster/sections/updateAll',
-        'WebmasterSectionsController@updateAll')->name('WebmasterSectionsUpdateAll');
+        Route::post('/webmaster/sections/{id}/seo', 'WebmasterSectionsController@seo')->name('WebmasterSectionsSEOUpdate');
 
-    // Webmaster Sections :Custom Fields
-    Route::get('/webmaster/{webmasterId}/fields', 'WebmasterSectionsController@webmasterFields')->name('webmasterFields');
-    Route::get('/{webmasterId}/fields/create', 'WebmasterSectionsController@fieldsCreate')->name('webmasterFieldsCreate');
-    Route::post('/webmaster/{webmasterId}/fields/store', 'WebmasterSectionsController@fieldsStore')->name('webmasterFieldsStore');
-    Route::get('/webmaster/{webmasterId}/fields/{field_id}/edit', 'WebmasterSectionsController@fieldsEdit')->name('webmasterFieldsEdit');
-    Route::post('/webmaster/{webmasterId}/fields/{field_id}/update', 'WebmasterSectionsController@fieldsUpdate')->name('webmasterFieldsUpdate');
-    Route::get('/webmaster/{webmasterId}/fields/destroy/{field_id}', 'WebmasterSectionsController@fieldsDestroy')->name('webmasterFieldsDestroy');
-    Route::post('/webmaster/{webmasterId}/fields/updateAll', 'WebmasterSectionsController@fieldsUpdateAll')->name('webmasterFieldsUpdateAll');
+        Route::get('/webmaster/sections/destroy/{id}',
+            'WebmasterSectionsController@destroy')->name('WebmasterSectionsDestroy');
+        Route::post('/webmaster/sections/updateAll',
+            'WebmasterSectionsController@updateAll')->name('WebmasterSectionsUpdateAll');
 
-
-    //Backup
-    Route::get('/webmaster/backup', function (){
-        return view('backEnd.backups');
-    })->name('backups');
-
-    //Curl Data
-    Route::get('/curl-bao-ha-tinh', 'CurlController@getBaoHaTinh')->name('curl-bht');
-    Route::get('/curl-bao-chinh-phu', 'CurlController@getBaoChinhPhu')->name('curl-bcp');
-    Route::get('/curl-cong-bao', 'CurlController@getCongBao')->name('curl-cb');
-    Route::get('/curl-dieu-hanh-tac-nghiep', 'CurlController@getDHTN')->name('curl-dhtn');
-    // Route::get('/curl-lich-lam-viec', 'CurlController@getLLV')->name('curl-llv');
+        // Webmaster Sections :Custom Fields
+        Route::get('/webmaster/{webmasterId}/fields', 'WebmasterSectionsController@webmasterFields')->name('webmasterFields');
+        Route::get('/{webmasterId}/fields/create', 'WebmasterSectionsController@fieldsCreate')->name('webmasterFieldsCreate');
+        Route::post('/webmaster/{webmasterId}/fields/store', 'WebmasterSectionsController@fieldsStore')->name('webmasterFieldsStore');
+        Route::get('/webmaster/{webmasterId}/fields/{field_id}/edit', 'WebmasterSectionsController@fieldsEdit')->name('webmasterFieldsEdit');
+        Route::post('/webmaster/{webmasterId}/fields/{field_id}/update', 'WebmasterSectionsController@fieldsUpdate')->name('webmasterFieldsUpdate');
+        Route::get('/webmaster/{webmasterId}/fields/destroy/{field_id}', 'WebmasterSectionsController@fieldsDestroy')->name('webmasterFieldsDestroy');
+        Route::post('/webmaster/{webmasterId}/fields/updateAll', 'WebmasterSectionsController@fieldsUpdateAll')->name('webmasterFieldsUpdateAll');
 
 
-    // Settings
-    Route::get('/settings', 'SettingsController@edit')->name('settings');
-    Route::post('/settings', 'SettingsController@updateSiteInfo')->name('settingsUpdateSiteInfo');
-    Route::post('/settings/style', 'SettingsController@updateSiteStyle')->name('settingsUpdateSiteStyle');
-    Route::post('/settings/status', 'SettingsController@updateSiteStatus')->name('settingsUpdateSiteStatus');
-    Route::post('/settings/social', 'SettingsController@updateSocialLinks')->name('settingsUpdateSocialLinks');
-    Route::post('/settings/contacts', 'SettingsController@updateContacts')->name('settingsUpdateContacts');
+        //Backup
+        Route::get('/webmaster/backup', function (){
+            return view('backEnd.backups');
+        })->name('backups');
 
-    // Ad. Banners
-    Route::get('/banners', 'BannersController@index')->name('Banners');
-    Route::get('/banners/create/{sectionId}', 'BannersController@create')->name('BannersCreate');
-    Route::post('/banners/store', 'BannersController@store')->name('BannersStore');
-    Route::get('/banners/{id}/edit', 'BannersController@edit')->name('BannersEdit');
-    Route::post('/banners/{id}/update', 'BannersController@update')->name('BannersUpdate');
-    Route::get('/banners/destroy/{id}', 'BannersController@destroy')->name('BannersDestroy');
-    Route::post('/banners/updateAll', 'BannersController@updateAll')->name('BannersUpdateAll');
+    });
 
-    // Sections
-    Route::get('/{webmasterId}/sections', 'SectionsController@index')->name('sections');
-    Route::get('/{webmasterId}/sections/create', 'SectionsController@create')->name('sectionsCreate');
-    Route::post('/{webmasterId}/sections/store', 'SectionsController@store')->name('sectionsStore');
-    Route::get('/{webmasterId}/sections/{id}/edit', 'SectionsController@edit')->name('sectionsEdit');
-    Route::post('/{webmasterId}/sections/{id}/update', 'SectionsController@update')->name('sectionsUpdate');
-    Route::post('/{webmasterId}/sections/{id}/seo', 'SectionsController@seo')->name('sectionsSEOUpdate');
-    Route::get('/{webmasterId}/sections/destroy/{id}', 'SectionsController@destroy')->name('sectionsDestroy');
-    Route::post('/{webmasterId}/sections/updateAll', 'SectionsController@updateAll')->name('sectionsUpdateAll');
+    Route::middleware(['checklevel','managerlevel'])->group(function () {
 
-    // Topics
-    Route::get('/{webmasterId}/topics', 'TopicsController@index')->name('topics');
-    Route::get('/{webmasterId}/topics/create', 'TopicsController@create')->name('topicsCreate');
-    Route::post('/{webmasterId}/topics/store', 'TopicsController@store')->name('topicsStore');
-    Route::get('/{webmasterId}/topics/{id}/edit', 'TopicsController@edit')->name('topicsEdit');
-    Route::post('/{webmasterId}/topics/{id}/update', 'TopicsController@update')->name('topicsUpdate');
-    Route::get('/{webmasterId}/topics/destroy/{id}', 'TopicsController@destroy')->name('topicsDestroy');
-    Route::post('/{webmasterId}/topics/updateAll', 'TopicsController@updateAll')->name('topicsUpdateAll');
-    // Topics :SEO
-    Route::post('/{webmasterId}/topics/{id}/seo', 'TopicsController@seo')->name('topicsSEOUpdate');
-    // Topics :Photos
-    Route::post('/{webmasterId}/topics/{id}/photos', 'TopicsController@photos')->name('topicsPhotosEdit');
-    Route::get('/{webmasterId}/topics/{id}/photos/{photo_id}/destroy',
-        'TopicsController@photosDestroy')->name('topicsPhotosDestroy');
-    Route::post('/{webmasterId}/topics/{id}/photos/updateAll',
-        'TopicsController@photosUpdateAll')->name('topicsPhotosUpdateAll');
-
-    // Topics :Files
-    Route::get('/{webmasterId}/topics/{id}/files', 'TopicsController@topicsFiles')->name('topicsFiles');
-    Route::get('/{webmasterId}/topics/{id}/files/create',
-        'TopicsController@filesCreate')->name('topicsFilesCreate');
-    Route::post('/{webmasterId}/topics/{id}/files/store',
-        'TopicsController@filesStore')->name('topicsFilesStore');
-    Route::get('/{webmasterId}/topics/{id}/files/{file_id}/edit',
-        'TopicsController@filesEdit')->name('topicsFilesEdit');
-    Route::post('/{webmasterId}/topics/{id}/files/{file_id}/update',
-        'TopicsController@filesUpdate')->name('topicsFilesUpdate');
-    Route::get('/{webmasterId}/topics/{id}/files/destroy/{file_id}',
-        'TopicsController@filesDestroy')->name('topicsFilesDestroy');
-    Route::post('/{webmasterId}/topics/{id}/files/updateAll',
-        'TopicsController@filesUpdateAll')->name('topicsFilesUpdateAll');
+        //Curl Data
+        Route::get('/curl-bao-ha-tinh', 'CurlController@getBaoHaTinh')->name('curl-bht');
+        Route::get('/curl-bao-chinh-phu', 'CurlController@getBaoChinhPhu')->name('curl-bcp');
+        Route::get('/curl-cong-bao', 'CurlController@getCongBao')->name('curl-cb');
+        Route::get('/curl-dieu-hanh-tac-nghiep', 'CurlController@getDHTN')->name('curl-dhtn');
+        // Route::get('/curl-lich-lam-viec', 'CurlController@getLLV')->name('curl-llv');
 
 
-    // Topics :Related
-    Route::get('/{webmasterId}/topics/{id}/related', 'TopicsController@topicsRelated')->name('topicsRelated');
-    Route::get('/relatedLoad/{id}', 'TopicsController@topicsRelatedLoad')->name('topicsRelatedLoad');
-    Route::get('/{webmasterId}/topics/{id}/related/create',
-        'TopicsController@relatedCreate')->name('topicsRelatedCreate');
-    Route::post('/{webmasterId}/topics/{id}/related/store',
-        'TopicsController@relatedStore')->name('topicsRelatedStore');
-    Route::get('/{webmasterId}/topics/{id}/related/destroy/{related_id}',
-        'TopicsController@relatedDestroy')->name('topicsRelatedDestroy');
-    Route::post('/{webmasterId}/topics/{id}/related/updateAll',
-        'TopicsController@relatedUpdateAll')->name('topicsRelatedUpdateAll');
-    // Topics :Comments
-    Route::get('/{webmasterId}/topics/{id}/comments', 'TopicsController@topicsComments')->name('topicsComments');
-    Route::get('/{webmasterId}/topics/{id}/comments/create',
-        'TopicsController@commentsCreate')->name('topicsCommentsCreate');
-    Route::post('/{webmasterId}/topics/{id}/comments/store',
-        'TopicsController@commentsStore')->name('topicsCommentsStore');
-    Route::get('/{webmasterId}/topics/{id}/comments/{comment_id}/edit',
-        'TopicsController@commentsEdit')->name('topicsCommentsEdit');
-    Route::post('/{webmasterId}/topics/{id}/comments/{comment_id}/update',
-        'TopicsController@commentsUpdate')->name('topicsCommentsUpdate');
-    Route::get('/{webmasterId}/topics/{id}/comments/destroy/{comment_id}',
-        'TopicsController@commentsDestroy')->name('topicsCommentsDestroy');
-    Route::post('/{webmasterId}/topics/{id}/comments/updateAll',
-        'TopicsController@commentsUpdateAll')->name('topicsCommentsUpdateAll');
-    // Topics :Maps
-    Route::get('/{webmasterId}/topics/{id}/maps', 'TopicsController@topicsMaps')->name('topicsMaps');
-    Route::get('/{webmasterId}/topics/{id}/maps/create', 'TopicsController@mapsCreate')->name('topicsMapsCreate');
-    Route::post('/{webmasterId}/topics/{id}/maps/store', 'TopicsController@mapsStore')->name('topicsMapsStore');
-    Route::get('/{webmasterId}/topics/{id}/maps/{map_id}/edit', 'TopicsController@mapsEdit')->name('topicsMapsEdit');
-    Route::post('/{webmasterId}/topics/{id}/maps/{map_id}/update',
-        'TopicsController@mapsUpdate')->name('topicsMapsUpdate');
-    Route::get('/{webmasterId}/topics/{id}/maps/destroy/{map_id}',
-        'TopicsController@mapsDestroy')->name('topicsMapsDestroy');
-    Route::post('/{webmasterId}/topics/{id}/maps/updateAll',
-        'TopicsController@mapsUpdateAll')->name('topicsMapsUpdateAll');
+        // Settings
+        Route::get('/settings', 'SettingsController@edit')->name('settings');
+        Route::post('/settings', 'SettingsController@updateSiteInfo')->name('settingsUpdateSiteInfo');
+        Route::post('/settings/style', 'SettingsController@updateSiteStyle')->name('settingsUpdateSiteStyle');
+        Route::post('/settings/status', 'SettingsController@updateSiteStatus')->name('settingsUpdateSiteStatus');
+        Route::post('/settings/social', 'SettingsController@updateSocialLinks')->name('settingsUpdateSocialLinks');
+        Route::post('/settings/contacts', 'SettingsController@updateContacts')->name('settingsUpdateContacts');
+
+        // Ad. Banners
+        Route::get('/banners', 'BannersController@index')->name('Banners');
+        Route::get('/banners/create/{sectionId}', 'BannersController@create')->name('BannersCreate');
+        Route::post('/banners/store', 'BannersController@store')->name('BannersStore');
+        Route::get('/banners/{id}/edit', 'BannersController@edit')->name('BannersEdit');
+        Route::post('/banners/{id}/update', 'BannersController@update')->name('BannersUpdate');
+        Route::get('/banners/destroy/{id}', 'BannersController@destroy')->name('BannersDestroy');
+        Route::post('/banners/updateAll', 'BannersController@updateAll')->name('BannersUpdateAll');
+
+        // Sections
+        Route::get('/{webmasterId}/sections', 'SectionsController@index')->name('sections');
+        Route::get('/{webmasterId}/sections/create', 'SectionsController@create')->name('sectionsCreate');
+        Route::post('/{webmasterId}/sections/store', 'SectionsController@store')->name('sectionsStore');
+        Route::get('/{webmasterId}/sections/{id}/edit', 'SectionsController@edit')->name('sectionsEdit');
+        Route::post('/{webmasterId}/sections/{id}/update', 'SectionsController@update')->name('sectionsUpdate');
+        Route::post('/{webmasterId}/sections/{id}/seo', 'SectionsController@seo')->name('sectionsSEOUpdate');
+        Route::get('/{webmasterId}/sections/destroy/{id}', 'SectionsController@destroy')->name('sectionsDestroy');
+        Route::post('/{webmasterId}/sections/updateAll', 'SectionsController@updateAll')->name('sectionsUpdateAll');
+
+        // Users & Permissions
+        Route::get('/users', 'UsersController@index')->name('users');
+        Route::get('/users/create/', 'UsersController@create')->name('usersCreate');
+        Route::post('/users/store', 'UsersController@store')->name('usersStore');
+        Route::get('/users/{id}/edit', 'UsersController@edit')->name('usersEdit');
+        Route::post('/users/{id}/update', 'UsersController@update')->name('usersUpdate');
+        Route::get('/users/destroy/{id}', 'UsersController@destroy')->name('usersDestroy');
+        Route::post('/users/updateAll', 'UsersController@updateAll')->name('usersUpdateAll');
+
+        Route::get('/users/permissions/create/', 'UsersController@permissions_create')->name('permissionsCreate');
+        Route::post('/users/permissions/store', 'UsersController@permissions_store')->name('permissionsStore');
+        Route::get('/users/permissions/{id}/edit', 'UsersController@permissions_edit')->name('permissionsEdit');
+        Route::post('/users/permissions/{id}/update', 'UsersController@permissions_update')->name('permissionsUpdate');
+        Route::get('/users/permissions/destroy/{id}', 'UsersController@permissions_destroy')->name('permissionsDestroy');
+
+
+        // Menus
+        Route::post('/menus/store/parent', 'MenusController@storeMenu')->name('parentMenusStore');
+        Route::get('/menus/parent/{id}/edit', 'MenusController@editMenu')->name('parentMenusEdit');
+        Route::post('/menus/{id}/update/{ParentMenuId}', 'MenusController@updateMenu')->name('parentMenusUpdate');
+        Route::get('/menus/parent/destroy/{id}', 'MenusController@destroyMenu')->name('parentMenusDestroy');
+
+        Route::get('/menus/{ParentMenuId?}', 'MenusController@index')->name('menus');
+        Route::get('/menus/create/{ParentMenuId?}', 'MenusController@create')->name('menusCreate');
+        Route::post('/menus/store/{ParentMenuId?}', 'MenusController@store')->name('menusStore');
+        Route::get('/menus/{id}/edit/{ParentMenuId?}', 'MenusController@edit')->name('menusEdit');
+        Route::post('/menus/{id}/update', 'MenusController@update')->name('menusUpdate');
+        Route::get('/menus/destroy/{id}', 'MenusController@destroy')->name('menusDestroy');
+        Route::post('/menus/updateAll', 'MenusController@updateAll')->name('menusUpdateAll');
+
+
+        // Topics
+        Route::get('/{webmasterId}/topics', 'TopicsController@index')->name('topics');
+        Route::get('/{webmasterId}/topics/create', 'TopicsController@create')->name('topicsCreate');
+        Route::post('/{webmasterId}/topics/store', 'TopicsController@store')->name('topicsStore');
+        Route::get('/{webmasterId}/topics/{id}/edit', 'TopicsController@edit')->name('topicsEdit');
+        Route::post('/{webmasterId}/topics/{id}/update', 'TopicsController@update')->name('topicsUpdate');
+        Route::get('/{webmasterId}/topics/destroy/{id}', 'TopicsController@destroy')->name('topicsDestroy');
+        Route::post('/{webmasterId}/topics/updateAll', 'TopicsController@updateAll')->name('topicsUpdateAll');
+        // Topics :SEO
+        Route::post('/{webmasterId}/topics/{id}/seo', 'TopicsController@seo')->name('topicsSEOUpdate');
+        // Topics :Photos
+        Route::post('/{webmasterId}/topics/{id}/photos', 'TopicsController@photos')->name('topicsPhotosEdit');
+        Route::get('/{webmasterId}/topics/{id}/photos/{photo_id}/destroy',
+            'TopicsController@photosDestroy')->name('topicsPhotosDestroy');
+        Route::post('/{webmasterId}/topics/{id}/photos/updateAll',
+            'TopicsController@photosUpdateAll')->name('topicsPhotosUpdateAll');
+
+        // Topics :Files
+        Route::get('/{webmasterId}/topics/{id}/files', 'TopicsController@topicsFiles')->name('topicsFiles');
+        Route::get('/{webmasterId}/topics/{id}/files/create',
+            'TopicsController@filesCreate')->name('topicsFilesCreate');
+        Route::post('/{webmasterId}/topics/{id}/files/store',
+            'TopicsController@filesStore')->name('topicsFilesStore');
+        Route::get('/{webmasterId}/topics/{id}/files/{file_id}/edit',
+            'TopicsController@filesEdit')->name('topicsFilesEdit');
+        Route::post('/{webmasterId}/topics/{id}/files/{file_id}/update',
+            'TopicsController@filesUpdate')->name('topicsFilesUpdate');
+        Route::get('/{webmasterId}/topics/{id}/files/destroy/{file_id}',
+            'TopicsController@filesDestroy')->name('topicsFilesDestroy');
+        Route::post('/{webmasterId}/topics/{id}/files/updateAll',
+            'TopicsController@filesUpdateAll')->name('topicsFilesUpdateAll');
+
+
+        // Topics :Related
+        Route::get('/{webmasterId}/topics/{id}/related', 'TopicsController@topicsRelated')->name('topicsRelated');
+        Route::get('/relatedLoad/{id}', 'TopicsController@topicsRelatedLoad')->name('topicsRelatedLoad');
+        Route::get('/{webmasterId}/topics/{id}/related/create',
+            'TopicsController@relatedCreate')->name('topicsRelatedCreate');
+        Route::post('/{webmasterId}/topics/{id}/related/store',
+            'TopicsController@relatedStore')->name('topicsRelatedStore');
+        Route::get('/{webmasterId}/topics/{id}/related/destroy/{related_id}',
+            'TopicsController@relatedDestroy')->name('topicsRelatedDestroy');
+        Route::post('/{webmasterId}/topics/{id}/related/updateAll',
+            'TopicsController@relatedUpdateAll')->name('topicsRelatedUpdateAll');
+        // Topics :Comments
+        Route::get('/{webmasterId}/topics/{id}/comments', 'TopicsController@topicsComments')->name('topicsComments');
+        Route::get('/{webmasterId}/topics/{id}/comments/create',
+            'TopicsController@commentsCreate')->name('topicsCommentsCreate');
+        Route::post('/{webmasterId}/topics/{id}/comments/store',
+            'TopicsController@commentsStore')->name('topicsCommentsStore');
+        Route::get('/{webmasterId}/topics/{id}/comments/{comment_id}/edit',
+            'TopicsController@commentsEdit')->name('topicsCommentsEdit');
+        Route::post('/{webmasterId}/topics/{id}/comments/{comment_id}/update',
+            'TopicsController@commentsUpdate')->name('topicsCommentsUpdate');
+        Route::get('/{webmasterId}/topics/{id}/comments/destroy/{comment_id}',
+            'TopicsController@commentsDestroy')->name('topicsCommentsDestroy');
+        Route::post('/{webmasterId}/topics/{id}/comments/updateAll',
+            'TopicsController@commentsUpdateAll')->name('topicsCommentsUpdateAll');
+        // Topics :Maps
+        Route::get('/{webmasterId}/topics/{id}/maps', 'TopicsController@topicsMaps')->name('topicsMaps');
+        Route::get('/{webmasterId}/topics/{id}/maps/create', 'TopicsController@mapsCreate')->name('topicsMapsCreate');
+        Route::post('/{webmasterId}/topics/{id}/maps/store', 'TopicsController@mapsStore')->name('topicsMapsStore');
+        Route::get('/{webmasterId}/topics/{id}/maps/{map_id}/edit', 'TopicsController@mapsEdit')->name('topicsMapsEdit');
+        Route::post('/{webmasterId}/topics/{id}/maps/{map_id}/update',
+            'TopicsController@mapsUpdate')->name('topicsMapsUpdate');
+        Route::get('/{webmasterId}/topics/{id}/maps/destroy/{map_id}',
+            'TopicsController@mapsDestroy')->name('topicsMapsDestroy');
+        Route::post('/{webmasterId}/topics/{id}/maps/updateAll',
+            'TopicsController@mapsUpdateAll')->name('topicsMapsUpdateAll');
+    });
 
     // Contacts Groups
     Route::post('/contacts/storeGroup', 'ContactsController@storeGroup')->name('contactsStoreGroup');
@@ -253,35 +291,7 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
     Route::get('/analytics/{stat?}', 'AnalyticsController@index')->name('analytics');
     Route::get('/visitors', 'AnalyticsController@visitors')->name('visitors');
 
-    // Users & Permissions
-    Route::get('/users', 'UsersController@index')->name('users');
-    Route::get('/users/create/', 'UsersController@create')->name('usersCreate');
-    Route::post('/users/store', 'UsersController@store')->name('usersStore');
-    Route::get('/users/{id}/edit', 'UsersController@edit')->name('usersEdit');
-    Route::post('/users/{id}/update', 'UsersController@update')->name('usersUpdate');
-    Route::get('/users/destroy/{id}', 'UsersController@destroy')->name('usersDestroy');
-    Route::post('/users/updateAll', 'UsersController@updateAll')->name('usersUpdateAll');
-
-    Route::get('/users/permissions/create/', 'UsersController@permissions_create')->name('permissionsCreate');
-    Route::post('/users/permissions/store', 'UsersController@permissions_store')->name('permissionsStore');
-    Route::get('/users/permissions/{id}/edit', 'UsersController@permissions_edit')->name('permissionsEdit');
-    Route::post('/users/permissions/{id}/update', 'UsersController@permissions_update')->name('permissionsUpdate');
-    Route::get('/users/permissions/destroy/{id}', 'UsersController@permissions_destroy')->name('permissionsDestroy');
-
-
-    // Menus
-    Route::post('/menus/store/parent', 'MenusController@storeMenu')->name('parentMenusStore');
-    Route::get('/menus/parent/{id}/edit', 'MenusController@editMenu')->name('parentMenusEdit');
-    Route::post('/menus/{id}/update/{ParentMenuId}', 'MenusController@updateMenu')->name('parentMenusUpdate');
-    Route::get('/menus/parent/destroy/{id}', 'MenusController@destroyMenu')->name('parentMenusDestroy');
-
-    Route::get('/menus/{ParentMenuId?}', 'MenusController@index')->name('menus');
-    Route::get('/menus/create/{ParentMenuId?}', 'MenusController@create')->name('menusCreate');
-    Route::post('/menus/store/{ParentMenuId?}', 'MenusController@store')->name('menusStore');
-    Route::get('/menus/{id}/edit/{ParentMenuId?}', 'MenusController@edit')->name('menusEdit');
-    Route::post('/menus/{id}/update', 'MenusController@update')->name('menusUpdate');
-    Route::get('/menus/destroy/{id}', 'MenusController@destroy')->name('menusDestroy');
-    Route::post('/menus/updateAll', 'MenusController@updateAll')->name('menusUpdateAll');
+    
 
 });
 
