@@ -94,20 +94,24 @@
                     </div>
                 </div>
 
+                @if(@Auth::user()->permissionsGroup->webmaster_status)
 
-                <div class="form-group row">
-                    <label for="permissions1"
-                           class="col-sm-2 form-control-label">{!!  trans('backLang.Permission') !!}</label>
-                    <div class="col-sm-10">
-                        <select name="permissions_id" id="permissions_id" required class="form-control c-select">
-                            <option value="">- - {!!  trans('backLang.selectPermissionsType') !!} - -</option>
-                            @foreach ($Permissions as $Permission)
-                                <option value="{{ $Permission->id  }}">{{ $Permission->name }}</option>
-                            @endforeach
-                        </select>
 
+                    <div class="form-group row">
+                        <label for="permissions1"
+                            class="col-sm-2 form-control-label">{!!  trans('backLang.Permission') !!}</label>
+                        <div class="col-sm-10">
+                            <select name="permissions_id" id="permissions_id" required class="form-control c-select">
+                                <option value="">- - {!!  trans('backLang.selectPermissionsType') !!} - -</option>
+                                @foreach ($Permissions as $Permission)
+                                    <option value="{{ $Permission->id  }}">{{ $Permission->name }}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
                     </div>
-                </div>
+
+                    @endif
 
                 
 
