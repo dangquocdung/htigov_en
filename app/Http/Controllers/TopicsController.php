@@ -113,7 +113,8 @@ class TopicsController extends Controller
             $this->validate($request, [
                 'photo_file' => 'mimes:png,jpeg,jpg,gif|max:3000',
                 'audio_file' => 'mimes:mpga,wav', // mpga = mp3
-                'video_file' => 'mimes:mp4,ogv,webm'
+                'video_file' => 'mimes:mp4,ogv,webm',
+                'attach_file' => 'mimes:pdf,docx,xlsx'
             ]);
 
             $next_nor_no = Topic::where('webmaster_id', '=', $webmasterId)->max('row_no');
@@ -352,7 +353,8 @@ class TopicsController extends Controller
                 $this->validate($request, [
                     'photo_file' => 'mimes:png,jpeg,jpg,gif|max:3000',
                     'audio_file' => 'mimes:mpga,wav', // mpga = mp3
-                    'video_file' => 'mimes:mp4,ogv,webm'
+                    'video_file' => 'mimes:mp4,ogv,webm',
+                    'attach_file' => 'mimes:pdf,docx,xlsx'
                 ]);
 
                 // Start of Upload Files
