@@ -1542,7 +1542,7 @@
                                             <label for="files_file"
                                                    class="col-sm-2 form-control-label">{!!  trans('backLang.topicAttach') !!}</label>
                                             <div class="col-sm-10">
-                                                {!! Form::file('file', array('class' => 'form-control','id'=>'attach_file','required'=>'')) !!}
+                                                {!! Form::file('file', array('class' => 'form-control','id'=>'attach_file','required'=>'','accept'=>'.pdf,.docx,.xlsx')) !!}
                                             </div>
                                         </div>
                                         <div class="form-group row m-t-md" style="margin-top: 0 !important;">
