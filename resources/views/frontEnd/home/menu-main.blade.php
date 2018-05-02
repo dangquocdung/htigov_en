@@ -559,7 +559,7 @@
                                                                                 }
                                                                             ?>
 
-                                                                            @if (($tin->status == 1) && ($i < 4))
+                                                                            @if (($tin->status == 1) && ($i < 3))
                                                                                 @php $i++; @endphp
                                                                                 <tr>
                                                                                     <td>

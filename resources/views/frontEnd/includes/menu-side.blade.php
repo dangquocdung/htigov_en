@@ -238,11 +238,11 @@
 </div>
 
 
-<div class="clearfix"></div>
+{{--  <div class="clearfix"></div>
 <iframe frameborder="0" src="//www.tygia.com/api.php?column=1&amp;title=0&amp;chart=0&amp;gold=1&amp;rate=0&amp;expand=0&amp;color=B4D0D0&amp;titlecolor=333333&amp;nganhang=VIETCOM&amp;fontsize=80&amp;change=0&amp;css=%23SJC_N_ng{display:%20table-row%20!important;}" style="border: none;" width="100%" height="100%"></iframe>
 
 <div class="clearfix"></div>
-<iframe frameborder="0" src="//www.tygia.com/api.php?column=1&amp;title=0&amp;chart=0&amp;gold=0&amp;rate=1&amp;ngoaite=usd,jpy,chf,eur,gbp,aud&amp;expand=0&amp;color=B4D0D0&amp;titlecolor=333333&amp;bgcolor=ffffff&amp;upcolor=00aa00&amp;downcolor=bb0000&amp;textcolor=333333&amp;nganhang=VIETCOM&amp;fontsize=80&amp;ngay=" style="border: none;" width="100%" height="100%"></iframe>
+<iframe frameborder="0" src="//www.tygia.com/api.php?column=1&amp;title=0&amp;chart=0&amp;gold=0&amp;rate=1&amp;ngoaite=usd,jpy,chf,eur,gbp,aud&amp;expand=0&amp;color=B4D0D0&amp;titlecolor=333333&amp;bgcolor=ffffff&amp;upcolor=00aa00&amp;downcolor=bb0000&amp;textcolor=333333&amp;nganhang=VIETCOM&amp;fontsize=80&amp;ngay=" style="border: none;" width="100%" height="100%"></iframe>  --}}
         
    
 
