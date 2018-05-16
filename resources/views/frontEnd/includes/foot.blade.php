@@ -27,11 +27,17 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-      $('[data-toggle="offcanvas-mb"]').click(function () {
-        $('.row-offcanvas').toggleClass('active')
-      });
+        $('[data-toggle="offcanvas-mb"]').click(function () {
+            $('.row-offcanvas').toggleClass('active')
+        });
   
-      {{--  $('div.alert').delay(3000).slideUp(300);  --}}
+        {{--  $('div.alert').delay(3000).slideUp(300);  --}}
+
+        //Ban do
+
+        $('#block-header-bd').click(function () {
+            $("#menu-bd").toggleClass('rotated')
+        });
       
     });
 </script>

@@ -73,12 +73,6 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
 
         });
 
-        //Ban do
-
-        $('#block-header-bd').click(function () {
-            $("#menu-bd").toggleClass('rotated')
-        })
-
     });
 </script>
 
