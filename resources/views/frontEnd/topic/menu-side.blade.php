@@ -17,7 +17,7 @@
                 </h4>
             </div>
 
-            <div class="widget" style="padding: 0 5px">
+            <div class="widget" style="padding: 0 5px" id="ban-do-dia-gioi" class="panel-collapse collapse in">
                 {{--  <h5 class="widgetheading">{{ trans('frontLang.categories') }}</h5>  --}}
                 <ul class="cat">
                     @foreach($Categories as $Category)
