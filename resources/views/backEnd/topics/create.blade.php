@@ -162,6 +162,24 @@
                     </div>
                 @endif
 
+                @if($WebmasterSection->attach_file_status)
+                    <div class="form-group row">
+                        <label for="attach_file"
+                               class="col-sm-2 form-control-label">{!!  trans('backLang.topicAttach') !!}</label>
+                        <div class="col-sm-10">
+                            {!! Form::file('attach_file', array('class' => 'form-control','id'=>'attach_file','accept'=>'.pdf,.docx,.xlsx')) !!}
+                        </div>
+                    </div>
+                    <div class="form-group row m-t-md" style="margin-top: 0 !important;">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <small>
+                                <i class="material-icons">&#xe8fd;</i>
+                                {!!  trans('backLang.attachTypes') !!}
+                            </small>
+                        </div>
+                    </div>
+                @endif
+
                 @if($WebmasterSection->longtext_status)
 
                     @if($WebmasterSection->editor_status)
@@ -340,23 +358,7 @@
                     </div>
                 @endif
 
-                @if($WebmasterSection->attach_file_status)
-                    <div class="form-group row">
-                        <label for="attach_file"
-                               class="col-sm-2 form-control-label">{!!  trans('backLang.topicAttach') !!}</label>
-                        <div class="col-sm-10">
-                            {!! Form::file('attach_file', array('class' => 'form-control','id'=>'attach_file','accept'=>'.pdf,.docx,.xlsx')) !!}
-                        </div>
-                    </div>
-                    <div class="form-group row m-t-md" style="margin-top: 0 !important;">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <small>
-                                <i class="material-icons">&#xe8fd;</i>
-                                {!!  trans('backLang.attachTypes') !!}
-                            </small>
-                        </div>
-                    </div>
-                @endif
+                
 
 
                 {{--Additional Feilds--}}
