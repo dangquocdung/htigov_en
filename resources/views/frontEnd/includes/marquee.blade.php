@@ -11,7 +11,7 @@
 @if (!empty($MarqueeTopics))
 
 <div class="container nen-trang">
-    <marquee class="hot-tip" behavior="scroll" direction="left" scrollamount="7">
+    <marquee class="hot-tip" behavior="scroll" direction="left" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="7">
         
         @foreach($MarqueeTopics as $key=>$Topic)
 
