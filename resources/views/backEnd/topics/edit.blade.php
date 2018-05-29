@@ -577,49 +577,7 @@
                                 </div>
                             </div>
                         @endif
-
-                        <div class="form-group row">
-                            <label for="photo_file"
-                                   class="col-sm-2 form-control-label">{!!  trans('backLang.topicPhoto') !!}</label>
-                            <div class="col-sm-10">
-                                @if($Topics->photo_file!="")
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div id="topic_photo" class="col-sm-4 box p-a-xs">
-                                                <a target="_blank"
-                                                   href="{{ URL::to('uploads/topics/'.$Topics->photo_file) }}"><img
-                                                            src="{{ URL::to('uploads/topics/'.$Topics->photo_file) }}"
-                                                            class="img-responsive">
-                                                    {{ $Topics->photo_file }}
-                                                </a>
-                                                <br>
-                                                <a onclick="document.getElementById('topic_photo').style.display='none';document.getElementById('photo_delete').value='1';document.getElementById('undo').style.display='block';"
-                                                   class="btn btn-sm btn-default">{!!  trans('backLang.delete') !!}</a>
-                                            </div>
-                                            <div id="undo" class="col-sm-4 p-a-xs" style="display: none">
-                                                <a onclick="document.getElementById('topic_photo').style.display='block';document.getElementById('photo_delete').value='0';document.getElementById('undo').style.display='none';">
-                                                    <i class="material-icons">
-                                                        &#xe166;</i> {!!  trans('backLang.undoDelete') !!}</a>
-                                            </div>
-
-                                            {!! Form::hidden('photo_delete','0', array('id'=>'photo_delete')) !!}
-                                        </div>
-                                    </div>
-                                @endif
-
-                                {!! Form::file('photo_file', array('class' => 'form-control','id'=>'photo_file','accept'=>'image/*')) !!}
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row m-t-md" style="margin-top: 0 !important;">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <small>
-                                    <i class="material-icons">&#xe8fd;</i>
-                                    {!!  trans('backLang.imagesTypes') !!}
-                                </small>
-                            </div>
-                        </div>
+                        
 
                         @if($WebmasterSection->icon_status)
                             <div class="form-group row">
