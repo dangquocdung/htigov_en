@@ -270,8 +270,8 @@
                                         required>
                                     <option value="">{{ trans('backLang.bulkAction') }}</option>
                                     <option value="order">{{ trans('backLang.saveOrder') }}</option>
-                                    <option value="activate">{{ trans('backLang.activeSelected') }}</option>
-                                    <option value="block">{{ trans('backLang.blockSelected') }}</option>
+                                    {{--  <option value="activate">{{ trans('backLang.activeSelected') }}</option>  --}}
+                                    {{--  <option value="block">{{ trans('backLang.blockSelected') }}</option>  --}}
                                     @if(@Auth::user()->permissionsGroup->delete_status)
                                         <option value="delete">{{ trans('backLang.deleteSelected') }}</option>
                                     @endif
