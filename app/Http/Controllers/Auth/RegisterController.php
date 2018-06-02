@@ -68,7 +68,10 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'status' => true,
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'passport' => $data['passport'],
+            'status' => false,
             'permissions_id' => Helper::GeneralWebmasterSettings("permission_group"),    // Permission Group ID
             'password' => bcrypt($data['password']),
         ]);
