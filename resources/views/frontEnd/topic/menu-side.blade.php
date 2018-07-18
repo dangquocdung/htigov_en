@@ -51,7 +51,7 @@
                             @endif
                             
                             <a {{ $active_cat }} href="{{ $Category_link_url }}">{{$Category->$category_title_var}}</a>
-                            <span class="pull-right" style="margin-right:5px">({{ $ccount }})</span>
+                            {{--  <span class="pull-right" style="margin-right:5px">({{ $ccount }})</span>  --}}
                         
                         </li>
                         @foreach($Category->fatherSections as $MnuCategory)

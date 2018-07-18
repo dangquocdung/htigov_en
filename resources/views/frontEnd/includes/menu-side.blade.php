@@ -77,7 +77,7 @@
 
 <div class="block4" style="border-radius: 5px">
 
-    <div id="block-header-bd" class="block-header" style="margin-bottom: 0" data-toggle="collapse" href="#ban-do-dia-gioi">
+    <div id="block-header-bd" class="block-header" style="margin-bottom: 0" data-toggle="collapse" href="#thoi-tiet-ha-tinh">
 
         <h4>
             <img src="/images/background/lotus.ico" alt="" width="26px"> Thời tiết Hà Tĩnh
@@ -87,7 +87,7 @@
 
     <div class="clearfix"></div>
 
-    <div id="ban-do-dia-gioi" class="panel-collapse collapse in">
+    <div id="thoi-tiet-ha-tinh" class="panel-collapse collapse in">
         <a href="http://www.nchmf.gov.vn/web/vi-VN/62/20/28/map/Default.aspx" target="_blank">
             <div style="padding: 5px 15px">
 
@@ -99,6 +99,8 @@
     </div>
 
 </div>
+
+
 
 <div id="fb-root"></div>
 <script>
