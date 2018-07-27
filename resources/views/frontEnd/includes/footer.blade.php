@@ -20,7 +20,7 @@
                             © Cổng thông tin điện tử tỉnh Hà Tĩnh
                         </p>
                         <p class="main-footer-info-text">
-                            Giấy phép số 48/GP-BVHTT cấp ngày 18/02/2003 của Bộ Văn hóa Thông tin
+                            Giấy phép số 27/GP-STTTT cấp ngày 25/5/2018 của Sở Thông tin & Truyền thông Hà Tĩnh
                             <br>
                             <strong>Trưởng ban Ban biên tập: Ông Phan Tấn Linh, Giám Đốc Sở Thông tin - Truyền Thông</strong>
                             <br>
