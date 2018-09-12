@@ -38,3 +38,11 @@
 <script src="{{ URL::asset('frontEnd/js/jquery.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('frontEnd/js/tts.js') }}"></script>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4515530866373010",
+    enable_page_level_ads: true
+  });
+</script>
