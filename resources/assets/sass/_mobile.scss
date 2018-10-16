@@ -167,6 +167,12 @@
       li{
         padding: 5px;
       }
+
+      li {
+        &:nth-child(2n+1) {
+          clear: both;
+        }
+      }
     }
   }
 
