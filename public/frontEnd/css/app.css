@@ -1605,6 +1605,7 @@ td {
 
 .hot-item ul li:nth-last-child(2) {
   padding-right: 0 !important;
+  padding-left: 5px;
 }
 
 .hot-item ul li .block2 {
