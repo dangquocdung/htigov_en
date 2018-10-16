@@ -1616,6 +1616,10 @@ td {
   overflow: hidden;
 }
 
+.hot-item ul li:first-child {
+  padding-right: 5px;
+}
+
 .bs-glyphicons {
   padding-left: 0;
   padding-bottom: 1px;

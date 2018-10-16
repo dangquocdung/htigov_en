@@ -881,10 +881,13 @@ td{
         }
       }
     }
+
+    li:first-child { 
+      padding-right: 5px;
+    }
+
   }
 }
-
-
 
 .bs-glyphicons {
   padding-left: 0;
