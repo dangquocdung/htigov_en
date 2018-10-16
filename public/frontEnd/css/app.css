@@ -1599,11 +1599,6 @@ td {
   margin: 0;
 }
 
-.hot-item ul li:first-child,
-.hot-item ul li:nth-child(2n+1) {
-  padding-right: 5px;
-}
-
 .hot-item ul li:last-child {
   padding-left: 5px;
 }
