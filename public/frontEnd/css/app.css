@@ -1826,6 +1826,20 @@ object p {
   .hamburger {
     right: 15px !important;
   }
+
+  #featured {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .hot-item {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .hot-item ul li {
+    padding: 5px;
+  }
 }
 
 .loai-tin {
