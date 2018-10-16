@@ -1620,6 +1620,10 @@ td {
   padding-right: 5px;
 }
 
+.hot-item ul li:last-child {
+  padding-left: 5px;
+}
+
 .bs-glyphicons {
   padding-left: 0;
   padding-bottom: 1px;

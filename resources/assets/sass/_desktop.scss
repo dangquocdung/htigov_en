@@ -859,6 +859,15 @@ td{
     list-style: none;
     padding: 0;
     li{
+
+      &:first-child { 
+        padding-right: 5px;
+      }
+
+      &:last-child { 
+        padding-left: 5px;
+      }
+
       padding: 0;
       margin: 0;
       
@@ -882,8 +891,6 @@ td{
       }
     }
 
-    li:first-child { 
-      padding-right: 5px;
     }
 
   }
