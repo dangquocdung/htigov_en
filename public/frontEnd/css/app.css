@@ -1595,7 +1595,7 @@ td {
 }
 
 .hot-item ul li {
-  padding: 0;
+  padding: 0 0 5px 0;
   margin: 0;
 }
 
