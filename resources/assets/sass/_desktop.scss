@@ -860,9 +860,10 @@ td{
     padding: 0;
     li{
 
-      &:first-child { 
+      &:first-child, &:nth-child(2n+1) { 
         padding-right: 5px;
       }
+      
 
       &:last-child { 
         padding-left: 5px;
@@ -889,8 +890,6 @@ td{
           }
         }
       }
-    }
-
     }
 
   }

@@ -47138,7 +47138,7 @@ module.exports = Component.exports
 /***/ "./resources/assets/sass/app.scss":
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: \n  }\n  ^\n      Invalid CSS after \"  }\": expected selector or at-rule, was \"}\"\n      in /Users/quocdungdang/project/htigov_en/resources/assets/sass/_desktop.scss (line 896, column 4)\n    at runLoaders (/Users/quocdungdang/project/htigov_en/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /Users/quocdungdang/project/htigov_en/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/quocdungdang/project/htigov_en/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/Users/quocdungdang/project/htigov_en/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (/Users/quocdungdang/project/htigov_en/node_modules/sass-loader/lib/loader.js:55:13)\n    at Object.done [as callback] (/Users/quocdungdang/project/htigov_en/node_modules/neo-async/async.js:7921:18)\n    at options.error (/Users/quocdungdang/project/htigov_en/node_modules/node-sass/lib/index.js:294:32)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
