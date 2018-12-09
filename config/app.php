@@ -147,7 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        'Barryvdh\TranslationManager\ManagerServiceProvider',
+        Barryvdh\TranslationManager\ManagerServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
 
@@ -218,7 +218,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Helper' => App\Helpers\Helper::class,
-        'cURL' => 'anlutro\cURL\Laravel\cURL',
+        'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
+        'cURL' => anlutro\cURL\Laravel\cURL::class,
 
     ],
 
