@@ -1,5 +1,5 @@
 
-
+@if (Helper::GeneralWebmasterSettings("live_status"))
     <div class="col-md-12">
 
         <div class="row">
@@ -26,21 +26,13 @@
                     <iframe id="Myiframe" class="embed-responsive-item" src="http://httv.dungthinh.com/truyen-hinh" width="100%" height="480" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
                 </div>
 
-
         </div>
 
         <h4 style="text-align:center; text-transform:uppercase">Trực tiếp kì họp thứ 8 HĐND tỉnh Hà Tĩnh Khóa XVII </h4>
 
-           
-
-
-            
-
     </div>
+@endif
     
-
-
-
 <div class="block3">
 
     <div class="portlet-header">
@@ -244,4 +236,3 @@
     @endif
 
 </div>
-
