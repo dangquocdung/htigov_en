@@ -29,7 +29,7 @@
 
         </div>
 
-        <h4 style="text-align:center; text-transform:uppercase">Trực tiếp kì họp thứ 8 HNND tỉnh Khóa XVII </h4>
+        <h4 style="text-align:center; text-transform:uppercase">Trực tiếp kì họp thứ 8 HĐND tỉnh Hà Tĩnh Khóa XVII </h4>
 
            
 
