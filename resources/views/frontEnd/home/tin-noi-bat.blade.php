@@ -1,21 +1,35 @@
-<div class="block3">
 
-    <div class="portlet-header">
-        <img src="/images/background/lotus.ico">
-        <a href="javascript:void (0);">
-            <h4 class="portlet-header-title no-pd-top">Trực tiếp kì họp thứ 8 HNND tỉnh Khóa XVII </h4>
-
-        </a>
-    </div>
 
     <div class="col-md-12">
 
         <div class="row">
 
-                <iframe id="Myiframe" class="embed-responsive-item" src="http://httv.dungthinh.com/truyen-hinh" width="100%" height="459" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
+                <style>
+                        .video-wrapper {
+                            position: relative;
+                            padding-bottom: 56.25%;
+                            height: 0;
+                            overflow: hidden;
+                        }
+                        
+                        .video-wrapper iframe {
+                            position: absolute;
+                            top:0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                </style>
+
+                <div class="video-wrapper">
+
+                    <iframe id="Myiframe" class="embed-responsive-item" src="http://httv.dungthinh.com/truyen-hinh" width="100%" height="480" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
+                </div>
 
 
         </div>
+
+        <h4 style="text-align:center; text-transform:uppercase">Trực tiếp kì họp thứ 8 HNND tỉnh Khóa XVII </h4>
 
            
 
@@ -25,7 +39,7 @@
     </div>
     
 
-</div>
+
 
 <div class="block3">
 
