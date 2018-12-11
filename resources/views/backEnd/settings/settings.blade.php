@@ -155,6 +155,24 @@
                                     </label>
                                 </div>
                             </div>
+
+                            {{--  Truc tiep  --}}
+                            <div class="form-group">
+                                <label>{{ trans('backLang.websiteNotificationLive') }} : </label>
+                                <div class="radio">
+                                    <label class="ui-check ui-check-md">
+                                        {!! Form::radio('live_status','1',$Setting->live_status ? true : false , array('id' => 'seo_status1','class'=>'has-value')) !!}
+                                        <i class="dark-white"></i>
+                                        {{ trans('backLang.yes') }}
+                                    </label>
+                                    &nbsp; &nbsp;
+                                    <label class="ui-check ui-check-md">
+                                        {!! Form::radio('live_status','0',$Setting->live_status ? false : true , array('id' => 'seo_status2','class'=>'has-value')) !!}
+                                        <i class="dark-white"></i>
+                                        {{ trans('backLang.no') }}
+                                    </label>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-info m-t">{{ trans('backLang.update') }}</button>
                         </div>
                         {{Form::close()}}

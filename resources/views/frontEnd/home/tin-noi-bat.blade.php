@@ -1,5 +1,5 @@
 
-@if (Helper::GeneralWebmasterSettings("live_status"))
+@if (Helper::GeneralSiteSettings("live_status"))
     <div class="col-md-12">
 
         <div class="row">

@@ -78,6 +78,7 @@ class SettingsController extends Controller
             $Setting->notify_messages_status = $request->notify_messages_status;
             $Setting->notify_comments_status = $request->notify_comments_status;
             $Setting->notify_orders_status = $request->notify_orders_status;
+            $Setting->live_status = $request->live_status;
             $Setting->site_url = $request->site_url;
             $Setting->updated_by = Auth::user()->id;
             $Setting->save();
