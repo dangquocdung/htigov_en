@@ -215,6 +215,21 @@ class FrontendHomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function TrucTiep()
+    {
+        // General for all pages
+        $WebsiteSettings = Setting::find(1);
+
+        return view("frontEnd.livetv",compact("WebsiteSettings"));
+        
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function HomePage()
     {
         return $this->HomePageByLang("");

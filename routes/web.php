@@ -350,6 +350,8 @@ Route::get('/{lang}/sitemap', 'FrontendHomeController@siteMap')->name('siteMapBy
 
 
 Route::get('/', 'FrontendHomeController@HomePage')->name('Home');
+
+Route::get('/truc-tiep', 'FrontendHomeController@TrucTiep')->name('livetv');
 // ../home url
 Route::get('/home', 'FrontendHomeController@HomePage')->name('HomePage');
 

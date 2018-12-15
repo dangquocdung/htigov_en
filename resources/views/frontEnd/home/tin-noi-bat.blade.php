@@ -23,12 +23,12 @@
 
                 <div class="video-wrapper">
 
-                    <iframe id="Myiframe" class="embed-responsive-item" src="http://httv.dungthinh.com/truyen-hinh" width="100%" height="480" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
+                    <iframe id="Myiframe" class="embed-responsive-item" src="truc-tiep" width="100%" height="480" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
                 </div>
 
         </div>
 
-        <h4 style="text-align:center; text-transform:uppercase">Trực tiếp kì họp thứ 8 HĐND tỉnh Hà Tĩnh Khóa XVII </h4>
+        <h4 style="text-align:center; text-transform:uppercase">Truyền hình trực tiếp</h4>
 
     </div>
 @endif
