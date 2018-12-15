@@ -218,10 +218,10 @@ class FrontendHomeController extends Controller
     public function TrucTiep()
     {
         // General for all pages
-        $WebsiteSettings = Setting::find(1);
+        $WebsiteSettings = Setting::select('id','link_livetv')->find(1);
 
         return view("frontEnd.livetv",compact("WebsiteSettings"));
-        
+
     }
 
 
