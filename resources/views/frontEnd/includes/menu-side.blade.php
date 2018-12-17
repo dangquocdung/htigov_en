@@ -117,12 +117,13 @@
 
 <div class="block4">
 
-    <div class="fb-page" data-href="https://www.facebook.com/dulichbienhatinh/" 
-        >
+    <div class="fb-page" data-href="https://www.facebook.com/dulichbienhatinh/">
         <blockquote cite="https://www.facebook.com/dulichbienhatinh/" class="fb-xfbml-parse-ignore">
             <a href="https://www.facebook.com/dulichbienhatinh/">Du Lịch Biển Hà Tĩnh</a>
         </blockquote>
     </div>
+    <div class="zalo-follow-only-button" data-oaid="4156375982830930462" data-customize=false>    
+        </div>
 </div>
 
 
@@ -239,8 +240,7 @@
     </div>
 </div>
 
-<div class="zalo-follow-only-button" data-oaid="4156375982830930462" data-customize=false>    
-</div>
+
 
 {{--  <div class="clearfix"></div>
 <iframe frameborder="0" src="//www.tygia.com/api.php?column=1&amp;title=0&amp;chart=0&amp;gold=1&amp;rate=0&amp;expand=0&amp;color=B4D0D0&amp;titlecolor=333333&amp;nganhang=VIETCOM&amp;fontsize=80&amp;change=0&amp;css=%23SJC_N_ng{display:%20table-row%20!important;}" style="border: none;" width="100%" height="100%"></iframe>
