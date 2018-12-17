@@ -662,18 +662,22 @@
                                             data-placement="top"
                                             title="Đọc tin"><i class="fa fa-play-circle-o"></i></a>
                                         </li> --}}
-
                                         <li>
-                                            <a href="{{ Helper::SocialShare("facebook", $PageTitle)}}" class="facebook"
-                                            data-placement="top"
-                                            title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                                            <a class="twitter zalo-share-button" data-href="{{ Helper::SocialShare("zalo", $PageTitle)}}" data-oaid="4156375982830930462" data-layout="2" data-color="blue" data-customize=true data-placement="top" title="Zalo" style="cursor: pointer;">
+                                                Z
+                                            </a>
                                         </li>
                                         
                                         <li>
-                                            <a href="{{ Helper::SocialShare("google", $PageTitle)}}" class="google"
-                                            data-placement="top"
-                                            title="Google+"
-                                            target="_blank"><i class="fa fa-google-plus"></i></a>
+                                            <a href="{{ Helper::SocialShare("facebook", $PageTitle)}}" class="facebook zalo-share-button" data-placement="top" title="Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a href="{{ Helper::SocialShare("google", $PageTitle)}}" class="google" data-placement="top" title="Google+">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
                                         </li>
                                         
                                     </ul>

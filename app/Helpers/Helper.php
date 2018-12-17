@@ -321,6 +321,9 @@ class Helper
             case "tumblr":
                 $shareLink = "http://www.tumblr.com/share/link?url=" . urlencode($URL);
                 break;
+            case "zalo":
+                $shareLink = urlencode($URL);
+                break;
         }
 
         Return $shareLink;
