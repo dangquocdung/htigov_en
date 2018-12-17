@@ -664,12 +664,6 @@
                                         </li> --}}
 
                                         <li>
-                                            <a href="{{ Helper::SocialShare("zalo", $PageTitle)}}" class="facebook"
-                                            data-placement="top"
-                                            title="Zalo" target="_blank"><i class="fa fa-facebook"></i></a>
-                                        </li>
-
-                                        <li>
                                             <a href="{{ Helper::SocialShare("facebook", $PageTitle)}}" class="facebook"
                                             data-placement="top"
                                             title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
