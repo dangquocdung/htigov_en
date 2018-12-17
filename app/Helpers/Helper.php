@@ -321,6 +321,9 @@ class Helper
             case "tumblr":
                 $shareLink = "http://www.tumblr.com/share/link?url=" . urlencode($URL);
                 break;
+            case "zalo":
+                $shareLink = "https://sp.zalo.me/plugins/share?dev=null&color=blue&oaid=54156375982830930462&href=http%3A%2F%2Fdevelopers.zalo.me&layout=2&customize=false&callback=null&id=3a1962eb-d203-48bd-b21e-b5b4adb4ecb0&domain=www.hatinh.gov.vn&android=false&ios=false";
+                break;
         }
 
         Return $shareLink;

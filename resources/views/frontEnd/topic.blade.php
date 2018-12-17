@@ -662,8 +662,11 @@
                                             data-placement="top"
                                             title="Đọc tin"><i class="fa fa-play-circle-o"></i></a>
                                         </li> --}}
+
                                         <li>
-                                            <div class="zalo-share-button" data-href="http://developers.zalo.me" data-oaid="54156375982830930462" data-layout="2" data-color="blue" data-customize=false></div>
+                                            <a href="{{ Helper::SocialShare("zalo", $PageTitle)}}" class="facebook"
+                                            data-placement="top"
+                                            title="Zalo" target="_blank"><i class="fa fa-facebook"></i></a>
                                         </li>
 
                                         <li>
