@@ -117,7 +117,7 @@
    
 </div>
 
-<div class="zalo-follow-only-button" data-oaid="2647979863534365584" data-customize=false></div>
+{{--  <div class="zalo-follow-only-button" data-oaid="2647979863534365584" data-customize=false></div>  --}}
 
 @if (!empty($SideBanners))
     
