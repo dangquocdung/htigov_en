@@ -663,7 +663,7 @@
                                             title="Đọc tin"><i class="fa fa-play-circle-o"></i></a>
                                         </li> --}}
                                         <li>
-                                            <a class="twitter zalo-share-button" data-href="{{ Helper::SocialShare("zalo", $PageTitle)}}" data-oaid="4156375982830930462" data-layout="2" data-color="blue" data-customize=true data-placement="top" title="Zalo" style="cursor: pointer;">
+                                            <a class="twitter zalo-share-button" data-href="{{ Helper::SocialShare("zalo", $PageTitle)}}" data-oaid="2647979863534365584" data-layout="2" data-color="blue" data-customize=true data-placement="top" title="Zalo" style="cursor: pointer;">
                                                 Z
                                             </a>
                                         </li>
