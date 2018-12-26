@@ -98,8 +98,8 @@ class FrontendHomeController extends Controller
         //Side Banner
         $SideBanners = Banner::where('section_id', $WebmasterSettings->side_banners_section_id)->where('status',1)->orderby('row_no', 'asc')->get();
 
-        $Visitors = AnalyticsVisitor::count();
-        $Pages = AnalyticsPage::count();
+        $Visitors = AnalyticsVisitor::count() + 10111981;
+        $Pages = AnalyticsPage::count() + 26122018;
         
         $TodayVisitors = AnalyticsVisitor::where('date', date('Y-m-d'))->count();
         $TodayPages = AnalyticsPage::where('date', date('Y-m-d'))->count();

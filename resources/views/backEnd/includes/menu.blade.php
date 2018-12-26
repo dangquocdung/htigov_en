@@ -33,52 +33,6 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
                             <span class="nav-text">{{ trans('backLang.dashboard') }}</span>
                         </a>
                     </li>
-                    @if(Helper::GeneralWebmasterSettings("settings_status"))
-                        @if(@Auth::user()->permissionsGroup->settings_status)
-                            <?php
-                                $currentFolder = "rssfeeds"; // Put folder name here
-                                $PathCurrentFolder = substr($urlAfterRoot, 0, strlen($currentFolder));
-                            ?>
-                            <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
-                                <a>
-                                    <span class="nav-caret">
-                                        <i class="fa fa-caret-down"></i>
-                                    </span>
-                                    <span class="nav-icon">
-                                        <i class="material-icons">&#xe307;</i>
-                                    </span>
-                                    <span class="nav-text">Lấy dữ liệu đặc tả</span>
-                                </a>
-                                <ul class="nav-sub">
-                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
-                                        <a href="{{ route('curl-bht') }}">
-                                            <span class="nav-text">{{ trans('backLang.curlBHT') }}</span>
-                                        </a>
-                                    </li>
-
-                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
-                                        <a href="{{ route('curl-bcp') }}">
-                                            <span class="nav-text">{{ trans('backLang.curlBCP') }}</span>
-                                        </a>
-                                    </li>
-
-                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
-                                        <a href="{{ route('curl-cb') }}">
-                                            <span class="nav-text">Công báo</span>
-                                        </a>
-                                    </li>
-
-                                    <li {{ ($PathCurrentFolder==$currentFolder) ? 'class=active' : '' }}>
-                                        <a href="{{ route('curl-dhtn') }}">
-                                            <span class="nav-text">Chỉ đạo, điều hành</span>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                        @endif
-                    @endif
-
                     
 
                     @if(Helper::GeneralWebmasterSettings("analytics_status"))
