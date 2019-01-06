@@ -82,15 +82,40 @@
 
     <div class="clearfix"></div>
 
-    <div id="thoi-tiet-ha-tinh" class="panel-collapse collapse in">
-        <a href="http://www.nchmf.gov.vn/web/vi-VN/62/20/28/map/Default.aspx" target="_blank">
+    {{--  <div id="thoi-tiet-ha-tinh" class="panel-collapse collapse in">
+       
             <div style="padding: 5px 15px">
 
                 <div id="thoi-tiet" class="thoi-tiet"></div>
+               
             </div>
 
         </a>
-    </div>
+    </div>  --}}
+
+    <a href="http://www.nchmf.gov.vn/web/vi-VN/62/20/28/map/Default.aspx" target="_blank">
+
+        <div class="box-banner" style="text-align:center">
+
+            <div style="padding: 5px 15px">
+
+                <table style="text-align:left; font-size:0.9em; margin-bottom: 5px;">
+                    <tr>
+                        <td>Nhiệt độ: &emsp;</td>
+                        <th>{{ round(intval($ThoiTiet->main->temp) - 273.15) }}&#8451;</th>
+                    </tr>
+                    <tr>
+                        <td>Độ ẩm: &emsp;</td>
+                        <th>{{ $ThoiTiet->main->humidity }}%</th>
+                    </tr>
+                    <tr>
+                        <td>Tốc độ gió: &emsp;</td>
+                        <th>{{ floatval($ThoiTiet->wind->speed)*1.852 }} km/h</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </a>
 
 </div>
 

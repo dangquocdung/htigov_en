@@ -25,6 +25,7 @@ use App\WebmasterSection;
 use App\WebmasterSetting;
 use Illuminate\Http\Request;
 use Mail;
+use GuzzleHttp\Client;
 
 class FrontendHomeController extends Controller
 {
@@ -104,6 +105,14 @@ class FrontendHomeController extends Controller
         $TodayVisitors = AnalyticsVisitor::where('date', date('Y-m-d'))->count();
         $TodayPages = AnalyticsPage::where('date', date('Y-m-d'))->count();
 
+        $client = new Client();
+        $res = $client->request('GET', 'https://api.openweathermap.org/data/2.5/weather?id=1581047&appid=1c50a74fcf27da204b98f898dd557341');
+        $ThoiTiet = json_decode( $res->getBody());
+
+        // return response()->json($ThoiTiet,200);
+        
+
+
         view()->share('WebmasterSettings',$WebmasterSettings);
         view()->share('WebsiteSettings',$WebsiteSettings);
         view()->share('HeaderMenuLinks',$HeaderMenuLinks);
@@ -116,6 +125,8 @@ class FrontendHomeController extends Controller
         view()->share('Pages',$Pages);
         view()->share('TodayVisitors',$TodayVisitors);
         view()->share('TodayPages',$TodayPages);
+
+        view()->share('ThoiTiet',$ThoiTiet);
     }
 
     /**
@@ -361,6 +372,15 @@ class FrontendHomeController extends Controller
         $PageTitle = ""; // will show default site Title
         $PageDescription = $WebsiteSettings->$site_desc_var;
         $PageKeywords = $WebsiteSettings->$site_keywords_var;
+
+        
+
+       
+
+
+        // '{"id": 1420053, "name": "guzzle", ...}'
+
+        
 
         return view("frontEnd.home",
             compact("WebsiteSettings",

@@ -951,3 +951,71 @@ object{
   display: none;
   z-index: 1000;
 }
+
+/*--
+    Youtube Video PlayList
+-----------------------------------------*/
+.RYPP {
+  padding: 18px 18px 350px 18px;
+  // @media #{$large-mobile}{
+  //     padding-bottom: 18px;
+  // }
+  & .RYPP-video {
+      & .RYPP-video-player {}
+  }
+  & .RYPP-playlist {
+      bottom: 18px;
+      height: 314px;
+      left: 18px;
+      right: 18px;
+      top: auto;
+      overflow: hidden;
+      width: auto;
+      // @media #{$large-mobile}{
+      //     margin-top: 18px;
+      //     position: relative;
+      //     left: 0;
+      //     right: 0;
+      //     bottom: 0;
+      //     top: 0;
+      // }
+      & .RYPP-items {
+          top: 0;
+          & ol {
+              display: flex;
+              flex-wrap: wrap;
+              float: left;
+              padding: 0;
+              width: 100%;
+              & li {
+                  width: 50%;
+                  float: left;
+                  border-right: 1px solid #222;
+                  border-bottom: 1px solid #222;
+                  // @media #{$large-mobile}{
+                  //     width: 100%;
+                  // }
+                  &:nth-child(2n+1) {
+                      clear: both;
+                  }
+                  &:nth-child(2n) {
+                      border-right-color: transparent;
+                  }
+                  &::before {
+                      font-size: 100%;
+                      margin-right: 5px;
+                  }
+              }
+          }
+      }
+      & .nicescroll-rails-vr {
+          left: auto !important;
+          width: 3px !important;
+          right: 0;
+          & .nicescroll-cursors {
+              border-color: transparent!important;
+              background-color: red !important;
+          }
+      }
+  }
+}

@@ -1680,6 +1680,70 @@ object p {
   z-index: 1000;
 }
 
+/*--
+    Youtube Video PlayList
+-----------------------------------------*/
+
+.RYPP {
+  padding: 18px 18px 350px 18px;
+}
+
+.RYPP .RYPP-playlist {
+  bottom: 18px;
+  height: 314px;
+  left: 18px;
+  right: 18px;
+  top: auto;
+  overflow: hidden;
+  width: auto;
+}
+
+.RYPP .RYPP-playlist .RYPP-items {
+  top: 0;
+}
+
+.RYPP .RYPP-playlist .RYPP-items ol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  float: left;
+  padding: 0;
+  width: 100%;
+}
+
+.RYPP .RYPP-playlist .RYPP-items ol li {
+  width: 50%;
+  float: left;
+  border-right: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+.RYPP .RYPP-playlist .RYPP-items ol li:nth-child(2n+1) {
+  clear: both;
+}
+
+.RYPP .RYPP-playlist .RYPP-items ol li:nth-child(2n) {
+  border-right-color: transparent;
+}
+
+.RYPP .RYPP-playlist .RYPP-items ol li::before {
+  font-size: 100%;
+  margin-right: 5px;
+}
+
+.RYPP .RYPP-playlist .nicescroll-rails-vr {
+  left: auto !important;
+  width: 3px !important;
+  right: 0;
+}
+
+.RYPP .RYPP-playlist .nicescroll-rails-vr .nicescroll-cursors {
+  border-color: transparent !important;
+  background-color: red !important;
+}
+
 .right-box {
   margin-top: 2px !important;
   padding-left: 5px;
