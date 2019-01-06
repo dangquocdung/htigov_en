@@ -38,9 +38,9 @@ $urlAfterRoot = substr($fullPagePath, strpos($fullPagePath, env('BACKEND_PATH'))
 
     @include('frontEnd.home.menu-main')
 
-    {{--  <div class="clearfix"></div>  --}}
+    <div class="clearfix"></div>
 
-    {{--  @include('frontEnd.includes.youtube')  --}}
+    @include('frontEnd.includes.youtube')
 
     <div class="clearfix"></div>
     
