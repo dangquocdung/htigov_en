@@ -110,7 +110,7 @@
                     </tr>
                     <tr>
                         <td>Tốc độ gió: &emsp;</td>
-                        <th>{{ floatval($ThoiTiet->wind->speed)*1.852 }} km/h</th>
+                        <th>{{ round(floatval($ThoiTiet->wind->speed)*1.852) }} km/h</th>
                     </tr>
                 </table>
             </div>
