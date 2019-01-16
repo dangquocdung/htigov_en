@@ -24,7 +24,7 @@
 
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    @foreach($WebmasterBanners as $WebmasterBanner)
+                    @foreach($WebmasterBanners as $key=>$WebmasterBanner)
                         <div class="to-chuc tab-pane fade in {{ ($key==0 )? "active":""}}" id="{{ $WebmasterBanner->id }}">
                             <ul>
                                 @foreach($WebmasterBanner->banners as $banner)
