@@ -20,6 +20,7 @@ use App\Setting;
 use App\Topic;
 use App\TopicCategory;
 use App\User;
+use App\WebmasterBanner;
 use App\Webmail;
 use App\WebmasterSection;
 use App\WebmasterSetting;
@@ -269,7 +270,7 @@ class FrontendHomeController extends Controller
 
         $MainMenuLinks = Menu::where('father_id', $WebmasterSettings->main_menu_id)->where('status',1)->orderby('row_no','asc')->get();
         
-        $OrganMenuLinks = Menu::where('father_id', $WebmasterSettings->organ_menu_id)->where('status',1)->orderby('row_no','asc')->get();
+        $WebmasterBanners = WebmasterBanner::whereIn('id',[9,10,11,12] )->orderby('id','asc')->get();
         
         $FooterMenuLinks_father = Menu::find($WebmasterSettings->footer_menu_id);
         $FooterMenuLinks_name_vi = "";
@@ -386,7 +387,7 @@ class FrontendHomeController extends Controller
             compact("WebsiteSettings",
                 "WebmasterSettings",
                 "MainMenuLinks",
-                "OrganMenuLinks",
+                "WebmasterBanners",
                 "SliderBanners",
                 "TextBanners",
                 "BlockBanners",
