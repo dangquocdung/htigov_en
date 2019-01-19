@@ -69,7 +69,7 @@
                                     <label>{!!  trans('backLang.metaDescription') !!}
                                         @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.arabicBox') !!}@endif
                                     </label>
-                                    {!! Form::textarea('site_desc_vi',$Setting->site_desc_ar, array('placeholder' => trans('backLang.metaDescription'),'class' => 'form-control', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
+                                    {!! Form::textarea('site_desc_vi',$Setting->site_desc_vi, array('placeholder' => trans('backLang.metaDescription'),'class' => 'form-control', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
                                 </div>
                             @endif
                             @if(Helper::GeneralWebmasterSettings("en_box_status"))
@@ -85,7 +85,7 @@
                                     <label>{!!  trans('backLang.metaKeywords') !!}
                                         @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.arabicBox') !!}@endif
                                     </label>
-                                    {!! Form::textarea('site_keywords_vi',$Setting->site_keywords_ar, array('placeholder' => trans('backLang.metaKeywords'),'class' => 'form-control', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
+                                    {!! Form::textarea('site_keywords_vi',$Setting->site_keywords_vi, array('placeholder' => trans('backLang.metaKeywords'),'class' => 'form-control', 'dir'=>trans('backLang.rtl'),'rows'=>'2')) !!}
                                 </div>
                             @endif
                             @if(Helper::GeneralWebmasterSettings("en_box_status"))
@@ -187,7 +187,7 @@
                                     <label>{!!  trans('backLang.contactAddress') !!}
                                         @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.arabicBox') !!}@endif
                                     </label>
-                                    {!! Form::text('contact_t1_vi',$Setting->contact_t1_ar, array('placeholder' => trans('backLang.contactAddress'),'class' => 'form-control', 'dir'=>trans('backLang.rtl'))) !!}
+                                    {!! Form::text('contact_t1_vi',$Setting->contact_t1_vi, array('placeholder' => trans('backLang.contactAddress'),'class' => 'form-control', 'dir'=>trans('backLang.rtl'))) !!}
                                 </div>
                             @endif
                             @if(Helper::GeneralWebmasterSettings("en_box_status"))
@@ -219,7 +219,7 @@
                                     <label>{!!  trans('backLang.worksTime') !!}
                                         @if(Helper::GeneralWebmasterSettings("vi_box_status") && Helper::GeneralWebmasterSettings("en_box_status")){!!  trans('backLang.arabicBox') !!}@endif
                                     </label>
-                                    {!! Form::text('contact_t7_vi',$Setting->contact_t7_ar, array('placeholder' => trans('backLang.worksTime'),'class' => 'form-control', 'dir'=>trans('backLang.rtl'))) !!}
+                                    {!! Form::text('contact_t7_vi',$Setting->contact_t7_vi, array('placeholder' => trans('backLang.worksTime'),'class' => 'form-control', 'dir'=>trans('backLang.rtl'))) !!}
                                 </div>
                             @endif
                             @if(Helper::GeneralWebmasterSettings("en_box_status"))
@@ -348,7 +348,7 @@
                                                         <a target="_blank"
                                                            href="{{ URL::to('uploads/settings/'.$Setting->style_logo_vi) }}"><img
                                                                     src="{{ URL::to('uploads/settings/'.$Setting->style_logo_vi) }}"
-                                                                    class="img-responsive" id="style_logo_ar_prv"
+                                                                    class="img-responsive" id="style_logo_vi_prv"
                                                                     style="width: auto;max-width: 260px;max-height: 60px">
                                                             <br>
                                                             <small>{{ $Setting->style_logo_vi }}</small>
@@ -362,7 +362,7 @@
                                                     <div class="col-sm-12 box p-a-xs text-center">
                                                         <img
                                                                 src="{{ URL::to('uploads/settings/nologo.png') }}"
-                                                                class="img-responsive" id="style_logo_ar_prv"
+                                                                class="img-responsive" id="style_logo_vi_prv"
                                                                 style="width: auto;max-width: 260px;max-height: 60px">
                                                         <br>
                                                         <small>nologo.png</small>
@@ -836,7 +836,7 @@
         }
 
         $("#style_logo_vi").change(function () {
-            readURL(this, "style_logo_ar_prv");
+            readURL(this, "style_logo_vi_prv");
         });
 
         $("#style_logo_en").change(function () {

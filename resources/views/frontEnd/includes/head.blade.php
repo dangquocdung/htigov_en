@@ -3,7 +3,7 @@
 <meta name="description" content="{{$PageDescription}}"/>
 <meta name="keywords" content="{{$PageKeywords}}"/>
 <meta name="keywords" content="Ha Tinh, Tin Ha Tinh, Tin tuc Ha Tinh, Ha Tinh 24h, Thoi su Ha Tinh, Cong thong tin Ha Tinh, Ha Tinh Portal"/>
-<meta name="author" content="Dang Quoc Dung"/>
+<meta name="author" content="Dang Quoc Dung, Dung Thinh Software, dungthinh.com"/>
 <base href="{{asset('')}}">
 @yield('meta')
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
