@@ -29,13 +29,15 @@
                 @if(trans('backLang.code')=="vi")
                     <a href="{{ URL::to('lang/en') }}" title="{{ str_replace("[ ","",str_replace(" ]","",strip_tags(trans('backLang.englishBox')))) }}">
                         <span>
-                            <i class="fa fa-language "></i>
+                            <img src="https://thuathienhue.gov.vn/images/Flags/en-US.gif" alt="English">
+                            {{-- <i class="fa fa-language "></i> --}}
                         </span>
                     </a>
                 @else
                     <a href="{{ URL::to('lang/vi') }}" title="{{ str_replace("[ ","",str_replace(" ]","",strip_tags(trans('backLang.arabicBox')))) }}">
                         <span>
-                            <i class="fa fa-language "></i> 
+                            <img src="https://thuathienhue.gov.vn/images/Flags/vi-VN.gif" alt="Tiếng Việt">
+                            {{-- <i class="fa fa-language "></i>  --}}
                         </span>
                     </a>
                 @endif
