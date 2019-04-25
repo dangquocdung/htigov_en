@@ -171,7 +171,7 @@
                                         <a href="{{ URL::to('uploads/topics/'.$photo->file) }}" data-sub-html="{{ $photo->description  }}">
                                             <img class="img-responsive" src="{{ URL::to('uploads/topics/'.$photo->file) }}" />
                                             <div class="demo-gallery-poster">
-                                                <img src="/tinht/img/zoom.png">
+                                                <img src="/frontEnd/img/zoom.png">
                                             </div>
                                         </a>
                                         @endforeach
