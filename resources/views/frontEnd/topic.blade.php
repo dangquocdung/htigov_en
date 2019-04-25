@@ -112,7 +112,7 @@
                                     </div>
                         
                                     <div class="news_utility_font">
-                                        <span>Xem cỡ chữ</span>
+                                        <span>Cỡ chữ</span>
                                         <a href="javscript:void(0)" class="increaseFont">
                                             <i class="fa fa-font" style="font-size:24px;color:blue"></i>
                                         </a>
