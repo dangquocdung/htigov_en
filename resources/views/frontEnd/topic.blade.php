@@ -164,24 +164,7 @@
                                 </div>
 
                             @elseif(count($Topic->photos)>0)
-                                <div class="demo-gallery">
-
-                                    <div id="aniimated-thumbnials" class="list-unstyled justified-gallery">
-                                        @foreach($Topic->photos as $photo)
-                                        <a href="{{ URL::to('uploads/topics/'.$photo->file) }}" data-sub-html="{{ $photo->description  }}">
-                                            <img class="img-responsive" src="{{ URL::to('uploads/topics/'.$photo->file) }}" />
-                                            <div class="demo-gallery-poster">
-                                                <img src="/frontEnd/img/zoom.png">
-                                            </div>
-                                        </a>
-                                        @endforeach
-                                        
-                                    </div>
-                                        
-                                        
-                                </div>
-
-                                <div class="clearfix"></div>
+                                
                                 {{--photo slider--}}
                                 <div class="post-slider">
                                     <div class="post-heading">
@@ -300,6 +283,26 @@
                                         </div>
                                     </div>
                                     <script type="text/javascript">jssor_2_slider_init();</script>
+
+                                    <div class="clearfix"></div>
+                                    <div class="demo-gallery">
+
+                                        <div id="aniimated-thumbnials" class="list-unstyled justified-gallery">
+                                            @foreach($Topic->photos as $photo)
+                                            <a href="{{ URL::to('uploads/topics/'.$photo->file) }}" data-sub-html="{{ $photo->description  }}">
+                                                <img class="img-responsive" src="{{ URL::to('uploads/topics/'.$photo->file) }}" />
+                                                <div class="demo-gallery-poster">
+                                                    <img src="/frontEnd/img/zoom.png">
+                                                </div>
+                                            </a>
+                                            @endforeach
+                                            
+                                        </div>
+                                            
+                                            
+                                    </div>
+    
+                                    <div class="clearfix"></div>
                                 </div>
 
                             @else
