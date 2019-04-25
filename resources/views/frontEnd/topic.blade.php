@@ -307,7 +307,7 @@
                             @else
                                 {{--one photo--}}
                                 <div class="post-image">
-                                    <div class="post-heading noi-dung-doc">
+                                    <div class="post-heading">
                                         <h3>
                                             @if($Topic->icon !="")
                                                 <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
@@ -1001,6 +1001,79 @@
    
 @stop
 
+@section('js')
+
+    @if(count($Topic->photos)>0)
+    
+        <script src="/frontEnd/js/prettify.js"></script>
+        <script src="/frontEnd/js/jquery.justifiedGallery.min.js"></script>
+        <script src="/frontEnd/js/transition.js"></script>
+        <script src="/frontEnd/js/collapse.js"></script>
+        <script src="/frontEnd/js/lightgallery.js"></script>
+        <script src="/frontEnd/js/lg-fullscreen.js"></script>
+        <script src="/frontEnd/js/lg-thumbnail.js"></script>
+        <script src="/frontEnd/js/lg-video.js"></script>
+        <script src="/frontEnd/js/lg-autoplay.js"></script>
+        <script src="/frontEnd/js/lg-zoom.js"></script>
+        <script src="/frontEnd/js/jquery.mousewheel.min.js"></script>
+        <script src="/frontEnd/js/demos.js"></script>
+
+    @endif
+
+    <script src="//code.responsivevoice.org/responsivevoice.js?key=051jHusS"></script>
+    
+    <script>
+
+        $("#btnVoice").click(function () {
+            var text = $(".noi-dung-doc").text();
+            responsiveVoice.speak(text, "Vietnamese Male");
+
+        });
+        $("#btnVoicePause").click(function () {
+            //var text = $(".news_list_detail").text();
+            //responsiveVoice.speak(text, "Vietnamese Male");
+            responsiveVoice.pause();
+
+        });
+        $("#btnVoiceResume").click(function () {
+            //var text = $(".news_list_detail").text();
+            //responsiveVoice.speak(text, "Vietnamese Male");
+            responsiveVoice.resume();
+
+        });
+
+
+        // Reset Font Size
+        var originalFontSize = $('.noi-dung-doc').css('font-size');
+
+        $(".resetFont").click(function () {
+            $('.noi-dung-doc').css('font-size', 14);
+        });      
+
+        // Increase Font Size
+        $(".increaseFont").click(function () {
+            var currentFontSize = $('.noi-dung-doc').css('font-size');
+            var currentFontSizeNum = parseFloat(currentFontSize, 10);
+            var newFontSize = currentFontSizeNum * 1.2;
+            $('.noi-dung-doc').css('font-size', newFontSize);
+            return false;
+        }); 
+
+        // Decrease Font Size
+        $(".decreaseFont").click(function () {
+            var currentFontSize = $('.noi-dung-doc').css('font-size');
+            var currentFontSizeNum = parseFloat(currentFontSize, 10);
+            var newFontSize = currentFontSizeNum * 0.8;
+            $('.noi-dung-doc').css('font-size', newFontSize);
+
+            return false;
+        });
+
+
+    </script>
+    
+@stop
+
 @section('footerInclude')
     <script type="text/javascript"> 
         $(document).ready(function($){
@@ -1013,69 +1086,9 @@
         
         });
     </script>
-    @if(count($Topic->maps) >0)
-        @foreach($Topic->maps->slice(0,1) as $map)
-            <?php
-            $MapCenter = $map->longitude . "," . $map->latitude;
-            ?>
-        @endforeach
-        <?php
-        $map_title_var = "title_" . trans('backLang.boxCode');
-        $map_details_var = "details_" . trans('backLang.boxCode');
-        ?>
-        <script type="text/javascript"
-                src="http://maps.google.com/maps/api/js?key=AIzaSyAgzruFTTvea0LEmw_jAqknqskKDuJK7dM"></script>
-
-        <script type="text/javascript">
-            // var iconURLPrefix = 'http://maps.google.com/mapfiles/ms/icons/';
-            var iconURLPrefix = "{{ URL::to('backEnd/assets/images/')."/" }}";
-            var icons = [
-                iconURLPrefix + 'marker_0.png',
-                iconURLPrefix + 'marker_1.png',
-                iconURLPrefix + 'marker_2.png',
-                iconURLPrefix + 'marker_3.png',
-                iconURLPrefix + 'marker_4.png',
-                iconURLPrefix + 'marker_5.png',
-                iconURLPrefix + 'marker_6.png'
-            ]
-
-            var locations = [
-                    @foreach($Topic->maps as $map)
-                ['<?php echo "<strong>" . $map->$map_title_var . "</strong>" . "<br>" . $map->$map_details_var; ?>', <?php echo $map->longitude; ?>, <?php echo $map->latitude; ?>, <?php echo $map->id; ?>, <?php echo $map->icon; ?>],
-                @endforeach
-            ];
-
-            var map = new google.maps.Map(document.getElementById('google-map'), {
-                zoom: 6,
-                draggable: false,
-                scrollwheel: false,
-                center: new google.maps.LatLng(<?php echo $MapCenter; ?>),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-
-            var infowindow = new google.maps.InfoWindow();
-
-            var marker, i;
-
-            for (i = 0; i < locations.length; i++) {
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                    icon: icons[locations[i][4]],
-                    map: map
-                });
-
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function () {
-                        infowindow.setContent(locations[i][0]);
-                        infowindow.open(map, marker);
-                    }
-                })(marker, i));
-            }
-        </script>
-    @endif
     <script type="text/javascript">
 
-        jQuery(document).ready(function ($) {
+        $(document).ready(function ($) {
             "use strict";
 
             @if($WebmasterSection->comments_status)
@@ -1288,77 +1301,4 @@
     </script>
 
 @stop
-
-@section('js')
-
-    @if(count($Topic->photos)>0)
-    
-        <script src="/frontEnd/js/prettify.js"></script>
-        <script src="/frontEnd/js/jquery.justifiedGallery.min.js"></script>
-        <script src="/frontEnd/js/transition.js"></script>
-        <script src="/frontEnd/js/collapse.js"></script>
-        <script src="/frontEnd/js/lightgallery.js"></script>
-        <script src="/frontEnd/js/lg-fullscreen.js"></script>
-        <script src="/frontEnd/js/lg-thumbnail.js"></script>
-        <script src="/frontEnd/js/lg-video.js"></script>
-        <script src="/frontEnd/js/lg-autoplay.js"></script>
-        <script src="/frontEnd/js/lg-zoom.js"></script>
-        <script src="/frontEnd/js/jquery.mousewheel.min.js"></script>
-        <script src="/frontEnd/js/demos.js"></script>
-
-    @endif
-
-    <script src="//code.responsivevoice.org/responsivevoice.js?key=051jHusS"></script>
-    
-    <script>
-
-        $("#btnVoice").click(function () {
-            var text = $(".noi-dung-doc").text();
-            responsiveVoice.speak(text, "Vietnamese Male");
-
-        });
-        $("#btnVoicePause").click(function () {
-            //var text = $(".news_list_detail").text();
-            //responsiveVoice.speak(text, "Vietnamese Male");
-            responsiveVoice.pause();
-
-        });
-        $("#btnVoiceResume").click(function () {
-            //var text = $(".news_list_detail").text();
-            //responsiveVoice.speak(text, "Vietnamese Male");
-            responsiveVoice.resume();
-
-        });
-
-
-        // Reset Font Size
-        var originalFontSize = $('.noi-dung-doc').css('font-size');
-
-        $(".resetFont").click(function () {
-            $('.noi-dung-doc').css('font-size', 14);
-        });      
-
-        // Increase Font Size
-        $(".increaseFont").click(function () {
-            var currentFontSize = $('.noi-dung-doc').css('font-size');
-            var currentFontSizeNum = parseFloat(currentFontSize, 10);
-            var newFontSize = currentFontSizeNum * 1.2;
-            $('.noi-dung-doc').css('font-size', newFontSize);
-            return false;
-        }); 
-
-        // Decrease Font Size
-        $(".decreaseFont").click(function () {
-            var currentFontSize = $('.noi-dung-doc').css('font-size');
-            var currentFontSizeNum = parseFloat(currentFontSize, 10);
-            var newFontSize = currentFontSizeNum * 0.8;
-            $('.noi-dung-doc').css('font-size', newFontSize);
-
-            return false;
-        });
-
-
-    </script>
-    
-@endsection
 
