@@ -89,17 +89,46 @@
 
                     <div class="col-md-12">
                         <article>
+                            <div class="post-image">
+                                <div class="post-heading noi-dung-doc">
+                                    <h3>
+                                        @if($Topic->icon !="")
+                                            <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
+                                        @endif
+                                        {{ $title }}
+                                    </h3>
+                                </div>
+                                {{--  @if($Topic->photo_file !="")
+                                    <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"
+                                        alt="{{ $title }}" title="{{ $title }}"/>
+                                @endif  --}}
+
+                                <div class="mb-2">
+
+                                    <div class="news_utility_voice" style="vertical-align:top;float:right;">&nbsp;&nbsp;
+                                        <button ID="btnVoice" type="button" ><i class="fa fa-volume-up white"></i></button>
+                                        <button ID="btnVoicePause" type="button" ><i class="fa fa-pause white"></i></button>
+                                        <button ID="btnVoiceResume" type="button" ><i class="fa fa-forward white"></i></button>                             
+                                    </div>
+                        
+                                    <div class="news_utility_font">
+                                        <span>Xem cỡ chữ</span>
+                                        <a href="javscript:void(0)" class="increaseFont">
+                                            <i class="fa fa-font" style="font-size:24px;color:blue"></i>
+                                        </a>
+                                        <a href="javscript:void(0)" class="decreaseFont">
+                                            <i class="fa fa-font" style="font-size:12px;color:blue"></i>
+                                        </a>
+                                        <a href="javscript:void(0)" class="resetFont">
+                                            <i class="fa fa-font" style="font-size:16px;color:blue"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                             @if($WebmasterSection->type==2 && $Topic->video_file!="")
                                 {{--video--}}
                                 <div class="post-video">
-                                    <div class="post-heading">
-                                        <h3>
-                                            @if($Topic->icon !="")
-                                                <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
-                                            @endif
-                                            {{ $title }}
-                                        </h3>
-                                    </div>
+                                    
                                     <div class="video-container responsive-video">
                                         @if($Topic->video_type ==1)
                                             <?php
@@ -141,14 +170,7 @@
                             @elseif($WebmasterSection->type==3 && $Topic->audio_file!="")
                                 {{--audio--}}
                                 <div class="post-video">
-                                    <div class="post-heading">
-                                        <h3>
-                                            @if($Topic->icon !="")
-                                                <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
-                                            @endif
-                                            {{ $title }}
-                                        </h3>
-                                    </div>
+                                    
                                     @if($Topic->photo_file !="")
                                         <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"
                                             alt="{{ $title }}"/>
@@ -167,14 +189,7 @@
                                 
                                 {{--photo slider--}}
                                 <div class="post-slider">
-                                    <div class="post-heading">
-                                        <h3>
-                                            @if($Topic->icon !="")
-                                                <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
-                                            @endif
-                                            {{ $title }}
-                                        </h3>
-                                    </div>
+                                    
                                     <script type="text/javascript">
                                         jssor_2_slider_init = function() {
                                 
@@ -304,44 +319,8 @@
                                     </div>
                                 </div>
 
-                            @else
-                                {{--one photo--}}
-                                <div class="post-image">
-                                    <div class="post-heading">
-                                        <h3>
-                                            @if($Topic->icon !="")
-                                                <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
-                                            @endif
-                                            {{ $title }}
-                                        </h3>
-                                    </div>
-                                    {{--  @if($Topic->photo_file !="")
-                                        <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"
-                                            alt="{{ $title }}" title="{{ $title }}"/>
-                                    @endif  --}}
-
-                                    <div class="mb-2">
-
-                                        <div class="news_utility_voice" style="vertical-align:top;float:right;">&nbsp;&nbsp;
-                                            <button ID="btnVoice" type="button" ><i class="fa fa-volume-up white"></i></button>
-                                            <button ID="btnVoicePause" type="button" ><i class="fa fa-pause white"></i></button>
-                                            <button ID="btnVoiceResume" type="button" ><i class="fa fa-forward white"></i></button>                             
-                                        </div>
-                            
-                                        <div class="news_utility_font">
-                                            <span>Xem cỡ chữ</span>
-                                            <a href="javscript:void(0)" class="increaseFont">
-                                                <i class="fa fa-font" style="font-size:24px;color:blue"></i>
-                                            </a>
-                                            <a href="javscript:void(0)" class="decreaseFont">
-                                                <i class="fa fa-font" style="font-size:12px;color:blue"></i>
-                                            </a>
-                                            <a href="javscript:void(0)" class="resetFont">
-                                                <i class="fa fa-font" style="font-size:16px;color:blue"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                           
+                                
                             @endif
 
                             {{--Additional Feilds--}}
