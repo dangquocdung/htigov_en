@@ -16,7 +16,7 @@ class WebmasterSection extends Model
     public function topics()
     {
 
-        return $this->hasMany('App\Topic' , 'webmaster_id')->orderby('row_no', 'asc');
+        return $this->hasMany('App\Topic' , 'webmaster_id')->select(['id','title_vi','sapo','photo_file','seo_url_slug_vi','status','date','webmaster_id'])->orderby('id', 'desc');
     }
 
     public function menus()

@@ -294,7 +294,7 @@
                             @else
                                 {{--one photo--}}
                                 <div class="post-image">
-                                    <div class="post-heading">
+                                    <div class="post-heading noi-dung-doc">
                                         <h3>
                                             @if($Topic->icon !="")
                                                 <i class="fa {!! $Topic->icon !!} "></i>&nbsp;
@@ -306,6 +306,28 @@
                                         <img src="{{ URL::to('uploads/topics/'.$Topic->photo_file) }}"
                                             alt="{{ $title }}" title="{{ $title }}"/>
                                     @endif  --}}
+
+                                    <div class="mb-2">
+
+                                        <div class="news_utility_voice" style="vertical-align:top;float:right;">&nbsp;&nbsp;
+                                            <button ID="btnVoice" type="button" ><i class="fa fa-volume-up white"></i></button>
+                                            <button ID="btnVoicePause" type="button" ><i class="fa fa-pause white"></i></button>
+                                            <button ID="btnVoiceResume" type="button" ><i class="fa fa-forward white"></i></button>                             
+                                        </div>
+                            
+                                        <div class="news_utility_font">
+                                            <span>Xem cỡ chữ</span>
+                                            <a href="javscript:void(0)" class="increaseFont">
+                                                <i class="fa fa-font" style="font-size:24px;color:blue"></i>
+                                            </a>
+                                            <a href="javscript:void(0)" class="decreaseFont">
+                                                <i class="fa fa-font" style="font-size:12px;color:blue"></i>
+                                            </a>
+                                            <a href="javscript:void(0)" class="resetFont">
+                                                <i class="fa fa-font" style="font-size:16px;color:blue"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             @endif
 
@@ -552,7 +574,13 @@
                             @endif
                             {{--End of -- Additional Feilds--}}
 
-                            {!! $Topic->$details !!}
+                            <div class="noi-dung-doc">
+
+                                    {!! $Topic->$details !!}
+
+
+                            </div>
+
 
                             @if($Topic->attach_file !="")
                                 <?php
@@ -1246,4 +1274,78 @@
         });
     </script>
 
+@stop
+
+@section('js')
+
+    @if(count($Topic->photos)>0)
+    
+        <script src="/frontEnd/js/prettify.js"></script>
+        <script src="/frontEnd/js/$.justifiedGallery.min.js"></script>
+        <script src="/frontEnd/jstransition.js"></script>
+        <script src="/frontEnd/js/collapse.js"></script>
+        <script src="/frontEnd/js/lightgallery.js"></script>
+        <script src="/frontEnd/js/lg-fullscreen.js"></script>
+        <script src="/frontEnd/js/lg-thumbnail.js"></script>
+        <script src="/frontEnd/js/lg-video.js"></script>
+        <script src="/frontEnd/js/lg-autoplay.js"></script>
+        <script src="/frontEnd/js/lg-zoom.js"></script>
+        <script src="/frontEnd/js/$.mousewheel.min.js"></script>
+        <script src="/frontEnd/js/demos.js"></script>
+
+    @endif
+
+    <script src="//code.responsivevoice.org/responsivevoice.js?key=SRryeYTg"></script>
+
+    <script>
+
+        $("#btnVoice").click(function () {
+            var text = $(".noi-dung-doc").text();
+            responsiveVoice.speak(text, "Vietnamese Male");
+
+        });
+        $("#btnVoicePause").click(function () {
+            //var text = $(".news_list_detail").text();
+            //responsiveVoice.speak(text, "Vietnamese Male");
+            responsiveVoice.pause();
+
+        });
+        $("#btnVoiceResume").click(function () {
+            //var text = $(".news_list_detail").text();
+            //responsiveVoice.speak(text, "Vietnamese Male");
+            responsiveVoice.resume();
+
+        });
+
+
+        // Reset Font Size
+        var originalFontSize = $('.noi-dung-doc').css('font-size');
+
+        $(".resetFont").click(function () {
+            $('.noi-dung-doc').css('font-size', 14);
+        });      
+
+        // Increase Font Size
+        $(".increaseFont").click(function () {
+            var currentFontSize = $('.noi-dung-doc').css('font-size');
+            var currentFontSizeNum = parseFloat(currentFontSize, 10);
+            var newFontSize = currentFontSizeNum * 1.2;
+            $('.noi-dung-doc').css('font-size', newFontSize);
+            return false;
+        }); 
+
+        // Decrease Font Size
+        $(".decreaseFont").click(function () {
+            var currentFontSize = $('.noi-dung-doc').css('font-size');
+            var currentFontSizeNum = parseFloat(currentFontSize, 10);
+            var newFontSize = currentFontSizeNum * 0.8;
+            $('.noi-dung-doc').css('font-size', newFontSize);
+
+            return false;
+        });
+
+
+    </script>
+    
 @endsection
+
