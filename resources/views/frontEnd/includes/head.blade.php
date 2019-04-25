@@ -15,6 +15,7 @@
 <link href="{{ URL::asset('frontEnd/css/flexslider.css') }}" rel="stylesheet"/>
 <link href="{{ URL::asset('frontEnd/css/adminlte.min.css') }}" rel="stylesheet"/>
 <link href="{{ URL::asset('frontEnd/css/rypp.css') }}" rel="stylesheet"/>
+@yield('css')
 <link rel="stylesheet" href="{{ mix('frontEnd/css/app.css') }}">
 
 <!-- Favicon and Touch Icons -->

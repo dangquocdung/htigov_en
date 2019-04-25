@@ -16,6 +16,18 @@
 <meta property="og:image:alt" content="{{$Topic->title_vi}}" />
 @stop
 
+@section('css')
+
+    @if(count($Topic->photos)>0)
+
+        <link href="/frontEnd/css/main.css" rel="stylesheet">
+        <link href="/frontEnd/css/justifiedGallery.min.css" rel="stylesheet">
+        <link href="/frontEnd/css/lightgallery.css" rel="stylesheet">
+
+    @endif
+    
+@endsection
+
 @section('content')
     <?php
         $title_var = "title_" . trans('backLang.boxCode');
@@ -152,6 +164,24 @@
                                 </div>
 
                             @elseif(count($Topic->photos)>0)
+                                <div class="demo-gallery">
+
+                                    <div id="aniimated-thumbnials" class="list-unstyled justified-gallery">
+                                        @foreach($Topic->photos as $photo)
+                                        <a href="{{ URL::to('uploads/topics/'.$photo->file) }}" data-sub-html="{{ $photo->description  }}">
+                                            <img class="img-responsive" src="{{ URL::to('uploads/topics/'.$photo->file) }}" />
+                                            <div class="demo-gallery-poster">
+                                                <img src="/tinht/img/zoom.png">
+                                            </div>
+                                        </a>
+                                        @endforeach
+                                        
+                                    </div>
+                                        
+                                        
+                                </div>
+
+                                <div class="clearfix"></div>
                                 {{--photo slider--}}
                                 <div class="post-slider">
                                     <div class="post-heading">
