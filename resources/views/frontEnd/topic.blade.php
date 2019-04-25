@@ -285,6 +285,7 @@
                                     <script type="text/javascript">jssor_2_slider_init();</script>
 
                                     <div class="clearfix"></div>
+                                    <br>
                                     <div class="demo-gallery">
 
                                         <div id="aniimated-thumbnials" class="list-unstyled justified-gallery">
@@ -301,8 +302,6 @@
                                             
                                             
                                     </div>
-    
-                                    <div class="clearfix"></div>
                                 </div>
 
                             @else
