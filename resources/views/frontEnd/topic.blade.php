@@ -1295,8 +1295,8 @@
 
     @endif
 
-    <script src="//code.responsivevoice.org/responsivevoice.js?key=SRryeYTg"></script>
-
+    <script src="//code.responsivevoice.org/responsivevoice.js?key=051jHusS"></script>
+    
     <script>
 
         $("#btnVoice").click(function () {
