@@ -434,6 +434,12 @@ ul.cat li .active {
   padding-right: 9px;
 }
 
+#side-menu span i {
+  font-size: 25px !important;
+  padding-top: 8px !important;
+  padding-right: 8px;
+}
+
 #side-menu ul#navigation li {
   width: 100px;
   text-align: right;
