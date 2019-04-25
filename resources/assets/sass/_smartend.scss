@@ -1,4 +1,9 @@
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Open Sans', Arial, sans-serif;
     font-weight: 700;
     line-height: 1.1em;
@@ -8,37 +13,29 @@ h1, h2, h3, h4, h5, h6 {
 
 article {
     margin-bottom: 10px;
-
-    .post-image{
-
+    .post-image {
         .post-heading h4 {
             margin-bottom: 20px;
             text-align: center;
             line-height: 1.4;
-    
             a {
                 font-weight: 700;
                 color: #353535;
-    
                 &_:hover {
                     text-decoration: none;
                 }
             }
-    
         }
-    
-        img{
+        img {
             width: 100% !important;
             max-height: 220px;
         }
-
     }
-
-    p{
+    p {
         text-align: justify;
     }
-
 }
+
 
 /* --- box --- */
 
@@ -51,7 +48,8 @@ article {
     padding: 20px 20px 30px;
 }
 
-.box-gray h4, .box-gray i {
+.box-gray h4,
+.box-gray i {
     margin-bottom: 20px;
 }
 
@@ -72,7 +70,9 @@ article {
     text-decoration: none;
 }
 
+
 /* --- single post --- */
+
 .bottom-article {
     overflow: hidden;
     border: 1px solid #ececec;
@@ -81,7 +81,9 @@ article {
     background: #f5f5f5;
 }
 
+
 /* --- post meta --- */
+
 .post-meta {
     background: #fcfcfc;
     border: 1px solid #e6e6e6;
@@ -123,6 +125,7 @@ article {
 .post-meta .comments a:hover {
     text-decoration: none;
 }
+
 
 /* --- post format --- */
 
@@ -168,6 +171,7 @@ article {
     transition: all 1s ease-in-out;
 }
 
+
 /* ===============================
 15. Aside, sidebar
 ================================ */
@@ -188,7 +192,6 @@ aside {
     padding: 5px;
     -webkit-box-shadow: inset 1px 0 0 0 rgba(0, 0, 0, .01);
     box-shadow: inset 1px 0 0 0 rgba(0, 0, 0, .01);
-
 }
 
 .left-sidebar {
@@ -198,7 +201,8 @@ aside {
     box-shadow: inset 1px 0 0 0 rgba(0, 0, 0, .01);
 }
 
-.left-sidebar .widget h3, .left-sidebar .widget .widget-content {
+.left-sidebar .widget h3,
+.left-sidebar .widget .widget-content {
     padding-right: 20px;
 }
 
@@ -206,18 +210,25 @@ aside .widget {
     // margin-bottom: 40px;
 }
 
-ul.cat, ul.recent, ul.folio-detail, ul.contact-info {
+ul.cat,
+ul.recent,
+ul.folio-detail,
+ul.contact-info {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-ul.cat li, ul.recent li, ul.folio-detail li, ul.contact-info li {
+ul.cat li,
+ul.recent li,
+ul.folio-detail li,
+ul.contact-info li {
     margin: 0 0 15px 0;
     list-style: none;
 }
 
-ul.cat li a, ul.folio-detail li a {
+ul.cat li a,
+ul.folio-detail li a {
     color: #656565;
 }
 
@@ -267,6 +278,7 @@ ul.recent li h6 a {
     text-decoration: none;
     color: #fff;
 }
+
 
 /* --- post format --- */
 
@@ -409,21 +421,26 @@ ul.social-network li .flickr {
 ul.social-network li .whatsapp {
     background: #00a859;
 }
+
+
 /* --- single post --- */
+
 .bottom-article {
     overflow: hidden;
     border: 1px solid #ececec;
-    padding: 10px ;
+    padding: 10px;
     margin-top: 20px;
     background: #f5f5f5;
 }
 
+
 /* scroll to top */
+
 .scrollup {
     position: fixed;
     width: 32px;
     height: 32px;
-    bottom: 70px;
+    bottom: 20px;
     right: 20px;
     background: rgba(0, 0, 0, 0.4);
     display: none;
@@ -436,7 +453,9 @@ a.scrollup {
     text-align: center;
 }
 
-a.scrollup:hover, a.scrollup:active, a.scrollup:focus {
+a.scrollup:hover,
+a.scrollup:active,
+a.scrollup:focus {
     opacity: 1;
     text-decoration: none;
 }
@@ -450,7 +469,9 @@ a.scrollup i:hover {
     text-decoration: none;
 }
 
+
 /* --- comment form ---- */
+
 form#commentform input[type="text"] {
     width: 100%;
     min-height: 40px;
@@ -463,7 +484,6 @@ form#commentform input[type="text"] {
     -webkit-border-radius: 2px 2px 2px 2px;
     -moz-border-radius: 2px 2px 2px 2px;
     border-radius: 2px 2px 2px 2px;
-
 }
 
 form#commentform textarea {
@@ -480,7 +500,9 @@ form#commentform textarea {
     border-radius: 2px 2px 2px 2px;
 }
 
+
 /* --- single post --- */
+
 .bottom-article {
     overflow: hidden;
     border: 1px solid #ececec;
@@ -505,7 +527,9 @@ form#commentform textarea {
     border-radius: 5px;
 }
 
-#sendmessage, #subscribesendmessage, #ordersendmessage {
+#sendmessage,
+#subscribesendmessage,
+#ordersendmessage {
     color: green !important;
     border: 1px solid #b1deca;
     background: #e7fff7;
@@ -517,17 +541,19 @@ form#commentform textarea {
     border-radius: 5px;
 }
 
-#featured{
+#featured {
     margin-top: 5px;
 }
 
-.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+.carousel-inner>.item>img,
+.carousel-inner>.item>a>img {
     border-radius: 5px;
     box-shadow: 0 2px 4px 0 rgba(165, 165, 165, 0.16), 0 6px 20px 0 rgba(0, 0, 0, 0.31);
-
 }
 
-#errormessage, #ordererrormessage, #subscribeerrormessage {
+#errormessage,
+#ordererrormessage,
+#subscribeerrormessage {
     color: red;
     display: none;
     border: 1px solid #ea9c97;
