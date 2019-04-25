@@ -1281,8 +1281,8 @@
     @if(count($Topic->photos)>0)
     
         <script src="/frontEnd/js/prettify.js"></script>
-        <script src="/frontEnd/js/$.justifiedGallery.min.js"></script>
-        <script src="/frontEnd/jstransition.js"></script>
+        <script src="/frontEnd/js/jquery.justifiedGallery.min.js"></script>
+        <script src="/frontEnd/js/transition.js"></script>
         <script src="/frontEnd/js/collapse.js"></script>
         <script src="/frontEnd/js/lightgallery.js"></script>
         <script src="/frontEnd/js/lg-fullscreen.js"></script>
@@ -1290,7 +1290,7 @@
         <script src="/frontEnd/js/lg-video.js"></script>
         <script src="/frontEnd/js/lg-autoplay.js"></script>
         <script src="/frontEnd/js/lg-zoom.js"></script>
-        <script src="/frontEnd/js/$.mousewheel.min.js"></script>
+        <script src="/frontEnd/js/jquery.mousewheel.min.js"></script>
         <script src="/frontEnd/js/demos.js"></script>
 
     @endif
