@@ -102,7 +102,7 @@
                 <table style="text-align:left; margin-bottom: 5px;">
                     <tr>
                         <td>Nhiệt độ: &emsp;</td>
-                        <th>{{ round(intval($ThoiTiet->main->temp) - 273.15) }}&#8451;</th>
+                        <th style="color:red">{{ round(intval($ThoiTiet->main->temp) - 273.15) }}&#8451;</th>
                     </tr>
                     <tr>
                         <td>Độ ẩm: &emsp;</td>
@@ -110,7 +110,7 @@
                     </tr>
                     <tr>
                         <td>Tốc độ gió: &emsp;</td>
-                        <th>{{ round(floatval($ThoiTiet->wind->speed)*1.852) }} km/h</th>
+                        <th style="color:blue">{{ round(floatval($ThoiTiet->wind->speed)*1.852) }} km/h</th>
                     </tr>
                 </table>
             </div>
