@@ -75,7 +75,7 @@
     <div id="block-header-bd" class="block-header" style="margin-bottom: 0" data-toggle="collapse" href="#thoi-tiet-ha-tinh">
 
         <h4>
-            <img src="/images/background/lotus.ico" alt="" width="26px"> Thời tiết Hà Tĩnh
+            <img src="/images/background/lotus.ico" alt="" width="26px"> Thời tiết trong ngày
         </h4>
 
     </div>
@@ -101,15 +101,15 @@
 
                 <table style="text-align:left; margin-bottom: 5px;">
                     <tr>
-                        <td>Nhiệt độ trong ngày: &emsp;</td>
+                        <td>Nhiệt độ: &emsp;</td>
                         <th>{{ round(intval($ThoiTiet->main->temp) - 273.15) }}&#8451;</th>
                     </tr>
                     <tr>
-                        <td>Độ ẩm trung bình: &emsp;</td>
+                        <td>Độ ẩm: &emsp;</td>
                         <th>{{ $ThoiTiet->main->humidity }}%</th>
                     </tr>
                     <tr>
-                        <td>Tốc độ gió hiện tại: &emsp;</td>
+                        <td>Tốc độ gió: &emsp;</td>
                         <th>{{ round(floatval($ThoiTiet->wind->speed)*1.852) }} km/h</th>
                     </tr>
                 </table>
