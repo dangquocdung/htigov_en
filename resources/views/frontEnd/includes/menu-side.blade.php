@@ -95,21 +95,21 @@
 
     <a href="http://www.nchmf.gov.vn/web/vi-VN/62/20/28/map/Default.aspx" target="_blank">
 
-        <div class="box-banner" style="text-align:center">
+        <div class="box-banner box-thoi-tiet" style="text-align:center">
 
             <div style="padding: 5px 15px">
 
-                <table style="text-align:left; font-size:0.9em; margin-bottom: 5px;">
+                <table style="text-align:left; margin-bottom: 5px;">
                     <tr>
-                        <td>Nhiệt độ: &emsp;</td>
+                        <td>Nhiệt độ trong ngày: &emsp;</td>
                         <th>{{ round(intval($ThoiTiet->main->temp) - 273.15) }}&#8451;</th>
                     </tr>
                     <tr>
-                        <td>Độ ẩm: &emsp;</td>
+                        <td>Độ ẩm trung bình: &emsp;</td>
                         <th>{{ $ThoiTiet->main->humidity }}%</th>
                     </tr>
                     <tr>
-                        <td>Tốc độ gió: &emsp;</td>
+                        <td>Tốc độ gió hiện tại: &emsp;</td>
                         <th>{{ round(floatval($ThoiTiet->wind->speed)*1.852) }} km/h</th>
                     </tr>
                 </table>

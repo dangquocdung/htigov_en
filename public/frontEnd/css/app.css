@@ -2954,6 +2954,10 @@ form#commentform textarea {
   text-align: -webkit-center;
 }
 
+.box-thoi-tiet table tr {
+  margin-bottom: 5px;
+}
+
 /* Css of main footer */
 
 .porlet-main-footer {
