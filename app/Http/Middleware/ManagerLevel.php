@@ -16,7 +16,7 @@ class ManagerLevel
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->permisions_id = 2 )
+        if ( Auth::check() && Auth::user()->permisions_id <= 2 )
         {
             return $next($request);
         }else{
