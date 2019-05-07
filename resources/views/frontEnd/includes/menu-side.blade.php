@@ -155,7 +155,93 @@
 
         <div style="padding: 5px 15px">
 
-            {{ PollWriter::draw(77) }}
+            {{-- {{ PollWriter::draw(77) }} --}}
+
+            <div id="dnn_ctr580_View_Div1"> 
+    
+
+        <div id="dnn_ctr580_View_rptCauHoi_left_0">
+              
+        <span id="dnn_ctr580_View_rptCauHoi_lblSTT_0" style="font-weight:bold;"></span>
+       <span id="dnn_ctr580_View_rptCauHoi_lblCauHoi_0" class="listthamdo">Thông tin nào trên cổng thông tin điện tử mà bạn quan tâm nhất?</span>
+             
+            <div id="Q1" class="question">
+       <table id="dnn_ctr580_View_rptCauHoi_radPhuongAn_0" class="listthamdo" style="width:100%;">
+			<tbody><tr>
+				<td><input id="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_0_0" type="radio" name="dnn$ctr580$View$rptCauHoi$ctl00$radPhuongAn" value="3366357A-17F0-4B57-AC8D-33734FD1EB8F"><label for="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_0_0">Thông tin thủ tục hành chính</label></td>
+			</tr><tr>
+				<td><input id="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_1_0" type="radio" name="dnn$ctr580$View$rptCauHoi$ctl00$radPhuongAn" value="5AF02653-8426-4B57-9B77-B33270AD8B7E"><label for="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_1_0">Thông tin kinh tế - xã hội</label></td>
+			</tr><tr>
+				<td><input id="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_2_0" type="radio" name="dnn$ctr580$View$rptCauHoi$ctl00$radPhuongAn" value="D08931AB-F4DC-46B5-A440-D60E1311AEEC"><label for="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_2_0">Thông tin chỉ đạo điều hành</label></td>
+			</tr>
+		</tbody></table>
+            
+          
+             <div id="divkhac" class="hidden_div" style="display:none;margin-bottom:37px;">
+                <textarea name="dnn$ctr580$View$rptCauHoi$ctl00$txtKhac" rows="2" cols="20" id="dnn_ctr580_View_rptCauHoi_txtKhac_0" class="textbox"></textarea>  
+                  <p> (Không quá 500 ký tự) </p>      
+            </div>
+                </div>
+                   
+        </div>
+       <br>
+       
+      <div id="dnn_ctr580_View_rptCauHoi_right_0" class="button">
+          <div style="float:left;margin:0px 5px 0px 0px;">
+            
+           <a onclick="show();" id="dnn_ctr580_View_rptCauHoi_btnYKien_0" title="Ý kiến" class="dnnPrimaryAction" href="javascript:__doPostBack('dnn$ctr580$View$rptCauHoi$ctl00$btnYKien','')">Ý kiến</a>
+          </div>
+        <div style="float:right;">
+            
+           
+           
+          <a class="dnnPrimaryAction" onclick="OpenResult('4D524857-0873-4D28-B8FE-8FEBD4EBB9CC')">Kết quả</a>
+      </div>
+        </div>
+         
+        <div style="clear:both;"></div>
+
+        <div id="dnn_ctr580_View_Div1">
+            <div id="dnn_ctr580_View_rptCauHoi_left_0">
+               <span id="dnn_ctr580_View_rptCauHoi_lblSTT_0" style="font-weight:bold;"></span>
+               <span id="dnn_ctr580_View_rptCauHoi_lblCauHoi_0" class="listthamdo">Thông tin nào trên cổng thông tin điện tử mà bạn quan tâm nhất?</span>
+               <div id="Q1" class="question">
+                  <table id="dnn_ctr580_View_rptCauHoi_radPhuongAn_0" class="listthamdo" style="width:100%;">
+                     <tbody>
+                        <tr>
+                           <td><input id="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_0_0" type="radio" name="dnn$ctr580$View$rptCauHoi$ctl00$radPhuongAn" value="3366357A-17F0-4B57-AC8D-33734FD1EB8F"><label for="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_0_0">Thông tin thủ tục hành chính</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_1_0" type="radio" name="dnn$ctr580$View$rptCauHoi$ctl00$radPhuongAn" value="5AF02653-8426-4B57-9B77-B33270AD8B7E"><label for="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_1_0">Thông tin kinh tế - xã hội</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_2_0" type="radio" name="dnn$ctr580$View$rptCauHoi$ctl00$radPhuongAn" value="D08931AB-F4DC-46B5-A440-D60E1311AEEC"><label for="dnn_ctr580_View_rptCauHoi_radPhuongAn_0_2_0">Thông tin chỉ đạo điều hành</label></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <div id="divkhac" class="hidden_div" style="display:none;margin-bottom:37px;">
+                     <textarea name="dnn$ctr580$View$rptCauHoi$ctl00$txtKhac" rows="2" cols="20" id="dnn_ctr580_View_rptCauHoi_txtKhac_0" class="textbox"></textarea>
+                     <p> (Không quá 500 ký tự) </p>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <div id="dnn_ctr580_View_rptCauHoi_right_0" class="button">
+               <div style="float:left;margin:0px 5px 0px 0px;">
+                  <a onclick="show();" id="dnn_ctr580_View_rptCauHoi_btnYKien_0" title="Ý kiến" class="dnnPrimaryAction" href="javascript:__doPostBack('dnn$ctr580$View$rptCauHoi$ctl00$btnYKien','')">Ý kiến</a>
+               </div>
+               <div style="float:right;">
+                  <a class="dnnPrimaryAction" onclick="OpenResult('4D524857-0873-4D28-B8FE-8FEBD4EBB9CC')">Kết quả</a>
+               </div>
+            </div>
+            <div style="clear:both;"></div>
+         </div>
+        
+         
+      
+    
+                 
+    </div>
 
             
         </div>
