@@ -212,35 +212,24 @@
     </div>
     <div class="clearfix"></div>
 
-    <div class="box-banner" style="text-align:center">
+    <div class="box-banner box-thoi-tiet" style="text-align:center">
 
         <div style="padding: 5px 15px">
 
-            <table style="text-align:left; font-size:0.9em; margin-bottom: 5px;">
+            <table style="text-align:left; margin-bottom: 5px;">
                 <tr>
                     <td>Đang truy cập: &emsp;</td>
                     <th>{{ $TodayVisitors }}</th>
                 </tr>
-                {{-- <tr>
-                    <td>Đã truy cập trong ngày: &emsp;</td>
-                    <th>{{ number_format($TodayPages) }}</th>
-                </tr> --}}
+                <tr>
+                    <td>Đã truy cập: &emsp;</td>
+                    <th>{{ $Pages }}</th>
+                </tr>
+                
             </table>
-
-            <table style="text-align:left; font-size:0.9em">
-                    
-                    {{-- <tr>
-                        <td>Tổng lượt truy cập: &emsp;</td>
-                        <th>{{ number_format($Visitors) }}</th>
-                    </tr> --}}
-                    <tr>
-                        <td>Đã truy cập: &emsp;</td>
-                        <th>{{ $Pages }}</th>
-                    </tr>
-                </table>
-
         </div>
     </div>
+
 </div>
 
 {{--  <div class="clearfix"></div>
