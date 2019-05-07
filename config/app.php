@@ -158,6 +158,7 @@ return [
 
         ReliQArts\Scavenger\ScavengerServiceProvider::class,
         Botble\Backup\Providers\BackupServiceProvider::class,
+        Botble\Media\Providers\MediaServiceProvider::class,
 
         /*
          * Application Service Providers...
