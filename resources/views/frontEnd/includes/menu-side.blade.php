@@ -219,7 +219,7 @@
             <table style="text-align:left; margin-bottom: 5px;">
                 <tr>
                     <td>Đang truy cập: &emsp;</td>
-                    <th style="color:red; text-align:right">{{ $TodayVisitors }}</th>
+                    <th style="color:red; text-align:right">{{ number_format($TodayVisitors, 0, ',', '.') }}</th>
                 </tr>
                 <tr>
                     <td>Đã truy cập: &emsp;</td>
