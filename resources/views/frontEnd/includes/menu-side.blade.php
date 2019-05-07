@@ -155,7 +155,7 @@
 
         <div style="padding: 5px 15px">
 
-            
+            {{ PollWriter::draw(77) }}
 
             
         </div>
