@@ -218,24 +218,24 @@
 
             <table style="text-align:left; font-size:0.9em; margin-bottom: 5px;">
                 <tr>
-                    <td>Số lượt truy cập hôm nay: &emsp;</td>
-                    <th>{{ number_format($TodayVisitors) }}</th>
+                    <td>Đang truy cập: &emsp;</td>
+                    <th>{{ $TodayVisitors }}</th>
                 </tr>
-                <tr>
-                    <td>Số lượt xem trang hôm nay: &emsp;</td>
+                {{-- <tr>
+                    <td>Đã truy cập trong ngày: &emsp;</td>
                     <th>{{ number_format($TodayPages) }}</th>
-                </tr>
+                </tr> --}}
             </table>
 
             <table style="text-align:left; font-size:0.9em">
                     
-                    <tr>
+                    {{-- <tr>
                         <td>Tổng lượt truy cập: &emsp;</td>
                         <th>{{ number_format($Visitors) }}</th>
-                    </tr>
+                    </tr> --}}
                     <tr>
-                        <td>Tổng lượt xem trang: &emsp;</td>
-                        <th>{{ number_format($Pages) }}</th>
+                        <td>Đã truy cập: &emsp;</td>
+                        <th>{{ $Pages }}</th>
                     </tr>
                 </table>
 
