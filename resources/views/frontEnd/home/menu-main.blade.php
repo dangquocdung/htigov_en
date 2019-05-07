@@ -380,7 +380,6 @@
                                             @if ($key == 0) active @endif
                                                     " id="{{ $MnuCategory->$slug_var }}">
 
-                                                
                                                 @php
                                                         
                                                     $topicIds = $MnuCategory->selectedCategories->sortbyDesc('topic_date')->take(50);
@@ -407,14 +406,10 @@
 
                                                 @endphp
 
-                                                
-
                                                 @if (in_array($MainMenuLink->webmasterSection->id,[11,12]))
 
                                                     <div class="col-md-12" style="float:left">
                                                         
-                                                        
-
                                                         @foreach($tins as $topicId)
                                                             
                                                             <?php
@@ -478,7 +473,6 @@
                                                                     </div>
                                                                 </div>
                                                                 
-
                                                             @elseif ($tin->status == 1)
 
                                                                 <div class="col-md-5 col-sm-5 col-xs-12" style="float: right;"> 
@@ -503,8 +497,6 @@
 
                                                         @endforeach
 
-                                                        
-
                                                     </div>
 
                                                 @else
@@ -528,9 +520,8 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    @foreach($tins->where('status',1) as $key=>$tin)
+                                                                    @foreach($tins as $tin)
                                                                        
-    
                                                                             <?php
                                                                                 
                                                                                 $section = "";
@@ -559,7 +550,7 @@
                                                                                 }
                                                                             ?>
 
-                                                                            @if (($i < 6))
+                                                                            @if (($tin->status == 1) && ($i < 6))
                                                                                 @php $i++; @endphp
                                                                                 <tr>
                                                                                     <td>
@@ -699,7 +690,6 @@
 
                                                 @endif
                                                 
-
                                                 <?php
                                                     if ($MnuCategory->$slug_var != "" && Helper::GeneralWebmasterSettings("links_status")) {
                                                         if (trans('backLang.code') != env('DEFAULT_LANGUAGE')) {
