@@ -17,6 +17,7 @@ class WebmasterSection extends Model
     {
 
         return $this->hasMany('App\Topic' , 'webmaster_id')->select(['id','title_vi','title_en','photo_file','seo_url_slug_vi','seo_url_slug_en','status','date','webmaster_id'])->orderby('id', 'desc');
+        
     }
 
     public function menus()
