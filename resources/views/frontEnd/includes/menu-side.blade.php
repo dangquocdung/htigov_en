@@ -223,7 +223,7 @@
                 </tr>
                 <tr>
                     <td>Đã truy cập: &emsp;</td>
-                    <th style="color:blue">{{ $Pages }}</th>
+                    <th style="color:blue">{{ number_format($Pages,0 , ' ', '.') }}</th>
                 </tr>
                 
             </table>
