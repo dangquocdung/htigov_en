@@ -142,6 +142,27 @@
    
 </div>
 
+<div class="block4">
+
+    <div class="block-header" style="margin-bottom: 0">
+
+        <h4><img src="/images/background/lotus.ico" alt="" width="26px"> Thăm dò ý kiến</h4>
+
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="box-banner box-thoi-tiet" style="text-align:center">
+
+        <div style="padding: 5px 15px">
+
+            
+
+            
+        </div>
+    </div>
+
+</div>
+
 {{--  <div class="zalo-follow-only-button" data-oaid="2647979863534365584" data-customize=false></div>  --}}
 
 @if (!empty($SideBanners))
