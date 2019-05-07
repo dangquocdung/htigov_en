@@ -155,7 +155,7 @@
 
         <div style="padding: 5px 15px">
 
-            {{-- {{ PollWriter::draw(1) }} --}}
+            {{ PollWriter::draw(1) }}
 
         </div>
     </div>
