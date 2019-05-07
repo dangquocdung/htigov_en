@@ -153,11 +153,11 @@
 
     <div class="box-banner box-thoi-tiet" style="text-align:center">
 
-        <div style="padding: 5px 15px">
+        
 
             {{ PollWriter::draw(1) }}
 
-        </div>
+        
     </div>
 
 </div>
