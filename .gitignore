@@ -5,6 +5,7 @@
 /public/uploads
 /public/audio
 /storage/*.key
+/vendor
 /.idea
 /.vscode
 /.vagrant
