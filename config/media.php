@@ -30,8 +30,8 @@ return [
         'folders.favorite',
     ],
     'route' => [
-        'prefix' => 'media', // Media URL. Ex: media => http://laravel.dev/media
-        'middleware' => ['web', 'auth'],
+        'prefix' => 'admin/media', // Media URL. Ex: media => http://laravel.dev/media
+        'middleware' => ['managerlevel'],
         'options' => [],
     ],
     'views' => [
