@@ -2,9 +2,9 @@
         @csrf
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">
-                    <span class="glyphicon glyphicon-arrow-right"></span> {{ $question }}
-                </h3>
+                <h5 class="panel-title">
+                    {{ $question }}
+                </h5>
             </div>
         </div>
         <div class="panel-body">
