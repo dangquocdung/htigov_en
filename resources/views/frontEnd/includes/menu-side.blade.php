@@ -219,11 +219,11 @@
             <table style="text-align:left; margin-bottom: 5px;">
                 <tr>
                     <td>Đang truy cập: &emsp;</td>
-                    <th>{{ $TodayVisitors }}</th>
+                    <th style="color:red">{{ $TodayVisitors }}</th>
                 </tr>
                 <tr>
                     <td>Đã truy cập: &emsp;</td>
-                    <th>{{ $Pages }}</th>
+                    <th style="color:blue">{{ $Pages }}</th>
                 </tr>
                 
             </table>
