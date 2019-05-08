@@ -15,7 +15,7 @@
     </h5>
 </div>
 
-<div style="padding:10px">
+
 
 
 
@@ -31,4 +31,4 @@
     </div>
 @endforeach
 
-</div>
+
