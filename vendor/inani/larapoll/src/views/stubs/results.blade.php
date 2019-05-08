@@ -9,7 +9,7 @@
     </div>
 @endif
 
-<h5>Poll: {{ $question }}</h5>
+<h5>Câu hỏi: {{ $question }}</h5>
 
 @foreach($options as $option)
     <div class='result-option-id'>
