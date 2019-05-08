@@ -9,7 +9,7 @@
     </div>
 @endif
 
-<strong>Câu hỏi: {{ $question }}</strong>
+<h5 style="line-height:1.5em">{{ $question }}</h5>
 
 <div style="padding: 5px">
 
