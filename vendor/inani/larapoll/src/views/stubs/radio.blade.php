@@ -10,8 +10,8 @@
         <div class="">
             <ul class="list-group">
                 @foreach($options as $id => $name)
-                    <li class="" style="padding: 10px 15px">
-                        <div class="radio">
+                    <li class="" style="padding: 0 15px">
+                        <div class="radio" style="text-align:left; padding: 5px">
                             <label>
                                 <input value="{{ $id }}" type="radio" name="options">
                                 {{ $name }}
