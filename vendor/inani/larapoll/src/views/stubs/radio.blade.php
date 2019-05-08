@@ -1,7 +1,7 @@
 <form method="POST" action="{{ route('poll.vote', $id) }}" >
         @csrf
         <div class="">
-            <div class="panel-heading">
+            <div class="mt-2 mb-2">
                 <h5 class="panel-title">
                     {{ $question }}
                 </h5>
