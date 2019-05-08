@@ -15,10 +15,6 @@
     </h5>
 </div>
 
-
-
-
-
 @foreach($options as $option)
     <div class='result-option-id'>
         <span style="text-align:left">{{ $option->name }}</span>
@@ -30,5 +26,3 @@
         </div>
     </div>
 @endforeach
-
-
