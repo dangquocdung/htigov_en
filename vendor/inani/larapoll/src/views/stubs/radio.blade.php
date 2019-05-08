@@ -10,7 +10,7 @@
         <div class="">
             <ul class="list-group">
                 @foreach($options as $id => $name)
-                    <li class="list-group-item" style="background-color:none; border:none">
+                    <li class="" style="padding: 10px 15px">
                         <div class="radio">
                             <label>
                                 <input value="{{ $id }}" type="radio" name="options">
@@ -21,7 +21,7 @@
                 @endforeach
             </ul>
         </div>
-        <div class="panel-footer">
+        <div class="mb-20">
             <input type="submit" class="btn btn-primary btn-sm" value="Vote" />
         </div>
     </form>
