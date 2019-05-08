@@ -7,10 +7,10 @@
                 </h5>
             </div>
         </div>
-        <div class="panel-body">
+        <div class="">
             <ul class="list-group">
                 @foreach($options as $id => $name)
-                    <li class="list-group-item">
+                    <li class="list-group-item" style="background-color:none; border:none">
                         <div class="radio">
                             <label>
                                 <input value="{{ $id }}" type="radio" name="options">
