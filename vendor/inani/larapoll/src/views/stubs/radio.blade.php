@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="">
-            <ul class="list-group" style="padding: 10px">
+            <ul class="list-group" style="padding: 0 10px">
                 @foreach($options as $id => $name)
                     <li class="" style="padding: 0 15px">
                         <div class="radio" style="text-align:left; padding: 5px">
