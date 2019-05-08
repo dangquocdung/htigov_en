@@ -21,7 +21,7 @@
                 @endforeach
             </ul>
         </div>
-        <div class="mb-20">
+        <div class="" style="margin-bottom: 10px">
             <input type="submit" class="btn btn-primary btn-sm" value="Vote" />
         </div>
     </form>
