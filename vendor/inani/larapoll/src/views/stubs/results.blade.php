@@ -9,7 +9,7 @@
     </div>
 @endif
 
-<h5>Câu hỏi: {{ $question }}</h5>
+<strong>Câu hỏi: {{ $question }}</strong>
 
 <div style="padding: 5px">
 
@@ -17,7 +17,8 @@
 
 @foreach($options as $option)
     <div class='result-option-id' style="text-align:left">
-        <strong>{{ $option->name }}</strong><span class='pull-right'>{{ $option->percent }}%</span>
+        {{ $option->name }}
+        <span class='pull-right'>{{ $option->percent }}%</span>
         <div class='progress'>
             <div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='{{ $option->percent }}' aria-valuemin='0' aria-valuemax='100' style='width: {{ $option->percent }}%'>
                 <span class='sr-only'>{{ $option->percent }}% Complete</span>
