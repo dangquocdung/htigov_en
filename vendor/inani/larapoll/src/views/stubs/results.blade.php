@@ -9,16 +9,11 @@
     </div>
 @endif
 
-<<div class="" style="padding-top: 20px">
-    <h5 class="panel-title" style="line-height: 1.5em">
-        {{ $question }}
-    </h5>
-</div>
+<h5>Poll: {{ $question }}</h5>
 
 @foreach($options as $option)
     <div class='result-option-id'>
-        <span style="text-align:left">{{ $option->name }}</span>
-        <span class='pull-right'>{{ $option->percent }}%</span>
+        <strong>{{ $option->name }}</strong><span class='pull-right'>{{ $option->percent }}%</span>
         <div class='progress'>
             <div class='progress-bar progress-bar-striped active' role='progressbar' aria-valuenow='{{ $option->percent }}' aria-valuemin='0' aria-valuemax='100' style='width: {{ $option->percent }}%'>
                 <span class='sr-only'>{{ $option->percent }}% Complete</span>
