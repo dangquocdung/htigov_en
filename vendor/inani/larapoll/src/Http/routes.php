@@ -1,6 +1,7 @@
 <?php
 
 $prefix = config('larapoll_config.prefix');
+
 Route::group(['namespace' => 'Inani\Larapoll\Http\Controllers', 'prefix' => $prefix, 'middleware' => 'managerlevel'], function(){
 
     $middleware = config('larapoll_config.admin_auth');
