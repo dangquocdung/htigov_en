@@ -157,6 +157,13 @@
 
             {{ PollWriter::draw(1) }}
 
+            @if (Auth::guest())
+
+            <div class="clearfix"></div>
+            <p>Bạn chưa <a href="{{ url('login') }}">đăng nhập</a></p>
+
+            @endif
+
         
     </div>
 
