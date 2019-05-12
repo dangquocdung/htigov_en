@@ -155,7 +155,7 @@
 
         
 
-            {{ PollWriter::draw(1) }}
+            {{ PollWriter::draw(2) }}
 
             @if (Auth::guest())
 
