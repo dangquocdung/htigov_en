@@ -160,7 +160,7 @@
             @if (Auth::guest())
 
             <div class="clearfix"></div>
-            <em>Bạn chưa <a href="{{ url('login') }}" style="color:red;">đăng nhập</a></em>
+            <em style="float:right">Bạn chưa <a href="{{ url('login') }}" style="color:red;">đăng nhập</a></em>
 
             @endif
 
