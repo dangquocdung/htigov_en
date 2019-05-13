@@ -65,7 +65,22 @@
         {{-- <li class="home"><a href="javascript:void(0);" title="Tải lại trang " onclick="location.reload();"><span><i class="glyphicon glyphicon-refresh"></i></span></a></li> --}}
 
         <li class="home">
-            <a href="{{ URL::to("admin") }}" title="{{trans('frontLang.dashboard')}}">
+
+           
+
+            <a href="{{ URL::to("admin") }}" 
+
+            @if (Auth::check())
+            
+                title="{{ Auth::user()->name }}"
+
+            @else
+
+                title="{{ trans('frontLang.dashboard') }}"
+
+            @endif
+            
+            >
 
                 
                 {{-- @if (Auth::check())
