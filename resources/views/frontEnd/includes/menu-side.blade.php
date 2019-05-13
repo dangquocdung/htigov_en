@@ -153,22 +153,7 @@
 
     <div class="box-banner box-tham-do" style="text-align:center; padding: 5px">
 
-
-
-
-
-        {{-- @include('lrp.radio') --}}
-
         {{ PollWriter::draw(2) }}
-
-        {{-- {{ PollWriter::draw(Poll::find(2)) }} --}}
-
-        @if (Auth::guest())
-
-            <div class="clearfix"></div>
-            <em style="float:right">Bạn chưa <a href="{{ url('login') }}" style="color:red;">đăng nhập</a></em>
-
-        @endif
 
     </div>
 
