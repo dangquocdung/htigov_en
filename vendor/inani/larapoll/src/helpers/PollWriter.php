@@ -24,11 +24,20 @@ class PollWriter {
             return 'To start soon';
         }
 
-        $voter = auth(config('larapoll_config.admin_guard'))->user();
 
 
-        if(is_null($voter) || $voter->hasVoted($poll_id) || $poll->isLocked()){
+
+
+        // $voter = auth(config('larapoll_config.admin_guard'))->user();
+
+        $voter = auth('web')->user();
+
+
+
+        if($voter->hasVoted($poll_id) || $poll->isLocked()){
+
             return $this->drawResult($poll);
+
         }
 
         if($poll->isRadio()){

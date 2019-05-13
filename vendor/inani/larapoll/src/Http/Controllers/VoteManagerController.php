@@ -29,6 +29,7 @@ class VoteManagerController extends Controller
             if($vote){
                 return back()->with('success', 'Đã bình chọn');
             }
+            
         }catch (Exception $e){
 
             dd(
