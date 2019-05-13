@@ -26,19 +26,17 @@ class PollWriter {
 
         $voter = auth(config('larapoll_config.admin_guard'))->user();
 
-        if (!empty($voter)){
+        // if (!empty($voter)){
 
-            return  $voter->hasVoted($poll_id);
-
-
-        }
-
-        
-        // if(is_null($voter) || $voter->hasVoted($poll_id) || $poll->isLocked()){
-
-        //     return $this->drawResult($poll);
+        //     return  $voter->hasVoted($poll_id);
 
         // }
+
+        if(is_null($voter) || $voter->hasVoted($poll_id) || $poll->isLocked()){
+
+            return $this->drawResult($poll);
+
+        }
 
         if($poll->isRadio()){
             return $this->drawRadio($poll);
