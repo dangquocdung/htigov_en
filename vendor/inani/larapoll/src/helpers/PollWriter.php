@@ -26,15 +26,17 @@ class PollWriter {
 
         $voter = auth(config('larapoll_config.admin_guard'))->user();
 
-        if(is_null($voter) || $voter->hasVoted($poll_id) || $poll->isLocked()){
+        return $voter->name();
 
-            return $this->drawResult($poll);
+        // if(is_null($voter) || $voter->hasVoted($poll_id) || $poll->isLocked()){
 
-        }
+        //     return $this->drawResult($poll);
 
-        if($poll->isRadio()){
-            return $this->drawRadio($poll);
-        }
-        return $this->drawCheckbox($poll);
+        // }
+
+        // if($poll->isRadio()){
+        //     return $this->drawRadio($poll);
+        // }
+        // return $this->drawCheckbox($poll);
     }
 }
