@@ -153,15 +153,15 @@
 
     <div class="box-banner box-tham-do" style="text-align:center; padding: 5px">
 
-        
 
 
 
-        @include('lrp.radio')
 
-            {{-- {{ PollWriter::draw(2) }} --}}
+        {{-- @include('lrp.radio') --}}
 
-            {{-- {{ PollWriter::draw(Poll::find(2)) }} --}}
+        {{ PollWriter::draw(2) }}
+
+        {{-- {{ PollWriter::draw(Poll::find(2)) }} --}}
 
         @if (Auth::guest())
 
