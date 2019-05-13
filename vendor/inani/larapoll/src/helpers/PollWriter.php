@@ -28,7 +28,7 @@ class PollWriter {
 
         // return  $voter->hasVoted($poll_id);
 
-        if(is_null($voter) || $poll->isLocked()){
+        if(is_null($voter) || $voter->hasVoted($poll_id) || $poll->isLocked()){
 
             return $this->drawResult($poll);
 
