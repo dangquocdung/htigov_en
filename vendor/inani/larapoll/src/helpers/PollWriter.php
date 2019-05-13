@@ -28,9 +28,9 @@ class PollWriter {
 
 
 
-        // $voter = auth(config('larapoll_config.admin_guard'))->user();
+        $voter = auth(config('larapoll_config.admin_guard'))->user();
 
-        $voter = auth('web')->user();
+        // $voter = auth('web')->user();
 
 
 
