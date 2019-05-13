@@ -12,6 +12,7 @@ use Inani\Larapoll\Option;
 use Inani\Larapoll\Poll;
 use Inani\Larapoll\Vote;
 use InvalidArgumentException;
+use Illuminate\Support\Facades\Auth;
 
 trait Voter
 {
