@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Inani\Larapoll\Traits;
-
 
 use Illuminate\Support\Facades\DB;
 use Inani\Guest;
@@ -104,16 +102,14 @@ trait Voter
         })->count() !== 0;
     }
 
-
     public function hasVoted($poll_id)
     {
         $poll = Poll::findOrFail($poll_id);
 
-        $user_id = Auth::user()->id;
+        return $this->whereHas('options', function ($query) use ($poll_id){
+            return $query->where('poll_id', $poll_id);
+        })->count() !== 0;
 
-        $users = Vote::where('user_id',$user_id)->get();
-
-        return count($users);
     }
 
     /**
