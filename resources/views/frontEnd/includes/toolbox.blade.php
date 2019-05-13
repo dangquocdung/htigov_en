@@ -68,21 +68,23 @@
             <a href="{{ URL::to("admin") }}" title="{{trans('frontLang.dashboard')}}">
 
                 
-                @if (Auth::check())
+                {{-- @if (Auth::check())
 
                     <span class="avatar w-32">
-                        {{-- @if(Auth::user()->photo !="")
+                        @if(Auth::user()->photo !="")
                             <img src="{{ URL::to('uploads/users/'.Auth::user()->photo) }}" alt="{{ Auth::user()->name }}"
                                 title="{{ Auth::user()->name }}">
-                        @else --}}
+                        @else
                             <img src="{{ URL::to('backEnd/assets/images/profile.jpg') }}" alt="{{ Auth::user()->name }}"
                                 title="{{ Auth::user()->name }}">
-                        {{-- @endif --}}
+                        @endif
                     </span>
 
                 @else
                     <span><i class="fa fa-user-circle-o"></i></span>
-                @endif
+                @endif --}}
+
+                <span><i class="fa fa-user-circle-o"></i></span>
             </a>
         </li>
         
