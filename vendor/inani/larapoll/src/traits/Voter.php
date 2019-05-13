@@ -84,7 +84,7 @@ trait Voter
      * @param $poll_id
      * @return bool
      */
-    public function hasVoted($poll_id)
+    public function hasVoted_goc($poll_id)
     {
         $poll = Poll::findOrFail($poll_id);
 
@@ -101,6 +101,18 @@ trait Voter
         return $this->whereHas('options', function ($query) use ($poll_id){
             return $query->where('poll_id', $poll_id);
         })->count() !== 0;
+    }
+
+
+    public function hasVoted($poll_id)
+    {
+        $poll = Poll::findOrFail($poll_id);
+
+        $user_id = Auth::user()->id;
+
+        $users = Vote::where('user_id',$user_id)->get();
+
+        return count($users);
     }
 
     /**
