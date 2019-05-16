@@ -5,7 +5,7 @@ namespace Inani\Larapoll\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
-use Inani\Guest;
+use Inani\Larapoll\Guest;
 use Inani\Larapoll\Poll;
 
 class VoteManagerController extends Controller
