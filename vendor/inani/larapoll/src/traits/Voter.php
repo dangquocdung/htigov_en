@@ -85,17 +85,17 @@ trait Voter
      */
     public function hasVoted($poll_id)
     {
-        // $poll = Poll::findOrFail($poll_id);
+        $poll = Poll::findOrFail($poll_id);
 
-        // if($poll->canGuestVote()){
-        //     $result = DB::table('larapoll_polls')
-        //                 ->selectRaw('count(*) As total')
-        //                 ->join('larapoll_options', 'larapoll_polls.id', '=', 'larapoll_options.poll_id')
-        //                 ->join('larapoll_votes', 'larapoll_votes.option_id', '=', 'larapoll_options.id')
-        //                 ->where('larapoll_votes.user_id', request()->ip())
-        //                 ->where('larapoll_options.poll_id', $poll_id)->count();
-        //     return $result !== 0;
-        // }
+        if($poll->canGuestVote()){
+            $result = DB::table('larapoll_polls')
+                        ->selectRaw('count(*) As total')
+                        ->join('larapoll_options', 'larapoll_polls.id', '=', 'larapoll_options.poll_id')
+                        ->join('larapoll_votes', 'larapoll_votes.option_id', '=', 'larapoll_options.id')
+                        ->where('larapoll_votes.user_id', request()->ip())
+                        ->where('larapoll_options.poll_id', $poll_id)->count();
+            return $result !== 0;
+        }
 
         return $this->whereHas('options', function ($query) use ($poll_id){
             return $query->where('poll_id', $poll_id);
