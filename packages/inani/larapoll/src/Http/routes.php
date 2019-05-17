@@ -2,16 +2,13 @@
 
 $prefix = config('larapoll_config.prefix');
 
-// Backend Routes
-Auth::routes();
-
 Route::group(['namespace' => 'Inani\Larapoll\Http\Controllers', 'prefix' => $prefix, 'middleware' => 'web'], function(){
 
     $middleware = config('larapoll_config.admin_auth');
 
     $guard = config('larapoll_config.admin_guard');
 
-    Route::group(['middleware' => 'managerlevel'],function () {
+    Route::middleware(["$middleware:$guard"])->group(function () {
         Route::get('/admin', 'PollManagerController@index')->name('poll.home');
         Route::get('/admin/polls', ['uses' => 'PollManagerController@index', 'as' => 'poll.index']);
         Route::get('/admin/polls/create', ['uses' => 'PollManagerController@create', 'as' => 'poll.create']);
