@@ -2,7 +2,7 @@
 
 $prefix = config('larapoll_config.prefix');
 
-Route::group(['namespace' => 'Inani\Larapoll\Http\Controllers', 'prefix' => $prefix, 'middleware' => 'checklevel'], function(){
+Route::group(['namespace' => 'Inani\Larapoll\Http\Controllers', 'prefix' => $prefix, 'middleware' => 'auth'], function(){
 
     $middleware = config('larapoll_config.admin_auth');
 
