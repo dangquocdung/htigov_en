@@ -1,0 +1,1 @@
+{{ PollWriter::draw(2) }}

@@ -153,11 +153,8 @@
 
     <div class="box-banner box-tham-do" style="text-align:center; padding: 5px">
 
-        
+        {{ PollWriter::draw(2) }}
 
-            {{ PollWriter::draw(1) }}
-
-        
     </div>
 
 </div>

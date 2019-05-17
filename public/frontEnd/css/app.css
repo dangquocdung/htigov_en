@@ -585,6 +585,16 @@ ul.cat li .active {
   color: #636c72;
 }
 
+.w-32 {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+}
+
+.avatar img {
+  width: 100%;
+}
+
 /* === Slider === */
 
 #brand_carousel .item img {

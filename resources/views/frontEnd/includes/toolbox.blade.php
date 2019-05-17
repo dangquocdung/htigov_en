@@ -65,7 +65,40 @@
         {{-- <li class="home"><a href="javascript:void(0);" title="Tải lại trang " onclick="location.reload();"><span><i class="glyphicon glyphicon-refresh"></i></span></a></li> --}}
 
         <li class="home">
-            <a href="{{ URL::to("admin") }}" title="{{trans('frontLang.dashboard')}}">
+
+           
+
+            <a href="{{ URL::to("admin") }}" 
+
+            @if (Auth::check())
+            
+                title="{{ Auth::user()->name }}"
+
+            @else
+
+                title="{{ trans('frontLang.dashboard') }}"
+
+            @endif
+            
+            >
+
+                
+                {{-- @if (Auth::check())
+
+                    <span class="avatar w-32">
+                        @if(Auth::user()->photo !="")
+                            <img src="{{ URL::to('uploads/users/'.Auth::user()->photo) }}" alt="{{ Auth::user()->name }}"
+                                title="{{ Auth::user()->name }}">
+                        @else
+                            <img src="{{ URL::to('backEnd/assets/images/profile.jpg') }}" alt="{{ Auth::user()->name }}"
+                                title="{{ Auth::user()->name }}">
+                        @endif
+                    </span>
+
+                @else
+                    <span><i class="fa fa-user-circle-o"></i></span>
+                @endif --}}
+
                 <span><i class="fa fa-user-circle-o"></i></span>
             </a>
         </li>

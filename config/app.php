@@ -151,7 +151,6 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Inani\Larapoll\LarapollServiceProvider::class,
-
         /*
          * Package Service Providers...
          */

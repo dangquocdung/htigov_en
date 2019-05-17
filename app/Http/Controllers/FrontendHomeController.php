@@ -28,6 +28,9 @@ use Illuminate\Http\Request;
 use Mail;
 use GuzzleHttp\Client;
 
+
+
+
 class FrontendHomeController extends Controller
 {
     public function __construct()
@@ -109,6 +112,7 @@ class FrontendHomeController extends Controller
         $client = new Client();
         $res = $client->request('GET', 'https://api.openweathermap.org/data/2.5/weather?id=1581047&appid=1c50a74fcf27da204b98f898dd557341');
         $ThoiTiet = json_decode( $res->getBody());
+
 
         // return response()->json($ThoiTiet,200);
         
