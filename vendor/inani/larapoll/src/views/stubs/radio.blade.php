@@ -1,17 +1,17 @@
 <form method="POST" action="{{ route('poll.vote', $id) }}" >
     @csrf
-    <div class="">
-        <div class="" style="padding-top: 20px">
-            <h5 class="panel-title" style="line-height: 1.5em">
-                {{ $question }}
-            </h5>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <span class="glyphicon glyphicon-arrow-right"></span> {{ $question }}
+            </h3>
         </div>
     </div>
-    <div class="">
-        <ul class="list-group" style="padding: 0 10px; list-style-type: none;">
+    <div class="panel-body">
+        <ul class="list-group">
             @foreach($options as $id => $name)
-                <li class="" style="padding: 0 15px">
-                    <div class="radio" style="text-align:left; padding: 5px">
+                <li class="list-group-item">
+                    <div class="radio">
                         <label>
                             <input value="{{ $id }}" type="radio" name="options">
                             {{ $name }}
@@ -21,8 +21,7 @@
             @endforeach
         </ul>
     </div>
-    <div class="" style="margin-bottom: 20px">
-        <input type="submit" class="btn btn-primary btn-sm" value="Bình chọn" />
+    <div class="panel-footer">
+        <input type="submit" class="btn btn-primary btn-sm" value="Vote" />
     </div>
 </form>
-    
