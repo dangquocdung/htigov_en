@@ -12,12 +12,5 @@
         "psr-4": {
             "dungthinh\\dtpoll\\": "src/"
         }
-    },
-    "require": {
-        "illuminate/support": "~5"
-    },
-    "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "phpunit/phpunit": "~4.0"
     }
 }
