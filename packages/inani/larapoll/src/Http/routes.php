@@ -2,13 +2,13 @@
 
 $prefix = config('larapoll_config.prefix');
 
-Route::group(['namespace' => 'Inani\Larapoll\Http\Controllers', 'prefix' => $prefix, 'middleware' => 'checklevel'], function(){
+Route::group(['namespace' => 'Inani\Larapoll\Http\Controllers', 'prefix' => $prefix, 'middleware' => 'auth'], function(){
 
     $middleware = config('larapoll_config.admin_auth');
 
     $guard = config('larapoll_config.admin_guard');
 
-    // Route::middleware(["$middleware:$guard"])->group(function () {
+    Route::middleware(['$middleware'])->group(function () {
         Route::get('/admin', 'PollManagerController@index')->name('poll.home');
         // Route::get('/admin', function(){
         //     echo config('larapoll_config.admin_auth');
@@ -27,7 +27,7 @@ Route::group(['namespace' => 'Inani\Larapoll\Http\Controllers', 'prefix' => $pre
         Route::post('/admin/polls/{poll}/options/add', ['uses' => 'OptionManagerController@add', 'as' => 'poll.options.add']);
         Route::get('/admin/polls/{poll}/options/remove', ['uses' => 'OptionManagerController@delete', 'as' => 'poll.options.remove']);
         Route::delete('/admin/polls/{poll}/options/remove', ['uses' => 'OptionManagerController@remove', 'as' => 'poll.options.remove']);
-    // });
+    });
 
     Route::post('/vote/polls/{poll}', 'VoteManagerController@vote')->name('poll.vote');
 });
