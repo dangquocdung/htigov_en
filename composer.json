@@ -14,7 +14,6 @@
         "botble/media": "*@dev",
         "fideloper/proxy": "^4.0",
         "htmlmin/htmlmin": "^5.7",
-        "inani/larapoll": "2.5",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.6",
