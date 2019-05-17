@@ -1,9 +1,8 @@
 <?php
 
 
-Route::group([
-    'namespace' => 'DungThinh\DtPoll'
-], function () {
-    Route::get('timezones/{timezone}',  'DtPollController@index');
+Route::get('timezones/{timezone}',  function($timezone){
+
+    echo Carbon::now($timezone)->toDateTimeString();
 
 });
