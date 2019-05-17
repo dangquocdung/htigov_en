@@ -16,7 +16,7 @@ class CheckLevel
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->permissions_id = 1 )
+        if ( Auth::check() && Auth::user()->permissions_id = 10 )
         {
             return $next($request);
         }else{
