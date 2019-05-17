@@ -8,7 +8,7 @@ Route::group(['namespace' => 'Inani\Larapoll\Http\Controllers', 'prefix' => $pre
 
     $guard = config('larapoll_config.admin_guard');
 
-    Route::middleware(['$middleware'])->group(function () {
+    Route::middleware(['checklevel'])->group(function () {
         Route::get('/admin', 'PollManagerController@index')->name('poll.home');
         // Route::get('/admin', function(){
         //     echo config('larapoll_config.admin_auth');
