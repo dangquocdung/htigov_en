@@ -357,9 +357,9 @@ Route::get('/', 'FrontendHomeController@HomePage')->name('Home');
 
 Route::get('/truc-tiep', 'FrontendHomeController@TrucTiep')->name('livetv');
 // ../home url
-Route::get('/home', 'FrontendHomeController@HomePage')->name('HomePage');
+Route::get('/trang-chu', 'FrontendHomeController@HomePage')->name('HomePage');
 
-Route::get('/{lang?}/home', 'FrontendHomeController@HomePageByLang')->name('HomePageByLang');
+Route::get('/{lang?}/trang-chu', 'FrontendHomeController@HomePageByLang')->name('HomePageByLang');
 // ../subscribe to newsletter submit  (ajax url)
 Route::post('/subscribe', 'FrontendHomeController@subscribeSubmit')->name('subscribeSubmit');
 // ../Comment submit  (ajax url)
