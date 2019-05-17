@@ -1,0 +1,23 @@
+{
+    "name": "dungthinh/dtpoll",
+    "description": "A Laravel package to create polls",
+    "keywords": ["polls", "votes", "laravel", "php"],
+    "license": "MIT",
+    "authors": [{
+        "name": "dangquocdung",
+        "email": "dungthinhvn@gmail.com"
+    }],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "dungthinh\\dtpoll\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/support": "~5"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "phpunit/phpunit": "~4.0"
+    }
+}

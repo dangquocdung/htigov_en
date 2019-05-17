@@ -150,6 +150,7 @@ return [
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
+        DungThinh\DtPoll\DtPollServiceProvider::class,
 
         /*
          * Package Service Providers...

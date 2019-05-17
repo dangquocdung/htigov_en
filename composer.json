@@ -37,7 +37,8 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "DungThinh\\DtPoll\\": "packages/dungthinh/dtpoll/src"
         }
     },
     "autoload-dev": {
