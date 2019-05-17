@@ -30,7 +30,6 @@ class User extends Authenticatable
         'photo',
         'permissions_id',
         'status',
-        'permissions',
         'connect_email',
         'connect_password',
     ];

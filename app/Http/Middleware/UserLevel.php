@@ -16,7 +16,7 @@ class UserLevel
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->permisions_id = 3 )
+        if ( Auth::check() && Auth::user()->permissions_id = 3 )
         {
             return $next($request);
         }else{
