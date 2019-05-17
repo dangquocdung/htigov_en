@@ -2,6 +2,9 @@
 
 $prefix = config('larapoll_config.prefix');
 
+// Backend Routes
+Auth::routes();
+
 Route::group(['namespace' => 'Inani\Larapoll\Http\Controllers', 'prefix' => $prefix, 'middleware' => 'web'], function(){
 
     $middleware = config('larapoll_config.admin_auth');
