@@ -35,6 +35,10 @@ Route::get('/admin', function () {
     return redirect()->route('adminHome');
 });
 
+Route::get('/tham-do-y-kien', function () {
+    return view('lrp.radio');
+});
+
 Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
 
     // No Permission
