@@ -221,7 +221,6 @@ return [
         'Helper' => App\Helpers\Helper::class,
         'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
         'cURL' => anlutro\cURL\Laravel\cURL::class,
-        'PollWriter' => Inani\Larapoll\PollWriterFacade::class,
 
     ],
 
