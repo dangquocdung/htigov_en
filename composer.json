@@ -37,8 +37,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "App\\": "app/",
-            "Inani\\Larapoll\\": "packages/inani/larapoll/src"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
