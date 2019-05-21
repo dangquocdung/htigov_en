@@ -8,7 +8,7 @@ use Inani\Larapoll\Traits\Voter;
 
 class User extends Authenticatable
 {
-    use Voter;
+    // use Voter;
     // relation with Permissions
     public function permissionsGroup()
     {
