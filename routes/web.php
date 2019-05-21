@@ -13,7 +13,6 @@
 
 Route::feeds();
 
-
 // Language Route
 Route::post('/lang', array(
     'Middleware' => 'LanguageSwitcher',
@@ -26,17 +25,12 @@ Route::get('/lang/{lang}', array(
 ))->name('langChange');
 // .. End of Language Route
 
-
 // Backend Routes
 Auth::routes();
 
 // default path after login
 Route::get('/admin', function () {
     return redirect()->route('adminHome');
-});
-
-Route::get('/tham-do-y-kien', function () {
-    return view('lrp.radio');
 });
 
 Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
@@ -107,14 +101,6 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
 
     Route::middleware(['checklevel','managerlevel'])->group(function () {
 
-        //Curl Data
-        Route::get('/curl-bao-ha-tinh', 'CurlController@getBaoHaTinh')->name('curl-bht');
-        Route::get('/curl-bao-chinh-phu', 'CurlController@getBaoChinhPhu')->name('curl-bcp');
-        Route::get('/curl-cong-bao', 'CurlController@getCongBao')->name('curl-cb');
-        Route::get('/curl-dieu-hanh-tac-nghiep', 'CurlController@getDHTN')->name('curl-dhtn');
-        // Route::get('/curl-lich-lam-viec', 'CurlController@getLLV')->name('curl-llv');
-
-
         // Settings
         Route::get('/settings', 'SettingsController@edit')->name('settings');
         Route::post('/settings', 'SettingsController@updateSiteInfo')->name('settingsUpdateSiteInfo');
@@ -156,7 +142,6 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
         Route::get('/users/permissions/{id}/edit', 'UsersController@permissions_edit')->name('permissionsEdit');
         Route::post('/users/permissions/{id}/update', 'UsersController@permissions_update')->name('permissionsUpdate');
         Route::get('/users/permissions/destroy/{id}', 'UsersController@permissions_destroy')->name('permissionsDestroy');
-
 
         // Menus
         Route::post('/menus/store/parent', 'MenusController@storeMenu')->name('parentMenusStore');
@@ -213,7 +198,6 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
         Route::post('/{webmasterId}/topics/{id}/files/updateAll',
             'TopicsController@filesUpdateAll')->name('topicsFilesUpdateAll');
 
-
         // Topics :Related
         Route::get('/{webmasterId}/topics/{id}/related', 'TopicsController@topicsRelated')->name('topicsRelated');
         Route::get('/relatedLoad/{id}', 'TopicsController@topicsRelatedLoad')->name('topicsRelatedLoad');
@@ -251,7 +235,6 @@ Route::Group(['prefix' => env('BACKEND_PATH', 'admin')], function () {
         Route::post('/{webmasterId}/topics/{id}/maps/updateAll',
             'TopicsController@mapsUpdateAll')->name('topicsMapsUpdateAll');
 
-        
         // Contacts Groups
         Route::post('/contacts/storeGroup', 'ContactsController@storeGroup')->name('contactsStoreGroup');
         Route::get('/contacts/{id}/editGroup', 'ContactsController@editGroup')->name('contactsEditGroup');
@@ -342,7 +325,6 @@ Route::Group(['prefix' => '/api/v1'], function () {
 });
 // .. End of RESTful API routes
 
-
 // Frontend Routes
 // ../site map
 Route::get('/sitemap.xml', 'SiteMapController@siteMap')->name('siteMap');
@@ -351,7 +333,6 @@ Route::get('/sitemap.xml', 'SiteMapController@siteMap')->name('siteMap');
 // ../site map
 Route::get('/sitemap', 'FrontendHomeController@siteMap')->name('siteMap');
 Route::get('/{lang}/sitemap', 'FrontendHomeController@siteMap')->name('siteMapByLang');
-
 
 Route::get('/', 'FrontendHomeController@HomePage')->name('Home');
 
@@ -376,7 +357,6 @@ Route::get('/{lang?}/page/{id}', 'FrontendHomeController@PageViewByLang');
 
 // Route::post('/{lang?}/section/{id}', 'FrontendHomeController@StoreCommentsByLang')->name('StoreCommentsByLang');
 
-
 // ..Custom URL for contact us page ( www.site.com/contact )
 // Route::get('/nguoi-phat-ngon', 'FrontendHomeController@SpokesManPage')->name('spokesManPage');
 // Route::get('/{lang?}/nguoi-phat-ngon', 'FrontendHomeController@SpokesManPageByLang')->name('spokesManPageByLang');
@@ -384,8 +364,6 @@ Route::get('/{lang?}/page/{id}', 'FrontendHomeController@PageViewByLang');
 // ..Custom URL for contact us page ( www.site.com/contact )
 // Route::get('/phong-vien-thuong-tru', 'FrontendHomeController@ReporterPage')->name('reporterPage');
 // Route::get('/{lang?}/phong-vien-thuong-tru', 'FrontendHomeController@ReporterPageByLang')->name('reporterPageByLang');
-
-
 
 // ../contact message submit  (ajax url)
 Route::post('/contact/submit', 'FrontendHomeController@ContactPageSubmit')->name('contactPageSubmit');
